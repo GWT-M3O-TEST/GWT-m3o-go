@@ -26,7 +26,6 @@ func GetCurrentWeather() {
 	weatherService := weather.NewWeatherService(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := weatherService.Now(&weather.NowRequest{
 		Location: "london",
-
 	})
 	fmt.Println(rsp, err)
 	
@@ -55,7 +54,6 @@ func ForecastWeather() {
 	rsp, err := weatherService.Forecast(&weather.ForecastRequest{
 		Days: 2,
 Location: "London",
-
 	})
 	fmt.Println(rsp, err)
 	

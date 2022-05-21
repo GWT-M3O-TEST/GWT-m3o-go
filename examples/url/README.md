@@ -52,7 +52,7 @@ import(
 func ShortenAlongUrl() {
 	urlService := url.NewUrlService(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := urlService.Shorten(&url.ShortenRequest{
-		
+		DestinationUrl: "https://mysite.com/this-is-a-rather-long-web-address",
 	})
 	fmt.Println(rsp, err)
 	
@@ -79,7 +79,7 @@ import(
 func ResolveAshortUrlToAlongDestinationUrl() {
 	urlService := url.NewUrlService(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := urlService.Proxy(&url.ProxyRequest{
-		
+		ShortUrl: "https://m3o.one/u/ck6SGVkYp",
 	})
 	fmt.Println(rsp, err)
 	

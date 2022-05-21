@@ -4,18 +4,19 @@ import (
 	"fmt"
 	"os"
 
+	"go.m3o.com"
 	"go.m3o.com/evchargers"
 )
 
-// Search by giving a coordinate and a max distance, or bounding box and optional filters
 func main() {
-	evchargersService := evchargers.NewEvchargersService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := evchargersService.Search(&evchargers.SearchRequest{
-		Distance: 2000,
+	client := m3o.New(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := client.Evchargers.Search(&evchargers.SearchRequest{
+		MaxResults: 2,
 		Location: &evchargers.Coordinates{
-			Latitude:  51.53336351319885,
 			Longitude: -0.0252,
+			Latitude:  51.53336351319885,
 		},
+		Distance: 2000,
 	})
 	fmt.Println(rsp, err)
 }

@@ -4,15 +4,15 @@ import (
 	"fmt"
 	"os"
 
+	"go.m3o.com"
 	"go.m3o.com/file"
 )
 
-// Delete a file by project name/path
 func main() {
-	fileService := file.NewFileService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := fileService.Delete(&file.DeleteRequest{
-		Path:    "/document/text-files/file.txt",
+	client := m3o.New(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := client.File.Delete(&file.DeleteRequest{
 		Project: "examples",
+		Path:    "/document/text-files/file.txt",
 	})
 	fmt.Println(rsp, err)
 }

@@ -4,18 +4,18 @@ import (
 	"fmt"
 	"os"
 
+	"go.m3o.com"
 	"go.m3o.com/translate"
 )
 
-// Basic text translation
 func main() {
-	translateService := translate.NewTranslateService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := translateService.Text(&translate.TextRequest{
-		Content: "hello",
+	client := m3o.New(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := client.Translate.Text(&translate.TextRequest{
 		Format:  "text",
-		Model:   "nmt",
 		Source:  "en",
 		Target:  "fr",
+		Content: "hello",
+		Model:   "nmt",
 	})
 	fmt.Println(rsp, err)
 }

@@ -57,7 +57,6 @@ func GetTheBooksWithinAcollection() {
 	sunnahService := sunnah.NewSunnahService(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := sunnahService.Books(&sunnah.BooksRequest{
 		Collection: "bukhari",
-
 	})
 	fmt.Println(rsp, err)
 	
@@ -84,9 +83,8 @@ import(
 func ListTheChaptersInAbook() {
 	sunnahService := sunnah.NewSunnahService(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := sunnahService.Chapters(&sunnah.ChaptersRequest{
-		Book: 1,
-Collection: "bukhari",
-
+		Collection: "bukhari",
+Book: 1,
 	})
 	fmt.Println(rsp, err)
 	
@@ -115,9 +113,8 @@ import(
 func ListTheHadithsInAbook() {
 	sunnahService := sunnah.NewSunnahService(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := sunnahService.Hadiths(&sunnah.HadithsRequest{
-		Book: 1,
-Collection: "bukhari",
-
+		Collection: "bukhari",
+Book: 1,
 	})
 	fmt.Println(rsp, err)
 	

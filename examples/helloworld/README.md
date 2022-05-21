@@ -6,7 +6,7 @@ Endpoints:
 
 ## Call
 
-Call returns a personalised "Hello $name" response
+Return a personalised Hello message
 
 
 [https://m3o.com/helloworld/api#Call](https://m3o.com/helloworld/api#Call)
@@ -21,12 +21,11 @@ import(
 	"go.m3o.com/helloworld"
 )
 
-// Call returns a personalised "Hello $name" response
-func CallTheHelloworldService() {
+// Return a personalised Hello message
+func CallHelloworld() {
 	helloworldService := helloworld.NewHelloworldService(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := helloworldService.Call(&helloworld.CallRequest{
 		Name: "John",
-
 	})
 	fmt.Println(rsp, err)
 	
@@ -34,7 +33,7 @@ func CallTheHelloworldService() {
 ```
 ## Stream
 
-Stream returns a stream of "Hello $name" responses
+Stream a personalised Hello message
 
 
 [https://m3o.com/helloworld/api#Stream](https://m3o.com/helloworld/api#Stream)
@@ -49,14 +48,13 @@ import(
 	"go.m3o.com/helloworld"
 )
 
-// Stream returns a stream of "Hello $name" responses
-func StreamsResponsesFromTheServerUsingWebsockets() {
+// Stream a personalised Hello message
+func StreamHelloworld() {
 	helloworldService := helloworld.NewHelloworldService(os.Getenv("M3O_API_TOKEN"))
 	
 	stream, err := helloworldService.Stream(&helloworld.StreamRequest{
-		Messages: 10,
-Name: "John",
-
+		Name: "John",
+Messages: 10,
 	})
 	if err != nil {
 		fmt.Println(err)

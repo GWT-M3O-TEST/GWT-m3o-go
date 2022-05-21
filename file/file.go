@@ -57,59 +57,64 @@ func (t *FileService) Save(request *SaveRequest) (*SaveResponse, error) {
 
 type DeleteRequest struct {
 	// Path to the file
-	Path string `json:"path"`
+	Path string `json:"path,omitempty"`
 	// The project name
-	Project string `json:"project"`
+	Project string `json:"project,omitempty"`
 }
 
 type DeleteResponse struct {
 }
 
 type ListRequest struct {
+	// Project, required for listing.
+	Project string `json:"project,omitempty"`
 	// Defaults to '/', ie. lists all files in a project.
 	// Supply path to a folder if you want to list
 	// files inside that folder
 	// eg. '/docs'
-	Path string `json:"path"`
-	// Project, required for listing.
-	Project string `json:"project"`
+	Path string `json:"path,omitempty"`
 }
 
 type ListResponse struct {
-	Files []Record `json:"files"`
+	Files []Record `json:"files,omitempty"`
 }
 
 type ReadRequest struct {
 	// Path to the file
-	Path string `json:"path"`
+	Path string `json:"path,omitempty"`
 	// Project name
-	Project string `json:"project"`
+	Project string `json:"project,omitempty"`
 }
 
 type ReadResponse struct {
 	// Returns the file
-	File *Record `json:"file"`
+	File *Record `json:"file,omitempty"`
 }
 
 type Record struct {
-	// File contents
-	Content string `json:"content"`
-	// Time the file was created e.g 2021-05-20T13:37:21Z
-	Created string `json:"created"`
-	// Any other associated metadata as a map of key-value pairs
-	Metadata map[string]string `json:"metadata"`
 	// Path to file or folder eg. '/documents/text-files/file.txt'.
-	Path string `json:"path"`
+	Path string `json:"path,omitempty"`
 	// A custom project to group files
 	// eg. file-of-mywebsite.com
-	Project string `json:"project"`
+	Project string `json:"project,omitempty"`
 	// Time the file was updated e.g 2021-05-20T13:37:21Z
-	Updated string `json:"updated"`
+	Updated string `json:"updated,omitempty"`
+	// File contents
+	Content string `json:"content,omitempty"`
+	// Time the file was created e.g 2021-05-20T13:37:21Z
+	Created string `json:"created,omitempty"`
+	// Any other associated metadata as a map of key-value pairs
+	Metadata map[string]string `json:"metadata,omitempty"`
 }
 
 type SaveRequest struct {
-	File *Record `json:"file"`
+	// The file to save
+	File *Record `json:"file,omitempty"`
+	// Make the file public: true or false
+	Public bool `json:"public,omitempty"`
 }
 
 type SaveResponse struct {
+	// The permalink for the file if made public
+	Url string `json:"url,omitempty"`
 }

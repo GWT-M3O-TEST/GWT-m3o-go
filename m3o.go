@@ -2,15 +2,20 @@ package m3o
 
 import (
 	"go.m3o.com/address"
+	"go.m3o.com/analytics"
 	"go.m3o.com/answer"
 	"go.m3o.com/app"
 	"go.m3o.com/avatar"
+	"go.m3o.com/bitcoin"
 	"go.m3o.com/cache"
 	"go.m3o.com/carbon"
+	"go.m3o.com/chat"
+	"go.m3o.com/comments"
 	"go.m3o.com/contact"
 	"go.m3o.com/crypto"
 	"go.m3o.com/currency"
 	"go.m3o.com/db"
+	"go.m3o.com/dns"
 	"go.m3o.com/email"
 	"go.m3o.com/emoji"
 	"go.m3o.com/evchargers"
@@ -27,15 +32,22 @@ import (
 	"go.m3o.com/image"
 	"go.m3o.com/ip"
 	"go.m3o.com/joke"
+	"go.m3o.com/lists"
 	"go.m3o.com/location"
+	"go.m3o.com/memegen"
+	"go.m3o.com/minecraft"
 	"go.m3o.com/movie"
 	"go.m3o.com/mq"
 	"go.m3o.com/news"
 	"go.m3o.com/nft"
 	"go.m3o.com/notes"
 	"go.m3o.com/otp"
+	"go.m3o.com/password"
+	"go.m3o.com/ping"
+	"go.m3o.com/place"
 	"go.m3o.com/postcode"
 	"go.m3o.com/prayer"
+	"go.m3o.com/price"
 	"go.m3o.com/qr"
 	"go.m3o.com/quran"
 	"go.m3o.com/routing"
@@ -51,134 +63,164 @@ import (
 	"go.m3o.com/thumbnail"
 	"go.m3o.com/time"
 	"go.m3o.com/translate"
+	"go.m3o.com/tunnel"
 	"go.m3o.com/twitter"
 	"go.m3o.com/url"
 	"go.m3o.com/user"
 	"go.m3o.com/vehicle"
 	"go.m3o.com/weather"
+	"go.m3o.com/wordle"
 	"go.m3o.com/youtube"
 )
 
-func NewClient(token string) *Client {
+func New(token string) *Client {
 	return &Client{
 		token: token,
 
-		AddressService:    address.NewAddressService(token),
-		AnswerService:     answer.NewAnswerService(token),
-		AppService:        app.NewAppService(token),
-		AvatarService:     avatar.NewAvatarService(token),
-		CacheService:      cache.NewCacheService(token),
-		CarbonService:     carbon.NewCarbonService(token),
-		ContactService:    contact.NewContactService(token),
-		CryptoService:     crypto.NewCryptoService(token),
-		CurrencyService:   currency.NewCurrencyService(token),
-		DbService:         db.NewDbService(token),
-		EmailService:      email.NewEmailService(token),
-		EmojiService:      emoji.NewEmojiService(token),
-		EvchargersService: evchargers.NewEvchargersService(token),
-		EventService:      event.NewEventService(token),
-		FileService:       file.NewFileService(token),
-		ForexService:      forex.NewForexService(token),
-		FunctionService:   function.NewFunctionService(token),
-		GeocodingService:  geocoding.NewGeocodingService(token),
-		GifsService:       gifs.NewGifsService(token),
-		GoogleService:     google.NewGoogleService(token),
-		HelloworldService: helloworld.NewHelloworldService(token),
-		HolidaysService:   holidays.NewHolidaysService(token),
-		IdService:         id.NewIdService(token),
-		ImageService:      image.NewImageService(token),
-		IpService:         ip.NewIpService(token),
-		JokeService:       joke.NewJokeService(token),
-		LocationService:   location.NewLocationService(token),
-		MovieService:      movie.NewMovieService(token),
-		MqService:         mq.NewMqService(token),
-		NewsService:       news.NewNewsService(token),
-		NftService:        nft.NewNftService(token),
-		NotesService:      notes.NewNotesService(token),
-		OtpService:        otp.NewOtpService(token),
-		PostcodeService:   postcode.NewPostcodeService(token),
-		PrayerService:     prayer.NewPrayerService(token),
-		QrService:         qr.NewQrService(token),
-		QuranService:      quran.NewQuranService(token),
-		RoutingService:    routing.NewRoutingService(token),
-		RssService:        rss.NewRssService(token),
-		SearchService:     search.NewSearchService(token),
-		SentimentService:  sentiment.NewSentimentService(token),
-		SmsService:        sms.NewSmsService(token),
-		SpaceService:      space.NewSpaceService(token),
-		SpamService:       spam.NewSpamService(token),
-		StockService:      stock.NewStockService(token),
-		StreamService:     stream.NewStreamService(token),
-		SunnahService:     sunnah.NewSunnahService(token),
-		ThumbnailService:  thumbnail.NewThumbnailService(token),
-		TimeService:       time.NewTimeService(token),
-		TranslateService:  translate.NewTranslateService(token),
-		TwitterService:    twitter.NewTwitterService(token),
-		UrlService:        url.NewUrlService(token),
-		UserService:       user.NewUserService(token),
-		VehicleService:    vehicle.NewVehicleService(token),
-		WeatherService:    weather.NewWeatherService(token),
-		YoutubeService:    youtube.NewYoutubeService(token),
+		Address:    address.NewAddressService(token),
+		Analytics:  analytics.NewAnalyticsService(token),
+		Answer:     answer.NewAnswerService(token),
+		App:        app.NewAppService(token),
+		Avatar:     avatar.NewAvatarService(token),
+		Bitcoin:    bitcoin.NewBitcoinService(token),
+		Cache:      cache.NewCacheService(token),
+		Carbon:     carbon.NewCarbonService(token),
+		Chat:       chat.NewChatService(token),
+		Comments:   comments.NewCommentsService(token),
+		Contact:    contact.NewContactService(token),
+		Crypto:     crypto.NewCryptoService(token),
+		Currency:   currency.NewCurrencyService(token),
+		Db:         db.NewDbService(token),
+		Dns:        dns.NewDnsService(token),
+		Email:      email.NewEmailService(token),
+		Emoji:      emoji.NewEmojiService(token),
+		Evchargers: evchargers.NewEvchargersService(token),
+		Event:      event.NewEventService(token),
+		File:       file.NewFileService(token),
+		Forex:      forex.NewForexService(token),
+		Function:   function.NewFunctionService(token),
+		Geocoding:  geocoding.NewGeocodingService(token),
+		Gifs:       gifs.NewGifsService(token),
+		Google:     google.NewGoogleService(token),
+		Helloworld: helloworld.NewHelloworldService(token),
+		Holidays:   holidays.NewHolidaysService(token),
+		Id:         id.NewIdService(token),
+		Image:      image.NewImageService(token),
+		Ip:         ip.NewIpService(token),
+		Joke:       joke.NewJokeService(token),
+		Lists:      lists.NewListsService(token),
+		Location:   location.NewLocationService(token),
+		Memegen:    memegen.NewMemegenService(token),
+		Minecraft:  minecraft.NewMinecraftService(token),
+		Movie:      movie.NewMovieService(token),
+		Mq:         mq.NewMqService(token),
+		News:       news.NewNewsService(token),
+		Nft:        nft.NewNftService(token),
+		Notes:      notes.NewNotesService(token),
+		Otp:        otp.NewOtpService(token),
+		Password:   password.NewPasswordService(token),
+		Ping:       ping.NewPingService(token),
+		Place:      place.NewPlaceService(token),
+		Postcode:   postcode.NewPostcodeService(token),
+		Prayer:     prayer.NewPrayerService(token),
+		Price:      price.NewPriceService(token),
+		Qr:         qr.NewQrService(token),
+		Quran:      quran.NewQuranService(token),
+		Routing:    routing.NewRoutingService(token),
+		Rss:        rss.NewRssService(token),
+		Search:     search.NewSearchService(token),
+		Sentiment:  sentiment.NewSentimentService(token),
+		Sms:        sms.NewSmsService(token),
+		Space:      space.NewSpaceService(token),
+		Spam:       spam.NewSpamService(token),
+		Stock:      stock.NewStockService(token),
+		Stream:     stream.NewStreamService(token),
+		Sunnah:     sunnah.NewSunnahService(token),
+		Thumbnail:  thumbnail.NewThumbnailService(token),
+		Time:       time.NewTimeService(token),
+		Translate:  translate.NewTranslateService(token),
+		Tunnel:     tunnel.NewTunnelService(token),
+		Twitter:    twitter.NewTwitterService(token),
+		Url:        url.NewUrlService(token),
+		User:       user.NewUserService(token),
+		Vehicle:    vehicle.NewVehicleService(token),
+		Weather:    weather.NewWeatherService(token),
+		Wordle:     wordle.NewWordleService(token),
+		Youtube:    youtube.NewYoutubeService(token),
 	}
 }
 
 type Client struct {
 	token string
 
-	AddressService    *address.AddressService
-	AnswerService     *answer.AnswerService
-	AppService        *app.AppService
-	AvatarService     *avatar.AvatarService
-	CacheService      *cache.CacheService
-	CarbonService     *carbon.CarbonService
-	ContactService    *contact.ContactService
-	CryptoService     *crypto.CryptoService
-	CurrencyService   *currency.CurrencyService
-	DbService         *db.DbService
-	EmailService      *email.EmailService
-	EmojiService      *emoji.EmojiService
-	EvchargersService *evchargers.EvchargersService
-	EventService      *event.EventService
-	FileService       *file.FileService
-	ForexService      *forex.ForexService
-	FunctionService   *function.FunctionService
-	GeocodingService  *geocoding.GeocodingService
-	GifsService       *gifs.GifsService
-	GoogleService     *google.GoogleService
-	HelloworldService *helloworld.HelloworldService
-	HolidaysService   *holidays.HolidaysService
-	IdService         *id.IdService
-	ImageService      *image.ImageService
-	IpService         *ip.IpService
-	JokeService       *joke.JokeService
-	LocationService   *location.LocationService
-	MovieService      *movie.MovieService
-	MqService         *mq.MqService
-	NewsService       *news.NewsService
-	NftService        *nft.NftService
-	NotesService      *notes.NotesService
-	OtpService        *otp.OtpService
-	PostcodeService   *postcode.PostcodeService
-	PrayerService     *prayer.PrayerService
-	QrService         *qr.QrService
-	QuranService      *quran.QuranService
-	RoutingService    *routing.RoutingService
-	RssService        *rss.RssService
-	SearchService     *search.SearchService
-	SentimentService  *sentiment.SentimentService
-	SmsService        *sms.SmsService
-	SpaceService      *space.SpaceService
-	SpamService       *spam.SpamService
-	StockService      *stock.StockService
-	StreamService     *stream.StreamService
-	SunnahService     *sunnah.SunnahService
-	ThumbnailService  *thumbnail.ThumbnailService
-	TimeService       *time.TimeService
-	TranslateService  *translate.TranslateService
-	TwitterService    *twitter.TwitterService
-	UrlService        *url.UrlService
-	UserService       *user.UserService
-	VehicleService    *vehicle.VehicleService
-	WeatherService    *weather.WeatherService
-	YoutubeService    *youtube.YoutubeService
+	Address    address.Address
+	Analytics  analytics.Analytics
+	Answer     answer.Answer
+	App        app.App
+	Avatar     avatar.Avatar
+	Bitcoin    bitcoin.Bitcoin
+	Cache      cache.Cache
+	Carbon     carbon.Carbon
+	Chat       chat.Chat
+	Comments   comments.Comments
+	Contact    contact.Contact
+	Crypto     crypto.Crypto
+	Currency   currency.Currency
+	Db         db.Db
+	Dns        dns.Dns
+	Email      email.Email
+	Emoji      emoji.Emoji
+	Evchargers evchargers.Evchargers
+	Event      event.Event
+	File       file.File
+	Forex      forex.Forex
+	Function   function.Function
+	Geocoding  geocoding.Geocoding
+	Gifs       gifs.Gifs
+	Google     google.Google
+	Helloworld helloworld.Helloworld
+	Holidays   holidays.Holidays
+	Id         id.Id
+	Image      image.Image
+	Ip         ip.Ip
+	Joke       joke.Joke
+	Lists      lists.Lists
+	Location   location.Location
+	Memegen    memegen.Memegen
+	Minecraft  minecraft.Minecraft
+	Movie      movie.Movie
+	Mq         mq.Mq
+	News       news.News
+	Nft        nft.Nft
+	Notes      notes.Notes
+	Otp        otp.Otp
+	Password   password.Password
+	Ping       ping.Ping
+	Place      place.Place
+	Postcode   postcode.Postcode
+	Prayer     prayer.Prayer
+	Price      price.Price
+	Qr         qr.Qr
+	Quran      quran.Quran
+	Routing    routing.Routing
+	Rss        rss.Rss
+	Search     search.Search
+	Sentiment  sentiment.Sentiment
+	Sms        sms.Sms
+	Space      space.Space
+	Spam       spam.Spam
+	Stock      stock.Stock
+	Stream     stream.Stream
+	Sunnah     sunnah.Sunnah
+	Thumbnail  thumbnail.Thumbnail
+	Time       time.Time
+	Translate  translate.Translate
+	Tunnel     tunnel.Tunnel
+	Twitter    twitter.Twitter
+	Url        url.Url
+	User       user.User
+	Vehicle    vehicle.Vehicle
+	Weather    weather.Weather
+	Wordle     wordle.Wordle
+	Youtube    youtube.Youtube
 }

@@ -4,16 +4,17 @@ import (
 	"fmt"
 	"os"
 
+	"go.m3o.com"
 	"go.m3o.com/spam"
 )
 
-// Check whether an email is likely to be spam based on its attributes
 func main() {
-	spamService := spam.NewSpamService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := spamService.Classify(&spam.ClassifyRequest{
-		From:    "noreply@m3o.com",
-		Subject: "Welcome",
-		To:      "hello@example.com",
+	client := m3o.New(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := client.Spam.Classify(&spam.ClassifyRequest{
+		Subject:  "Welcome",
+		TextBody: "Hi there,\n\nWelcome to M3O.\n\nThanks\nM3O team",
+		From:     "noreply@m3o.com",
+		To:       "hello@example.com",
 	})
 	fmt.Println(rsp, err)
 }

@@ -9,6 +9,7 @@ type User interface {
 	Delete(*DeleteRequest) (*DeleteResponse, error)
 	List(*ListRequest) (*ListResponse, error)
 	Login(*LoginRequest) (*LoginResponse, error)
+	LogoutAll(*LogoutAllRequest) (*LogoutAllResponse, error)
 	Logout(*LogoutRequest) (*LogoutResponse, error)
 	Read(*ReadRequest) (*ReadResponse, error)
 	ReadSession(*ReadSessionRequest) (*ReadSessionResponse, error)
@@ -67,6 +68,14 @@ func (t *UserService) Login(request *LoginRequest) (*LoginResponse, error) {
 
 }
 
+// Logout of all user's sessions
+func (t *UserService) LogoutAll(request *LogoutAllRequest) (*LogoutAllResponse, error) {
+
+	rsp := &LogoutAllResponse{}
+	return rsp, t.client.Call("user", "LogoutAll", request, rsp)
+
+}
+
 // Logout a user account
 func (t *UserService) Logout(request *LogoutRequest) (*LogoutResponse, error) {
 
@@ -91,7 +100,7 @@ func (t *UserService) ReadSession(request *ReadSessionRequest) (*ReadSessionResp
 
 }
 
-// Reset password with the code sent by the "SendPasswordResetEmail" endoint.
+// Reset password with the code sent by the "SendPasswordResetEmail" endpoint.
 func (t *UserService) ResetPassword(request *ResetPasswordRequest) (*ResetPasswordResponse, error) {
 
 	rsp := &ResetPasswordResponse{}
@@ -116,13 +125,7 @@ func (t *UserService) SendPasswordResetEmail(request *SendPasswordResetEmailRequ
 
 }
 
-// Send a verification email
-// to the user being signed up. Email from will be from 'noreply@email.m3ocontent.com',
-// but you can provide the title and contents.
-// The verification link will be injected in to the email as a template variable, $micro_verification_link.
-// Example: 'Hi there, welcome onboard! Use the link below to verify your email: $micro_verification_link'
-// The variable will be replaced with an actual url that will look similar to this:
-// 'https://user.m3o.com/user/verify?token=a-verification-token&redirectUrl=your-redir-url'
+// Send a verification email to a user.
 func (t *UserService) SendVerificationEmail(request *SendVerificationEmailRequest) (*SendVerificationEmailResponse, error) {
 
 	rsp := &SendVerificationEmailResponse{}
@@ -166,44 +169,44 @@ func (t *UserService) VerifyToken(request *VerifyTokenRequest) (*VerifyTokenResp
 }
 
 type Account struct {
-	// unix timestamp
-	Created int64 `json:"created,string"`
-	// an email address
-	Email string `json:"email"`
-	// unique account id
-	Id string `json:"id"`
 	// Store any custom data you want about your users in this fields.
-	Profile map[string]string `json:"profile"`
+	Profile map[string]string `json:"profile,omitempty"`
 	// unix timestamp
-	Updated int64 `json:"updated,string"`
+	Updated int64 `json:"updated,string,omitempty"`
 	// alphanumeric username
-	Username string `json:"username"`
+	Username string `json:"username,omitempty"`
 	// date of verification
-	VerificationDate int64 `json:"verificationDate,string"`
+	VerificationDate int64 `json:"verification_date,string,omitempty"`
 	// if the account is verified
-	Verified bool `json:"verified"`
+	Verified bool `json:"verified,omitempty"`
+	// unix timestamp
+	Created int64 `json:"created,string,omitempty"`
+	// an email address
+	Email string `json:"email,omitempty"`
+	// unique account id
+	Id string `json:"id,omitempty"`
 }
 
 type CreateRequest struct {
-	// the email address
-	Email string `json:"email"`
-	// optional account id
-	Id string `json:"id"`
 	// the user password
-	Password string `json:"password"`
+	Password string `json:"password,omitempty"`
 	// optional user profile as map<string,string>
-	Profile map[string]string `json:"profile"`
+	Profile map[string]string `json:"profile,omitempty"`
 	// the username
-	Username string `json:"username"`
+	Username string `json:"username,omitempty"`
+	// the email address
+	Email string `json:"email,omitempty"`
+	// optional account id
+	Id string `json:"id,omitempty"`
 }
 
 type CreateResponse struct {
-	Account *Account `json:"account"`
+	Account *Account `json:"account,omitempty"`
 }
 
 type DeleteRequest struct {
 	// the account id
-	Id string `json:"id"`
+	Id string `json:"id,omitempty"`
 }
 
 type DeleteResponse struct {
@@ -212,31 +215,39 @@ type DeleteResponse struct {
 type ListRequest struct {
 	// Maximum number of records to return. Default limit is 25.
 	// Maximum limit is 1000. Anything higher will return an error.
-	Limit  int32 `json:"limit"`
-	Offset int32 `json:"offset"`
+	Limit  int32 `json:"limit,omitempty"`
+	Offset int32 `json:"offset,omitempty"`
 }
 
 type ListResponse struct {
-	Users []Account `json:"users"`
+	Users []Account `json:"users,omitempty"`
 }
 
 type LoginRequest struct {
-	// The email address of the user
-	Email string `json:"email"`
-	// The password of the user
-	Password string `json:"password"`
 	// The username of the user
-	Username string `json:"username"`
+	Username string `json:"username,omitempty"`
+	// The email address of the user
+	Email string `json:"email,omitempty"`
+	// The password of the user
+	Password string `json:"password,omitempty"`
 }
 
 type LoginResponse struct {
 	// The session of the logged in  user
-	Session *Session `json:"session"`
+	Session *Session `json:"session,omitempty"`
+}
+
+type LogoutAllRequest struct {
+	// the user to logout
+	UserId string `json:"user_id,omitempty"`
+}
+
+type LogoutAllResponse struct {
 }
 
 type LogoutRequest struct {
 	// the session id for the user to logout
-	SessionId string `json:"sessionId"`
+	SessionId string `json:"session_id,omitempty"`
 }
 
 type LogoutResponse struct {
@@ -244,113 +255,116 @@ type LogoutResponse struct {
 
 type ReadRequest struct {
 	// the account email
-	Email string `json:"email"`
+	Email string `json:"email,omitempty"`
 	// the account id
-	Id string `json:"id"`
+	Id string `json:"id,omitempty"`
 	// the account username
-	Username string `json:"username"`
+	Username string `json:"username,omitempty"`
 }
 
 type ReadResponse struct {
-	Account *Account `json:"account"`
+	Account *Account `json:"account,omitempty"`
 }
 
 type ReadSessionRequest struct {
 	// The unique session id
-	SessionId string `json:"sessionId"`
+	SessionId string `json:"session_id,omitempty"`
 }
 
 type ReadSessionResponse struct {
 	// the session for the user
-	Session *Session `json:"session"`
+	Session *Session `json:"session,omitempty"`
 }
 
 type ResetPasswordRequest struct {
 	// The code from the verification email
-	Code string `json:"code"`
+	Code string `json:"code,omitempty"`
 	// confirm new password
-	ConfirmPassword string `json:"confirmPassword"`
+	ConfirmPassword string `json:"confirm_password,omitempty"`
 	// the email to reset the password for
-	Email string `json:"email"`
+	Email string `json:"email,omitempty"`
 	// the new password
-	NewPassword string `json:"newPassword"`
+	NewPassword string `json:"new_password,omitempty"`
 }
 
 type ResetPasswordResponse struct {
 }
 
 type SendMagicLinkRequest struct {
+	// Display name of the sender for the email. Note: the email address will still be 'support@m3o.com'
+	FromName string `json:"from_name,omitempty"`
+	Subject  string `json:"subject,omitempty"`
+	// Text content of the email. Don't forget to include the string '$micro_verification_link' which will be replaced by the real verification link
+	// HTML emails are not available currently.
+	TextContent string `json:"text_content,omitempty"`
 	// Your web site address, example www.example.com or user.example.com
-	Address string `json:"address"`
+	Address string `json:"address,omitempty"`
 	// the email address of the user
-	Email string `json:"email"`
+	Email string `json:"email,omitempty"`
 	// Endpoint name where your http request handler handles MagicLink by
 	// calling M3O VerifyToken endpoint. You can return as a result a success,
 	// failed or redirect to another page.
-	Endpoint string `json:"endpoint"`
-	// Display name of the sender for the email. Note: the email address will still be 'support@m3o.com'
-	FromName string `json:"fromName"`
-	Subject  string `json:"subject"`
-	// Text content of the email. Don't forget to include the string '$micro_verification_link' which will be replaced by the real verification link
-	// HTML emails are not available currently.
-	TextContent string `json:"textContent"`
+	Endpoint string `json:"endpoint,omitempty"`
 }
 
 type SendMagicLinkResponse struct {
 }
 
 type SendPasswordResetEmailRequest struct {
-	// email address to send reset for
-	Email string `json:"email"`
+	// Number of secs that the password reset email is valid for, defaults to 1800 secs (30 mins)
+	Expiration int64 `json:"expiration,string,omitempty"`
 	// Display name of the sender for the email. Note: the email address will still be 'noreply@email.m3ocontent.com'
-	FromName string `json:"fromName"`
+	FromName string `json:"from_name,omitempty"`
 	// subject of the email
-	Subject string `json:"subject"`
+	Subject string `json:"subject,omitempty"`
 	// Text content of the email. Don't forget to include the string '$code' which will be replaced by the real verification link
 	// HTML emails are not available currently.
-	TextContent string `json:"textContent"`
+	TextContent string `json:"text_content,omitempty"`
+	// email address to send reset for
+	Email string `json:"email,omitempty"`
 }
 
 type SendPasswordResetEmailResponse struct {
 }
 
 type SendVerificationEmailRequest struct {
-	// email address to send the verification code
-	Email              string `json:"email"`
-	FailureRedirectUrl string `json:"failureRedirectUrl"`
-	// Display name of the sender for the email. Note: the email address will still be 'noreply@email.m3ocontent.com'
-	FromName    string `json:"fromName"`
-	RedirectUrl string `json:"redirectUrl"`
+	// The url to redirect to after successful verification
+	RedirectUrl string `json:"redirect_url,omitempty"`
 	// subject of the email
-	Subject string `json:"subject"`
-	// Text content of the email. Don't forget to include the string '$micro_verification_link' which will be replaced by the real verification link
-	// HTML emails are not available currently.
-	TextContent string `json:"textContent"`
+	Subject string `json:"subject,omitempty"`
+	// Text content of the email. Include '$micro_verification_link' which will be replaced by a verification link
+	TextContent string `json:"text_content,omitempty"`
+	// email address to send the verification code
+	Email string `json:"email,omitempty"`
+	// The url to redirect to incase of failure
+	FailureRedirectUrl string `json:"failure_redirect_url,omitempty"`
+	// Display name of the sender for the email. Note: the email address will still be 'noreply@email.m3ocontent.com'
+	FromName string `json:"from_name,omitempty"`
 }
 
 type SendVerificationEmailResponse struct {
 }
 
 type Session struct {
-	// unix timestamp
-	Created int64 `json:"created,string"`
-	// unix timestamp
-	Expires int64 `json:"expires,string"`
 	// the session id
-	Id string `json:"id"`
+	Id string `json:"id,omitempty"`
 	// the associated user id
-	UserId string `json:"userId"`
+	UserId string `json:"userId,omitempty"`
+	// unix timestamp
+	Created int64 `json:"created,string,omitempty"`
+	// unix timestamp
+	Expires int64 `json:"expires,string,omitempty"`
 }
 
 type UpdatePasswordRequest struct {
 	// confirm new password
-	ConfirmPassword string `json:"confirm_password"`
+	ConfirmPassword string `json:"confirm_password,omitempty"`
 	// the new password
-	NewPassword string `json:"newPassword"`
+	NewPassword string `json:"new_password,omitempty"`
 	// the old password
-	OldPassword string `json:"oldPassword"`
+	OldPassword string `json:"old_password,omitempty"`
 	// the account id
-	UserId string `json:"userId"`
+	UserId string `json:"userId,omitempty"`
 }
 
 type UpdatePasswordResponse struct {
@@ -358,34 +372,32 @@ type UpdatePasswordResponse struct {
 
 type UpdateRequest struct {
 	// the new email address
-	Email string `json:"email"`
+	Email string `json:"email,omitempty"`
 	// the account id
-	Id string `json:"id"`
+	Id string `json:"id,omitempty"`
 	// the user profile as map<string,string>
-	Profile map[string]string `json:"profile"`
+	Profile map[string]string `json:"profile,omitempty"`
 	// the new username
-	Username string `json:"username"`
+	Username string `json:"username,omitempty"`
 }
 
 type UpdateResponse struct {
 }
 
 type VerifyEmailRequest struct {
-	// the email address to verify
-	Email string `json:"email"`
 	// The token from the verification email
-	Token string `json:"token"`
+	Token string `json:"token,omitempty"`
 }
 
 type VerifyEmailResponse struct {
 }
 
 type VerifyTokenRequest struct {
-	Token string `json:"token"`
+	Token string `json:"token,omitempty"`
 }
 
 type VerifyTokenResponse struct {
-	IsValid bool     `json:"is_valid"`
-	Message string   `json:"message"`
-	Session *Session `json:"session"`
+	IsValid bool     `json:"is_valid,omitempty"`
+	Message string   `json:"message,omitempty"`
+	Session *Session `json:"session,omitempty"`
 }

@@ -25,10 +25,9 @@ import(
 func SendSms() {
 	smsService := sms.NewSmsService(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := smsService.Send(&sms.SendRequest{
-		From: "Alice",
-Message: "Hi there!",
+		Message: "Hi there!",
 To: "+447681129",
-
+From: "Alice",
 	})
 	fmt.Println(rsp, err)
 	

@@ -4,37 +4,37 @@ import (
 	"fmt"
 	"os"
 
+	"go.m3o.com"
 	"go.m3o.com/contact"
 )
 
-//
 func main() {
-	contactService := contact.NewContactService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := contactService.Update(&contact.UpdateRequest{
-		Addresses: []contact.Address{
-			contact.Address{
-				Label:    "company address",
-				Location: "123 street address",
-			}},
-		Birthday: "1995-01-01",
-		Emails: []contact.Email{
-			contact.Email{
-				Address: "home@example.com",
-				Label:   "home",
-			}},
-		Id: "42e48a3c-6221-11ec-96d2-acde48001122",
-		Links: []contact.Link{
-			contact.Link{
-				Label: "blog",
-				Url:   "https://blog.joe.me",
-			}},
+	client := m3o.New(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := client.Contact.Update(&contact.UpdateRequest{
 		Name: "joe",
-		Note: "this person is very important",
+		Emails: []contact.Email{
+			contact.Email: {
+				Label: "work", Address: "work@example.com"},
+		},
+		Links: []contact.Link{
+			contact.Link: {
+				Label: "blog", Url: "https://blog.joe.me"},
+		},
+		Birthday: "1995-01-01",
+		Note:     "this person is very important",
+		Id:       "42e48a3c-6221-11ec-96d2-acde48001122",
 		Phones: []contact.Phone{
-			contact.Phone{
-				Label:  "home",
-				Number: "010-12345678",
-			}},
+			contact.Phone: {
+				Label: "work", Number: "010-87654321"},
+		},
+		Addresses: []contact.Address{
+			contact.Address: {
+				Label: "company address", Location: "123 street address"},
+		},
+		SocialMedias: []contact.SocialMedia{
+			contact.SocialMedia: {
+				Label: "facebook", Username: "joe-facebook"},
+		},
 	})
 	fmt.Println(rsp, err)
 }

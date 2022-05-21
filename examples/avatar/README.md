@@ -6,7 +6,7 @@ Endpoints:
 
 ## Generate
 
-
+Generate an unique avatar
 
 
 [https://m3o.com/avatar/api#Generate](https://m3o.com/avatar/api#Generate)
@@ -21,15 +21,14 @@ import(
 	"go.m3o.com/avatar"
 )
 
-// 
+// Generate an unique avatar
 func GenerateAvatarAndReturnBase64stringOfTheAvatar() {
 	avatarService := avatar.NewAvatarService(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := avatarService.Generate(&avatar.GenerateRequest{
-		Format: "jpeg",
-Gender: "female",
-Upload: false,
+		Gender: "female",
 Username: "",
-
+Format: "jpeg",
+Upload: false,
 	})
 	fmt.Println(rsp, err)
 	
@@ -37,7 +36,7 @@ Username: "",
 ```
 ## Generate
 
-
+Generate an unique avatar
 
 
 [https://m3o.com/avatar/api#Generate](https://m3o.com/avatar/api#Generate)
@@ -52,15 +51,14 @@ import(
 	"go.m3o.com/avatar"
 )
 
-// 
+// Generate an unique avatar
 func GenerateAnAvatarAndUploadTheAvatarToMicrosCdn() {
 	avatarService := avatar.NewAvatarService(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := avatarService.Generate(&avatar.GenerateRequest{
-		Format: "png",
-Gender: "female",
-Upload: true,
+		Gender: "female",
 Username: "",
-
+Format: "png",
+Upload: true,
 	})
 	fmt.Println(rsp, err)
 	

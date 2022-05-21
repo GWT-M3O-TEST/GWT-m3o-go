@@ -26,7 +26,6 @@ func GenerateOtp() {
 	otpService := otp.NewOtpService(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := otpService.Generate(&otp.GenerateRequest{
 		Id: "asim@example.com",
-
 	})
 	fmt.Println(rsp, err)
 	
@@ -53,9 +52,8 @@ import(
 func ValidateOtp() {
 	otpService := otp.NewOtpService(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := otpService.Validate(&otp.ValidateRequest{
-		Code: "656211",
-Id: "asim@example.com",
-
+		Id: "asim@example.com",
+Code: "656211",
 	})
 	fmt.Println(rsp, err)
 	

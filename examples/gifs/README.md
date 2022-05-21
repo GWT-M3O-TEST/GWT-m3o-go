@@ -25,9 +25,8 @@ import(
 func Search() {
 	gifsService := gifs.NewGifsService(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := gifsService.Search(&gifs.SearchRequest{
-		Limit: 2,
-Query: "dogs",
-
+		Query: "dogs",
+Limit: 2,
 	})
 	fmt.Println(rsp, err)
 	

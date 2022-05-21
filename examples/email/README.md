@@ -25,12 +25,62 @@ import(
 func SendEmail() {
 	emailService := email.NewEmailService(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := emailService.Send(&email.SendRequest{
-		From: "Awesome Dot Com",
-Subject: "Email verification",
-TextBody: `Hi there,
+		Subject: "Email verification",
+From: "Awesome Dot Com",
+	})
+	fmt.Println(rsp, err)
+	
+}
+```
+## Parse
 
-Please verify your email by clicking this link: $micro_verification_link`,
+Parse an RFC5322 address e.g "Joe Blogs <joe@example.com>"
 
+
+[https://m3o.com/email/api#Parse](https://m3o.com/email/api#Parse)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"go.m3o.com/email"
+)
+
+// Parse an RFC5322 address e.g "Joe Blogs <joe@example.com>"
+func ParseEmail() {
+	emailService := email.NewEmailService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := emailService.Parse(&email.ParseRequest{
+		Address: "Joe Blogs <joe@example.com>",
+	})
+	fmt.Println(rsp, err)
+	
+}
+```
+## Validate
+
+Validate an email address format
+
+
+[https://m3o.com/email/api#Validate](https://m3o.com/email/api#Validate)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"go.m3o.com/email"
+)
+
+// Validate an email address format
+func ValidateEmail() {
+	emailService := email.NewEmailService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := emailService.Validate(&email.ValidateRequest{
+		Address: "joe@example.com",
 	})
 	fmt.Println(rsp, err)
 	

@@ -4,12 +4,14 @@ import (
 	"fmt"
 	"os"
 
+	"go.m3o.com"
 	"go.m3o.com/url"
 )
 
-// Shorten a long URL
 func main() {
-	urlService := url.NewUrlService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := urlService.Shorten(&url.ShortenRequest{})
+	client := m3o.New(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := client.Url.Shorten(&url.ShortenRequest{
+		DestinationUrl: "https://mysite.com/this-is-a-rather-long-web-address",
+	})
 	fmt.Println(rsp, err)
 }

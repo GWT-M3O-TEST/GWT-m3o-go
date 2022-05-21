@@ -25,9 +25,8 @@ import(
 func GetAtwitterTimeline() {
 	twitterService := twitter.NewTwitterService(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := twitterService.Timeline(&twitter.TimelineRequest{
-		Limit: 1,
-Username: "m3oservices",
-
+		Username: "m3oservices",
+Limit: 1,
 	})
 	fmt.Println(rsp, err)
 	
@@ -55,7 +54,6 @@ func SearchForTweets() {
 	twitterService := twitter.NewTwitterService(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := twitterService.Search(&twitter.SearchRequest{
 		Query: "cats",
-
 	})
 	fmt.Println(rsp, err)
 	
@@ -110,7 +108,6 @@ func GetAusersTwitterProfile() {
 	twitterService := twitter.NewTwitterService(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := twitterService.User(&twitter.UserRequest{
 		Username: "crufter",
-
 	})
 	fmt.Println(rsp, err)
 	

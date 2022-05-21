@@ -30,38 +30,40 @@ func (t *VehicleService) Lookup(request *LookupRequest) (*LookupResponse, error)
 
 type LookupRequest struct {
 	// the vehicle registration number
-	Registration string `json:"registration"`
+	Registration string `json:"registration,omitempty"`
 }
 
 type LookupResponse struct {
-	// co2 emmissions
-	Co2Emissions float64 `json:"co2_emissions"`
-	// colour of vehicle
-	Colour string `json:"colour"`
-	// engine capacity
-	EngineCapacity int32 `json:"engine_capacity"`
-	// fuel type e.g petrol, diesel
-	FuelType string `json:"fuel_type"`
-	// date of last v5 issue
-	LastV5Issued string `json:"last_v5_issued"`
-	// make of vehicle
-	Make string `json:"make"`
-	// month of first registration
-	MonthOfFirstRegistration string `json:"month_of_first_registration"`
-	// mot expiry
-	MotExpiry string `json:"mot_expiry"`
 	// mot status
-	MotStatus string `json:"mot_status"`
-	// registration number
-	Registration string `json:"registration"`
-	// tax due data
-	TaxDueDate string `json:"tax_due_date"`
-	// tax status
-	TaxStatus string `json:"tax_status"`
+	MotStatus string `json:"mot_status,omitempty"`
+	// engine capacity
+	EngineCapacity int32 `json:"engine_capacity,omitempty"`
+	// fuel type e.g petrol, diesel
+	FuelType string `json:"fuel_type,omitempty"`
+	// url of logo for the make
+	LogoUrl string `json:"logo_url,omitempty"`
+	// month of first registration
+	MonthOfFirstRegistration string `json:"month_of_first_registration,omitempty"`
 	// type approvale
-	TypeApproval string `json:"type_approval"`
+	TypeApproval string `json:"type_approval,omitempty"`
+	// co2 emmissions
+	Co2Emissions float64 `json:"co2_emissions,omitempty"`
+	// make of vehicle
+	Make string `json:"make,omitempty"`
+	// mot expiry
+	MotExpiry string `json:"mot_expiry,omitempty"`
+	// tax due data
+	TaxDueDate string `json:"tax_due_date,omitempty"`
+	// tax status
+	TaxStatus string `json:"tax_status,omitempty"`
 	// wheel plan
-	Wheelplan string `json:"wheelplan"`
+	Wheelplan string `json:"wheelplan,omitempty"`
+	// colour of vehicle
+	Colour string `json:"colour,omitempty"`
+	// date of last v5 issue
+	LastV5Issued string `json:"last_v5_issued,omitempty"`
+	// registration number
+	Registration string `json:"registration,omitempty"`
 	// year of manufacture
-	YearOfManufacture int32 `json:"year_of_manufacture"`
+	YearOfManufacture int32 `json:"year_of_manufacture,omitempty"`
 }

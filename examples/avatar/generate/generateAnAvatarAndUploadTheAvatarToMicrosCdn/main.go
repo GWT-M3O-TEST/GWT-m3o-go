@@ -4,17 +4,17 @@ import (
 	"fmt"
 	"os"
 
+	"go.m3o.com"
 	"go.m3o.com/avatar"
 )
 
-//
 func main() {
-	avatarService := avatar.NewAvatarService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := avatarService.Generate(&avatar.GenerateRequest{
-		Format:   "png",
+	client := m3o.New(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := client.Avatar.Generate(&avatar.GenerateRequest{
 		Gender:   "female",
-		Upload:   true,
 		Username: "",
+		Format:   "png",
+		Upload:   true,
 	})
 	fmt.Println(rsp, err)
 }

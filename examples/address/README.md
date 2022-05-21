@@ -26,7 +26,6 @@ func LookupPostcode() {
 	addressService := address.NewAddressService(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := addressService.LookupPostcode(&address.LookupPostcodeRequest{
 		Postcode: "SW1A 2AA",
-
 	})
 	fmt.Println(rsp, err)
 	

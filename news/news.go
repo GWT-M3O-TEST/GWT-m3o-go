@@ -29,41 +29,41 @@ func (t *NewsService) Headlines(request *HeadlinesRequest) (*HeadlinesResponse, 
 }
 
 type Article struct {
-	// categories
-	Categories []string `json:"categories"`
-	// article description
-	Description string `json:"description"`
-	// article id
-	Id string `json:"id"`
 	// image url
-	ImageUrl string `json:"image_url"`
+	ImageUrl string `json:"image_url,omitempty"`
 	// related keywords
-	Keywords string `json:"keywords"`
-	// the article language
-	Language string `json:"language"`
+	Keywords string `json:"keywords,omitempty"`
 	// the locale
-	Locale string `json:"locale"`
-	// time it was published
-	PublishedAt string `json:"published_at"`
-	// first 60 characters of article body
-	Snippet string `json:"snippet"`
+	Locale string `json:"locale,omitempty"`
 	// source of news
-	Source string `json:"source"`
+	Source string `json:"source,omitempty"`
 	// article title
-	Title string `json:"title"`
+	Title string `json:"title,omitempty"`
+	// article description
+	Description string `json:"description,omitempty"`
+	// article id
+	Id string `json:"id,omitempty"`
+	// the article language
+	Language string `json:"language,omitempty"`
+	// time it was published
+	PublishedAt string `json:"published_at,omitempty"`
+	// first 60 characters of article body
+	Snippet string `json:"snippet,omitempty"`
 	// url of the article
-	Url string `json:"url"`
+	Url string `json:"url,omitempty"`
+	// categories
+	Categories []string `json:"categories,omitempty"`
 }
 
 type HeadlinesRequest struct {
-	// date published on in YYYY-MM-DD format
-	Date string `json:"date"`
-	// comma separated list of languages to retrieve in e.g en,es
-	Language string `json:"language"`
 	// comma separated list of countries to include e.g us,ca
-	Locale string `json:"locale"`
+	Locale string `json:"locale,omitempty"`
+	// date published on in YYYY-MM-DD format
+	Date string `json:"date,omitempty"`
+	// comma separated list of languages to retrieve in e.g en,es
+	Language string `json:"language,omitempty"`
 }
 
 type HeadlinesResponse struct {
-	Articles []Article `json:"articles"`
+	Articles []Article `json:"articles,omitempty"`
 }

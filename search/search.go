@@ -5,6 +5,7 @@ import (
 )
 
 type Search interface {
+	CreateIndex(*CreateIndexRequest) (*CreateIndexResponse, error)
 	DeleteIndex(*DeleteIndexRequest) (*DeleteIndexResponse, error)
 	Delete(*DeleteRequest) (*DeleteResponse, error)
 	Index(*IndexRequest) (*IndexResponse, error)
@@ -23,7 +24,15 @@ type SearchService struct {
 	client *client.Client
 }
 
-// Delete an index.
+// Create an index by name
+func (t *SearchService) CreateIndex(request *CreateIndexRequest) (*CreateIndexResponse, error) {
+
+	rsp := &CreateIndexResponse{}
+	return rsp, t.client.Call("search", "CreateIndex", request, rsp)
+
+}
+
+// Delete an index by name
 func (t *SearchService) DeleteIndex(request *DeleteIndexRequest) (*DeleteIndexResponse, error) {
 
 	rsp := &DeleteIndexResponse{}
@@ -31,7 +40,7 @@ func (t *SearchService) DeleteIndex(request *DeleteIndexRequest) (*DeleteIndexRe
 
 }
 
-// Delete a document given its ID
+// Delete a record given its ID
 func (t *SearchService) Delete(request *DeleteRequest) (*DeleteResponse, error) {
 
 	rsp := &DeleteResponse{}
@@ -39,7 +48,7 @@ func (t *SearchService) Delete(request *DeleteRequest) (*DeleteResponse, error) 
 
 }
 
-// Index a document i.e. insert a document to search for.
+// Index a record i.e. insert a document to search for.
 func (t *SearchService) Index(request *IndexRequest) (*IndexResponse, error) {
 
 	rsp := &IndexResponse{}
@@ -47,7 +56,7 @@ func (t *SearchService) Index(request *IndexRequest) (*IndexResponse, error) {
 
 }
 
-// Search for documents in a given in index
+// Search for records in a given in index
 func (t *SearchService) Search(request *SearchRequest) (*SearchResponse, error) {
 
 	rsp := &SearchResponse{}
@@ -56,9 +65,8 @@ func (t *SearchService) Search(request *SearchRequest) (*SearchResponse, error) 
 }
 
 type CreateIndexRequest struct {
-	Fields []Field `json:"fields"`
-	// the name of the index
-	Index string `json:"index"`
+	// The name of the index
+	Index string `json:"index,omitempty"`
 }
 
 type CreateIndexResponse struct {
@@ -66,55 +74,58 @@ type CreateIndexResponse struct {
 
 type DeleteIndexRequest struct {
 	// The name of the index to delete
-	Index string `json:"index"`
+	Index string `json:"index,omitempty"`
 }
 
 type DeleteIndexResponse struct {
 }
 
 type DeleteRequest struct {
-	// The ID of the document to delete
-	Id string `json:"id"`
-	// The index the document belongs to
-	Index string `json:"index"`
+	// The ID of the record to delete
+	Id string `json:"id,omitempty"`
+	// The index the record belongs to
+	Index string `json:"index,omitempty"`
 }
 
 type DeleteResponse struct {
 }
 
-type Document struct {
-	// The JSON contents of the document
-	Contents map[string]interface{} `json:"contents"`
-	// The ID for this document. If blank, one will be generated
-	Id string `json:"id"`
-}
-
 type Field struct {
 	// The name of the field. Use a `.` separator to define nested fields e.g. foo.bar
-	Name string `json:"name"`
+	Name string `json:"name,omitempty"`
 	// The type of the field - string, number
-	Type string `json:"type"`
+	Type string `json:"type,omitempty"`
 }
 
 type IndexRequest struct {
-	// The document to index
-	Document *Document `json:"document"`
-	// The index this document belongs to
-	Index string `json:"index"`
+	// The index this record belongs to
+	Index string `json:"index,omitempty"`
+	// The data to index
+	Data map[string]interface{} `json:"data,omitempty"`
+	// Optional ID for the record
+	Id string `json:"id,omitempty"`
 }
 
 type IndexResponse struct {
-	Id string `json:"id"`
+	// the indexed record
+	Record *Record `json:"record,omitempty"`
+}
+
+type Record struct {
+	// The JSON contents of the record
+	Data map[string]interface{} `json:"data,omitempty"`
+	// The ID for this record. If blank, one will be generated
+	Id string `json:"id,omitempty"`
 }
 
 type SearchRequest struct {
-	// The index the document belongs to
-	Index string `json:"index"`
+	// The index the record belongs to
+	Index string `json:"index,omitempty"`
 	// The query. See docs for query language examples
-	Query string `json:"query"`
+	Query string `json:"query,omitempty"`
 }
 
 type SearchResponse struct {
-	// The matching documents
-	Documents []Document `json:"documents"`
+	// The matching records
+	Records []Record `json:"records,omitempty"`
 }

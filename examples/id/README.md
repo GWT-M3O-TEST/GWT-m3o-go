@@ -4,6 +4,33 @@ An [m3o.com](https://m3o.com) API. For example usage see [m3o.com/id/api](https:
 
 Endpoints:
 
+## Types
+
+List the types of IDs available. No query params needed.
+
+
+[https://m3o.com/id/api#Types](https://m3o.com/id/api#Types)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"go.m3o.com/id"
+)
+
+// List the types of IDs available. No query params needed.
+func ListTheTypesOfIdsAvailable() {
+	idService := id.NewIdService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := idService.Types(&id.TypesRequest{
+		
+	})
+	fmt.Println(rsp, err)
+	
+}
+```
 ## Generate
 
 Generate a unique ID. Defaults to uuid.
@@ -26,7 +53,6 @@ func GenerateAuniqueId() {
 	idService := id.NewIdService(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := idService.Generate(&id.GenerateRequest{
 		Type: "uuid",
-
 	})
 	fmt.Println(rsp, err)
 	
@@ -54,7 +80,6 @@ func GenerateAshortId() {
 	idService := id.NewIdService(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := idService.Generate(&id.GenerateRequest{
 		Type: "shortid",
-
 	})
 	fmt.Println(rsp, err)
 	
@@ -82,7 +107,6 @@ func GenerateAsnowflakeId() {
 	idService := id.NewIdService(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := idService.Generate(&id.GenerateRequest{
 		Type: "snowflake",
-
 	})
 	fmt.Println(rsp, err)
 	
@@ -110,34 +134,6 @@ func GenerateAbigflakeId() {
 	idService := id.NewIdService(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := idService.Generate(&id.GenerateRequest{
 		Type: "bigflake",
-
-	})
-	fmt.Println(rsp, err)
-	
-}
-```
-## Types
-
-List the types of IDs available. No query params needed.
-
-
-[https://m3o.com/id/api#Types](https://m3o.com/id/api#Types)
-
-```go
-package example
-
-import(
-	"fmt"
-	"os"
-
-	"go.m3o.com/id"
-)
-
-// List the types of IDs available. No query params needed.
-func ListTheTypesOfIdsAvailable() {
-	idService := id.NewIdService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := idService.Types(&id.TypesRequest{
-		
 	})
 	fmt.Println(rsp, err)
 	

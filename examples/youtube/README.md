@@ -26,7 +26,6 @@ func EmbedAyoutubeVideo() {
 	youtubeService := youtube.NewYoutubeService(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := youtubeService.Embed(&youtube.EmbedRequest{
 		Url: "https://www.youtube.com/watch?v=GWRWZu7XsJ0",
-
 	})
 	fmt.Println(rsp, err)
 	
@@ -54,7 +53,6 @@ func SearchForVideos() {
 	youtubeService := youtube.NewYoutubeService(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := youtubeService.Search(&youtube.SearchRequest{
 		Query: "donuts",
-
 	})
 	fmt.Println(rsp, err)
 	

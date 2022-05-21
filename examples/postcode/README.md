@@ -26,7 +26,6 @@ func LookupPostcode() {
 	postcodeService := postcode.NewPostcodeService(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := postcodeService.Lookup(&postcode.LookupRequest{
 		Postcode: "SW1A 2AA",
-
 	})
 	fmt.Println(rsp, err)
 	
@@ -81,7 +80,6 @@ func ReturnArandomPostcodeAndItsInformation() {
 	postcodeService := postcode.NewPostcodeService(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := postcodeService.Validate(&postcode.ValidateRequest{
 		Postcode: "SW1A 2AA",
-
 	})
 	fmt.Println(rsp, err)
 	

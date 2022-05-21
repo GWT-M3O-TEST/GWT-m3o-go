@@ -53,7 +53,6 @@ func GetTheTimezoneInfoForAspecificLocation() {
 	timeService := time.NewTimeService(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := timeService.Zone(&time.ZoneRequest{
 		Location: "London",
-
 	})
 	fmt.Println(rsp, err)
 	

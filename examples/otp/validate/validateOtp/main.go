@@ -4,15 +4,15 @@ import (
 	"fmt"
 	"os"
 
+	"go.m3o.com"
 	"go.m3o.com/otp"
 )
 
-// Validate the OTP code
 func main() {
-	otpService := otp.NewOtpService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := otpService.Validate(&otp.ValidateRequest{
-		Code: "656211",
+	client := m3o.New(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := client.Otp.Validate(&otp.ValidateRequest{
 		Id:   "asim@example.com",
+		Code: "656211",
 	})
 	fmt.Println(rsp, err)
 }

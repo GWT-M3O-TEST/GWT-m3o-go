@@ -29,113 +29,113 @@ func (t *GifsService) Search(request *SearchRequest) (*SearchResponse, error) {
 }
 
 type Gif struct {
-	// URL used for embedding the GIF
-	EmbedUrl string `json:"embed_url"`
-	// The ID of the GIF
-	Id string `json:"id"`
 	// The different formats available for this GIF
-	Images *ImageFormats `json:"images"`
+	Images *ImageFormats `json:"images,omitempty"`
 	// The content rating for the GIF
-	Rating string `json:"rating"`
-	// A short URL for this GIF
-	ShortUrl string `json:"short_url"`
+	Rating string `json:"rating,omitempty"`
 	// The slug used in the GIF's URL
-	Slug string `json:"slug"`
+	Slug string `json:"slug,omitempty"`
+	// URL used for embedding the GIF
+	EmbedUrl string `json:"embed_url,omitempty"`
+	// The ID of the GIF
+	Id string `json:"id,omitempty"`
+	// A short URL for this GIF
+	ShortUrl string `json:"short_url,omitempty"`
 	// The page on which this GIF was found
-	Source string `json:"source"`
+	Source string `json:"source,omitempty"`
 	// The title for this GIF
-	Title string `json:"title"`
+	Title string `json:"title,omitempty"`
 	// The URL for this GIF
-	Url string `json:"url"`
+	Url string `json:"url,omitempty"`
 }
 
 type ImageFormat struct {
-	// height
-	Height int32 `json:"height"`
-	// size of the MP4 version
-	Mp4Size int32 `json:"mp4_size"`
 	// URL to an MP4 version of the gif
-	Mp4Url string `json:"mp4_url"`
+	Mp4Url string `json:"mp4_url,omitempty"`
 	// size in bytes
-	Size int32 `json:"size"`
+	Size int32 `json:"size,omitempty"`
 	// URL of the gif
-	Url string `json:"url"`
+	Url string `json:"url,omitempty"`
 	// size of the webp version
-	WebpSize int32 `json:"webp_size"`
+	WebpSize int32 `json:"webp_size,omitempty"`
 	// URL to a webp version of the gif
-	WebpUrl string `json:"webp_url"`
+	WebpUrl string `json:"webp_url,omitempty"`
 	// width
-	Width int32 `json:"width"`
+	Width int32 `json:"width,omitempty"`
+	// height
+	Height int32 `json:"height,omitempty"`
+	// size of the MP4 version
+	Mp4Size int32 `json:"mp4_size,omitempty"`
 }
 
 type ImageFormats struct {
-	// A downsized version of the GIF < 2MB
-	Downsized *ImageFormat `json:"downsized"`
-	// A downsized version of the GIF < 8MB
-	DownsizedLarge *ImageFormat `json:"downsized_large"`
-	// A downsized version of the GIF < 5MB
-	DownsizedMedium *ImageFormat `json:"downsized_medium"`
-	// A downsized version of the GIF < 200kb
-	DownsizedSmall *ImageFormat `json:"downsized_small"`
-	// Static image of the downsized version of the GIF
-	DownsizedStill *ImageFormat `json:"downsized_still"`
-	// Version of the GIF with fixed height of 200 pixels. Good for mobile use
-	FixedHeight *ImageFormat `json:"fixed_height"`
 	// Version of the GIF with fixed height of 200 pixels and number of frames reduced to 6
-	FixedHeightDownsampled *ImageFormat `json:"fixed_height_downsampled"`
+	FixedHeightDownsampled *ImageFormat `json:"fixed_height_downsampled,omitempty"`
 	// Version of the GIF with fixed height of 100 pixels. Good for mobile keyboards
-	FixedHeightSmall *ImageFormat `json:"fixed_height_small"`
-	// Static image of the GIF with fixed height of 100 pixels
-	FixedHeightSmallStill *ImageFormat `json:"fixed_height_small_still"`
+	FixedHeightSmall *ImageFormat `json:"fixed_height_small,omitempty"`
 	// Static image of the GIF with fixed height of 200 pixels
-	FixedHeightStill *ImageFormat `json:"fixed_height_still"`
+	FixedHeightStill *ImageFormat `json:"fixed_height_still,omitempty"`
 	// Version of the GIF with fixed width of 200 pixels. Good for mobile use
-	FixedWidth *ImageFormat `json:"fixed_width"`
+	FixedWidth *ImageFormat `json:"fixed_width,omitempty"`
 	// Version of the GIF with fixed width of 200 pixels and number of frames reduced to 6
-	FixedWidthDownsampled *ImageFormat `json:"fixed_width_downsampled"`
-	// Version of the GIF with fixed width of 100 pixels. Good for mobile keyboards
-	FixedWidthSmall *ImageFormat `json:"fixed_width_small"`
-	// Static image of the GIF with fixed width of 100 pixels
-	FixedWidthSmallStill *ImageFormat `json:"fixed_width_small_still"`
-	// Static image of the GIF with fixed width of 200 pixels
-	FixedWidthStill *ImageFormat `json:"fixed_width_still"`
-	// 15 second version of the GIF looping
-	Looping *ImageFormat `json:"looping"`
+	FixedWidthDownsampled *ImageFormat `json:"fixed_width_downsampled,omitempty"`
 	// The original GIF. Good for desktop use
-	Original *ImageFormat `json:"original"`
+	Original *ImageFormat `json:"original,omitempty"`
 	// Static image of the original version of the GIF
-	OriginalStill *ImageFormat `json:"original_still"`
+	OriginalStill *ImageFormat `json:"original_still,omitempty"`
+	// A downsized version of the GIF < 5MB
+	DownsizedMedium *ImageFormat `json:"downsized_medium,omitempty"`
+	// A downsized version of the GIF < 200kb
+	DownsizedSmall *ImageFormat `json:"downsized_small,omitempty"`
+	// Static image of the downsized version of the GIF
+	DownsizedStill *ImageFormat `json:"downsized_still,omitempty"`
+	// Static image of the GIF with fixed height of 100 pixels
+	FixedHeightSmallStill *ImageFormat `json:"fixed_height_small_still,omitempty"`
+	// Static image of the GIF with fixed width of 100 pixels
+	FixedWidthSmallStill *ImageFormat `json:"fixed_width_small_still,omitempty"`
 	// mp4 version of the GIF <50kb displaying first 1-2 secs
-	Preview *ImageFormat `json:"preview"`
+	Preview *ImageFormat `json:"preview,omitempty"`
+	// 15 second version of the GIF looping
+	Looping *ImageFormat `json:"looping,omitempty"`
 	// Version of the GIF <50kb displaying first 1-2 secs
-	PreviewGif *ImageFormat `json:"preview_gif"`
+	PreviewGif *ImageFormat `json:"preview_gif,omitempty"`
+	// A downsized version of the GIF < 2MB
+	Downsized *ImageFormat `json:"downsized,omitempty"`
+	// A downsized version of the GIF < 8MB
+	DownsizedLarge *ImageFormat `json:"downsized_large,omitempty"`
+	// Version of the GIF with fixed height of 200 pixels. Good for mobile use
+	FixedHeight *ImageFormat `json:"fixed_height,omitempty"`
+	// Version of the GIF with fixed width of 100 pixels. Good for mobile keyboards
+	FixedWidthSmall *ImageFormat `json:"fixed_width_small,omitempty"`
+	// Static image of the GIF with fixed width of 200 pixels
+	FixedWidthStill *ImageFormat `json:"fixed_width_still,omitempty"`
 }
 
 type Pagination struct {
-	// total number returned in this response
-	Count int32 `json:"count"`
-	// position in pagination
-	Offset int32 `json:"offset"`
 	// total number of results available
-	TotalCount int32 `json:"total_count"`
+	TotalCount int32 `json:"total_count,omitempty"`
+	// total number returned in this response
+	Count int32 `json:"count,omitempty"`
+	// position in pagination
+	Offset int32 `json:"offset,omitempty"`
 }
 
 type SearchRequest struct {
-	// ISO 2 letter language code for regional content
-	Lang string `json:"lang"`
-	// Max number of gifs to return. Defaults to 25
-	Limit int32 `json:"limit"`
 	// The start position of results (used with pagination)
-	Offset int32 `json:"offset"`
+	Offset int32 `json:"offset,omitempty"`
 	// The search term
-	Query string `json:"query"`
+	Query string `json:"query,omitempty"`
 	// Apply age related content filter. "g", "pg", "pg-13", or "r". Defaults to "g"
-	Rating string `json:"rating"`
+	Rating string `json:"rating,omitempty"`
+	// ISO 2 letter language code for regional content
+	Lang string `json:"lang,omitempty"`
+	// Max number of gifs to return. Defaults to 25
+	Limit int32 `json:"limit,omitempty"`
 }
 
 type SearchResponse struct {
 	// list of results
-	Data []Gif `json:"data"`
+	Data []Gif `json:"data,omitempty"`
 	// information on pagination
-	Pagination *Pagination `json:"pagination"`
+	Pagination *Pagination `json:"pagination,omitempty"`
 }

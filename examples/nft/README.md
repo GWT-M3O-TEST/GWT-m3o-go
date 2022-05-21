@@ -25,8 +25,8 @@ import(
 func GetAlistOfAssets() {
 	nftService := nft.NewNftService(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := nftService.Assets(&nft.AssetsRequest{
-		Limit: 1,
-
+		OrderBy: "sale_date",
+Limit: 1,
 	})
 	fmt.Println(rsp, err)
 	
@@ -53,9 +53,8 @@ import(
 func CreateAnNft() {
 	nftService := nft.NewNftService(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := nftService.Create(&nft.CreateRequest{
-		Description: "The epic monkey island character",
-Name: "Guybrush Threepwood",
-
+		Name: "Guybrush Threepwood",
+Description: "The epic monkey island character",
 	})
 	fmt.Println(rsp, err)
 	
@@ -83,7 +82,61 @@ func ListCollections() {
 	nftService := nft.NewNftService(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := nftService.Collections(&nft.CollectionsRequest{
 		Limit: 1,
+	})
+	fmt.Println(rsp, err)
+	
+}
+```
+## Asset
 
+Get a single asset by the contract
+
+
+[https://m3o.com/nft/api#Asset](https://m3o.com/nft/api#Asset)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"go.m3o.com/nft"
+)
+
+// Get a single asset by the contract
+func GetAsingleAsset() {
+	nftService := nft.NewNftService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := nftService.Asset(&nft.AssetRequest{
+		TokenId: "1",
+ContractAddress: "0xb47e3cd837ddf8e4c57f05d70ab865de6e193bbb",
+	})
+	fmt.Println(rsp, err)
+	
+}
+```
+## Collection
+
+Get a collection by its slug
+
+
+[https://m3o.com/nft/api#Collection](https://m3o.com/nft/api#Collection)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"go.m3o.com/nft"
+)
+
+// Get a collection by its slug
+func GetAsingleCollection() {
+	nftService := nft.NewNftService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := nftService.Collection(&nft.CollectionRequest{
+		Slug: "doodles-official",
 	})
 	fmt.Println(rsp, err)
 	

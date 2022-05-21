@@ -26,10 +26,9 @@ func GeocodeAnAddress() {
 	geocodingService := geocoding.NewGeocodingService(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := geocodingService.Lookup(&geocoding.LookupRequest{
 		Address: "10 russell st",
+Postcode: "wc2b",
 City: "london",
 Country: "uk",
-Postcode: "wc2b",
-
 	})
 	fmt.Println(rsp, err)
 	
@@ -58,7 +57,6 @@ func ReverseGeocodeLocation() {
 	rsp, err := geocodingService.Reverse(&geocoding.ReverseRequest{
 		Latitude: 51.5123064,
 Longitude: -0.1216235,
-
 	})
 	fmt.Println(rsp, err)
 	

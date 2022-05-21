@@ -4,37 +4,9 @@ An [m3o.com](https://m3o.com) API. For example usage see [m3o.com/search/api](ht
 
 Endpoints:
 
-## DeleteIndex
-
-Delete an index.
-
-
-[https://m3o.com/search/api#DeleteIndex](https://m3o.com/search/api#DeleteIndex)
-
-```go
-package example
-
-import(
-	"fmt"
-	"os"
-
-	"go.m3o.com/search"
-)
-
-// Delete an index.
-func DeleteAnIndex() {
-	searchService := search.NewSearchService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := searchService.DeleteIndex(&search.DeleteIndexRequest{
-		Index: "customers",
-
-	})
-	fmt.Println(rsp, err)
-	
-}
-```
 ## Index
 
-Index a document i.e. insert a document to search for.
+Index a record i.e. insert a document to search for.
 
 
 [https://m3o.com/search/api#Index](https://m3o.com/search/api#Index)
@@ -49,20 +21,13 @@ import(
 	"go.m3o.com/search"
 )
 
-// Index a document i.e. insert a document to search for.
-func IndexAdocument() {
+// Index a record i.e. insert a document to search for.
+func IndexArecord() {
 	searchService := search.NewSearchService(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := searchService.Index(&search.IndexRequest{
-		Document: &search.Document{
-	Contents: map[string]interface{}{
-		"name": "John Doe",
-		"age": 37,
-		"starsign": "Leo",
+		Index: "customers",
+Data: &search.Json{
 },
-	Id: "1234",
-},
-Index: "customers",
-
 	})
 	fmt.Println(rsp, err)
 	
@@ -70,7 +35,7 @@ Index: "customers",
 ```
 ## Search
 
-Search for documents in a given in index
+Search for records in a given in index
 
 
 [https://m3o.com/search/api#Search](https://m3o.com/search/api#Search)
@@ -85,13 +50,12 @@ import(
 	"go.m3o.com/search"
 )
 
-// Search for documents in a given in index
-func SearchForAdocument() {
+// Search for records in a given in index
+func SearchForArecord() {
 	searchService := search.NewSearchService(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := searchService.Search(&search.SearchRequest{
-		Index: "customers",
-Query: "name == 'John'",
-
+		Query: "name == 'John'",
+Index: "customers",
 	})
 	fmt.Println(rsp, err)
 	
@@ -99,7 +63,7 @@ Query: "name == 'John'",
 ```
 ## Search
 
-Search for documents in a given in index
+Search for records in a given in index
 
 
 [https://m3o.com/search/api#Search](https://m3o.com/search/api#Search)
@@ -114,13 +78,12 @@ import(
 	"go.m3o.com/search"
 )
 
-// Search for documents in a given in index
+// Search for records in a given in index
 func SearchOnMultipleFieldsand() {
 	searchService := search.NewSearchService(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := searchService.Search(&search.SearchRequest{
 		Index: "customers",
 Query: "name == 'John' AND starsign == 'Leo'",
-
 	})
 	fmt.Println(rsp, err)
 	
@@ -128,7 +91,7 @@ Query: "name == 'John' AND starsign == 'Leo'",
 ```
 ## Search
 
-Search for documents in a given in index
+Search for records in a given in index
 
 
 [https://m3o.com/search/api#Search](https://m3o.com/search/api#Search)
@@ -143,13 +106,12 @@ import(
 	"go.m3o.com/search"
 )
 
-// Search for documents in a given in index
+// Search for records in a given in index
 func SearchOnMultipleFieldsor() {
 	searchService := search.NewSearchService(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := searchService.Search(&search.SearchRequest{
 		Index: "customers",
 Query: "name == 'John' OR name == 'Jane'",
-
 	})
 	fmt.Println(rsp, err)
 	
@@ -157,7 +119,7 @@ Query: "name == 'John' OR name == 'Jane'",
 ```
 ## Delete
 
-Delete a document given its ID
+Delete a record given its ID
 
 
 [https://m3o.com/search/api#Delete](https://m3o.com/search/api#Delete)
@@ -172,13 +134,66 @@ import(
 	"go.m3o.com/search"
 )
 
-// Delete a document given its ID
-func DeleteAdocument() {
+// Delete a record given its ID
+func DeleteArecord() {
 	searchService := search.NewSearchService(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := searchService.Delete(&search.DeleteRequest{
 		Id: "1234",
 Index: "customers",
+	})
+	fmt.Println(rsp, err)
+	
+}
+```
+## CreateIndex
 
+Create an index by name
+
+
+[https://m3o.com/search/api#CreateIndex](https://m3o.com/search/api#CreateIndex)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"go.m3o.com/search"
+)
+
+// Create an index by name
+func CreateAnIndex() {
+	searchService := search.NewSearchService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := searchService.CreateIndex(&search.CreateIndexRequest{
+		Index: "customers",
+	})
+	fmt.Println(rsp, err)
+	
+}
+```
+## DeleteIndex
+
+Delete an index by name
+
+
+[https://m3o.com/search/api#DeleteIndex](https://m3o.com/search/api#DeleteIndex)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"go.m3o.com/search"
+)
+
+// Delete an index by name
+func DeleteAnIndex() {
+	searchService := search.NewSearchService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := searchService.DeleteIndex(&search.DeleteIndexRequest{
+		Index: "customers",
 	})
 	fmt.Println(rsp, err)
 	
