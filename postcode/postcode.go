@@ -52,12 +52,6 @@ type LookupRequest struct {
 }
 
 type LookupResponse struct {
-	// related region e.g London
-	Region string `json:"region,omitempty"`
-	// e.g St James's
-	Ward string `json:"ward,omitempty"`
-	// country e.g United Kingdom
-	Country string `json:"country,omitempty"`
 	// e.g Westminster
 	District string `json:"district,omitempty"`
 	// e.g 51.50354
@@ -66,12 +60,24 @@ type LookupResponse struct {
 	Longitude float64 `json:"longitude,omitempty"`
 	// UK postcode e.g SW1A 2AA
 	Postcode string `json:"postcode,omitempty"`
+	// related region e.g London
+	Region string `json:"region,omitempty"`
+	// e.g St James's
+	Ward string `json:"ward,omitempty"`
+	// country e.g United Kingdom
+	Country string `json:"country,omitempty"`
 }
 
 type RandomRequest struct {
 }
 
 type RandomResponse struct {
+	// e.g St James's
+	Ward string `json:"ward,omitempty"`
+	// country e.g United Kingdom
+	Country string `json:"country,omitempty"`
+	// e.g Westminster
+	District string `json:"district,omitempty"`
 	// e.g 51.50354
 	Latitude float64 `json:"latitude,omitempty"`
 	// e.g -0.127695
@@ -80,12 +86,6 @@ type RandomResponse struct {
 	Postcode string `json:"postcode,omitempty"`
 	// related region e.g London
 	Region string `json:"region,omitempty"`
-	// e.g St James's
-	Ward string `json:"ward,omitempty"`
-	// country e.g United Kingdom
-	Country string `json:"country,omitempty"`
-	// e.g Westminster
-	District string `json:"district,omitempty"`
 }
 
 type ValidateRequest struct {

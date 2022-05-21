@@ -43,14 +43,14 @@ type EmbedRequest struct {
 }
 
 type EmbedResponse struct {
-	// the script code
-	HtmlScript string `json:"html_script,omitempty"`
-	// the full url
-	LongUrl string `json:"long_url,omitempty"`
 	// the short url
 	ShortUrl string `json:"short_url,omitempty"`
 	// the embeddable link
 	EmbedUrl string `json:"embed_url,omitempty"`
+	// the script code
+	HtmlScript string `json:"html_script,omitempty"`
+	// the full url
+	LongUrl string `json:"long_url,omitempty"`
 }
 
 type SearchRequest struct {
@@ -71,16 +71,16 @@ type SearchResult struct {
 	ChannelId string `json:"channel_id,omitempty"`
 	// the channel title
 	ChannelTitle string `json:"channel_title,omitempty"`
-	// the result description
-	Description string `json:"description,omitempty"`
 	// id of the result
 	Id string `json:"id,omitempty"`
 	// kind of result: "video", "channel", "playlist"
 	Kind string `json:"kind,omitempty"`
-	// the associated url
-	Url string `json:"url,omitempty"`
+	// the result description
+	Description string `json:"description,omitempty"`
 	// published at time
 	PublishedAt string `json:"published_at,omitempty"`
 	// title of the result
 	Title string `json:"title,omitempty"`
+	// the associated url
+	Url string `json:"url,omitempty"`
 }

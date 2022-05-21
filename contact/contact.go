@@ -72,37 +72,31 @@ type Address struct {
 }
 
 type ContactInfo struct {
-	// the birthday
-	Birthday string `json:"birthday,omitempty"`
-	// contact id
-	Id string `json:"id,omitempty"`
-	// update date string in RFC3339
-	UpdatedAt string `json:"updated_at,omitempty"`
-	// the contact name
-	Name string `json:"name,omitempty"`
-	// note of the contact
-	Note string `json:"note,omitempty"`
-	// the phone numbers
-	Phones []Phone `json:"phones,omitempty"`
-	// the social media username
-	SocialMedias []SocialMedia `json:"social_medias,omitempty"`
 	// the address
 	Addresses []Address `json:"addresses,omitempty"`
-	// create date string in RFC3339
-	CreatedAt string `json:"created_at,omitempty"`
 	// the emails
 	Emails []Email `json:"emails,omitempty"`
 	// the contact links
 	Links []Link `json:"links,omitempty"`
+	// the social media username
+	SocialMedias []SocialMedia `json:"social_medias,omitempty"`
+	// note of the contact
+	Note string `json:"note,omitempty"`
+	// the phone numbers
+	Phones []Phone `json:"phones,omitempty"`
+	// update date string in RFC3339
+	UpdatedAt string `json:"updated_at,omitempty"`
+	// the birthday
+	Birthday string `json:"birthday,omitempty"`
+	// create date string in RFC3339
+	CreatedAt string `json:"created_at,omitempty"`
+	// contact id
+	Id string `json:"id,omitempty"`
+	// the contact name
+	Name string `json:"name,omitempty"`
 }
 
 type CreateRequest struct {
-	// optional, birthday
-	Birthday string `json:"birthday,omitempty"`
-	// optional, emails
-	Emails []Email `json:"emails,omitempty"`
-	// optional, links
-	Links []Link `json:"links,omitempty"`
 	// required, the name of the contact
 	Name string `json:"name,omitempty"`
 	// optional, note of the contact
@@ -113,6 +107,12 @@ type CreateRequest struct {
 	SocialMedias []SocialMedia `json:"social_medias,omitempty"`
 	// optional, location
 	Addresses []Address `json:"addresses,omitempty"`
+	// optional, birthday
+	Birthday string `json:"birthday,omitempty"`
+	// optional, emails
+	Emails []Email `json:"emails,omitempty"`
+	// optional, links
+	Links []Link `json:"links,omitempty"`
 }
 
 type CreateResponse struct {
@@ -168,21 +168,17 @@ type ReadResponse struct {
 }
 
 type SocialMedia struct {
-	// the username of social media
-	Username string `json:"username,omitempty"`
 	// the label of the social
 	Label string `json:"label,omitempty"`
+	// the username of social media
+	Username string `json:"username,omitempty"`
 }
 
 type UpdateRequest struct {
-	// optional, addresses
-	Addresses []Address `json:"addresses,omitempty"`
 	// optional, note
 	Note string `json:"note,omitempty"`
-	// optional, phone number
-	Phones []Phone `json:"phones,omitempty"`
-	// optional, social media
-	SocialMedias []SocialMedia `json:"social_medias,omitempty"`
+	// optional, addresses
+	Addresses []Address `json:"addresses,omitempty"`
 	// optional, birthday
 	Birthday string `json:"birthday,omitempty"`
 	// optional, emails
@@ -193,6 +189,10 @@ type UpdateRequest struct {
 	Links []Link `json:"links,omitempty"`
 	// required, the name
 	Name string `json:"name,omitempty"`
+	// optional, phone number
+	Phones []Phone `json:"phones,omitempty"`
+	// optional, social media
+	SocialMedias []SocialMedia `json:"social_medias,omitempty"`
 }
 
 type UpdateResponse struct {

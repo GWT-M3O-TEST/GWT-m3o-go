@@ -124,15 +124,15 @@ type DownloadResponse struct {
 }
 
 type HeadObject struct {
-	// is this public or private
-	Visibility string `json:"visibility,omitempty"`
-	// when was this created
-	Created string `json:"created,omitempty"`
 	// when was this last modified
 	Modified string `json:"modified,omitempty"`
 	Name     string `json:"name,omitempty"`
 	// URL to access the object if it is public
 	Url string `json:"url,omitempty"`
+	// is this public or private
+	Visibility string `json:"visibility,omitempty"`
+	// when was this created
+	Created string `json:"created,omitempty"`
 }
 
 type HeadRequest struct {
@@ -145,12 +145,12 @@ type HeadResponse struct {
 }
 
 type ListObject struct {
-	Name       string `json:"name,omitempty"`
 	Url        string `json:"url,omitempty"`
 	Visibility string `json:"visibility,omitempty"`
 	Created    string `json:"created,omitempty"`
 	// when was this last modified
 	Modified string `json:"modified,omitempty"`
+	Name     string `json:"name,omitempty"`
 }
 
 type ListRequest struct {
@@ -202,9 +202,9 @@ type UpdateResponse struct {
 }
 
 type UploadRequest struct {
-	Name string `json:"name,omitempty"`
 	// is this object public or private
 	Visibility string `json:"visibility,omitempty"`
+	Name       string `json:"name,omitempty"`
 }
 
 type UploadResponse struct {

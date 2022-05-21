@@ -65,6 +65,8 @@ func (t *CryptoService) Symbols(request *SymbolsRequest) (*SymbolsResponse, erro
 }
 
 type Article struct {
+	// the source url
+	Url string `json:"url,omitempty"`
 	// the date published
 	Date string `json:"date,omitempty"`
 	// its description
@@ -73,8 +75,6 @@ type Article struct {
 	Source string `json:"source,omitempty"`
 	// title of the article
 	Title string `json:"title,omitempty"`
-	// the source url
-	Url string `json:"url,omitempty"`
 }
 
 type HistoryRequest struct {
@@ -83,10 +83,6 @@ type HistoryRequest struct {
 }
 
 type HistoryResponse struct {
-	// the volume
-	Volume float64 `json:"volume,omitempty"`
-	// the close price
-	Close float64 `json:"close,omitempty"`
 	// the date
 	Date string `json:"date,omitempty"`
 	// the peak price
@@ -97,6 +93,10 @@ type HistoryResponse struct {
 	Open float64 `json:"open,omitempty"`
 	// the crypto symbol
 	Symbol string `json:"symbol,omitempty"`
+	// the volume
+	Volume float64 `json:"volume,omitempty"`
+	// the close price
+	Close float64 `json:"close,omitempty"`
 }
 
 type NewsRequest struct {

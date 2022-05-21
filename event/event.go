@@ -72,23 +72,23 @@ type ConsumeRequest struct {
 }
 
 type ConsumeResponse struct {
-	// The next json message on the topic
-	Message map[string]interface{} `json:"message,omitempty"`
 	// Timestamp of publishing
 	Timestamp string `json:"timestamp,omitempty"`
 	// The topic subscribed to
 	Topic string `json:"topic,omitempty"`
 	// Unique message id
 	Id string `json:"id,omitempty"`
+	// The next json message on the topic
+	Message map[string]interface{} `json:"message,omitempty"`
 }
 
 type Ev struct {
-	// event id
-	Id string `json:"id,omitempty"`
 	// event message
 	Message map[string]interface{} `json:"message,omitempty"`
 	// event timestamp
 	Timestamp string `json:"timestamp,omitempty"`
+	// event id
+	Id string `json:"id,omitempty"`
 }
 
 type PublishRequest struct {

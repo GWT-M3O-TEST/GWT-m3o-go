@@ -31,12 +31,12 @@ func ListTheApps() {
 	
 }
 ```
-## Run
+## Regions
 
-Run an app from source
+Return the support regions
 
 
-[https://m3o.com/app/api#Run](https://m3o.com/app/api#Run)
+[https://m3o.com/app/api#Regions](https://m3o.com/app/api#Regions)
 
 ```go
 package example
@@ -48,26 +48,22 @@ import(
 	"go.m3o.com/app"
 )
 
-// Run an app from source
-func RunAnApp() {
+// Return the support regions
+func ListRegions() {
 	appService := app.NewAppService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := appService.Run(&app.RunRequest{
-		Name: "helloworld",
-Repo: "github.com/asim/helloworld",
-Branch: "master",
-Port: 8080,
-Region: "europe-west1",
+	rsp, err := appService.Regions(&app.RegionsRequest{
+		
 	})
 	fmt.Println(rsp, err)
 	
 }
 ```
-## Delete
+## Update
 
-Delete an app
+Update the app. The latest source code will be downloaded, built and deployed.
 
 
-[https://m3o.com/app/api#Delete](https://m3o.com/app/api#Delete)
+[https://m3o.com/app/api#Update](https://m3o.com/app/api#Update)
 
 ```go
 package example
@@ -79,10 +75,10 @@ import(
 	"go.m3o.com/app"
 )
 
-// Delete an app
-func DeleteAnApp() {
+// Update the app. The latest source code will be downloaded, built and deployed.
+func UpdateAnApp() {
 	appService := app.NewAppService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := appService.Delete(&app.DeleteRequest{
+	rsp, err := appService.Update(&app.UpdateRequest{
 		Name: "helloworld",
 	})
 	fmt.Println(rsp, err)
@@ -144,6 +140,37 @@ func ReserveAppName() {
 	
 }
 ```
+## Run
+
+Run an app from source
+
+
+[https://m3o.com/app/api#Run](https://m3o.com/app/api#Run)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"go.m3o.com/app"
+)
+
+// Run an app from source
+func RunAnApp() {
+	appService := app.NewAppService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := appService.Run(&app.RunRequest{
+		Name: "helloworld",
+Repo: "github.com/asim/helloworld",
+Branch: "master",
+Port: 8080,
+Region: "europe-west1",
+	})
+	fmt.Println(rsp, err)
+	
+}
+```
 ## Status
 
 Get the status of an app
@@ -198,12 +225,12 @@ func ResolveAppById() {
 	
 }
 ```
-## Update
+## Delete
 
-Update the app. The latest source code will be downloaded, built and deployed.
+Delete an app
 
 
-[https://m3o.com/app/api#Update](https://m3o.com/app/api#Update)
+[https://m3o.com/app/api#Delete](https://m3o.com/app/api#Delete)
 
 ```go
 package example
@@ -215,38 +242,11 @@ import(
 	"go.m3o.com/app"
 )
 
-// Update the app. The latest source code will be downloaded, built and deployed.
-func UpdateAnApp() {
+// Delete an app
+func DeleteAnApp() {
 	appService := app.NewAppService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := appService.Update(&app.UpdateRequest{
+	rsp, err := appService.Delete(&app.DeleteRequest{
 		Name: "helloworld",
-	})
-	fmt.Println(rsp, err)
-	
-}
-```
-## Regions
-
-Return the support regions
-
-
-[https://m3o.com/app/api#Regions](https://m3o.com/app/api#Regions)
-
-```go
-package example
-
-import(
-	"fmt"
-	"os"
-
-	"go.m3o.com/app"
-)
-
-// Return the support regions
-func ListRegions() {
-	appService := app.NewAppService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := appService.Regions(&app.RegionsRequest{
-		
 	})
 	fmt.Println(rsp, err)
 	

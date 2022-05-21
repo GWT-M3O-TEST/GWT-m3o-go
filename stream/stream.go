@@ -57,19 +57,19 @@ func (t *StreamService) SendMessage(request *SendMessageRequest) (*SendMessageRe
 }
 
 type Channel struct {
-	// description for the channel
-	Description string `json:"description,omitempty"`
 	// last activity time
 	LastActive string `json:"last_active,omitempty"`
 	// name of the channel
 	Name string `json:"name,omitempty"`
+	// description for the channel
+	Description string `json:"description,omitempty"`
 }
 
 type CreateChannelRequest struct {
-	// description for the channel
-	Description string `json:"description,omitempty"`
 	// name of the channel
 	Name string `json:"name,omitempty"`
+	// description for the channel
+	Description string `json:"description,omitempty"`
 }
 
 type CreateChannelResponse struct {
@@ -90,30 +90,30 @@ type ListMessagesRequest struct {
 }
 
 type ListMessagesResponse struct {
-	// The channel subscribed to
-	Channel string `json:"channel,omitempty"`
 	// Messages are chronological order
 	Messages []Message `json:"messages,omitempty"`
+	// The channel subscribed to
+	Channel string `json:"channel,omitempty"`
 }
 
 type Message struct {
+	// text of the message
+	Text string `json:"text,omitempty"`
+	// time of message creation
+	Timestamp string `json:"timestamp,omitempty"`
 	// the channel name
 	Channel string `json:"channel,omitempty"`
 	// id of the message
 	Id string `json:"id,omitempty"`
 	// the associated metadata
 	Metadata map[string]string `json:"metadata,omitempty"`
-	// text of the message
-	Text string `json:"text,omitempty"`
-	// time of message creation
-	Timestamp string `json:"timestamp,omitempty"`
 }
 
 type SendMessageRequest struct {
-	// The channel to send to
-	Channel string `json:"channel,omitempty"`
 	// The message text to send
 	Text string `json:"text,omitempty"`
+	// The channel to send to
+	Channel string `json:"channel,omitempty"`
 }
 
 type SendMessageResponse struct {

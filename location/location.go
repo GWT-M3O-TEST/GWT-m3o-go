@@ -75,14 +75,14 @@ type SaveResponse struct {
 }
 
 type SearchRequest struct {
-	// radius in meters
-	Radius float64 `json:"radius,omitempty"`
-	// type of entities to filter
-	Type string `json:"type,omitempty"`
 	// Central position to search from
 	Center *Point `json:"center,omitempty"`
 	// Maximum number of entities to return
 	NumEntities int64 `json:"numEntities,string,omitempty"`
+	// radius in meters
+	Radius float64 `json:"radius,omitempty"`
+	// type of entities to filter
+	Type string `json:"type,omitempty"`
 }
 
 type SearchResponse struct {

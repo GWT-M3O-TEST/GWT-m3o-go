@@ -38,14 +38,14 @@ func (t *WordleService) Next(request *NextRequest) (*NextResponse, error) {
 }
 
 type Char struct {
-	// whether it was correct
-	Correct bool `json:"correct,omitempty"`
-	// whether it's in the word
-	InWord bool `json:"in_word,omitempty"`
 	// the character itself
 	Letter string `json:"letter,omitempty"`
 	// position in the string
 	Position int32 `json:"position,omitempty"`
+	// whether it was correct
+	Correct bool `json:"correct,omitempty"`
+	// whether it's in the word
+	InWord bool `json:"in_word,omitempty"`
 }
 
 type Guess struct {

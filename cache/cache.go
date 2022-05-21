@@ -112,10 +112,10 @@ type GetResponse struct {
 }
 
 type IncrementRequest struct {
-	// The key to increment
-	Key string `json:"key,omitempty"`
 	// The amount to increment the value by
 	Value int64 `json:"value,string,omitempty"`
+	// The key to increment
+	Key string `json:"key,omitempty"`
 }
 
 type IncrementResponse struct {

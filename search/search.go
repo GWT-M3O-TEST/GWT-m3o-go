@@ -81,20 +81,20 @@ type DeleteIndexResponse struct {
 }
 
 type DeleteRequest struct {
-	// The index the record belongs to
-	Index string `json:"index,omitempty"`
 	// The ID of the record to delete
 	Id string `json:"id,omitempty"`
+	// The index the record belongs to
+	Index string `json:"index,omitempty"`
 }
 
 type DeleteResponse struct {
 }
 
 type Field struct {
-	// The type of the field - string, number
-	Type string `json:"type,omitempty"`
 	// The name of the field. Use a `.` separator to define nested fields e.g. foo.bar
 	Name string `json:"name,omitempty"`
+	// The type of the field - string, number
+	Type string `json:"type,omitempty"`
 }
 
 type IndexRequest struct {

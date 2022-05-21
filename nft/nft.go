@@ -65,41 +65,41 @@ func (t *NftService) Create(request *CreateRequest) (*CreateResponse, error) {
 }
 
 type Asset struct {
-	// the image url
-	ImageUrl string `json:"image_url,omitempty"`
+	// name of the asset
+	Name string `json:"name,omitempty"`
+	// Owner of the NFT
+	Owner *User `json:"owner,omitempty"`
 	// is it a presale
 	Presale bool `json:"presale,omitempty"`
+	// the token id
+	TokenId string `json:"token_id,omitempty"`
+	// asset contract
+	Contract *Contract `json:"contract,omitempty"`
+	// Creator of the NFT
+	Creator *User `json:"creator,omitempty"`
+	// id of the asset
+	Id int32 `json:"id,omitempty"`
+	// last time sold
+	LastSale *Sale `json:"last_sale,omitempty"`
 	// the permalink
 	Permalink string `json:"permalink,omitempty"`
 	// number of sales
 	Sales int32 `json:"sales,omitempty"`
-	// the token id
-	TokenId string `json:"token_id,omitempty"`
-	// last time sold
-	LastSale *Sale `json:"last_sale,omitempty"`
-	// Owner of the NFT
-	Owner *User `json:"owner,omitempty"`
-	// Creator of the NFT
-	Creator *User `json:"creator,omitempty"`
-	// related description
-	Description string `json:"description,omitempty"`
-	// id of the asset
-	Id int32 `json:"id,omitempty"`
 	// associated collection
 	Collection *Collection `json:"collection,omitempty"`
-	// asset contract
-	Contract *Contract `json:"contract,omitempty"`
 	// traits associated with the item
 	Traits []map[string]interface{} `json:"traits,omitempty"`
+	// related description
+	Description string `json:"description,omitempty"`
+	// the image url
+	ImageUrl string `json:"image_url,omitempty"`
 	// listing date
 	ListingDate string `json:"listing_date,omitempty"`
-	// name of the asset
-	Name string `json:"name,omitempty"`
 }
 
 type AssetRequest struct {
-	TokenId         string `json:"token_id,omitempty"`
 	ContractAddress string `json:"contract_address,omitempty"`
+	TokenId         string `json:"token_id,omitempty"`
 }
 
 type AssetResponse struct {
@@ -107,6 +107,10 @@ type AssetResponse struct {
 }
 
 type AssetsRequest struct {
+	// limit to members of a collection by slug name (case sensitive)
+	Collection string `json:"collection,omitempty"`
+	// A cursor pointing to the page to retrieve
+	Cursor string `json:"cursor,omitempty"`
 	// limit returned assets
 	Limit int32 `json:"limit,omitempty"`
 	// DEPRECATED offset for pagination, please use cursor instead
@@ -115,10 +119,6 @@ type AssetsRequest struct {
 	Order string `json:"order,omitempty"`
 	// order by "sale_date", "sale_count", "sale_price", "total_price"
 	OrderBy string `json:"order_by,omitempty"`
-	// limit to members of a collection by slug name (case sensitive)
-	Collection string `json:"collection,omitempty"`
-	// A cursor pointing to the page to retrieve
-	Cursor string `json:"cursor,omitempty"`
 }
 
 type AssetsResponse struct {
@@ -131,36 +131,36 @@ type AssetsResponse struct {
 }
 
 type Collection struct {
-	// image used in the banner for the collection
-	BannerImageUrl string `json:"banner_image_url,omitempty"`
+	// listing of all the trait types available within this collection
+	Traits map[string]interface{} `json:"traits,omitempty"`
+	// creation time
+	CreatedAt string `json:"created_at,omitempty"`
 	// approved editors for this collection
 	Editors []string `json:"editors,omitempty"`
+	// a list of the contracts associated with this collection
+	PrimaryAssetContracts []Contract `json:"primary_asset_contracts,omitempty"`
+	// the fees that get paid out when a sale is made
+	SellerFees string `json:"seller_fees,omitempty"`
 	// external link to the original website for the collection
 	ExternalLink string `json:"external_link,omitempty"`
+	// image used in the banner for the collection
+	BannerImageUrl string `json:"banner_image_url,omitempty"`
+	// an image for the collection
+	ImageUrl string `json:"image_url,omitempty"`
 	// name of the collection
 	Name string `json:"name,omitempty"`
 	// collection slug
 	Slug string `json:"slug,omitempty"`
-	// creation time
-	CreatedAt string `json:"created_at,omitempty"`
-	// an image for the collection
-	ImageUrl string `json:"image_url,omitempty"`
-	// payout address for the collection's royalties
-	PayoutAddress string `json:"payout_address,omitempty"`
-	// the fees that get paid out when a sale is made
-	SellerFees string `json:"seller_fees,omitempty"`
-	// the collection's approval status on OpenSea
-	SafelistRequestStatus string `json:"safelist_request_status,omitempty"`
-	// listing of all the trait types available within this collection
-	Traits map[string]interface{} `json:"traits,omitempty"`
+	// sales statistics associated with the collection
+	Stats map[string]interface{} `json:"stats,omitempty"`
 	// description of the collection
 	Description string `json:"description,omitempty"`
 	// the payment tokens accepted for this collection
 	PaymentTokens []Token `json:"payment_tokens,omitempty"`
-	// a list of the contracts associated with this collection
-	PrimaryAssetContracts []Contract `json:"primary_asset_contracts,omitempty"`
-	// sales statistics associated with the collection
-	Stats map[string]interface{} `json:"stats,omitempty"`
+	// payout address for the collection's royalties
+	PayoutAddress string `json:"payout_address,omitempty"`
+	// the collection's approval status on OpenSea
+	SafelistRequestStatus string `json:"safelist_request_status,omitempty"`
 }
 
 type CollectionRequest struct {
@@ -181,26 +181,26 @@ type CollectionsResponse struct {
 }
 
 type Contract struct {
-	// ethereum address
-	Address string `json:"address,omitempty"`
-	// timestamp of creation
-	CreatedAt string `json:"created_at,omitempty"`
-	// owner id
-	Owner int32 `json:"owner,omitempty"`
-	// related symbol
-	Symbol string `json:"symbol,omitempty"`
 	// type of contract e.g "semi-fungible"
 	Type string `json:"type,omitempty"`
-	// description of contract
-	Description string `json:"description,omitempty"`
+	// timestamp of creation
+	CreatedAt string `json:"created_at,omitempty"`
+	// related symbol
+	Symbol string `json:"symbol,omitempty"`
 	// name of contract
 	Name string `json:"name,omitempty"`
+	// owner id
+	Owner int32 `json:"owner,omitempty"`
 	// payout address
 	PayoutAddress string `json:"payout_address,omitempty"`
 	// aka "ERC1155"
 	Schema string `json:"schema,omitempty"`
 	// seller fees
 	SellerFees string `json:"seller_fees,omitempty"`
+	// ethereum address
+	Address string `json:"address,omitempty"`
+	// description of contract
+	Description string `json:"description,omitempty"`
 }
 
 type CreateRequest struct {
@@ -219,14 +219,14 @@ type CreateResponse struct {
 }
 
 type Sale struct {
-	EventType      string       `json:"event_type,omitempty"`
-	AssetDecimals  int32        `json:"asset_decimals,omitempty"`
-	CreatedAt      string       `json:"created_at,omitempty"`
+	AssetTokenId   string       `json:"asset_token_id,omitempty"`
 	EventTimestamp string       `json:"event_timestamp,omitempty"`
+	EventType      string       `json:"event_type,omitempty"`
+	PaymentToken   *Token       `json:"payment_token,omitempty"`
 	TotalPrice     string       `json:"total_price,omitempty"`
 	Transaction    *Transaction `json:"transaction,omitempty"`
-	AssetTokenId   string       `json:"asset_token_id,omitempty"`
-	PaymentToken   *Token       `json:"payment_token,omitempty"`
+	AssetDecimals  int32        `json:"asset_decimals,omitempty"`
+	CreatedAt      string       `json:"created_at,omitempty"`
 	Quantity       string       `json:"quantity,omitempty"`
 }
 
@@ -242,7 +242,6 @@ type Token struct {
 }
 
 type Transaction struct {
-	BlockNumber      string `json:"block_number,omitempty"`
 	FromAccount      *User  `json:"from_account,omitempty"`
 	Id               int32  `json:"id,omitempty"`
 	Timestamp        string `json:"timestamp,omitempty"`
@@ -250,6 +249,7 @@ type Transaction struct {
 	TransactionHash  string `json:"transaction_hash,omitempty"`
 	TransactionIndex string `json:"transaction_index,omitempty"`
 	BlockHash        string `json:"block_hash,omitempty"`
+	BlockNumber      string `json:"block_number,omitempty"`
 }
 
 type User struct {

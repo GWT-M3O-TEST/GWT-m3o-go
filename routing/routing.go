@@ -47,12 +47,6 @@ func (t *RoutingService) Route(request *RouteRequest) (*RouteResponse, error) {
 }
 
 type Direction struct {
-	// distance to travel in meters
-	Distance float64 `json:"distance,omitempty"`
-	// duration to travel in seconds
-	Duration float64 `json:"duration,omitempty"`
-	// human readable instruction
-	Instruction string `json:"instruction,omitempty"`
 	// intersections on route
 	Intersections []Intersection `json:"intersections,omitempty"`
 	// maneuver to take
@@ -61,6 +55,12 @@ type Direction struct {
 	Name string `json:"name,omitempty"`
 	// alternative reference
 	Reference string `json:"reference,omitempty"`
+	// distance to travel in meters
+	Distance float64 `json:"distance,omitempty"`
+	// duration to travel in seconds
+	Duration float64 `json:"duration,omitempty"`
+	// human readable instruction
+	Instruction string `json:"instruction,omitempty"`
 }
 
 type DirectionsRequest struct {
@@ -71,14 +71,14 @@ type DirectionsRequest struct {
 }
 
 type DirectionsResponse struct {
-	// Turn by turn directions
-	Directions []Direction `json:"directions,omitempty"`
 	// Estimated distance of the route in meters
 	Distance float64 `json:"distance,omitempty"`
 	// Estimated duration of the route in seconds
 	Duration float64 `json:"duration,omitempty"`
 	// The waypoints on the route
 	Waypoints []Waypoint `json:"waypoints,omitempty"`
+	// Turn by turn directions
+	Directions []Direction `json:"directions,omitempty"`
 }
 
 type EtaRequest struct {
@@ -103,11 +103,11 @@ type Intersection struct {
 }
 
 type Maneuver struct {
-	Direction     string  `json:"direction,omitempty"`
-	Location      *Point  `json:"location,omitempty"`
 	Action        string  `json:"action,omitempty"`
 	BearingAfter  float64 `json:"bearing_after,omitempty"`
 	BearingBefore float64 `json:"bearing_before,omitempty"`
+	Direction     string  `json:"direction,omitempty"`
+	Location      *Point  `json:"location,omitempty"`
 }
 
 type Point struct {

@@ -4,6 +4,61 @@ An [m3o.com](https://m3o.com) API. For example usage see [m3o.com/notes/api](htt
 
 Endpoints:
 
+## Create
+
+Create a new note
+
+
+[https://m3o.com/notes/api#Create](https://m3o.com/notes/api#Create)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"go.m3o.com/notes"
+)
+
+// Create a new note
+func CreateAnote() {
+	notesService := notes.NewNotesService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := notesService.Create(&notes.CreateRequest{
+		Title: "New Note",
+Text: "This is my note",
+	})
+	fmt.Println(rsp, err)
+	
+}
+```
+## Read
+
+Read a note
+
+
+[https://m3o.com/notes/api#Read](https://m3o.com/notes/api#Read)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"go.m3o.com/notes"
+)
+
+// Read a note
+func ReadAnote() {
+	notesService := notes.NewNotesService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := notesService.Read(&notes.ReadRequest{
+		Id: "63c0cdf8-2121-11ec-a881-0242e36f037a",
+	})
+	fmt.Println(rsp, err)
+	
+}
+```
 ## List
 
 List all the notes
@@ -53,9 +108,9 @@ func UpdateAnote() {
 	notesService := notes.NewNotesService(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := notesService.Update(&notes.UpdateRequest{
 		Note: &notes.Note{
-Text: "Updated note text",
 Id: "63c0cdf8-2121-11ec-a881-0242e36f037a",
 Title: "Update Note",
+Text: "Updated note text",
 },
 	})
 	fmt.Println(rsp, err)
@@ -127,60 +182,5 @@ func SubscribeToEvents() {
 
 			fmt.Println(rsp)
 	}
-}
-```
-## Create
-
-Create a new note
-
-
-[https://m3o.com/notes/api#Create](https://m3o.com/notes/api#Create)
-
-```go
-package example
-
-import(
-	"fmt"
-	"os"
-
-	"go.m3o.com/notes"
-)
-
-// Create a new note
-func CreateAnote() {
-	notesService := notes.NewNotesService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := notesService.Create(&notes.CreateRequest{
-		Title: "New Note",
-Text: "This is my note",
-	})
-	fmt.Println(rsp, err)
-	
-}
-```
-## Read
-
-Read a note
-
-
-[https://m3o.com/notes/api#Read](https://m3o.com/notes/api#Read)
-
-```go
-package example
-
-import(
-	"fmt"
-	"os"
-
-	"go.m3o.com/notes"
-)
-
-// Read a note
-func ReadAnote() {
-	notesService := notes.NewNotesService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := notesService.Read(&notes.ReadRequest{
-		Id: "63c0cdf8-2121-11ec-a881-0242e36f037a",
-	})
-	fmt.Println(rsp, err)
-	
 }
 ```

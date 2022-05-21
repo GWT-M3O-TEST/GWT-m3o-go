@@ -38,8 +38,8 @@ type SendRequest struct {
 }
 
 type SendResponse struct {
-	// any additional info
-	Info string `json:"info,omitempty"`
 	// will return "ok" if successful
 	Status string `json:"status,omitempty"`
+	// any additional info
+	Info string `json:"info,omitempty"`
 }

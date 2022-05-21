@@ -70,6 +70,10 @@ type AddResponse struct {
 }
 
 type Entry struct {
+	// article content
+	Content string `json:"content,omitempty"`
+	// data of the entry
+	Date string `json:"date,omitempty"`
 	// the rss feed where it came from
 	Feed string `json:"feed,omitempty"`
 	// unique id of the entry
@@ -80,10 +84,6 @@ type Entry struct {
 	Summary string `json:"summary,omitempty"`
 	// title of the entry
 	Title string `json:"title,omitempty"`
-	// article content
-	Content string `json:"content,omitempty"`
-	// data of the entry
-	Date string `json:"date,omitempty"`
 }
 
 type Feed struct {
@@ -100,12 +100,12 @@ type Feed struct {
 }
 
 type FeedRequest struct {
+	// limit entries returned
+	Limit int64 `json:"limit,string,omitempty"`
 	// rss feed name
 	Name string `json:"name,omitempty"`
 	// offset entries
 	Offset int64 `json:"offset,string,omitempty"`
-	// limit entries returned
-	Limit int64 `json:"limit,string,omitempty"`
 }
 
 type FeedResponse struct {

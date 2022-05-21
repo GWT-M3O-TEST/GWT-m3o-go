@@ -66,8 +66,6 @@ func (t *ImageService) Upload(request *UploadRequest) (*UploadResponse, error) {
 }
 
 type ConvertRequest struct {
-	// url of the image to resize
-	Url string `json:"url,omitempty"`
 	// base64 encoded image to resize,
 	Base64 string `json:"base64,omitempty"`
 	// The image file to convert
@@ -76,6 +74,8 @@ type ConvertRequest struct {
 	Name string `json:"name,omitempty"`
 	// make output a URL and not a base64 response
 	OutputUrl bool `json:"outputURL,omitempty"`
+	// url of the image to resize
+	Url string `json:"url,omitempty"`
 }
 
 type ConvertResponse struct {
@@ -114,9 +114,7 @@ type Rectangle struct {
 }
 
 type ResizeRequest struct {
-	// The image file to resize
-	File   string `json:"file,omitempty"`
-	Height int64  `json:"height,string,omitempty"`
+	Height int64 `json:"height,string,omitempty"`
 	// output name of the image including extension, ie. "cat.png"
 	Name string `json:"name,omitempty"`
 	// make output a URL and not a base64 response
@@ -130,6 +128,8 @@ type ResizeRequest struct {
 	// if provided, after resize, the image
 	// will be cropped
 	CropOptions *CropOptions `json:"cropOptions,omitempty"`
+	// The image file to resize
+	File string `json:"file,omitempty"`
 }
 
 type ResizeResponse struct {
@@ -138,14 +138,14 @@ type ResizeResponse struct {
 }
 
 type UploadRequest struct {
+	// The image file to upload
+	File string `json:"file,omitempty"`
 	// Output name of the image including extension, ie. "cat.png"
 	Name string `json:"name,omitempty"`
 	// URL of the image to upload
 	Url string `json:"url,omitempty"`
 	// Base64 encoded image to upload,
 	Base64 string `json:"base64,omitempty"`
-	// The image file to upload
-	File string `json:"file,omitempty"`
 }
 
 type UploadResponse struct {

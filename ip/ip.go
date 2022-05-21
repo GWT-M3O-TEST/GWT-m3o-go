@@ -34,8 +34,6 @@ type LookupRequest struct {
 }
 
 type LookupResponse struct {
-	// Latitude e.g 52.523219
-	Latitude float64 `json:"latitude,omitempty"`
 	// Longitude e.g 13.428555
 	Longitude float64 `json:"longitude,omitempty"`
 	// Timezone e.g Europe/Rome
@@ -50,4 +48,6 @@ type LookupResponse struct {
 	Country string `json:"country,omitempty"`
 	// IP of the query
 	Ip string `json:"ip,omitempty"`
+	// Latitude e.g 52.523219
+	Latitude float64 `json:"latitude,omitempty"`
 }
