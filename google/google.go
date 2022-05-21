@@ -39,10 +39,6 @@ type SearchResponse struct {
 }
 
 type SearchResult struct {
-	// the full url for the result
-	Url string `json:"url,omitempty"`
-	// abridged version of this search result’s URL, e.g. www.exampe.com
-	DisplayUrl string `json:"display_url,omitempty"`
 	// id of the result
 	Id string `json:"id,omitempty"`
 	// kind of result; "search"
@@ -51,4 +47,8 @@ type SearchResult struct {
 	Snippet string `json:"snippet,omitempty"`
 	// title of the result
 	Title string `json:"title,omitempty"`
+	// the full url for the result
+	Url string `json:"url,omitempty"`
+	// abridged version of this search result’s URL, e.g. www.exampe.com
+	DisplayUrl string `json:"display_url,omitempty"`
 }

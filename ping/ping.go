@@ -66,10 +66,10 @@ type TcpRequest struct {
 }
 
 type TcpResponse struct {
-	// response status
-	Status string `json:"status,omitempty"`
 	// response data if any
 	Data string `json:"data,omitempty"`
+	// response status
+	Status string `json:"status,omitempty"`
 }
 
 type UrlRequest struct {

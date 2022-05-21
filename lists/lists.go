@@ -116,10 +116,10 @@ type EventsRequest struct {
 }
 
 type EventsResponse struct {
-	// the list which the operation occured on
-	List *List `json:"list,omitempty"`
 	// the event which occured; create, delete, update
 	Event string `json:"event,omitempty"`
+	// the list which the operation occured on
+	List *List `json:"list,omitempty"`
 }
 
 type List struct {

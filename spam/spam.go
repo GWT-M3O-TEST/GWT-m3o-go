@@ -29,10 +29,6 @@ func (t *SpamService) Classify(request *ClassifyRequest) (*ClassifyResponse, err
 }
 
 type ClassifyRequest struct {
-	// The subject of the email
-	Subject string `json:"subject,omitempty"`
-	// the plain text version of the email body
-	TextBody string `json:"text_body,omitempty"`
 	// The email address it is being sent to
 	To string `json:"to,omitempty"`
 	// The raw body of the email including headers etc per RFC 822. Alternatively, use the other parameters to correctly format the message
@@ -41,6 +37,10 @@ type ClassifyRequest struct {
 	From string `json:"from,omitempty"`
 	// the HTML version of the email body
 	HtmlBody string `json:"html_body,omitempty"`
+	// The subject of the email
+	Subject string `json:"subject,omitempty"`
+	// the plain text version of the email body
+	TextBody string `json:"text_body,omitempty"`
 }
 
 type ClassifyResponse struct {

@@ -65,16 +65,16 @@ func (t *CryptoService) Symbols(request *SymbolsRequest) (*SymbolsResponse, erro
 }
 
 type Article struct {
-	// title of the article
-	Title string `json:"title,omitempty"`
-	// the source url
-	Url string `json:"url,omitempty"`
 	// the date published
 	Date string `json:"date,omitempty"`
 	// its description
 	Description string `json:"description,omitempty"`
 	// the source
 	Source string `json:"source,omitempty"`
+	// title of the article
+	Title string `json:"title,omitempty"`
+	// the source url
+	Url string `json:"url,omitempty"`
 }
 
 type HistoryRequest struct {
@@ -83,8 +83,6 @@ type HistoryRequest struct {
 }
 
 type HistoryResponse struct {
-	// the crypto symbol
-	Symbol string `json:"symbol,omitempty"`
 	// the volume
 	Volume float64 `json:"volume,omitempty"`
 	// the close price
@@ -97,6 +95,8 @@ type HistoryResponse struct {
 	Low float64 `json:"low,omitempty"`
 	// the open price
 	Open float64 `json:"open,omitempty"`
+	// the crypto symbol
+	Symbol string `json:"symbol,omitempty"`
 }
 
 type NewsRequest struct {
@@ -105,10 +105,10 @@ type NewsRequest struct {
 }
 
 type NewsResponse struct {
-	// list of articles
-	Articles []Article `json:"articles,omitempty"`
 	// symbol requested for
 	Symbol string `json:"symbol,omitempty"`
+	// list of articles
+	Articles []Article `json:"articles,omitempty"`
 }
 
 type PriceRequest struct {
@@ -129,10 +129,6 @@ type QuoteRequest struct {
 }
 
 type QuoteResponse struct {
-	// the crypto symbol
-	Symbol string `json:"symbol,omitempty"`
-	// the UTC timestamp of the quote
-	Timestamp string `json:"timestamp,omitempty"`
 	// the asking price
 	AskPrice float64 `json:"ask_price,omitempty"`
 	// the ask size
@@ -141,6 +137,10 @@ type QuoteResponse struct {
 	BidPrice float64 `json:"bid_price,omitempty"`
 	// the bid size
 	BidSize float64 `json:"bid_size,omitempty"`
+	// the crypto symbol
+	Symbol string `json:"symbol,omitempty"`
+	// the UTC timestamp of the quote
+	Timestamp string `json:"timestamp,omitempty"`
 }
 
 type Symbol struct {

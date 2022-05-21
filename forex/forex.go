@@ -52,12 +52,6 @@ type HistoryRequest struct {
 }
 
 type HistoryResponse struct {
-	// the close price
-	Close float64 `json:"close,omitempty"`
-	// the date
-	Date string `json:"date,omitempty"`
-	// the peak price
-	High float64 `json:"high,omitempty"`
 	// the low price
 	Low float64 `json:"low,omitempty"`
 	// the open price
@@ -66,6 +60,12 @@ type HistoryResponse struct {
 	Symbol string `json:"symbol,omitempty"`
 	// the volume
 	Volume float64 `json:"volume,omitempty"`
+	// the close price
+	Close float64 `json:"close,omitempty"`
+	// the date
+	Date string `json:"date,omitempty"`
+	// the peak price
+	High float64 `json:"high,omitempty"`
 }
 
 type PriceRequest struct {
@@ -74,10 +74,10 @@ type PriceRequest struct {
 }
 
 type PriceResponse struct {
-	// the last price
-	Price float64 `json:"price,omitempty"`
 	// the forex symbol e.g GBPUSD
 	Symbol string `json:"symbol,omitempty"`
+	// the last price
+	Price float64 `json:"price,omitempty"`
 }
 
 type QuoteRequest struct {

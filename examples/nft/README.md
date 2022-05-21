@@ -108,8 +108,8 @@ import(
 func GetAsingleAsset() {
 	nftService := nft.NewNftService(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := nftService.Asset(&nft.AssetRequest{
-		TokenId: "1",
-ContractAddress: "0xb47e3cd837ddf8e4c57f05d70ab865de6e193bbb",
+		ContractAddress: "0xb47e3cd837ddf8e4c57f05d70ab865de6e193bbb",
+TokenId: "1",
 	})
 	fmt.Println(rsp, err)
 	

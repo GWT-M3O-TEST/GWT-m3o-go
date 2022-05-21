@@ -70,12 +70,12 @@ type CodesResponse struct {
 }
 
 type ConvertRequest struct {
+	// optional amount to convert e.g 10.0
+	Amount float64 `json:"amount,omitempty"`
 	// base code to convert from e.g USD
 	From string `json:"from,omitempty"`
 	// target code to convert to e.g GBP
 	To string `json:"to,omitempty"`
-	// optional amount to convert e.g 10.0
-	Amount float64 `json:"amount,omitempty"`
 }
 
 type ConvertResponse struct {
@@ -97,12 +97,12 @@ type HistoryRequest struct {
 }
 
 type HistoryResponse struct {
-	// The rate for the day as code:rate
-	Rates map[string]float64 `json:"rates,omitempty"`
 	// The code of the request
 	Code string `json:"code,omitempty"`
 	// The date requested
 	Date string `json:"date,omitempty"`
+	// The rate for the day as code:rate
+	Rates map[string]float64 `json:"rates,omitempty"`
 }
 
 type RatesRequest struct {

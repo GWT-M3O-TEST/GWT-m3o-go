@@ -54,8 +54,8 @@ import(
 func SearchForArecord() {
 	searchService := search.NewSearchService(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := searchService.Search(&search.SearchRequest{
-		Query: "name == 'John'",
-Index: "customers",
+		Index: "customers",
+Query: "name == 'John'",
 	})
 	fmt.Println(rsp, err)
 	

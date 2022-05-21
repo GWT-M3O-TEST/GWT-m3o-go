@@ -38,16 +38,16 @@ func (t *GeocodingService) Reverse(request *ReverseRequest) (*ReverseResponse, e
 }
 
 type Address struct {
+	LineTwo  string `json:"line_two,omitempty"`
 	Postcode string `json:"postcode,omitempty"`
 	City     string `json:"city,omitempty"`
 	Country  string `json:"country,omitempty"`
 	LineOne  string `json:"line_one,omitempty"`
-	LineTwo  string `json:"line_two,omitempty"`
 }
 
 type Location struct {
-	Latitude  float64 `json:"latitude,omitempty"`
 	Longitude float64 `json:"longitude,omitempty"`
+	Latitude  float64 `json:"latitude,omitempty"`
 }
 
 type LookupRequest struct {
@@ -63,8 +63,8 @@ type LookupResponse struct {
 }
 
 type ReverseRequest struct {
-	Longitude float64 `json:"longitude,omitempty"`
 	Latitude  float64 `json:"latitude,omitempty"`
+	Longitude float64 `json:"longitude,omitempty"`
 }
 
 type ReverseResponse struct {

@@ -29,23 +29,27 @@ func (t *MovieService) Search(request *SearchRequest) (*SearchResponse, error) {
 }
 
 type MovieInfo struct {
-	GenreIds         []int32 `json:"genre_ids,omitempty"`
+	Adult            bool    `json:"adult,omitempty"`
 	Id               int32   `json:"id,omitempty"`
-	Overview         string  `json:"overview,omitempty"`
-	Popularity       float64 `json:"popularity,omitempty"`
 	Video            bool    `json:"video,omitempty"`
 	VoteAverage      float64 `json:"vote_average,omitempty"`
-	VoteCount        int32   `json:"vote_count,omitempty"`
 	BackdropPath     string  `json:"backdrop_path,omitempty"`
+	GenreIds         []int32 `json:"genre_ids,omitempty"`
+	Overview         string  `json:"overview,omitempty"`
+	Popularity       float64 `json:"popularity,omitempty"`
 	OriginalTitle    string  `json:"original_title,omitempty"`
+	ReleaseDate      string  `json:"release_date,omitempty"`
+	VoteCount        int32   `json:"vote_count,omitempty"`
+	OriginalLanguage string  `json:"original_language,omitempty"`
 	PosterPath       string  `json:"poster_path,omitempty"`
 	Title            string  `json:"title,omitempty"`
-	Adult            bool    `json:"adult,omitempty"`
-	OriginalLanguage string  `json:"original_language,omitempty"`
-	ReleaseDate      string  `json:"release_date,omitempty"`
 }
 
 type SearchRequest struct {
+	// a ISO 639-1 value to display translated data
+	Language string `json:"language,omitempty"`
+	// page to query
+	Page int32 `json:"page,omitempty"`
 	// year of release
 	PrimaryReleaseYear int32 `json:"primary_release_year,omitempty"`
 	// a text query to search
@@ -54,10 +58,6 @@ type SearchRequest struct {
 	Region string `json:"region,omitempty"`
 	// year of making
 	Year int32 `json:"year,omitempty"`
-	// a ISO 639-1 value to display translated data
-	Language string `json:"language,omitempty"`
-	// page to query
-	Page int32 `json:"page,omitempty"`
 }
 
 type SearchResponse struct {

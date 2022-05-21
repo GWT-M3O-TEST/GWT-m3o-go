@@ -4,6 +4,41 @@ An [m3o.com](https://m3o.com) API. For example usage see [m3o.com/image/api](htt
 
 Endpoints:
 
+## Convert
+
+Convert an image from one format (jpeg, png etc.) to an other either on the fly (from base64 to base64),
+or by uploading the conversion result.
+To use the file parameter you need to send the request as a multipart/form-data rather than the usual application/json
+with each parameter as a form field.
+
+
+[https://m3o.com/image/api#Convert](https://m3o.com/image/api#Convert)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"go.m3o.com/image"
+)
+
+// Convert an image from one format (jpeg, png etc.) to an other either on the fly (from base64 to base64),
+// or by uploading the conversion result.
+// To use the file parameter you need to send the request as a multipart/form-data rather than the usual application/json
+// with each parameter as a form field.
+func ConvertApngImageToAjpegTakenFromAurlAndSavedToAurlOnMicrosCdn() {
+	imageService := image.NewImageService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := imageService.Convert(&image.ConvertRequest{
+		Url: "somewebsite.com/cat.png",
+Name: "cat.jpeg",
+OutputUrl: true,
+	})
+	fmt.Println(rsp, err)
+	
+}
+```
 ## Upload
 
 Upload an image by either sending a base64 encoded image to this endpoint or a URL.
@@ -128,11 +163,11 @@ import(
 func Base64toHostedImage() {
 	imageService := image.NewImageService(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := imageService.Resize(&image.ResizeRequest{
-		Width: 100,
-Height: 100,
-Base64: "data:image/png;base64, iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO9TXL0Y4OHwAAAABJRU5ErkJggg==",
+		Base64: "data:image/png;base64, iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO9TXL0Y4OHwAAAABJRU5ErkJggg==",
 OutputUrl: true,
 Name: "cat.png",
+Width: 100,
+Height: 100,
 	})
 	fmt.Println(rsp, err)
 	
@@ -167,9 +202,9 @@ import(
 func Base64toBase64image() {
 	imageService := image.NewImageService(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := imageService.Resize(&image.ResizeRequest{
-		Base64: "data:image/png;base64, iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO9TXL0Y4OHwAAAABJRU5ErkJggg==",
-Width: 100,
+		Width: 100,
 Height: 100,
+Base64: "data:image/png;base64, iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO9TXL0Y4OHwAAAABJRU5ErkJggg==",
 	})
 	fmt.Println(rsp, err)
 	
@@ -211,41 +246,6 @@ CropOptions: &image.CropOptions{
 Width: 50,
 Height: 50,
 },
-	})
-	fmt.Println(rsp, err)
-	
-}
-```
-## Convert
-
-Convert an image from one format (jpeg, png etc.) to an other either on the fly (from base64 to base64),
-or by uploading the conversion result.
-To use the file parameter you need to send the request as a multipart/form-data rather than the usual application/json
-with each parameter as a form field.
-
-
-[https://m3o.com/image/api#Convert](https://m3o.com/image/api#Convert)
-
-```go
-package example
-
-import(
-	"fmt"
-	"os"
-
-	"go.m3o.com/image"
-)
-
-// Convert an image from one format (jpeg, png etc.) to an other either on the fly (from base64 to base64),
-// or by uploading the conversion result.
-// To use the file parameter you need to send the request as a multipart/form-data rather than the usual application/json
-// with each parameter as a form field.
-func ConvertApngImageToAjpegTakenFromAurlAndSavedToAurlOnMicrosCdn() {
-	imageService := image.NewImageService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := imageService.Convert(&image.ConvertRequest{
-		Url: "somewebsite.com/cat.png",
-Name: "cat.jpeg",
-OutputUrl: true,
 	})
 	fmt.Println(rsp, err)
 	

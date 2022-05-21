@@ -55,16 +55,16 @@ type Box struct {
 }
 
 type GenerateRequest struct {
+	// the template id to use
+	Id string `json:"id,omitempty"`
+	// font size; defaults to 50px
+	MaxFontSize string `json:"max_font_size,omitempty"`
 	// top text
 	TopText string `json:"top_text,omitempty"`
 	// bottom text
 	BottomText string `json:"bottom_text,omitempty"`
 	// font: arial or impact
 	Font string `json:"font,omitempty"`
-	// the template id to use
-	Id string `json:"id,omitempty"`
-	// font size; defaults to 50px
-	MaxFontSize string `json:"max_font_size,omitempty"`
 }
 
 type GenerateResponse struct {

@@ -40,22 +40,22 @@ type Answer struct {
 }
 
 type QueryRequest struct {
-	// name to resolve
-	Name string `json:"name,omitempty"`
 	// type of query e.g A, AAAA, MX, SRV
 	Type string `json:"type,omitempty"`
+	// name to resolve
+	Name string `json:"name,omitempty"`
 }
 
 type QueryResponse struct {
-	Cd       bool       `json:"CD,omitempty"`
+	Ra       bool       `json:"RA,omitempty"`
 	Rd       bool       `json:"RD,omitempty"`
 	Provider string     `json:"provider,omitempty"`
-	Status   int32      `json:"status,omitempty"`
 	Ad       bool       `json:"AD,omitempty"`
-	Ra       bool       `json:"RA,omitempty"`
+	Cd       bool       `json:"CD,omitempty"`
 	Tc       bool       `json:"TC,omitempty"`
 	Answer   []Answer   `json:"answer,omitempty"`
 	Question []Question `json:"question,omitempty"`
+	Status   int32      `json:"status,omitempty"`
 }
 
 type Question struct {

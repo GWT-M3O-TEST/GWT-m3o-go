@@ -13,8 +13,8 @@ func main() {
 	rsp, err := client.Evchargers.Search(&evchargers.SearchRequest{
 		MaxResults: 2,
 		Location: &evchargers.Coordinates{
-			Longitude: -0.0252,
 			Latitude:  51.53336351319885,
+			Longitude: -0.0252,
 		},
 		Distance: 2000,
 	})

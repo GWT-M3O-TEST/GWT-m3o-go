@@ -83,10 +83,10 @@ type ListChannelsResponse struct {
 }
 
 type ListMessagesRequest struct {
-	// number of message to return
-	Limit int32 `json:"limit,omitempty"`
 	// The channel to subscribe to
 	Channel string `json:"channel,omitempty"`
+	// number of message to return
+	Limit int32 `json:"limit,omitempty"`
 }
 
 type ListMessagesResponse struct {

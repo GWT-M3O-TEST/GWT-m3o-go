@@ -129,10 +129,10 @@ type EventsRequest struct {
 }
 
 type EventsResponse struct {
-	// the event which occured; create, delete, update
-	Event string `json:"event,omitempty"`
 	// the comment which the operation occured on
 	Comment *Comment `json:"comment,omitempty"`
+	// the event which occured; create, delete, update
+	Event string `json:"event,omitempty"`
 }
 
 type ListRequest struct {

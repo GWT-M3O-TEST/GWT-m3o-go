@@ -42,8 +42,8 @@ type GenerateRequest struct {
 }
 
 type GenerateResponse struct {
-	// M3O's CDN url of the avatar image
-	Url string `json:"url,omitempty"`
 	// base64 encoded string of the avatar image
 	Base64 string `json:"base64,omitempty"`
+	// M3O's CDN url of the avatar image
+	Url string `json:"url,omitempty"`
 }

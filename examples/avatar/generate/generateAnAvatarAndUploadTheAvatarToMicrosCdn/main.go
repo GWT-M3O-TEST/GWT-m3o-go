@@ -11,10 +11,10 @@ import (
 func main() {
 	client := m3o.New(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := client.Avatar.Generate(&avatar.GenerateRequest{
-		Gender:   "female",
-		Username: "",
 		Format:   "png",
 		Upload:   true,
+		Gender:   "female",
+		Username: "",
 	})
 	fmt.Println(rsp, err)
 }

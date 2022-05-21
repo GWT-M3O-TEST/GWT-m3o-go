@@ -4,105 +4,6 @@ An [m3o.com](https://m3o.com) API. For example usage see [m3o.com/contact/api](h
 
 Endpoints:
 
-## Create
-
-Create a contact
-
-
-[https://m3o.com/contact/api#Create](https://m3o.com/contact/api#Create)
-
-```go
-package example
-
-import(
-	"fmt"
-	"os"
-
-	"go.m3o.com/contact"
-)
-
-// Create a contact
-func CreateAcontact() {
-	contactService := contact.NewContactService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := contactService.Create(&contact.CreateRequest{
-		Name: "joe",
-Phones: []contact.Phone{
-contact.Phone: {
-Label: "work", Number: "010-87654321", },
-},
-Emails: []contact.Email{
-contact.Email: {
-Label: "work", Address: "work@example.com", },
-},
-Links: []contact.Link{
-contact.Link: {
-Label: "blog", Url: "https://blog.joe.me", },
-},
-Birthday: "1995-01-01",
-Addresses: []contact.Address{
-contact.Address: {
-Label: "company address", Location: "123 street address", },
-},
-SocialMedias: []contact.SocialMedia{
-contact.SocialMedia: {
-Label: "facebook", Username: "joe-facebook", },
-},
-Note: "this person is very important",
-	})
-	fmt.Println(rsp, err)
-	
-}
-```
-## Update
-
-Update a contact
-
-
-[https://m3o.com/contact/api#Update](https://m3o.com/contact/api#Update)
-
-```go
-package example
-
-import(
-	"fmt"
-	"os"
-
-	"go.m3o.com/contact"
-)
-
-// Update a contact
-func UpdateAcontact() {
-	contactService := contact.NewContactService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := contactService.Update(&contact.UpdateRequest{
-		Id: "42e48a3c-6221-11ec-96d2-acde48001122",
-Phones: []contact.Phone{
-contact.Phone: {
-Label: "work", Number: "010-87654321", },
-},
-Addresses: []contact.Address{
-contact.Address: {
-Location: "123 street address", Label: "company address", },
-},
-SocialMedias: []contact.SocialMedia{
-contact.SocialMedia: {
-Label: "facebook", Username: "joe-facebook", },
-},
-Name: "joe",
-Emails: []contact.Email{
-contact.Email: {
-Label: "work", Address: "work@example.com", },
-},
-Links: []contact.Link{
-contact.Link: {
-Label: "blog", Url: "https://blog.joe.me", },
-},
-Birthday: "1995-01-01",
-Note: "this person is very important",
-	})
-	fmt.Println(rsp, err)
-	
-}
-```
 ## Read
 
 Read contact details
@@ -207,6 +108,105 @@ func ListContactsWithSpecificOffsetAndLimit() {
 	rsp, err := contactService.List(&contact.ListRequest{
 		Offset: 1,
 Limit: 1,
+	})
+	fmt.Println(rsp, err)
+	
+}
+```
+## Create
+
+Create a contact
+
+
+[https://m3o.com/contact/api#Create](https://m3o.com/contact/api#Create)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"go.m3o.com/contact"
+)
+
+// Create a contact
+func CreateAcontact() {
+	contactService := contact.NewContactService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := contactService.Create(&contact.CreateRequest{
+		SocialMedias: []contact.SocialMedia{
+contact.SocialMedia: {
+Label: "facebook", Username: "joe-facebook", },
+},
+Note: "this person is very important",
+Name: "joe",
+Phones: []contact.Phone{
+contact.Phone: {
+Label: "work", Number: "010-87654321", },
+},
+Emails: []contact.Email{
+contact.Email: {
+Label: "work", Address: "work@example.com", },
+},
+Links: []contact.Link{
+contact.Link: {
+Label: "blog", Url: "https://blog.joe.me", },
+},
+Birthday: "1995-01-01",
+Addresses: []contact.Address{
+contact.Address: {
+Label: "company address", Location: "123 street address", },
+},
+	})
+	fmt.Println(rsp, err)
+	
+}
+```
+## Update
+
+Update a contact
+
+
+[https://m3o.com/contact/api#Update](https://m3o.com/contact/api#Update)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"go.m3o.com/contact"
+)
+
+// Update a contact
+func UpdateAcontact() {
+	contactService := contact.NewContactService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := contactService.Update(&contact.UpdateRequest{
+		Birthday: "1995-01-01",
+SocialMedias: []contact.SocialMedia{
+contact.SocialMedia: {
+Label: "facebook", Username: "joe-facebook", },
+},
+Note: "this person is very important",
+Links: []contact.Link{
+contact.Link: {
+Label: "blog", Url: "https://blog.joe.me", },
+},
+Name: "joe",
+Phones: []contact.Phone{
+contact.Phone: {
+Label: "work", Number: "010-87654321", },
+},
+Emails: []contact.Email{
+contact.Email: {
+Label: "work", Address: "work@example.com", },
+},
+Addresses: []contact.Address{
+contact.Address: {
+Label: "company address", Location: "123 street address", },
+},
+Id: "42e48a3c-6221-11ec-96d2-acde48001122",
 	})
 	fmt.Println(rsp, err)
 	
