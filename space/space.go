@@ -92,12 +92,12 @@ func (t *SpaceService) Upload(request *UploadRequest) (*UploadResponse, error) {
 }
 
 type CreateRequest struct {
-	// Who can see this object? "public" or "private", defaults to "private"
-	Visibility string `json:"visibility,omitempty"`
 	// The name of the object. Use forward slash delimiter to implement a nested directory-like structure e.g. images/foo.jpg
 	Name string `json:"name,omitempty"`
 	// The contents of the object. Either base64 encoded if sending request as application/json or raw bytes if using multipart/form-data format
 	Object string `json:"object,omitempty"`
+	// Who can see this object? "public" or "private", defaults to "private"
+	Visibility string `json:"visibility,omitempty"`
 }
 
 type CreateResponse struct {
@@ -124,7 +124,6 @@ type DownloadResponse struct {
 }
 
 type HeadObject struct {
-	Name string `json:"name,omitempty"`
 	// URL to access the object if it is public
 	Url string `json:"url,omitempty"`
 	// is this public or private
@@ -133,6 +132,7 @@ type HeadObject struct {
 	Created string `json:"created,omitempty"`
 	// when was this last modified
 	Modified string `json:"modified,omitempty"`
+	Name     string `json:"name,omitempty"`
 }
 
 type HeadRequest struct {
@@ -145,12 +145,12 @@ type HeadResponse struct {
 }
 
 type ListObject struct {
-	Created string `json:"created,omitempty"`
 	// when was this last modified
 	Modified   string `json:"modified,omitempty"`
 	Name       string `json:"name,omitempty"`
 	Url        string `json:"url,omitempty"`
 	Visibility string `json:"visibility,omitempty"`
+	Created    string `json:"created,omitempty"`
 }
 
 type ListRequest struct {
@@ -188,12 +188,12 @@ type SpaceObject struct {
 }
 
 type UpdateRequest struct {
-	// The contents of the object. Either base64 encoded if sending request as application/json or raw bytes if using multipart/form-data format
-	Object string `json:"object,omitempty"`
 	// Who can see this object? "public" or "private", defaults to "private"
 	Visibility string `json:"visibility,omitempty"`
 	// The name of the object. Use forward slash delimiter to implement a nested directory-like structure e.g. images/foo.jpg
 	Name string `json:"name,omitempty"`
+	// The contents of the object. Either base64 encoded if sending request as application/json or raw bytes if using multipart/form-data format
+	Object string `json:"object,omitempty"`
 }
 
 type UpdateResponse struct {

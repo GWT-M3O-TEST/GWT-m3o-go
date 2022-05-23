@@ -56,26 +56,26 @@ func (t *TwitterService) User(request *UserRequest) (*UserResponse, error) {
 }
 
 type Profile struct {
-	// the username
-	Username string `json:"username,omitempty"`
-	// if the account is verified
-	Verified bool `json:"verified,omitempty"`
-	// the user's location
-	Location string `json:"location,omitempty"`
-	// the user description
-	Description string `json:"description,omitempty"`
-	// the follower count
-	Followers int64 `json:"followers,string,omitempty"`
-	// the user id
-	Id int64 `json:"id,string,omitempty"`
 	// The user's profile picture
 	ImageUrl string `json:"image_url,omitempty"`
 	// display name of the user
 	Name string `json:"name,omitempty"`
 	// if the account is private
 	Private bool `json:"private,omitempty"`
+	// if the account is verified
+	Verified bool `json:"verified,omitempty"`
+	// the user description
+	Description string `json:"description,omitempty"`
+	// the follower count
+	Followers int64 `json:"followers,string,omitempty"`
+	// the user's location
+	Location string `json:"location,omitempty"`
+	// the username
+	Username string `json:"username,omitempty"`
 	// the account creation date
 	CreatedAt string `json:"created_at,omitempty"`
+	// the user id
+	Id int64 `json:"id,string,omitempty"`
 }
 
 type SearchRequest struct {
@@ -120,6 +120,8 @@ type TrendsResponse struct {
 }
 
 type Tweet struct {
+	// username of the person who tweeted
+	Username string `json:"username,omitempty"`
 	// time of tweet
 	CreatedAt string `json:"created_at,omitempty"`
 	// number of times favourited
@@ -130,8 +132,6 @@ type Tweet struct {
 	RetweetedCount int64 `json:"retweeted_count,string,omitempty"`
 	// text of the tweet
 	Text string `json:"text,omitempty"`
-	// username of the person who tweeted
-	Username string `json:"username,omitempty"`
 }
 
 type UserRequest struct {
@@ -140,8 +140,8 @@ type UserRequest struct {
 }
 
 type UserResponse struct {
-	// The requested user profile
-	Profile *Profile `json:"profile,omitempty"`
 	// the current user status
 	Status *Tweet `json:"status,omitempty"`
+	// The requested user profile
+	Profile *Profile `json:"profile,omitempty"`
 }

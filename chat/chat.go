@@ -118,14 +118,14 @@ func (t *ChatService) Send(request *SendRequest) (*SendResponse, error) {
 }
 
 type CreateRequest struct {
+	// chat description
+	Description string `json:"description,omitempty"`
 	// name of the room
 	Name string `json:"name,omitempty"`
 	// whether its a private room
 	Private bool `json:"private,omitempty"`
 	// optional list of user ids
 	UserIds []string `json:"user_ids,omitempty"`
-	// chat description
-	Description string `json:"description,omitempty"`
 }
 
 type CreateResponse struct {
@@ -153,10 +153,10 @@ type HistoryResponse struct {
 }
 
 type InviteRequest struct {
-	// the room id
-	RoomId string `json:"room_id,omitempty"`
 	// the user id
 	UserId string `json:"user_id,omitempty"`
+	// the room id
+	RoomId string `json:"room_id,omitempty"`
 }
 
 type InviteResponse struct {
@@ -206,10 +206,6 @@ type ListResponse struct {
 }
 
 type Message struct {
-	// id of the message, allocated by the server
-	Id string `json:"id,omitempty"`
-	// id of the chat the message is being sent to / from
-	RoomId string `json:"room_id,omitempty"`
 	// time the message was sent in RFC3339 format
 	SentAt string `json:"sent_at,omitempty"`
 	// subject of the message
@@ -220,13 +216,13 @@ type Message struct {
 	UserId string `json:"user_id,omitempty"`
 	// a client side id, should be validated by the server to make the request retry safe
 	Client string `json:"client,omitempty"`
+	// id of the message, allocated by the server
+	Id string `json:"id,omitempty"`
+	// id of the chat the message is being sent to / from
+	RoomId string `json:"room_id,omitempty"`
 }
 
 type Room struct {
-	// name of the chat
-	Name string `json:"name,omitempty"`
-	// whether its a private room
-	Private bool `json:"private,omitempty"`
 	// list of users
 	UserIds []string `json:"user_ids,omitempty"`
 	// time of creation
@@ -235,11 +231,13 @@ type Room struct {
 	Description string `json:"description,omitempty"`
 	// unique room id
 	Id string `json:"id,omitempty"`
+	// name of the chat
+	Name string `json:"name,omitempty"`
+	// whether its a private room
+	Private bool `json:"private,omitempty"`
 }
 
 type SendRequest struct {
-	// subject of the message
-	Subject string `json:"subject,omitempty"`
 	// text of the message
 	Text string `json:"text,omitempty"`
 	// id of the user who sent the message
@@ -248,6 +246,8 @@ type SendRequest struct {
 	Client string `json:"client,omitempty"`
 	// id of the chat room the message is being sent to / from
 	RoomId string `json:"room_id,omitempty"`
+	// subject of the message
+	Subject string `json:"subject,omitempty"`
 }
 
 type SendResponse struct {

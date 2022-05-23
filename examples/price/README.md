@@ -52,9 +52,9 @@ import(
 func ReportAprice() {
 	priceService := price.NewPriceService(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := priceService.Report(&price.ReportRequest{
-		Name: "bitcoin",
-Symbol: "BTC",
+		Symbol: "BTC",
 Comment: "Price is not up to date",
+Name: "bitcoin",
 	})
 	fmt.Println(rsp, err)
 	

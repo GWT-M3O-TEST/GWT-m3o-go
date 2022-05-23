@@ -38,6 +38,8 @@ func (t *MemegenService) Templates(request *TemplatesRequest) (*TemplatesRespons
 }
 
 type Box struct {
+	// outline color hex code
+	Outline string `json:"outline,omitempty"`
 	// text to display
 	Text string `json:"text,omitempty"`
 	// width in pixels
@@ -50,8 +52,6 @@ type Box struct {
 	Color string `json:"color,omitempty"`
 	// height in pixels
 	Height int32 `json:"height,omitempty"`
-	// outline color hex code
-	Outline string `json:"outline,omitempty"`
 }
 
 type GenerateRequest struct {
@@ -73,6 +73,8 @@ type GenerateResponse struct {
 }
 
 type Template struct {
+	// width in pixels
+	Width int32 `json:"width,omitempty"`
 	// number of boxes used
 	BoxCount int32 `json:"box_count,omitempty"`
 	// height in pixels
@@ -83,8 +85,6 @@ type Template struct {
 	Name string `json:"name,omitempty"`
 	// url of the memegen
 	Url string `json:"url,omitempty"`
-	// width in pixels
-	Width int32 `json:"width,omitempty"`
 }
 
 type TemplatesRequest struct {

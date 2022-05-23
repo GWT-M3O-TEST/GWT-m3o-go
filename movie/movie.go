@@ -29,35 +29,35 @@ func (t *MovieService) Search(request *SearchRequest) (*SearchResponse, error) {
 }
 
 type MovieInfo struct {
-	Title            string  `json:"title,omitempty"`
-	Video            bool    `json:"video,omitempty"`
-	BackdropPath     string  `json:"backdrop_path,omitempty"`
 	GenreIds         []int32 `json:"genre_ids,omitempty"`
+	OriginalLanguage string  `json:"original_language,omitempty"`
 	VoteAverage      float64 `json:"vote_average,omitempty"`
-	Adult            bool    `json:"adult,omitempty"`
-	Id               int32   `json:"id,omitempty"`
+	VoteCount        int32   `json:"vote_count,omitempty"`
+	BackdropPath     string  `json:"backdrop_path,omitempty"`
 	Overview         string  `json:"overview,omitempty"`
+	Popularity       float64 `json:"popularity,omitempty"`
 	PosterPath       string  `json:"poster_path,omitempty"`
 	ReleaseDate      string  `json:"release_date,omitempty"`
-	OriginalLanguage string  `json:"original_language,omitempty"`
+	Title            string  `json:"title,omitempty"`
+	Id               int32   `json:"id,omitempty"`
 	OriginalTitle    string  `json:"original_title,omitempty"`
-	Popularity       float64 `json:"popularity,omitempty"`
-	VoteCount        int32   `json:"vote_count,omitempty"`
+	Adult            bool    `json:"adult,omitempty"`
+	Video            bool    `json:"video,omitempty"`
 }
 
 type SearchRequest struct {
-	// a text query to search
-	Query string `json:"query,omitempty"`
-	// a ISO 3166-1 code to filter release dates.
-	Region string `json:"region,omitempty"`
-	// year of making
-	Year int32 `json:"year,omitempty"`
 	// a ISO 639-1 value to display translated data
 	Language string `json:"language,omitempty"`
 	// page to query
 	Page int32 `json:"page,omitempty"`
 	// year of release
 	PrimaryReleaseYear int32 `json:"primary_release_year,omitempty"`
+	// a text query to search
+	Query string `json:"query,omitempty"`
+	// a ISO 3166-1 code to filter release dates.
+	Region string `json:"region,omitempty"`
+	// year of making
+	Year int32 `json:"year,omitempty"`
 }
 
 type SearchResponse struct {

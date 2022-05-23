@@ -11,8 +11,8 @@ import (
 func main() {
 	client := m3o.New(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := client.Weather.Forecast(&weather.ForecastRequest{
-		Days:     2,
 		Location: "London",
+		Days:     2,
 	})
 	fmt.Println(rsp, err)
 }

@@ -119,10 +119,10 @@ type Record struct {
 }
 
 type SearchRequest struct {
-	// The index the record belongs to
-	Index string `json:"index,omitempty"`
 	// The query. See docs for query language examples
 	Query string `json:"query,omitempty"`
+	// The index the record belongs to
+	Index string `json:"index,omitempty"`
 }
 
 type SearchResponse struct {

@@ -150,6 +150,10 @@ type ListTablesResponse struct {
 }
 
 type ReadRequest struct {
+	// Maximum number of records to return. Default limit is 25.
+	// Maximum limit is 1000. Anything higher will return an error.
+	Limit  int32 `json:"limit,omitempty"`
+	Offset int32 `json:"offset,omitempty"`
 	// 'asc' (default), 'desc'
 	Order string `json:"order,omitempty"`
 	// field name to order by
@@ -164,10 +168,6 @@ type ReadRequest struct {
 	Table string `json:"table,omitempty"`
 	// Read by id. Equivalent to 'id == "your-id"'
 	Id string `json:"id,omitempty"`
-	// Maximum number of records to return. Default limit is 25.
-	// Maximum limit is 1000. Anything higher will return an error.
-	Limit  int32 `json:"limit,omitempty"`
-	Offset int32 `json:"offset,omitempty"`
 }
 
 type ReadResponse struct {
@@ -176,10 +176,10 @@ type ReadResponse struct {
 }
 
 type RenameTableRequest struct {
-	// current table name
-	From string `json:"from,omitempty"`
 	// new table name
 	To string `json:"to,omitempty"`
+	// current table name
+	From string `json:"from,omitempty"`
 }
 
 type RenameTableResponse struct {

@@ -84,12 +84,12 @@ type AddResponse struct {
 }
 
 type GetRequest struct {
+	// currency to get
+	Currency string `json:"currency,omitempty"`
 	// name of the value
 	Name string `json:"name,omitempty"`
 	// symbol of value
 	Symbol string `json:"symbol,omitempty"`
-	// currency to get
-	Currency string `json:"currency,omitempty"`
 }
 
 type GetResponse struct {
@@ -97,12 +97,12 @@ type GetResponse struct {
 }
 
 type Index struct {
+	// symbol of item
+	Symbol string `json:"symbol,omitempty"`
 	// currency of value
 	Currency string `json:"currency,omitempty"`
 	// name of item
 	Name string `json:"name,omitempty"`
-	// symbol of item
-	Symbol string `json:"symbol,omitempty"`
 }
 
 type IndexRequest struct {
@@ -113,12 +113,12 @@ type IndexResponse struct {
 }
 
 type ListRequest struct {
+	// offset to read from
+	Offset int32 `json:"offset,omitempty"`
 	// currency to get
 	Currency string `json:"currency,omitempty"`
 	// limit number of values
 	Limit int32 `json:"limit,omitempty"`
-	// offset to read from
-	Offset int32 `json:"offset,omitempty"`
 }
 
 type ListResponse struct {
@@ -126,25 +126,27 @@ type ListResponse struct {
 }
 
 type Report struct {
-	Symbol  string `json:"symbol,omitempty"`
 	Author  string `json:"author,omitempty"`
 	Comment string `json:"comment,omitempty"`
 	Name    string `json:"name,omitempty"`
+	Symbol  string `json:"symbol,omitempty"`
 }
 
 type ReportRequest struct {
+	// symbol of value
+	Symbol string `json:"symbol,omitempty"`
 	// additional comment
 	Comment string `json:"comment,omitempty"`
 	// name of value
 	Name string `json:"name,omitempty"`
-	// symbol of value
-	Symbol string `json:"symbol,omitempty"`
 }
 
 type ReportResponse struct {
 }
 
 type Value struct {
+	// where it came from
+	Source string `json:"source,omitempty"`
 	// symbol of value
 	Symbol string `json:"symbol,omitempty"`
 	// time it was added
@@ -157,6 +159,4 @@ type Value struct {
 	Name string `json:"name,omitempty"`
 	// price of thing
 	Price float64 `json:"price,omitempty"`
-	// where it came from
-	Source string `json:"source,omitempty"`
 }

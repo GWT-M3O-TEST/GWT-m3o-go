@@ -25,9 +25,9 @@ import(
 func AddAnewFeed() {
 	rssService := rss.NewRssService(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := rssService.Add(&rss.AddRequest{
-		Name: "bbc",
+		Category: "news",
+Name: "bbc",
 Url: "http://feeds.bbci.co.uk/news/rss.xml",
-Category: "news",
 	})
 	fmt.Println(rsp, err)
 	
