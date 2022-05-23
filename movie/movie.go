@@ -29,25 +29,23 @@ func (t *MovieService) Search(request *SearchRequest) (*SearchResponse, error) {
 }
 
 type MovieInfo struct {
-	OriginalTitle    string  `json:"original_title,omitempty"`
-	VoteAverage      float64 `json:"vote_average,omitempty"`
-	VoteCount        int32   `json:"vote_count,omitempty"`
-	Popularity       float64 `json:"popularity,omitempty"`
-	PosterPath       string  `json:"poster_path,omitempty"`
-	Adult            bool    `json:"adult,omitempty"`
-	Id               int32   `json:"id,omitempty"`
-	OriginalLanguage string  `json:"original_language,omitempty"`
-	Video            bool    `json:"video,omitempty"`
 	BackdropPath     string  `json:"backdrop_path,omitempty"`
-	GenreIds         []int32 `json:"genre_ids,omitempty"`
 	Overview         string  `json:"overview,omitempty"`
+	PosterPath       string  `json:"poster_path,omitempty"`
+	Id               int32   `json:"id,omitempty"`
 	ReleaseDate      string  `json:"release_date,omitempty"`
 	Title            string  `json:"title,omitempty"`
+	Adult            bool    `json:"adult,omitempty"`
+	VoteAverage      float64 `json:"vote_average,omitempty"`
+	GenreIds         []int32 `json:"genre_ids,omitempty"`
+	OriginalLanguage string  `json:"original_language,omitempty"`
+	OriginalTitle    string  `json:"original_title,omitempty"`
+	Popularity       float64 `json:"popularity,omitempty"`
+	Video            bool    `json:"video,omitempty"`
+	VoteCount        int32   `json:"vote_count,omitempty"`
 }
 
 type SearchRequest struct {
-	// a text query to search
-	Query string `json:"query,omitempty"`
 	// a ISO 3166-1 code to filter release dates.
 	Region string `json:"region,omitempty"`
 	// year of making
@@ -58,11 +56,13 @@ type SearchRequest struct {
 	Page int32 `json:"page,omitempty"`
 	// year of release
 	PrimaryReleaseYear int32 `json:"primary_release_year,omitempty"`
+	// a text query to search
+	Query string `json:"query,omitempty"`
 }
 
 type SearchResponse struct {
+	TotalResults int32       `json:"total_results,omitempty"`
 	Page         int32       `json:"page,omitempty"`
 	Results      []MovieInfo `json:"results,omitempty"`
 	TotalPages   int32       `json:"total_pages,omitempty"`
-	TotalResults int32       `json:"total_results,omitempty"`
 }

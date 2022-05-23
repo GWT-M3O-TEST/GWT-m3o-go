@@ -11,8 +11,8 @@ import (
 func main() {
 	client := m3o.New(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := client.Db.Read(&db.ReadRequest{
-		Query: "age == 43",
 		Table: "example",
+		Query: "age == 43",
 	})
 	fmt.Println(rsp, err)
 }

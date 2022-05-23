@@ -139,28 +139,28 @@ type DeleteResponse struct {
 }
 
 type DeployRequest struct {
+	// entry point, ie. handler name in the source code
+	// if not provided, defaults to the name parameter
+	Entrypoint string `json:"entrypoint,omitempty"`
 	// runtime/lanaguage of the function e.g php74,
 	// nodejs6, nodejs8, nodejs10, nodejs12, nodejs14, nodejs16,
 	// dotnet3, java11, ruby26, ruby27, go111, go113, go116,
 	// python37, python38, python39
 	Runtime string `json:"runtime,omitempty"`
-	// inline source code
-	Source string `json:"source,omitempty"`
 	// optional subfolder path
 	Subfolder string `json:"subfolder,omitempty"`
+	// region to deploy in. defaults to europe-west1
+	Region string `json:"region,omitempty"`
+	// github url for a repo
+	Repo string `json:"repo,omitempty"`
+	// inline source code
+	Source string `json:"source,omitempty"`
 	// branch to deploy. defaults to master
 	Branch string `json:"branch,omitempty"`
 	// environment variables to pass in at runtime
 	EnvVars map[string]string `json:"env_vars,omitempty"`
 	// function name
 	Name string `json:"name,omitempty"`
-	// region to deploy in. defaults to europe-west1
-	Region string `json:"region,omitempty"`
-	// github url for a repo
-	Repo string `json:"repo,omitempty"`
-	// entry point, ie. handler name in the source code
-	// if not provided, defaults to the name parameter
-	Entrypoint string `json:"entrypoint,omitempty"`
 }
 
 type DeployResponse struct {
@@ -180,36 +180,36 @@ type DescribeResponse struct {
 type Func struct {
 	// associated env vars
 	EnvVars map[string]string `json:"env_vars,omitempty"`
-	// id of the function
-	Id string `json:"id,omitempty"`
-	// function name
-	// limitation: must be unique across projects
-	Name string `json:"name,omitempty"`
-	// time it was updated
-	Updated string `json:"updated,omitempty"`
-	// unique url of the function
-	Url string `json:"url,omitempty"`
-	// time of creation
-	Created string `json:"created,omitempty"`
-	// git repo address
-	Repo string `json:"repo,omitempty"`
-	// eg. ACTIVE, DEPLOY_IN_PROGRESS, OFFLINE etc
-	Status string `json:"status,omitempty"`
 	// subfolder path to entrypoint
 	Subfolder string `json:"subfolder,omitempty"`
+	// eg. ACTIVE, DEPLOY_IN_PROGRESS, OFFLINE etc
+	Status string `json:"status,omitempty"`
+	// time it was updated
+	Updated string `json:"updated,omitempty"`
 	// branch to deploy. defaults to master
 	Branch string `json:"branch,omitempty"`
 	// name of handler in source code
 	Entrypoint string `json:"entrypoint,omitempty"`
+	// git repo address
+	Repo string `json:"repo,omitempty"`
 	// the source code
 	Source string `json:"source,omitempty"`
-	// region to deploy in. defaults to europe-west1
-	Region string `json:"region,omitempty"`
+	// id of the function
+	Id string `json:"id,omitempty"`
 	// runtime/language of the function e.g php74,
 	// nodejs6, nodejs8, nodejs10, nodejs12, nodejs14, nodejs16,
 	// dotnet3, java11, ruby26, ruby27, go111, go113, go116,
 	// python37, python38, python39
 	Runtime string `json:"runtime,omitempty"`
+	// unique url of the function
+	Url string `json:"url,omitempty"`
+	// time of creation
+	Created string `json:"created,omitempty"`
+	// function name
+	// limitation: must be unique across projects
+	Name string `json:"name,omitempty"`
+	// region to deploy in. defaults to europe-west1
+	Region string `json:"region,omitempty"`
 }
 
 type ListRequest struct {
@@ -249,8 +249,6 @@ type RegionsResponse struct {
 }
 
 type Reservation struct {
-	// associated token
-	Token string `json:"token,omitempty"`
 	// time of reservation
 	Created string `json:"created,omitempty"`
 	// time reservation expires
@@ -259,6 +257,8 @@ type Reservation struct {
 	Name string `json:"name,omitempty"`
 	// owner id
 	Owner string `json:"owner,omitempty"`
+	// associated token
+	Token string `json:"token,omitempty"`
 }
 
 type ReserveRequest struct {
@@ -279,10 +279,10 @@ type RuntimesResponse struct {
 }
 
 type UpdateRequest struct {
-	// inline source code
-	Source string `json:"source,omitempty"`
 	// function name
 	Name string `json:"name,omitempty"`
+	// inline source code
+	Source string `json:"source,omitempty"`
 }
 
 type UpdateResponse struct {

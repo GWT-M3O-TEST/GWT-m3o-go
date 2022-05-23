@@ -47,15 +47,15 @@ type QueryRequest struct {
 }
 
 type QueryResponse struct {
-	Cd       bool       `json:"CD,omitempty"`
 	Ra       bool       `json:"RA,omitempty"`
-	Answer   []Answer   `json:"answer,omitempty"`
-	Status   int32      `json:"status,omitempty"`
-	Ad       bool       `json:"AD,omitempty"`
-	Tc       bool       `json:"TC,omitempty"`
+	Rd       bool       `json:"RD,omitempty"`
 	Provider string     `json:"provider,omitempty"`
 	Question []Question `json:"question,omitempty"`
-	Rd       bool       `json:"RD,omitempty"`
+	Ad       bool       `json:"AD,omitempty"`
+	Cd       bool       `json:"CD,omitempty"`
+	Tc       bool       `json:"TC,omitempty"`
+	Answer   []Answer   `json:"answer,omitempty"`
+	Status   int32      `json:"status,omitempty"`
 }
 
 type Question struct {

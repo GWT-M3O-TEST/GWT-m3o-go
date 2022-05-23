@@ -25,8 +25,8 @@ import(
 func GenerateAqrCode() {
 	qrService := qr.NewQrService(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := qrService.Generate(&qr.GenerateRequest{
-		Size: 300,
-Text: "https://m3o.com/qr",
+		Text: "https://m3o.com/qr",
+Size: 300,
 	})
 	fmt.Println(rsp, err)
 	

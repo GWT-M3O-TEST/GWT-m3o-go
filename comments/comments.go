@@ -103,10 +103,10 @@ type Comment struct {
 }
 
 type CreateRequest struct {
-	// comment subject
-	Subject string `json:"subject,omitempty"`
 	// comment items
 	Text string `json:"text,omitempty"`
+	// comment subject
+	Subject string `json:"subject,omitempty"`
 }
 
 type CreateResponse struct {

@@ -66,16 +66,16 @@ type GuessRequest struct {
 }
 
 type GuessResponse struct {
+	// informational message
+	Status string `json:"status,omitempty"`
+	// number of tries left
+	TriesLeft int32 `json:"tries_left,omitempty"`
 	// the actual word if failed
 	Answer string `json:"answer,omitempty"`
 	// whether it was correct
 	Correct bool `json:"correct,omitempty"`
 	// the guess words tried
 	Guesses []Guess `json:"guesses,omitempty"`
-	// informational message
-	Status string `json:"status,omitempty"`
-	// number of tries left
-	TriesLeft int32 `json:"tries_left,omitempty"`
 }
 
 type NextRequest struct {

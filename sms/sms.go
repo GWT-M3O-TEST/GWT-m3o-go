@@ -29,17 +29,17 @@ func (t *SmsService) Send(request *SendRequest) (*SendResponse, error) {
 }
 
 type SendRequest struct {
+	// the main body of the message to send
+	Message string `json:"message,omitempty"`
 	// the destination phone number including the international dialling code (e.g. +44)
 	To string `json:"to,omitempty"`
 	// who is the message from? The message will be suffixed with "Sent from <from>"
 	From string `json:"from,omitempty"`
-	// the main body of the message to send
-	Message string `json:"message,omitempty"`
 }
 
 type SendResponse struct {
-	// will return "ok" if successful
-	Status string `json:"status,omitempty"`
 	// any additional info
 	Info string `json:"info,omitempty"`
+	// will return "ok" if successful
+	Status string `json:"status,omitempty"`
 }

@@ -29,30 +29,30 @@ func (t *NewsService) Headlines(request *HeadlinesRequest) (*HeadlinesResponse, 
 }
 
 type Article struct {
-	// article description
-	Description string `json:"description,omitempty"`
-	// article id
-	Id string `json:"id,omitempty"`
+	// the locale
+	Locale string `json:"locale,omitempty"`
 	// first 60 characters of article body
 	Snippet string `json:"snippet,omitempty"`
-	// source of news
-	Source string `json:"source,omitempty"`
-	// url of the article
-	Url string `json:"url,omitempty"`
-	// time it was published
-	PublishedAt string `json:"published_at,omitempty"`
 	// article title
 	Title string `json:"title,omitempty"`
-	// categories
-	Categories []string `json:"categories,omitempty"`
+	// article id
+	Id string `json:"id,omitempty"`
 	// image url
 	ImageUrl string `json:"image_url,omitempty"`
 	// related keywords
 	Keywords string `json:"keywords,omitempty"`
 	// the article language
 	Language string `json:"language,omitempty"`
-	// the locale
-	Locale string `json:"locale,omitempty"`
+	// time it was published
+	PublishedAt string `json:"published_at,omitempty"`
+	// source of news
+	Source string `json:"source,omitempty"`
+	// url of the article
+	Url string `json:"url,omitempty"`
+	// categories
+	Categories []string `json:"categories,omitempty"`
+	// article description
+	Description string `json:"description,omitempty"`
 }
 
 type HeadlinesRequest struct {

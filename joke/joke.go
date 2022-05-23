@@ -29,11 +29,11 @@ func (t *JokeService) Random(request *RandomRequest) (*RandomResponse, error) {
 }
 
 type JokeInfo struct {
-	Body     string `json:"body,omitempty"`
 	Category string `json:"category,omitempty"`
 	Id       string `json:"id,omitempty"`
 	Source   string `json:"source,omitempty"`
 	Title    string `json:"title,omitempty"`
+	Body     string `json:"body,omitempty"`
 }
 
 type RandomRequest struct {

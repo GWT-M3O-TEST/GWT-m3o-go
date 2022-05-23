@@ -54,8 +54,8 @@ import(
 func SearchForArecord() {
 	searchService := search.NewSearchService(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := searchService.Search(&search.SearchRequest{
-		Index: "customers",
-Query: "name == 'John'",
+		Query: "name == 'John'",
+Index: "customers",
 	})
 	fmt.Println(rsp, err)
 	
@@ -82,8 +82,8 @@ import(
 func SearchOnMultipleFieldsand() {
 	searchService := search.NewSearchService(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := searchService.Search(&search.SearchRequest{
-		Index: "customers",
-Query: "name == 'John' AND starsign == 'Leo'",
+		Query: "name == 'John' AND starsign == 'Leo'",
+Index: "customers",
 	})
 	fmt.Println(rsp, err)
 	

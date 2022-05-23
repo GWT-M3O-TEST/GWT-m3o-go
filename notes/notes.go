@@ -131,8 +131,6 @@ type ListResponse struct {
 }
 
 type Note struct {
-	// time at which the note was updated
-	Updated string `json:"updated,omitempty"`
 	// time at which the note was created
 	Created string `json:"created,omitempty"`
 	// unique id for the note, generated if not specified
@@ -141,6 +139,8 @@ type Note struct {
 	Text string `json:"text,omitempty"`
 	// title of the note
 	Title string `json:"title,omitempty"`
+	// time at which the note was updated
+	Updated string `json:"updated,omitempty"`
 }
 
 type ReadRequest struct {

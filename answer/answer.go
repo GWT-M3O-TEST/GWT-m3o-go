@@ -34,10 +34,10 @@ type QuestionRequest struct {
 }
 
 type QuestionResponse struct {
-	// the answer to your question
-	Answer string `json:"answer,omitempty"`
 	// any related image
 	Image string `json:"image,omitempty"`
 	// a related url
 	Url string `json:"url,omitempty"`
+	// the answer to your question
+	Answer string `json:"answer,omitempty"`
 }

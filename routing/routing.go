@@ -47,10 +47,6 @@ func (t *RoutingService) Route(request *RouteRequest) (*RouteResponse, error) {
 }
 
 type Direction struct {
-	// intersections on route
-	Intersections []Intersection `json:"intersections,omitempty"`
-	// maneuver to take
-	Maneuver *Maneuver `json:"maneuver,omitempty"`
 	// street name or location
 	Name string `json:"name,omitempty"`
 	// alternative reference
@@ -61,6 +57,10 @@ type Direction struct {
 	Duration float64 `json:"duration,omitempty"`
 	// human readable instruction
 	Instruction string `json:"instruction,omitempty"`
+	// intersections on route
+	Intersections []Intersection `json:"intersections,omitempty"`
+	// maneuver to take
+	Maneuver *Maneuver `json:"maneuver,omitempty"`
 }
 
 type DirectionsRequest struct {
@@ -71,25 +71,25 @@ type DirectionsRequest struct {
 }
 
 type DirectionsResponse struct {
+	// Turn by turn directions
+	Directions []Direction `json:"directions,omitempty"`
 	// Estimated distance of the route in meters
 	Distance float64 `json:"distance,omitempty"`
 	// Estimated duration of the route in seconds
 	Duration float64 `json:"duration,omitempty"`
 	// The waypoints on the route
 	Waypoints []Waypoint `json:"waypoints,omitempty"`
-	// Turn by turn directions
-	Directions []Direction `json:"directions,omitempty"`
 }
 
 type EtaRequest struct {
-	// The end point for the eta calculation
-	Destination *Point `json:"destination,omitempty"`
 	// The starting point for the eta calculation
 	Origin *Point `json:"origin,omitempty"`
 	// speed in kilometers
 	Speed float64 `json:"speed,omitempty"`
 	// type of transport. Only "car" is supported currently.
 	Type string `json:"type,omitempty"`
+	// The end point for the eta calculation
+	Destination *Point `json:"destination,omitempty"`
 }
 
 type EtaResponse struct {
@@ -103,18 +103,18 @@ type Intersection struct {
 }
 
 type Maneuver struct {
+	Location      *Point  `json:"location,omitempty"`
 	Action        string  `json:"action,omitempty"`
 	BearingAfter  float64 `json:"bearing_after,omitempty"`
 	BearingBefore float64 `json:"bearing_before,omitempty"`
 	Direction     string  `json:"direction,omitempty"`
-	Location      *Point  `json:"location,omitempty"`
 }
 
 type Point struct {
-	// Lat e.g 52.523219
-	Latitude float64 `json:"latitude,omitempty"`
 	// Long e.g 13.428555
 	Longitude float64 `json:"longitude,omitempty"`
+	// Lat e.g 52.523219
+	Latitude float64 `json:"latitude,omitempty"`
 }
 
 type RouteRequest struct {

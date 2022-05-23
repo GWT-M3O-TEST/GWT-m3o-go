@@ -86,12 +86,12 @@ type QuoteRequest struct {
 }
 
 type QuoteResponse struct {
-	// the UTC timestamp of the quote
-	Timestamp string `json:"timestamp,omitempty"`
 	// the asking price
 	AskPrice float64 `json:"ask_price,omitempty"`
 	// the bidding price
 	BidPrice float64 `json:"bid_price,omitempty"`
 	// the forex symbol
 	Symbol string `json:"symbol,omitempty"`
+	// the UTC timestamp of the quote
+	Timestamp string `json:"timestamp,omitempty"`
 }

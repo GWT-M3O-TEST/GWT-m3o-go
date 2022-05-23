@@ -92,6 +92,12 @@ type ReadResponse struct {
 }
 
 type Record struct {
+	// File contents
+	Content string `json:"content,omitempty"`
+	// Time the file was created e.g 2021-05-20T13:37:21Z
+	Created string `json:"created,omitempty"`
+	// Any other associated metadata as a map of key-value pairs
+	Metadata map[string]string `json:"metadata,omitempty"`
 	// Path to file or folder eg. '/documents/text-files/file.txt'.
 	Path string `json:"path,omitempty"`
 	// A custom project to group files
@@ -99,12 +105,6 @@ type Record struct {
 	Project string `json:"project,omitempty"`
 	// Time the file was updated e.g 2021-05-20T13:37:21Z
 	Updated string `json:"updated,omitempty"`
-	// File contents
-	Content string `json:"content,omitempty"`
-	// Time the file was created e.g 2021-05-20T13:37:21Z
-	Created string `json:"created,omitempty"`
-	// Any other associated metadata as a map of key-value pairs
-	Metadata map[string]string `json:"metadata,omitempty"`
 }
 
 type SaveRequest struct {

@@ -38,10 +38,6 @@ func (t *MemegenService) Templates(request *TemplatesRequest) (*TemplatesRespons
 }
 
 type Box struct {
-	// x axis position
-	X int32 `json:"x,omitempty"`
-	// y axis position
-	Y int32 `json:"y,omitempty"`
 	// colour hex code
 	Color string `json:"color,omitempty"`
 	// height in pixels
@@ -52,19 +48,23 @@ type Box struct {
 	Text string `json:"text,omitempty"`
 	// width in pixels
 	Width int32 `json:"width,omitempty"`
+	// x axis position
+	X int32 `json:"x,omitempty"`
+	// y axis position
+	Y int32 `json:"y,omitempty"`
 }
 
 type GenerateRequest struct {
+	// bottom text
+	BottomText string `json:"bottom_text,omitempty"`
+	// font: arial or impact
+	Font string `json:"font,omitempty"`
 	// the template id to use
 	Id string `json:"id,omitempty"`
 	// font size; defaults to 50px
 	MaxFontSize string `json:"max_font_size,omitempty"`
 	// top text
 	TopText string `json:"top_text,omitempty"`
-	// bottom text
-	BottomText string `json:"bottom_text,omitempty"`
-	// font: arial or impact
-	Font string `json:"font,omitempty"`
 }
 
 type GenerateResponse struct {

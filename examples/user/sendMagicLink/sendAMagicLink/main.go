@@ -11,10 +11,10 @@ import (
 func main() {
 	client := m3o.New(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := client.User.SendMagicLink(&user.SendMagicLinkRequest{
-		Address:  "www.example.com",
-		Endpoint: "verifytoken",
 		Email:    "joe@example.com",
 		Subject:  "MagicLink to access your account",
+		Address:  "www.example.com",
+		Endpoint: "verifytoken",
 	})
 	fmt.Println(rsp, err)
 }

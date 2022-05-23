@@ -4,6 +4,33 @@ An [m3o.com](https://m3o.com) API. For example usage see [m3o.com/evchargers/api
 
 Endpoints:
 
+## ReferenceData
+
+Retrieve reference data as used by this API and in conjunction with the Search endpoint
+
+
+[https://m3o.com/evchargers/api#ReferenceData](https://m3o.com/evchargers/api#ReferenceData)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"go.m3o.com/evchargers"
+)
+
+// Retrieve reference data as used by this API and in conjunction with the Search endpoint
+func GetReferenceData() {
+	evchargersService := evchargers.NewEvchargersService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := evchargersService.ReferenceData(&evchargers.ReferenceDataRequest{
+		
+	})
+	fmt.Println(rsp, err)
+	
+}
+```
 ## Search
 
 Search by giving a coordinate and a max distance, or bounding box and optional filters
@@ -59,8 +86,8 @@ func SearchByBoundingBox() {
 	rsp, err := evchargersService.Search(&evchargers.SearchRequest{
 		Box: &evchargers.BoundingBox{
 BottomLeft: &evchargers.Coordinates{
-Longitude: -0.03635349400295168,
 Latitude: 51.52627543859447,
+Longitude: -0.03635349400295168,
 },
 TopRight: &evchargers.Coordinates{
 Latitude: 51.56717121807993,
@@ -103,33 +130,6 @@ MaxResults: 2,
 Levels: []string{
 "3",
 },
-	})
-	fmt.Println(rsp, err)
-	
-}
-```
-## ReferenceData
-
-Retrieve reference data as used by this API and in conjunction with the Search endpoint
-
-
-[https://m3o.com/evchargers/api#ReferenceData](https://m3o.com/evchargers/api#ReferenceData)
-
-```go
-package example
-
-import(
-	"fmt"
-	"os"
-
-	"go.m3o.com/evchargers"
-)
-
-// Retrieve reference data as used by this API and in conjunction with the Search endpoint
-func GetReferenceData() {
-	evchargersService := evchargers.NewEvchargersService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := evchargersService.ReferenceData(&evchargers.ReferenceDataRequest{
-		
 	})
 	fmt.Println(rsp, err)
 	

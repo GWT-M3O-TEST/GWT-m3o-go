@@ -11,9 +11,9 @@ import (
 func main() {
 	client := m3o.New(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := client.Rss.Add(&rss.AddRequest{
+		Name:     "bbc",
 		Url:      "http://feeds.bbci.co.uk/news/rss.xml",
 		Category: "news",
-		Name:     "bbc",
 	})
 	fmt.Println(rsp, err)
 }

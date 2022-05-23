@@ -81,10 +81,10 @@ type DecrementRequest struct {
 }
 
 type DecrementResponse struct {
-	// The key decremented
-	Key string `json:"key,omitempty"`
 	// The new value
 	Value int64 `json:"value,string,omitempty"`
+	// The key decremented
+	Key string `json:"key,omitempty"`
 }
 
 type DeleteRequest struct {
@@ -112,17 +112,17 @@ type GetResponse struct {
 }
 
 type IncrementRequest struct {
-	// The amount to increment the value by
-	Value int64 `json:"value,string,omitempty"`
 	// The key to increment
 	Key string `json:"key,omitempty"`
+	// The amount to increment the value by
+	Value int64 `json:"value,string,omitempty"`
 }
 
 type IncrementResponse struct {
-	// The key incremented
-	Key string `json:"key,omitempty"`
 	// The new value
 	Value int64 `json:"value,string,omitempty"`
+	// The key incremented
+	Key string `json:"key,omitempty"`
 }
 
 type ListKeysRequest struct {
