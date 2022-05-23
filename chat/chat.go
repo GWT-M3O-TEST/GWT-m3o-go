@@ -118,14 +118,14 @@ func (t *ChatService) Send(request *SendRequest) (*SendResponse, error) {
 }
 
 type CreateRequest struct {
+	// chat description
+	Description string `json:"description,omitempty"`
 	// name of the room
 	Name string `json:"name,omitempty"`
 	// whether its a private room
 	Private bool `json:"private,omitempty"`
 	// optional list of user ids
 	UserIds []string `json:"user_ids,omitempty"`
-	// chat description
-	Description string `json:"description,omitempty"`
 }
 
 type CreateResponse struct {
@@ -164,10 +164,10 @@ type InviteResponse struct {
 }
 
 type JoinRequest struct {
-	// chat room to join
-	RoomId string `json:"room_id,omitempty"`
 	// user id joining
 	UserId string `json:"user_id,omitempty"`
+	// chat room to join
+	RoomId string `json:"room_id,omitempty"`
 }
 
 type JoinResponse struct {
@@ -206,10 +206,6 @@ type ListResponse struct {
 }
 
 type Message struct {
-	// text of the message
-	Text string `json:"text,omitempty"`
-	// id of the user who sent the message
-	UserId string `json:"user_id,omitempty"`
 	// a client side id, should be validated by the server to make the request retry safe
 	Client string `json:"client,omitempty"`
 	// id of the message, allocated by the server
@@ -220,6 +216,10 @@ type Message struct {
 	SentAt string `json:"sent_at,omitempty"`
 	// subject of the message
 	Subject string `json:"subject,omitempty"`
+	// text of the message
+	Text string `json:"text,omitempty"`
+	// id of the user who sent the message
+	UserId string `json:"user_id,omitempty"`
 }
 
 type Room struct {
@@ -238,6 +238,8 @@ type Room struct {
 }
 
 type SendRequest struct {
+	// id of the user who sent the message
+	UserId string `json:"user_id,omitempty"`
 	// a client side id, should be validated by the server to make the request retry safe
 	Client string `json:"client,omitempty"`
 	// id of the chat room the message is being sent to / from
@@ -246,8 +248,6 @@ type SendRequest struct {
 	Subject string `json:"subject,omitempty"`
 	// text of the message
 	Text string `json:"text,omitempty"`
-	// id of the user who sent the message
-	UserId string `json:"user_id,omitempty"`
 }
 
 type SendResponse struct {

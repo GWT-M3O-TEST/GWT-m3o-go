@@ -124,8 +124,6 @@ type DownloadResponse struct {
 }
 
 type HeadObject struct {
-	// when was this created
-	Created string `json:"created,omitempty"`
 	// when was this last modified
 	Modified string `json:"modified,omitempty"`
 	Name     string `json:"name,omitempty"`
@@ -133,6 +131,8 @@ type HeadObject struct {
 	Url string `json:"url,omitempty"`
 	// is this public or private
 	Visibility string `json:"visibility,omitempty"`
+	// when was this created
+	Created string `json:"created,omitempty"`
 }
 
 type HeadRequest struct {
@@ -173,6 +173,8 @@ type ReadResponse struct {
 }
 
 type SpaceObject struct {
+	// when was this created
+	Created string `json:"created,omitempty"`
 	// the data within the object
 	Data string `json:"data,omitempty"`
 	// when was this last modified
@@ -183,8 +185,6 @@ type SpaceObject struct {
 	Url string `json:"url,omitempty"`
 	// is this public or private
 	Visibility string `json:"visibility,omitempty"`
-	// when was this created
-	Created string `json:"created,omitempty"`
 }
 
 type UpdateRequest struct {

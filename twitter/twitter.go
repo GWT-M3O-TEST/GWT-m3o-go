@@ -56,26 +56,26 @@ func (t *TwitterService) User(request *UserRequest) (*UserResponse, error) {
 }
 
 type Profile struct {
-	// the username
-	Username string `json:"username,omitempty"`
-	// if the account is verified
-	Verified bool `json:"verified,omitempty"`
+	// the follower count
+	Followers int64 `json:"followers,string,omitempty"`
+	// The user's profile picture
+	ImageUrl string `json:"image_url,omitempty"`
 	// the user's location
 	Location string `json:"location,omitempty"`
 	// display name of the user
 	Name string `json:"name,omitempty"`
-	// the follower count
-	Followers int64 `json:"followers,string,omitempty"`
-	// the user id
-	Id int64 `json:"id,string,omitempty"`
-	// The user's profile picture
-	ImageUrl string `json:"image_url,omitempty"`
-	// if the account is private
-	Private bool `json:"private,omitempty"`
 	// the account creation date
 	CreatedAt string `json:"created_at,omitempty"`
 	// the user description
 	Description string `json:"description,omitempty"`
+	// the user id
+	Id int64 `json:"id,string,omitempty"`
+	// if the account is private
+	Private bool `json:"private,omitempty"`
+	// the username
+	Username string `json:"username,omitempty"`
+	// if the account is verified
+	Verified bool `json:"verified,omitempty"`
 }
 
 type SearchRequest struct {
@@ -103,12 +103,12 @@ type TimelineResponse struct {
 }
 
 type Trend struct {
+	// name of the trend
+	Name string `json:"name,omitempty"`
 	// the volume of tweets in last 24 hours
 	TweetVolume int64 `json:"tweet_volume,string,omitempty"`
 	// the twitter url
 	Url string `json:"url,omitempty"`
-	// name of the trend
-	Name string `json:"name,omitempty"`
 }
 
 type TrendsRequest struct {

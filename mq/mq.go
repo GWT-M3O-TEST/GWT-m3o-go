@@ -69,8 +69,8 @@ type SubscribeRequest struct {
 }
 
 type SubscribeResponse struct {
-	// The next json message on the topic
-	Message map[string]interface{} `json:"message,omitempty"`
 	// The topic subscribed to
 	Topic string `json:"topic,omitempty"`
+	// The next json message on the topic
+	Message map[string]interface{} `json:"message,omitempty"`
 }

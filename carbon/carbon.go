@@ -32,14 +32,14 @@ type OffsetRequest struct {
 }
 
 type OffsetResponse struct {
-	// the metric used e.g KG or Tonnes
-	Metric string `json:"metric,omitempty"`
 	// projects it was allocated to
 	Projects []Project `json:"projects,omitempty"`
 	// number of tonnes
 	Tonnes float64 `json:"tonnes,omitempty"`
 	// number of units purchased
 	Units int32 `json:"units,omitempty"`
+	// the metric used e.g KG or Tonnes
+	Metric string `json:"metric,omitempty"`
 }
 
 type Project struct {

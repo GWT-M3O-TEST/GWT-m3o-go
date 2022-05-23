@@ -25,9 +25,9 @@ import(
 func AddAprice() {
 	priceService := price.NewPriceService(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := priceService.Add(&price.AddRequest{
-		Currency: "USD",
-Name: "bitcoin",
+		Name: "bitcoin",
 Price: 39037.97,
+Currency: "USD",
 	})
 	fmt.Println(rsp, err)
 	

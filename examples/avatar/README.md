@@ -25,10 +25,10 @@ import(
 func GenerateAvatarAndReturnBase64stringOfTheAvatar() {
 	avatarService := avatar.NewAvatarService(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := avatarService.Generate(&avatar.GenerateRequest{
-		Gender: "female",
-Username: "",
-Format: "jpeg",
+		Format: "jpeg",
 Upload: false,
+Gender: "female",
+Username: "",
 	})
 	fmt.Println(rsp, err)
 	

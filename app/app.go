@@ -135,16 +135,16 @@ type RegionsResponse struct {
 }
 
 type Reservation struct {
+	// name of the app
+	Name string `json:"name,omitempty"`
+	// owner id
+	Owner string `json:"owner,omitempty"`
 	// associated token
 	Token string `json:"token,omitempty"`
 	// time of reservation
 	Created string `json:"created,omitempty"`
 	// time reservation expires
 	Expires string `json:"expires,omitempty"`
-	// name of the app
-	Name string `json:"name,omitempty"`
-	// owner id
-	Owner string `json:"owner,omitempty"`
 }
 
 type ReserveRequest struct {
@@ -188,30 +188,30 @@ type RunResponse struct {
 }
 
 type Service struct {
-	// source repository
-	Repo string `json:"repo,omitempty"`
-	// last updated
-	Updated string `json:"updated,omitempty"`
-	// branch of code
-	Branch string `json:"branch,omitempty"`
-	// name of the app
-	Name string `json:"name,omitempty"`
 	// associated env vars
 	EnvVars map[string]string `json:"env_vars,omitempty"`
 	// unique id
 	Id string `json:"id,omitempty"`
-	// port running on
-	Port int32 `json:"port,omitempty"`
 	// region running in
 	Region string `json:"region,omitempty"`
+	// branch of code
+	Branch string `json:"branch,omitempty"`
+	// custom domains
+	CustomDomains []string `json:"custom_domains,omitempty"`
+	// name of the app
+	Name string `json:"name,omitempty"`
+	// port running on
+	Port int32 `json:"port,omitempty"`
+	// source repository
+	Repo string `json:"repo,omitempty"`
 	// status of the app
 	Status string `json:"status,omitempty"`
+	// last updated
+	Updated string `json:"updated,omitempty"`
 	// app url
 	Url string `json:"url,omitempty"`
 	// time of creation
 	Created string `json:"created,omitempty"`
-	// custom domains
-	CustomDomains []string `json:"custom_domains,omitempty"`
 }
 
 type StatusRequest struct {

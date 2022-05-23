@@ -45,10 +45,10 @@ type CountriesResponse struct {
 }
 
 type Country struct {
-	// The English name of the country
-	Name string `json:"name,omitempty"`
 	// The 2 letter country code (as defined in ISO 3166-1 alpha-2)
 	Code string `json:"code,omitempty"`
+	// The English name of the country
+	Name string `json:"name,omitempty"`
 }
 
 type Holiday struct {

@@ -139,21 +139,6 @@ type DeleteResponse struct {
 }
 
 type DeployRequest struct {
-	// inline source code
-	Source string `json:"source,omitempty"`
-	// branch to deploy. defaults to master
-	Branch string `json:"branch,omitempty"`
-	// entry point, ie. handler name in the source code
-	// if not provided, defaults to the name parameter
-	Entrypoint string `json:"entrypoint,omitempty"`
-	// function name
-	Name string `json:"name,omitempty"`
-	// region to deploy in. defaults to europe-west1
-	Region string `json:"region,omitempty"`
-	// environment variables to pass in at runtime
-	EnvVars map[string]string `json:"env_vars,omitempty"`
-	// github url for a repo
-	Repo string `json:"repo,omitempty"`
 	// runtime/lanaguage of the function e.g php74,
 	// nodejs6, nodejs8, nodejs10, nodejs12, nodejs14, nodejs16,
 	// dotnet3, java11, ruby26, ruby27, go111, go113, go116,
@@ -161,6 +146,21 @@ type DeployRequest struct {
 	Runtime string `json:"runtime,omitempty"`
 	// optional subfolder path
 	Subfolder string `json:"subfolder,omitempty"`
+	// branch to deploy. defaults to master
+	Branch string `json:"branch,omitempty"`
+	// function name
+	Name string `json:"name,omitempty"`
+	// region to deploy in. defaults to europe-west1
+	Region string `json:"region,omitempty"`
+	// github url for a repo
+	Repo string `json:"repo,omitempty"`
+	// inline source code
+	Source string `json:"source,omitempty"`
+	// entry point, ie. handler name in the source code
+	// if not provided, defaults to the name parameter
+	Entrypoint string `json:"entrypoint,omitempty"`
+	// environment variables to pass in at runtime
+	EnvVars map[string]string `json:"env_vars,omitempty"`
 }
 
 type DeployResponse struct {
@@ -178,38 +178,38 @@ type DescribeResponse struct {
 }
 
 type Func struct {
+	// branch to deploy. defaults to master
+	Branch string `json:"branch,omitempty"`
+	// time of creation
+	Created string `json:"created,omitempty"`
+	// subfolder path to entrypoint
+	Subfolder string `json:"subfolder,omitempty"`
+	// unique url of the function
+	Url string `json:"url,omitempty"`
+	// git repo address
+	Repo string `json:"repo,omitempty"`
 	// runtime/language of the function e.g php74,
 	// nodejs6, nodejs8, nodejs10, nodejs12, nodejs14, nodejs16,
 	// dotnet3, java11, ruby26, ruby27, go111, go113, go116,
 	// python37, python38, python39
 	Runtime string `json:"runtime,omitempty"`
-	// associated env vars
-	EnvVars map[string]string `json:"env_vars,omitempty"`
-	// id of the function
-	Id string `json:"id,omitempty"`
-	// git repo address
-	Repo string `json:"repo,omitempty"`
 	// time it was updated
 	Updated string `json:"updated,omitempty"`
-	// the source code
-	Source string `json:"source,omitempty"`
-	// eg. ACTIVE, DEPLOY_IN_PROGRESS, OFFLINE etc
-	Status string `json:"status,omitempty"`
-	// time of creation
-	Created string `json:"created,omitempty"`
 	// name of handler in source code
 	Entrypoint string `json:"entrypoint,omitempty"`
-	// region to deploy in. defaults to europe-west1
-	Region string `json:"region,omitempty"`
-	// subfolder path to entrypoint
-	Subfolder string `json:"subfolder,omitempty"`
-	// unique url of the function
-	Url string `json:"url,omitempty"`
-	// branch to deploy. defaults to master
-	Branch string `json:"branch,omitempty"`
+	// id of the function
+	Id string `json:"id,omitempty"`
 	// function name
 	// limitation: must be unique across projects
 	Name string `json:"name,omitempty"`
+	// region to deploy in. defaults to europe-west1
+	Region string `json:"region,omitempty"`
+	// the source code
+	Source string `json:"source,omitempty"`
+	// associated env vars
+	EnvVars map[string]string `json:"env_vars,omitempty"`
+	// eg. ACTIVE, DEPLOY_IN_PROGRESS, OFFLINE etc
+	Status string `json:"status,omitempty"`
 }
 
 type ListRequest struct {
@@ -279,10 +279,10 @@ type RuntimesResponse struct {
 }
 
 type UpdateRequest struct {
-	// inline source code
-	Source string `json:"source,omitempty"`
 	// function name
 	Name string `json:"name,omitempty"`
+	// inline source code
+	Source string `json:"source,omitempty"`
 }
 
 type UpdateResponse struct {

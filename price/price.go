@@ -65,10 +65,6 @@ func (t *PriceService) Report(request *ReportRequest) (*ReportResponse, error) {
 }
 
 type AddRequest struct {
-	// symbol of value
-	Symbol string `json:"symbol,omitempty"`
-	// author of the price
-	Author string `json:"author,omitempty"`
 	// currency e.g USD
 	Currency string `json:"currency,omitempty"`
 	// name of the thing e.g bitcoin
@@ -77,6 +73,10 @@ type AddRequest struct {
 	Price float64 `json:"price,omitempty"`
 	// source of the price
 	Source string `json:"source,omitempty"`
+	// symbol of value
+	Symbol string `json:"symbol,omitempty"`
+	// author of the price
+	Author string `json:"author,omitempty"`
 }
 
 type AddResponse struct {
@@ -84,12 +84,12 @@ type AddResponse struct {
 }
 
 type GetRequest struct {
+	// currency to get
+	Currency string `json:"currency,omitempty"`
 	// name of the value
 	Name string `json:"name,omitempty"`
 	// symbol of value
 	Symbol string `json:"symbol,omitempty"`
-	// currency to get
-	Currency string `json:"currency,omitempty"`
 }
 
 type GetResponse struct {
@@ -145,6 +145,10 @@ type ReportResponse struct {
 }
 
 type Value struct {
+	// name of thing
+	Name string `json:"name,omitempty"`
+	// price of thing
+	Price float64 `json:"price,omitempty"`
 	// where it came from
 	Source string `json:"source,omitempty"`
 	// symbol of value
@@ -155,8 +159,4 @@ type Value struct {
 	Author string `json:"author,omitempty"`
 	// currency of thing
 	Currency string `json:"currency,omitempty"`
-	// name of thing
-	Name string `json:"name,omitempty"`
-	// price of thing
-	Price float64 `json:"price,omitempty"`
 }

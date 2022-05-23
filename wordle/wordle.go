@@ -82,8 +82,8 @@ type NextRequest struct {
 }
 
 type NextResponse struct {
-	// number of seconds
-	Seconds int32 `json:"seconds,omitempty"`
 	// in hh:mm:ss
 	Duration string `json:"duration,omitempty"`
+	// number of seconds
+	Seconds int32 `json:"seconds,omitempty"`
 }

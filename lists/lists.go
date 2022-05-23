@@ -90,10 +90,10 @@ func (t *ListsService) Update(request *UpdateRequest) (*UpdateResponse, error) {
 }
 
 type CreateRequest struct {
-	// list name
-	Name string `json:"name,omitempty"`
 	// list items
 	Items []string `json:"items,omitempty"`
+	// list name
+	Name string `json:"name,omitempty"`
 }
 
 type CreateResponse struct {

@@ -51,10 +51,10 @@ type Location struct {
 }
 
 type LookupRequest struct {
-	Address  string `json:"address,omitempty"`
-	City     string `json:"city,omitempty"`
 	Country  string `json:"country,omitempty"`
 	Postcode string `json:"postcode,omitempty"`
+	Address  string `json:"address,omitempty"`
+	City     string `json:"city,omitempty"`
 }
 
 type LookupResponse struct {

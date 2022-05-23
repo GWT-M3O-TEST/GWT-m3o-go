@@ -25,9 +25,9 @@ import(
 func PublishAnEvent() {
 	eventService := event.NewEventService(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := eventService.Publish(&event.PublishRequest{
-		Message: &event.Json{
+		Topic: "user",
+Message: &event.Json{
 },
-Topic: "user",
 	})
 	fmt.Println(rsp, err)
 	

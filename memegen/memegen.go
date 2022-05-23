@@ -38,10 +38,6 @@ func (t *MemegenService) Templates(request *TemplatesRequest) (*TemplatesRespons
 }
 
 type Box struct {
-	// width in pixels
-	Width int32 `json:"width,omitempty"`
-	// x axis position
-	X int32 `json:"x,omitempty"`
 	// y axis position
 	Y int32 `json:"y,omitempty"`
 	// colour hex code
@@ -52,19 +48,23 @@ type Box struct {
 	Outline string `json:"outline,omitempty"`
 	// text to display
 	Text string `json:"text,omitempty"`
+	// width in pixels
+	Width int32 `json:"width,omitempty"`
+	// x axis position
+	X int32 `json:"x,omitempty"`
 }
 
 type GenerateRequest struct {
+	// top text
+	TopText string `json:"top_text,omitempty"`
+	// bottom text
+	BottomText string `json:"bottom_text,omitempty"`
 	// font: arial or impact
 	Font string `json:"font,omitempty"`
 	// the template id to use
 	Id string `json:"id,omitempty"`
 	// font size; defaults to 50px
 	MaxFontSize string `json:"max_font_size,omitempty"`
-	// top text
-	TopText string `json:"top_text,omitempty"`
-	// bottom text
-	BottomText string `json:"bottom_text,omitempty"`
 }
 
 type GenerateResponse struct {
@@ -73,6 +73,8 @@ type GenerateResponse struct {
 }
 
 type Template struct {
+	// url of the memegen
+	Url string `json:"url,omitempty"`
 	// width in pixels
 	Width int32 `json:"width,omitempty"`
 	// number of boxes used
@@ -83,8 +85,6 @@ type Template struct {
 	Id string `json:"id,omitempty"`
 	// name of the memegen
 	Name string `json:"name,omitempty"`
-	// url of the memegen
-	Url string `json:"url,omitempty"`
 }
 
 type TemplatesRequest struct {

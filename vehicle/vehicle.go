@@ -34,36 +34,36 @@ type LookupRequest struct {
 }
 
 type LookupResponse struct {
+	// engine capacity
+	EngineCapacity int32 `json:"engine_capacity,omitempty"`
+	// date of last v5 issue
+	LastV5Issued string `json:"last_v5_issued,omitempty"`
+	// mot status
+	MotStatus string `json:"mot_status,omitempty"`
 	// colour of vehicle
 	Colour string `json:"colour,omitempty"`
 	// make of vehicle
 	Make string `json:"make,omitempty"`
-	// engine capacity
-	EngineCapacity int32 `json:"engine_capacity,omitempty"`
-	// mot status
-	MotStatus string `json:"mot_status,omitempty"`
-	// tax status
-	TaxStatus string `json:"tax_status,omitempty"`
-	// wheel plan
-	Wheelplan string `json:"wheelplan,omitempty"`
 	// year of manufacture
 	YearOfManufacture int32 `json:"year_of_manufacture,omitempty"`
 	// co2 emmissions
 	Co2Emissions float64 `json:"co2_emissions,omitempty"`
-	// mot expiry
-	MotExpiry string `json:"mot_expiry,omitempty"`
-	// type approvale
-	TypeApproval string `json:"type_approval,omitempty"`
 	// fuel type e.g petrol, diesel
 	FuelType string `json:"fuel_type,omitempty"`
-	// date of last v5 issue
-	LastV5Issued string `json:"last_v5_issued,omitempty"`
+	// mot expiry
+	MotExpiry string `json:"mot_expiry,omitempty"`
+	// tax due data
+	TaxDueDate string `json:"tax_due_date,omitempty"`
+	// type approvale
+	TypeApproval string `json:"type_approval,omitempty"`
 	// url of logo for the make
 	LogoUrl string `json:"logo_url,omitempty"`
 	// month of first registration
 	MonthOfFirstRegistration string `json:"month_of_first_registration,omitempty"`
 	// registration number
 	Registration string `json:"registration,omitempty"`
-	// tax due data
-	TaxDueDate string `json:"tax_due_date,omitempty"`
+	// tax status
+	TaxStatus string `json:"tax_status,omitempty"`
+	// wheel plan
+	Wheelplan string `json:"wheelplan,omitempty"`
 }

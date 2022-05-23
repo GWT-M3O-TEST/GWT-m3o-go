@@ -70,23 +70,23 @@ type CodesResponse struct {
 }
 
 type ConvertRequest struct {
+	// optional amount to convert e.g 10.0
+	Amount float64 `json:"amount,omitempty"`
 	// base code to convert from e.g USD
 	From string `json:"from,omitempty"`
 	// target code to convert to e.g GBP
 	To string `json:"to,omitempty"`
-	// optional amount to convert e.g 10.0
-	Amount float64 `json:"amount,omitempty"`
 }
 
 type ConvertResponse struct {
+	// the target code e.g GBP
+	To string `json:"to,omitempty"`
 	// converted amount e.g 7.10
 	Amount float64 `json:"amount,omitempty"`
 	// the base code e.g USD
 	From string `json:"from,omitempty"`
 	// conversion rate e.g 0.71
 	Rate float64 `json:"rate,omitempty"`
-	// the target code e.g GBP
-	To string `json:"to,omitempty"`
 }
 
 type HistoryRequest struct {

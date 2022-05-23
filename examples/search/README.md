@@ -110,8 +110,8 @@ import(
 func SearchOnMultipleFieldsor() {
 	searchService := search.NewSearchService(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := searchService.Search(&search.SearchRequest{
-		Query: "name == 'John' OR name == 'Jane'",
-Index: "customers",
+		Index: "customers",
+Query: "name == 'John' OR name == 'Jane'",
 	})
 	fmt.Println(rsp, err)
 	
@@ -138,8 +138,8 @@ import(
 func DeleteArecord() {
 	searchService := search.NewSearchService(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := searchService.Delete(&search.DeleteRequest{
-		Id: "1234",
-Index: "customers",
+		Index: "customers",
+Id: "1234",
 	})
 	fmt.Println(rsp, err)
 	
