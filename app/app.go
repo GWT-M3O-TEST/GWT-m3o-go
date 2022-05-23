@@ -168,8 +168,6 @@ type ResolveResponse struct {
 }
 
 type RunRequest struct {
-	// associated env vars to pass in
-	EnvVars map[string]string `json:"env_vars,omitempty"`
 	// name of the app
 	Name string `json:"name,omitempty"`
 	// port to run on
@@ -180,6 +178,8 @@ type RunRequest struct {
 	Repo string `json:"repo,omitempty"`
 	// branch. defaults to master
 	Branch string `json:"branch,omitempty"`
+	// associated env vars to pass in
+	EnvVars map[string]string `json:"env_vars,omitempty"`
 }
 
 type RunResponse struct {
@@ -188,30 +188,30 @@ type RunResponse struct {
 }
 
 type Service struct {
-	// associated env vars
-	EnvVars map[string]string `json:"env_vars,omitempty"`
 	// unique id
 	Id string `json:"id,omitempty"`
-	// region running in
-	Region string `json:"region,omitempty"`
-	// branch of code
-	Branch string `json:"branch,omitempty"`
-	// custom domains
-	CustomDomains []string `json:"custom_domains,omitempty"`
 	// name of the app
 	Name string `json:"name,omitempty"`
 	// port running on
 	Port int32 `json:"port,omitempty"`
+	// region running in
+	Region string `json:"region,omitempty"`
+	// last updated
+	Updated string `json:"updated,omitempty"`
+	// branch of code
+	Branch string `json:"branch,omitempty"`
+	// time of creation
+	Created string `json:"created,omitempty"`
+	// associated env vars
+	EnvVars map[string]string `json:"env_vars,omitempty"`
+	// app url
+	Url string `json:"url,omitempty"`
+	// custom domains
+	CustomDomains []string `json:"custom_domains,omitempty"`
 	// source repository
 	Repo string `json:"repo,omitempty"`
 	// status of the app
 	Status string `json:"status,omitempty"`
-	// last updated
-	Updated string `json:"updated,omitempty"`
-	// app url
-	Url string `json:"url,omitempty"`
-	// time of creation
-	Created string `json:"created,omitempty"`
 }
 
 type StatusRequest struct {

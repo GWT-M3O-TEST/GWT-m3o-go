@@ -34,12 +34,6 @@ type LookupRequest struct {
 }
 
 type LookupResponse struct {
-	// Timezone e.g Europe/Rome
-	Timezone string `json:"timezone,omitempty"`
-	// Autonomous system number
-	Asn int32 `json:"asn,omitempty"`
-	// Name of the city
-	City string `json:"city,omitempty"`
 	// Name of the continent
 	Continent string `json:"continent,omitempty"`
 	// Name of the country
@@ -50,4 +44,10 @@ type LookupResponse struct {
 	Latitude float64 `json:"latitude,omitempty"`
 	// Longitude e.g 13.428555
 	Longitude float64 `json:"longitude,omitempty"`
+	// Timezone e.g Europe/Rome
+	Timezone string `json:"timezone,omitempty"`
+	// Autonomous system number
+	Asn int32 `json:"asn,omitempty"`
+	// Name of the city
+	City string `json:"city,omitempty"`
 }

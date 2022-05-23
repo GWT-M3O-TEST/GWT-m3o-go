@@ -11,8 +11,8 @@ import (
 func main() {
 	client := m3o.New(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := client.Holidays.List(&holidays.ListRequest{
-		CountryCode: "GB",
 		Year:        2022,
+		CountryCode: "GB",
 	})
 	fmt.Println(rsp, err)
 }

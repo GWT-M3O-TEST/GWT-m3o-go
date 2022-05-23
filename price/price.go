@@ -113,12 +113,12 @@ type IndexResponse struct {
 }
 
 type ListRequest struct {
-	// currency to get
-	Currency string `json:"currency,omitempty"`
 	// limit number of values
 	Limit int32 `json:"limit,omitempty"`
 	// offset to read from
 	Offset int32 `json:"offset,omitempty"`
+	// currency to get
+	Currency string `json:"currency,omitempty"`
 }
 
 type ListResponse struct {
@@ -145,10 +145,6 @@ type ReportResponse struct {
 }
 
 type Value struct {
-	// name of thing
-	Name string `json:"name,omitempty"`
-	// price of thing
-	Price float64 `json:"price,omitempty"`
 	// where it came from
 	Source string `json:"source,omitempty"`
 	// symbol of value
@@ -159,4 +155,8 @@ type Value struct {
 	Author string `json:"author,omitempty"`
 	// currency of thing
 	Currency string `json:"currency,omitempty"`
+	// name of thing
+	Name string `json:"name,omitempty"`
+	// price of thing
+	Price float64 `json:"price,omitempty"`
 }

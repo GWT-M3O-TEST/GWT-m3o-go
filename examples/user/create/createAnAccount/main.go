@@ -11,10 +11,10 @@ import (
 func main() {
 	client := m3o.New(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := client.User.Create(&user.CreateRequest{
+		Id:       "user-1",
 		Username: "joe",
 		Email:    "joe@example.com",
 		Password: "Password1",
-		Id:       "user-1",
 	})
 	fmt.Println(rsp, err)
 }

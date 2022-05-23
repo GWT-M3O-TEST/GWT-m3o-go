@@ -97,12 +97,12 @@ type HistoryRequest struct {
 }
 
 type HistoryResponse struct {
-	// The code of the request
-	Code string `json:"code,omitempty"`
 	// The date requested
 	Date string `json:"date,omitempty"`
 	// The rate for the day as code:rate
 	Rates map[string]float64 `json:"rates,omitempty"`
+	// The code of the request
+	Code string `json:"code,omitempty"`
 }
 
 type RatesRequest struct {

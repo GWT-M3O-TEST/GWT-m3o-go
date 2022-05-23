@@ -4,63 +4,6 @@ An [m3o.com](https://m3o.com) API. For example usage see [m3o.com/price/api](htt
 
 Endpoints:
 
-## Add
-
-Add a price
-
-
-[https://m3o.com/price/api#Add](https://m3o.com/price/api#Add)
-
-```go
-package example
-
-import(
-	"fmt"
-	"os"
-
-	"go.m3o.com/price"
-)
-
-// Add a price
-func AddAprice() {
-	priceService := price.NewPriceService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := priceService.Add(&price.AddRequest{
-		Name: "bitcoin",
-Price: 39037.97,
-Currency: "USD",
-	})
-	fmt.Println(rsp, err)
-	
-}
-```
-## Get
-
-Get the price of anything
-
-
-[https://m3o.com/price/api#Get](https://m3o.com/price/api#Get)
-
-```go
-package example
-
-import(
-	"fmt"
-	"os"
-
-	"go.m3o.com/price"
-)
-
-// Get the price of anything
-func GetThePrice() {
-	priceService := price.NewPriceService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := priceService.Get(&price.GetRequest{
-		Name: "bitcoin",
-Currency: "USD",
-	})
-	fmt.Println(rsp, err)
-	
-}
-```
 ## List
 
 List prices for a given currency
@@ -136,9 +79,66 @@ import(
 func ReportAprice() {
 	priceService := price.NewPriceService(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := priceService.Report(&price.ReportRequest{
-		Name: "bitcoin",
-Symbol: "BTC",
+		Symbol: "BTC",
 Comment: "Price is not up to date",
+Name: "bitcoin",
+	})
+	fmt.Println(rsp, err)
+	
+}
+```
+## Add
+
+Add a price
+
+
+[https://m3o.com/price/api#Add](https://m3o.com/price/api#Add)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"go.m3o.com/price"
+)
+
+// Add a price
+func AddAprice() {
+	priceService := price.NewPriceService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := priceService.Add(&price.AddRequest{
+		Name: "bitcoin",
+Price: 39037.97,
+Currency: "USD",
+	})
+	fmt.Println(rsp, err)
+	
+}
+```
+## Get
+
+Get the price of anything
+
+
+[https://m3o.com/price/api#Get](https://m3o.com/price/api#Get)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"go.m3o.com/price"
+)
+
+// Get the price of anything
+func GetThePrice() {
+	priceService := price.NewPriceService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := priceService.Get(&price.GetRequest{
+		Name: "bitcoin",
+Currency: "USD",
 	})
 	fmt.Println(rsp, err)
 	

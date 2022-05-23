@@ -79,8 +79,8 @@ import(
 func GetHistoricData() {
 	stockService := stock.NewStockService(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := stockService.History(&stock.HistoryRequest{
-		Date: "2020-10-01",
-Stock: "AAPL",
+		Stock: "AAPL",
+Date: "2020-10-01",
 	})
 	fmt.Println(rsp, err)
 	

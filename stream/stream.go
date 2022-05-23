@@ -66,10 +66,10 @@ type Channel struct {
 }
 
 type CreateChannelRequest struct {
-	// description for the channel
-	Description string `json:"description,omitempty"`
 	// name of the channel
 	Name string `json:"name,omitempty"`
+	// description for the channel
+	Description string `json:"description,omitempty"`
 }
 
 type CreateChannelResponse struct {
@@ -97,16 +97,16 @@ type ListMessagesResponse struct {
 }
 
 type Message struct {
+	// the channel name
+	Channel string `json:"channel,omitempty"`
+	// id of the message
+	Id string `json:"id,omitempty"`
 	// the associated metadata
 	Metadata map[string]string `json:"metadata,omitempty"`
 	// text of the message
 	Text string `json:"text,omitempty"`
 	// time of message creation
 	Timestamp string `json:"timestamp,omitempty"`
-	// the channel name
-	Channel string `json:"channel,omitempty"`
-	// id of the message
-	Id string `json:"id,omitempty"`
 }
 
 type SendMessageRequest struct {

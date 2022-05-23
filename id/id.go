@@ -43,10 +43,10 @@ type GenerateRequest struct {
 }
 
 type GenerateResponse struct {
-	// the type of id generated
-	Type string `json:"type,omitempty"`
 	// the unique id generated
 	Id string `json:"id,omitempty"`
+	// the type of id generated
+	Type string `json:"type,omitempty"`
 }
 
 type TypesRequest struct {

@@ -111,12 +111,12 @@ type CountResponse struct {
 }
 
 type CreateRequest struct {
-	// JSON encoded record or records (can be array or object)
-	Record map[string]interface{} `json:"record,omitempty"`
 	// Optional table name. Defaults to 'default'
 	Table string `json:"table,omitempty"`
 	// optional record id to use
 	Id string `json:"id,omitempty"`
+	// JSON encoded record or records (can be array or object)
+	Record map[string]interface{} `json:"record,omitempty"`
 }
 
 type CreateResponse struct {
@@ -150,6 +150,11 @@ type ListTablesResponse struct {
 }
 
 type ReadRequest struct {
+	// Read by id. Equivalent to 'id == "your-id"'
+	Id string `json:"id,omitempty"`
+	// Maximum number of records to return. Default limit is 25.
+	// Maximum limit is 1000. Anything higher will return an error.
+	Limit  int32 `json:"limit,omitempty"`
 	Offset int32 `json:"offset,omitempty"`
 	// 'asc' (default), 'desc'
 	Order string `json:"order,omitempty"`
@@ -163,11 +168,6 @@ type ReadRequest struct {
 	Query string `json:"query,omitempty"`
 	// Optional table name. Defaults to 'default'
 	Table string `json:"table,omitempty"`
-	// Read by id. Equivalent to 'id == "your-id"'
-	Id string `json:"id,omitempty"`
-	// Maximum number of records to return. Default limit is 25.
-	// Maximum limit is 1000. Anything higher will return an error.
-	Limit int32 `json:"limit,omitempty"`
 }
 
 type ReadResponse struct {
@@ -193,12 +193,12 @@ type TruncateResponse struct {
 }
 
 type UpdateRequest struct {
+	// The id of the record. If not specified it is inferred from the 'id' field of the record
+	Id string `json:"id,omitempty"`
 	// record, JSON object
 	Record map[string]interface{} `json:"record,omitempty"`
 	// Optional table name. Defaults to 'default'
 	Table string `json:"table,omitempty"`
-	// The id of the record. If not specified it is inferred from the 'id' field of the record
-	Id string `json:"id,omitempty"`
 }
 
 type UpdateResponse struct {

@@ -52,10 +52,6 @@ type LookupRequest struct {
 }
 
 type LookupResponse struct {
-	// e.g 51.50354
-	Latitude float64 `json:"latitude,omitempty"`
-	// e.g -0.127695
-	Longitude float64 `json:"longitude,omitempty"`
 	// UK postcode e.g SW1A 2AA
 	Postcode string `json:"postcode,omitempty"`
 	// related region e.g London
@@ -66,6 +62,10 @@ type LookupResponse struct {
 	Country string `json:"country,omitempty"`
 	// e.g Westminster
 	District string `json:"district,omitempty"`
+	// e.g 51.50354
+	Latitude float64 `json:"latitude,omitempty"`
+	// e.g -0.127695
+	Longitude float64 `json:"longitude,omitempty"`
 }
 
 type RandomRequest struct {

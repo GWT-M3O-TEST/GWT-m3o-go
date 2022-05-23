@@ -38,8 +38,6 @@ func (t *MemegenService) Templates(request *TemplatesRequest) (*TemplatesRespons
 }
 
 type Box struct {
-	// y axis position
-	Y int32 `json:"y,omitempty"`
 	// colour hex code
 	Color string `json:"color,omitempty"`
 	// height in pixels
@@ -52,11 +50,11 @@ type Box struct {
 	Width int32 `json:"width,omitempty"`
 	// x axis position
 	X int32 `json:"x,omitempty"`
+	// y axis position
+	Y int32 `json:"y,omitempty"`
 }
 
 type GenerateRequest struct {
-	// top text
-	TopText string `json:"top_text,omitempty"`
 	// bottom text
 	BottomText string `json:"bottom_text,omitempty"`
 	// font: arial or impact
@@ -65,6 +63,8 @@ type GenerateRequest struct {
 	Id string `json:"id,omitempty"`
 	// font size; defaults to 50px
 	MaxFontSize string `json:"max_font_size,omitempty"`
+	// top text
+	TopText string `json:"top_text,omitempty"`
 }
 
 type GenerateResponse struct {
@@ -73,18 +73,18 @@ type GenerateResponse struct {
 }
 
 type Template struct {
-	// url of the memegen
-	Url string `json:"url,omitempty"`
-	// width in pixels
-	Width int32 `json:"width,omitempty"`
-	// number of boxes used
-	BoxCount int32 `json:"box_count,omitempty"`
 	// height in pixels
 	Height int32 `json:"height,omitempty"`
 	// id of the memegen
 	Id string `json:"id,omitempty"`
 	// name of the memegen
 	Name string `json:"name,omitempty"`
+	// url of the memegen
+	Url string `json:"url,omitempty"`
+	// width in pixels
+	Width int32 `json:"width,omitempty"`
+	// number of boxes used
+	BoxCount int32 `json:"box_count,omitempty"`
 }
 
 type TemplatesRequest struct {

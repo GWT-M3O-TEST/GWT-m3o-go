@@ -169,6 +169,12 @@ func (t *UserService) VerifyToken(request *VerifyTokenRequest) (*VerifyTokenResp
 }
 
 type Account struct {
+	// date of verification
+	VerificationDate int64 `json:"verification_date,string,omitempty"`
+	// if the account is verified
+	Verified bool `json:"verified,omitempty"`
+	// unix timestamp
+	Created int64 `json:"created,string,omitempty"`
 	// an email address
 	Email string `json:"email,omitempty"`
 	// unique account id
@@ -179,25 +185,19 @@ type Account struct {
 	Updated int64 `json:"updated,string,omitempty"`
 	// alphanumeric username
 	Username string `json:"username,omitempty"`
-	// date of verification
-	VerificationDate int64 `json:"verification_date,string,omitempty"`
-	// if the account is verified
-	Verified bool `json:"verified,omitempty"`
-	// unix timestamp
-	Created int64 `json:"created,string,omitempty"`
 }
 
 type CreateRequest struct {
+	// optional user profile as map<string,string>
+	Profile map[string]string `json:"profile,omitempty"`
+	// the username
+	Username string `json:"username,omitempty"`
 	// the email address
 	Email string `json:"email,omitempty"`
 	// optional account id
 	Id string `json:"id,omitempty"`
 	// the user password
 	Password string `json:"password,omitempty"`
-	// optional user profile as map<string,string>
-	Profile map[string]string `json:"profile,omitempty"`
-	// the username
-	Username string `json:"username,omitempty"`
 }
 
 type CreateResponse struct {
@@ -277,20 +277,26 @@ type ReadSessionResponse struct {
 }
 
 type ResetPasswordRequest struct {
-	// The code from the verification email
-	Code string `json:"code,omitempty"`
 	// confirm new password
 	ConfirmPassword string `json:"confirm_password,omitempty"`
 	// the email to reset the password for
 	Email string `json:"email,omitempty"`
 	// the new password
 	NewPassword string `json:"new_password,omitempty"`
+	// The code from the verification email
+	Code string `json:"code,omitempty"`
 }
 
 type ResetPasswordResponse struct {
 }
 
 type SendMagicLinkRequest struct {
+	// Display name of the sender for the email. Note: the email address will still be 'support@m3o.com'
+	FromName string `json:"from_name,omitempty"`
+	Subject  string `json:"subject,omitempty"`
+	// Text content of the email. Don't forget to include the string '$micro_verification_link' which will be replaced by the real verification link
+	// HTML emails are not available currently.
+	TextContent string `json:"text_content,omitempty"`
 	// Your web site address, example www.example.com or user.example.com
 	Address string `json:"address,omitempty"`
 	// the email address of the user
@@ -299,22 +305,12 @@ type SendMagicLinkRequest struct {
 	// calling M3O VerifyToken endpoint. You can return as a result a success,
 	// failed or redirect to another page.
 	Endpoint string `json:"endpoint,omitempty"`
-	// Display name of the sender for the email. Note: the email address will still be 'support@m3o.com'
-	FromName string `json:"from_name,omitempty"`
-	Subject  string `json:"subject,omitempty"`
-	// Text content of the email. Don't forget to include the string '$micro_verification_link' which will be replaced by the real verification link
-	// HTML emails are not available currently.
-	TextContent string `json:"text_content,omitempty"`
 }
 
 type SendMagicLinkResponse struct {
 }
 
 type SendPasswordResetEmailRequest struct {
-	// email address to send reset for
-	Email string `json:"email,omitempty"`
-	// Number of secs that the password reset email is valid for, defaults to 1800 secs (30 mins)
-	Expiration int64 `json:"expiration,string,omitempty"`
 	// Display name of the sender for the email. Note: the email address will still be 'noreply@email.m3ocontent.com'
 	FromName string `json:"from_name,omitempty"`
 	// subject of the email
@@ -322,12 +318,18 @@ type SendPasswordResetEmailRequest struct {
 	// Text content of the email. Don't forget to include the string '$code' which will be replaced by the real verification link
 	// HTML emails are not available currently.
 	TextContent string `json:"text_content,omitempty"`
+	// email address to send reset for
+	Email string `json:"email,omitempty"`
+	// Number of secs that the password reset email is valid for, defaults to 1800 secs (30 mins)
+	Expiration int64 `json:"expiration,string,omitempty"`
 }
 
 type SendPasswordResetEmailResponse struct {
 }
 
 type SendVerificationEmailRequest struct {
+	// Text content of the email. Include '$micro_verification_link' which will be replaced by a verification link
+	TextContent string `json:"text_content,omitempty"`
 	// email address to send the verification code
 	Email string `json:"email,omitempty"`
 	// The url to redirect to incase of failure
@@ -338,8 +340,6 @@ type SendVerificationEmailRequest struct {
 	RedirectUrl string `json:"redirect_url,omitempty"`
 	// subject of the email
 	Subject string `json:"subject,omitempty"`
-	// Text content of the email. Include '$micro_verification_link' which will be replaced by a verification link
-	TextContent string `json:"text_content,omitempty"`
 }
 
 type SendVerificationEmailResponse struct {
@@ -347,13 +347,13 @@ type SendVerificationEmailResponse struct {
 
 type Session struct {
 	// unix timestamp
-	Created int64 `json:"created,string,omitempty"`
-	// unix timestamp
 	Expires int64 `json:"expires,string,omitempty"`
 	// the session id
 	Id string `json:"id,omitempty"`
 	// the associated user id
 	UserId string `json:"userId,omitempty"`
+	// unix timestamp
+	Created int64 `json:"created,string,omitempty"`
 }
 
 type UpdatePasswordRequest struct {
@@ -397,7 +397,7 @@ type VerifyTokenRequest struct {
 }
 
 type VerifyTokenResponse struct {
+	IsValid bool     `json:"is_valid,omitempty"`
 	Message string   `json:"message,omitempty"`
 	Session *Session `json:"session,omitempty"`
-	IsValid bool     `json:"is_valid,omitempty"`
 }

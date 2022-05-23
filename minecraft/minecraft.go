@@ -34,6 +34,12 @@ type PingRequest struct {
 }
 
 type PingResponse struct {
+	// List of connected players
+	Sample []PlayerSample `json:"sample,omitempty"`
+	// Version of the server
+	Version string `json:"version,omitempty"`
+	// Favicon in base64
+	Favicon string `json:"favicon,omitempty"`
 	// Latency (ms) between us and the server (EU)
 	Latency int32 `json:"latency,omitempty"`
 	// Max players ever
@@ -44,12 +50,6 @@ type PingResponse struct {
 	Players int32 `json:"players,omitempty"`
 	// Protocol number of the server
 	Protocol int32 `json:"protocol,omitempty"`
-	// List of connected players
-	Sample []PlayerSample `json:"sample,omitempty"`
-	// Version of the server
-	Version string `json:"version,omitempty"`
-	// Favicon in base64
-	Favicon string `json:"favicon,omitempty"`
 }
 
 type PlayerSample struct {
