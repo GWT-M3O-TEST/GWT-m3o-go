@@ -11,8 +11,8 @@ import (
 func main() {
 	client := m3o.New(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := client.Db.Update(&db.UpdateRequest{
-		Table:  "example",
 		Record: &db.Json{},
+		Table:  "example",
 	})
 	fmt.Println(rsp, err)
 }

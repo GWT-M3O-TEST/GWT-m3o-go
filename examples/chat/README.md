@@ -4,88 +4,6 @@ An [m3o.com](https://m3o.com) API. For example usage see [m3o.com/chat/api](http
 
 Endpoints:
 
-## Create
-
-Create a new chat room
-
-
-[https://m3o.com/chat/api#Create](https://m3o.com/chat/api#Create)
-
-```go
-package example
-
-import(
-	"fmt"
-	"os"
-
-	"go.m3o.com/chat"
-)
-
-// Create a new chat room
-func CreateAnewChat() {
-	chatService := chat.NewChatService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := chatService.Create(&chat.CreateRequest{
-		Name: "general",
-Description: "The general chat room",
-	})
-	fmt.Println(rsp, err)
-	
-}
-```
-## List
-
-List available chats
-
-
-[https://m3o.com/chat/api#List](https://m3o.com/chat/api#List)
-
-```go
-package example
-
-import(
-	"fmt"
-	"os"
-
-	"go.m3o.com/chat"
-)
-
-// List available chats
-func ListChatRooms() {
-	chatService := chat.NewChatService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := chatService.List(&chat.ListRequest{
-		
-	})
-	fmt.Println(rsp, err)
-	
-}
-```
-## Delete
-
-Delete a chat room
-
-
-[https://m3o.com/chat/api#Delete](https://m3o.com/chat/api#Delete)
-
-```go
-package example
-
-import(
-	"fmt"
-	"os"
-
-	"go.m3o.com/chat"
-)
-
-// Delete a chat room
-func DeleteAchat() {
-	chatService := chat.NewChatService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := chatService.Delete(&chat.DeleteRequest{
-		RoomId: "d8057208-f81a-4e14-ad7f-c29daa2bb910",
-	})
-	fmt.Println(rsp, err)
-	
-}
-```
 ## Invite
 
 Invite a user to a chat room
@@ -114,13 +32,12 @@ UserId: "user-1",
 	
 }
 ```
-## Send
+## History
 
-Connect to a chat to receive a stream of messages
-Send a message to a chat
+List the messages in a chat
 
 
-[https://m3o.com/chat/api#Send](https://m3o.com/chat/api#Send)
+[https://m3o.com/chat/api#History](https://m3o.com/chat/api#History)
 
 ```go
 package example
@@ -132,16 +49,11 @@ import(
 	"go.m3o.com/chat"
 )
 
-// Connect to a chat to receive a stream of messages
-// Send a message to a chat
-func SendAmessage() {
+// List the messages in a chat
+func GetChatHistory() {
 	chatService := chat.NewChatService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := chatService.Send(&chat.SendRequest{
+	rsp, err := chatService.History(&chat.HistoryRequest{
 		RoomId: "d8057208-f81a-4e14-ad7f-c29daa2bb910",
-UserId: "user-1",
-Client: "web",
-Subject: "Random",
-Text: "Hey whats up?",
 	})
 	fmt.Println(rsp, err)
 	
@@ -188,6 +100,94 @@ UserId: "user-2",
 	}
 }
 ```
+## Create
+
+Create a new chat room
+
+
+[https://m3o.com/chat/api#Create](https://m3o.com/chat/api#Create)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"go.m3o.com/chat"
+)
+
+// Create a new chat room
+func CreateAnewChat() {
+	chatService := chat.NewChatService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := chatService.Create(&chat.CreateRequest{
+		Name: "general",
+Description: "The general chat room",
+	})
+	fmt.Println(rsp, err)
+	
+}
+```
+## Delete
+
+Delete a chat room
+
+
+[https://m3o.com/chat/api#Delete](https://m3o.com/chat/api#Delete)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"go.m3o.com/chat"
+)
+
+// Delete a chat room
+func DeleteAchat() {
+	chatService := chat.NewChatService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := chatService.Delete(&chat.DeleteRequest{
+		RoomId: "d8057208-f81a-4e14-ad7f-c29daa2bb910",
+	})
+	fmt.Println(rsp, err)
+	
+}
+```
+## Send
+
+Connect to a chat to receive a stream of messages
+Send a message to a chat
+
+
+[https://m3o.com/chat/api#Send](https://m3o.com/chat/api#Send)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"go.m3o.com/chat"
+)
+
+// Connect to a chat to receive a stream of messages
+// Send a message to a chat
+func SendAmessage() {
+	chatService := chat.NewChatService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := chatService.Send(&chat.SendRequest{
+		Client: "web",
+Subject: "Random",
+Text: "Hey whats up?",
+RoomId: "d8057208-f81a-4e14-ad7f-c29daa2bb910",
+UserId: "user-1",
+	})
+	fmt.Println(rsp, err)
+	
+}
+```
 ## Kick
 
 Kick a user from a chat room
@@ -216,33 +216,6 @@ RoomId: "d8057208-f81a-4e14-ad7f-c29daa2bb910",
 	
 }
 ```
-## History
-
-List the messages in a chat
-
-
-[https://m3o.com/chat/api#History](https://m3o.com/chat/api#History)
-
-```go
-package example
-
-import(
-	"fmt"
-	"os"
-
-	"go.m3o.com/chat"
-)
-
-// List the messages in a chat
-func GetChatHistory() {
-	chatService := chat.NewChatService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := chatService.History(&chat.HistoryRequest{
-		RoomId: "d8057208-f81a-4e14-ad7f-c29daa2bb910",
-	})
-	fmt.Println(rsp, err)
-	
-}
-```
 ## Leave
 
 Leave a chat room
@@ -266,6 +239,33 @@ func LeaveAroom() {
 	rsp, err := chatService.Leave(&chat.LeaveRequest{
 		RoomId: "d8057208-f81a-4e14-ad7f-c29daa2bb910",
 UserId: "user-1",
+	})
+	fmt.Println(rsp, err)
+	
+}
+```
+## List
+
+List available chats
+
+
+[https://m3o.com/chat/api#List](https://m3o.com/chat/api#List)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"go.m3o.com/chat"
+)
+
+// List available chats
+func ListChatRooms() {
+	chatService := chat.NewChatService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := chatService.List(&chat.ListRequest{
+		
 	})
 	fmt.Println(rsp, err)
 	

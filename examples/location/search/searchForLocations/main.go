@@ -11,13 +11,13 @@ import (
 func main() {
 	client := m3o.New(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := client.Location.Search(&location.SearchRequest{
-		Radius: 100,
-		Type:   "bike",
+		NumEntities: 10,
+		Radius:      100,
+		Type:        "bike",
 		Center: &location.Point{
 			Latitude:  51.511061,
 			Longitude: -0.120022,
 		},
-		NumEntities: 10,
 	})
 	fmt.Println(rsp, err)
 }

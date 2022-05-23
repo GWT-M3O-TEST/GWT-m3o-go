@@ -84,15 +84,15 @@ type ConvertResponse struct {
 }
 
 type CropOptions struct {
-	// height to crop to
-	Height int32 `json:"height,omitempty"`
-	// width to crop to
-	Width int32 `json:"width,omitempty"`
 	// Crop anchor point: "top", "top left", "top right",
 	// "left", "center", "right"
 	// "bottom left", "bottom", "bottom right".
 	// Optional. Defaults to center.
 	Anchor string `json:"anchor,omitempty"`
+	// height to crop to
+	Height int32 `json:"height,omitempty"`
+	// width to crop to
+	Width int32 `json:"width,omitempty"`
 }
 
 type DeleteRequest struct {
@@ -109,11 +109,18 @@ type Point struct {
 }
 
 type Rectangle struct {
-	Min *Point `json:"min,omitempty"`
 	Max *Point `json:"max,omitempty"`
+	Min *Point `json:"min,omitempty"`
 }
 
 type ResizeRequest struct {
+	Width int64 `json:"width,string,omitempty"`
+	// base64 encoded image to resize,
+	Base64 string `json:"base64,omitempty"`
+	// optional crop options
+	// if provided, after resize, the image
+	// will be cropped
+	CropOptions *CropOptions `json:"cropOptions,omitempty"`
 	// The image file to resize
 	File   string `json:"file,omitempty"`
 	Height int64  `json:"height,string,omitempty"`
@@ -122,14 +129,7 @@ type ResizeRequest struct {
 	// make output a URL and not a base64 response
 	OutputUrl bool `json:"outputURL,omitempty"`
 	// url of the image to resize
-	Url   string `json:"url,omitempty"`
-	Width int64  `json:"width,string,omitempty"`
-	// base64 encoded image to resize,
-	Base64 string `json:"base64,omitempty"`
-	// optional crop options
-	// if provided, after resize, the image
-	// will be cropped
-	CropOptions *CropOptions `json:"cropOptions,omitempty"`
+	Url string `json:"url,omitempty"`
 }
 
 type ResizeResponse struct {

@@ -52,10 +52,10 @@ type GenerateResponse struct {
 }
 
 type ValidateRequest struct {
-	// unique id, email or user for which the code was generated
-	Id string `json:"id,omitempty"`
 	// one time pass code to validate
 	Code string `json:"code,omitempty"`
+	// unique id, email or user for which the code was generated
+	Id string `json:"id,omitempty"`
 }
 
 type ValidateResponse struct {

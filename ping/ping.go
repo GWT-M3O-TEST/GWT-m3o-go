@@ -52,10 +52,10 @@ type IpRequest struct {
 }
 
 type IpResponse struct {
-	// average latency e.g 10ms
-	Latency string `json:"latency,omitempty"`
 	// response status
 	Status string `json:"status,omitempty"`
+	// average latency e.g 10ms
+	Latency string `json:"latency,omitempty"`
 }
 
 type TcpRequest struct {

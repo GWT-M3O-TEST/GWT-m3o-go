@@ -47,10 +47,6 @@ func (t *RoutingService) Route(request *RouteRequest) (*RouteResponse, error) {
 }
 
 type Direction struct {
-	// street name or location
-	Name string `json:"name,omitempty"`
-	// alternative reference
-	Reference string `json:"reference,omitempty"`
 	// distance to travel in meters
 	Distance float64 `json:"distance,omitempty"`
 	// duration to travel in seconds
@@ -61,13 +57,17 @@ type Direction struct {
 	Intersections []Intersection `json:"intersections,omitempty"`
 	// maneuver to take
 	Maneuver *Maneuver `json:"maneuver,omitempty"`
+	// street name or location
+	Name string `json:"name,omitempty"`
+	// alternative reference
+	Reference string `json:"reference,omitempty"`
 }
 
 type DirectionsRequest struct {
-	// The destination of the journey
-	Destination *Point `json:"destination,omitempty"`
 	// The staring point for the journey
 	Origin *Point `json:"origin,omitempty"`
+	// The destination of the journey
+	Destination *Point `json:"destination,omitempty"`
 }
 
 type DirectionsResponse struct {
@@ -82,14 +82,14 @@ type DirectionsResponse struct {
 }
 
 type EtaRequest struct {
-	// The starting point for the eta calculation
-	Origin *Point `json:"origin,omitempty"`
 	// speed in kilometers
 	Speed float64 `json:"speed,omitempty"`
 	// type of transport. Only "car" is supported currently.
 	Type string `json:"type,omitempty"`
 	// The end point for the eta calculation
 	Destination *Point `json:"destination,omitempty"`
+	// The starting point for the eta calculation
+	Origin *Point `json:"origin,omitempty"`
 }
 
 type EtaResponse struct {
@@ -103,11 +103,11 @@ type Intersection struct {
 }
 
 type Maneuver struct {
+	Location      *Point  `json:"location,omitempty"`
 	Action        string  `json:"action,omitempty"`
 	BearingAfter  float64 `json:"bearing_after,omitempty"`
 	BearingBefore float64 `json:"bearing_before,omitempty"`
 	Direction     string  `json:"direction,omitempty"`
-	Location      *Point  `json:"location,omitempty"`
 }
 
 type Point struct {

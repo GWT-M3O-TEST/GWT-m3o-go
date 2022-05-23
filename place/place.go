@@ -44,6 +44,10 @@ type AutocompleteResponse struct {
 }
 
 type NearbyRequest struct {
+	// Keyword to include in the search
+	Keyword string `json:"keyword,omitempty"`
+	// specify the location by lat,lng e.g -33.8670522,-151.1957362
+	Location string `json:"location,omitempty"`
 	// Name of the place to search for
 	Name string `json:"name,omitempty"`
 	// Whether the place is open now
@@ -52,10 +56,6 @@ type NearbyRequest struct {
 	Radius int32 `json:"radius,omitempty"`
 	// Type of place. https://developers.google.com/maps/documentation/places/web-service/supported_types
 	Type string `json:"type,omitempty"`
-	// Keyword to include in the search
-	Keyword string `json:"keyword,omitempty"`
-	// specify the location by lat,lng e.g -33.8670522,-151.1957362
-	Location string `json:"location,omitempty"`
 }
 
 type NearbyResponse struct {
@@ -63,26 +63,26 @@ type NearbyResponse struct {
 }
 
 type Result struct {
-	// opening hours
-	OpeningHours []string `json:"opening_hours,omitempty"`
-	// address of place
-	Address string `json:"address,omitempty"`
-	// lat/lng of place
-	Location string `json:"location,omitempty"`
-	// name of the place
-	Name string `json:"name,omitempty"`
+	// rating from 1.0 to 5.0
+	Rating float64 `json:"rating,omitempty"`
 	// type of location
 	Type string `json:"type,omitempty"`
-	// feature types
-	Types []string `json:"types,omitempty"`
 	// simplified address
 	Vicinity string `json:"vicinity,omitempty"`
 	// url of an icon
 	IconUrl string `json:"icon_url,omitempty"`
+	// opening hours
+	OpeningHours []string `json:"opening_hours,omitempty"`
+	// name of the place
+	Name string `json:"name,omitempty"`
 	// open now
 	OpenNow bool `json:"open_now,omitempty"`
-	// rating from 1.0 to 5.0
-	Rating float64 `json:"rating,omitempty"`
+	// feature types
+	Types []string `json:"types,omitempty"`
+	// address of place
+	Address string `json:"address,omitempty"`
+	// lat/lng of place
+	Location string `json:"location,omitempty"`
 }
 
 type SearchRequest struct {

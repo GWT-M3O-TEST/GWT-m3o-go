@@ -83,12 +83,12 @@ type ConsumeResponse struct {
 }
 
 type Ev struct {
-	// event id
-	Id string `json:"id,omitempty"`
 	// event message
 	Message map[string]interface{} `json:"message,omitempty"`
 	// event timestamp
 	Timestamp string `json:"timestamp,omitempty"`
+	// event id
+	Id string `json:"id,omitempty"`
 }
 
 type PublishRequest struct {

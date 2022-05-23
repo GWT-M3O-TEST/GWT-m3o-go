@@ -11,8 +11,8 @@ import (
 func main() {
 	client := m3o.New(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := client.Function.Call(&function.CallRequest{
-		Name:    "helloworld",
 		Request: &function.Json{},
+		Name:    "helloworld",
 	})
 	fmt.Println(rsp, err)
 }

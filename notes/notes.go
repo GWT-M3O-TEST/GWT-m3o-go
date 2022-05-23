@@ -116,10 +116,10 @@ type EventsRequest struct {
 }
 
 type EventsResponse struct {
-	// the event which occured; create, delete, update
-	Event string `json:"event,omitempty"`
 	// the note which the operation occured on
 	Note *Note `json:"note,omitempty"`
+	// the event which occured; create, delete, update
+	Event string `json:"event,omitempty"`
 }
 
 type ListRequest struct {
@@ -131,16 +131,16 @@ type ListResponse struct {
 }
 
 type Note struct {
-	// time at which the note was created
-	Created string `json:"created,omitempty"`
-	// unique id for the note, generated if not specified
-	Id string `json:"id,omitempty"`
 	// text within the note
 	Text string `json:"text,omitempty"`
 	// title of the note
 	Title string `json:"title,omitempty"`
 	// time at which the note was updated
 	Updated string `json:"updated,omitempty"`
+	// time at which the note was created
+	Created string `json:"created,omitempty"`
+	// unique id for the note, generated if not specified
+	Id string `json:"id,omitempty"`
 }
 
 type ReadRequest struct {

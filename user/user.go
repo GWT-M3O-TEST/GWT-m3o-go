@@ -169,14 +169,6 @@ func (t *UserService) VerifyToken(request *VerifyTokenRequest) (*VerifyTokenResp
 }
 
 type Account struct {
-	// date of verification
-	VerificationDate int64 `json:"verification_date,string,omitempty"`
-	// if the account is verified
-	Verified bool `json:"verified,omitempty"`
-	// unix timestamp
-	Created int64 `json:"created,string,omitempty"`
-	// an email address
-	Email string `json:"email,omitempty"`
 	// unique account id
 	Id string `json:"id,omitempty"`
 	// Store any custom data you want about your users in this fields.
@@ -185,6 +177,14 @@ type Account struct {
 	Updated int64 `json:"updated,string,omitempty"`
 	// alphanumeric username
 	Username string `json:"username,omitempty"`
+	// date of verification
+	VerificationDate int64 `json:"verification_date,string,omitempty"`
+	// if the account is verified
+	Verified bool `json:"verified,omitempty"`
+	// unix timestamp
+	Created int64 `json:"created,string,omitempty"`
+	// an email address
+	Email string `json:"email,omitempty"`
 }
 
 type CreateRequest struct {
@@ -213,10 +213,10 @@ type DeleteResponse struct {
 }
 
 type ListRequest struct {
-	Offset int32 `json:"offset,omitempty"`
 	// Maximum number of records to return. Default limit is 25.
 	// Maximum limit is 1000. Anything higher will return an error.
-	Limit int32 `json:"limit,omitempty"`
+	Limit  int32 `json:"limit,omitempty"`
+	Offset int32 `json:"offset,omitempty"`
 }
 
 type ListResponse struct {
@@ -254,12 +254,12 @@ type LogoutResponse struct {
 }
 
 type ReadRequest struct {
+	// the account username
+	Username string `json:"username,omitempty"`
 	// the account email
 	Email string `json:"email,omitempty"`
 	// the account id
 	Id string `json:"id,omitempty"`
-	// the account username
-	Username string `json:"username,omitempty"`
 }
 
 type ReadResponse struct {
@@ -277,14 +277,14 @@ type ReadSessionResponse struct {
 }
 
 type ResetPasswordRequest struct {
-	// the email to reset the password for
-	Email string `json:"email,omitempty"`
 	// the new password
 	NewPassword string `json:"new_password,omitempty"`
 	// The code from the verification email
 	Code string `json:"code,omitempty"`
 	// confirm new password
 	ConfirmPassword string `json:"confirm_password,omitempty"`
+	// the email to reset the password for
+	Email string `json:"email,omitempty"`
 }
 
 type ResetPasswordResponse struct {
@@ -357,14 +357,14 @@ type Session struct {
 }
 
 type UpdatePasswordRequest struct {
-	// the old password
-	OldPassword string `json:"old_password,omitempty"`
-	// the account id
-	UserId string `json:"userId,omitempty"`
 	// confirm new password
 	ConfirmPassword string `json:"confirm_password,omitempty"`
 	// the new password
 	NewPassword string `json:"new_password,omitempty"`
+	// the old password
+	OldPassword string `json:"old_password,omitempty"`
+	// the account id
+	UserId string `json:"userId,omitempty"`
 }
 
 type UpdatePasswordResponse struct {
@@ -397,7 +397,7 @@ type VerifyTokenRequest struct {
 }
 
 type VerifyTokenResponse struct {
+	IsValid bool     `json:"is_valid,omitempty"`
 	Message string   `json:"message,omitempty"`
 	Session *Session `json:"session,omitempty"`
-	IsValid bool     `json:"is_valid,omitempty"`
 }

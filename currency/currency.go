@@ -111,8 +111,8 @@ type RatesRequest struct {
 }
 
 type RatesResponse struct {
-	// The code requested e.g USD
-	Code string `json:"code,omitempty"`
 	// The rates for the given code as key-value pairs code:rate
 	Rates map[string]float64 `json:"rates,omitempty"`
+	// The code requested e.g USD
+	Code string `json:"code,omitempty"`
 }

@@ -66,10 +66,10 @@ type Channel struct {
 }
 
 type CreateChannelRequest struct {
-	// description for the channel
-	Description string `json:"description,omitempty"`
 	// name of the channel
 	Name string `json:"name,omitempty"`
+	// description for the channel
+	Description string `json:"description,omitempty"`
 }
 
 type CreateChannelResponse struct {
@@ -110,10 +110,10 @@ type Message struct {
 }
 
 type SendMessageRequest struct {
-	// The message text to send
-	Text string `json:"text,omitempty"`
 	// The channel to send to
 	Channel string `json:"channel,omitempty"`
+	// The message text to send
+	Text string `json:"text,omitempty"`
 }
 
 type SendMessageResponse struct {

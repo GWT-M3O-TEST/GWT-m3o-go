@@ -87,16 +87,16 @@ type Entry struct {
 }
 
 type Feed struct {
-	// category of the feed e.g news
-	Category string `json:"category,omitempty"`
-	// unique id
-	Id string `json:"id,omitempty"`
 	// rss feed name
 	// eg. a16z
 	Name string `json:"name,omitempty"`
 	// rss feed url
 	// eg. http://a16z.com/feed/
 	Url string `json:"url,omitempty"`
+	// category of the feed e.g news
+	Category string `json:"category,omitempty"`
+	// unique id
+	Id string `json:"id,omitempty"`
 }
 
 type FeedRequest struct {

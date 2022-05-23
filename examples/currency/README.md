@@ -107,9 +107,9 @@ import(
 func Convert10usdToGbp() {
 	currencyService := currency.NewCurrencyService(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := currencyService.Convert(&currency.ConvertRequest{
-		Amount: 10,
-From: "USD",
+		From: "USD",
 To: "GBP",
+Amount: 10,
 	})
 	fmt.Println(rsp, err)
 	

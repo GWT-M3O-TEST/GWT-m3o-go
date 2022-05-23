@@ -43,16 +43,16 @@ type NowRequest struct {
 }
 
 type NowResponse struct {
-	// the current time as HH:MM:SS
-	Localtime string `json:"localtime,omitempty"`
-	// the location as Europe/London
-	Location string `json:"location,omitempty"`
 	// timestamp as 2006-01-02T15:04:05.999999999Z07:00
 	Timestamp string `json:"timestamp,omitempty"`
 	// the timezone as BST
 	Timezone string `json:"timezone,omitempty"`
 	// the unix timestamp
 	Unix int64 `json:"unix,string,omitempty"`
+	// the current time as HH:MM:SS
+	Localtime string `json:"localtime,omitempty"`
+	// the location as Europe/London
+	Location string `json:"location,omitempty"`
 }
 
 type ZoneRequest struct {
@@ -65,20 +65,20 @@ type ZoneResponse struct {
 	Country string `json:"country,omitempty"`
 	// is daylight savings
 	Dst bool `json:"dst,omitempty"`
-	// e.g 51.42
-	Latitude float64 `json:"latitude,omitempty"`
-	// the local time
-	Localtime string `json:"localtime,omitempty"`
-	// UTC offset in hours
-	Offset int32 `json:"offset,omitempty"`
-	// the abbreviated code e.g BST
-	Abbreviation string `json:"abbreviation,omitempty"`
-	// location requested
-	Location string `json:"location,omitempty"`
 	// e.g -0.37
 	Longitude float64 `json:"longitude,omitempty"`
 	// region of timezone
 	Region string `json:"region,omitempty"`
+	// the abbreviated code e.g BST
+	Abbreviation string `json:"abbreviation,omitempty"`
+	// the local time
+	Localtime string `json:"localtime,omitempty"`
+	// location requested
+	Location string `json:"location,omitempty"`
+	// UTC offset in hours
+	Offset int32 `json:"offset,omitempty"`
 	// the timezone e.g Europe/London
 	Timezone string `json:"timezone,omitempty"`
+	// e.g 51.42
+	Latitude float64 `json:"latitude,omitempty"`
 }
