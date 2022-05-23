@@ -90,10 +90,10 @@ func (t *ListsService) Update(request *UpdateRequest) (*UpdateResponse, error) {
 }
 
 type CreateRequest struct {
-	// list items
-	Items []string `json:"items,omitempty"`
 	// list name
 	Name string `json:"name,omitempty"`
+	// list items
+	Items []string `json:"items,omitempty"`
 }
 
 type CreateResponse struct {
@@ -116,23 +116,23 @@ type EventsRequest struct {
 }
 
 type EventsResponse struct {
-	// the list which the operation occured on
-	List *List `json:"list,omitempty"`
 	// the event which occured; create, delete, update
 	Event string `json:"event,omitempty"`
+	// the list which the operation occured on
+	List *List `json:"list,omitempty"`
 }
 
 type List struct {
+	// time at which the list was created
+	Created string `json:"created,omitempty"`
+	// unique id for the list, generated if not specified
+	Id string `json:"id,omitempty"`
 	// items within the list
 	Items []string `json:"items,omitempty"`
 	// name of the list
 	Name string `json:"name,omitempty"`
 	// time at which the list was updated
 	Updated string `json:"updated,omitempty"`
-	// time at which the list was created
-	Created string `json:"created,omitempty"`
-	// unique id for the list, generated if not specified
-	Id string `json:"id,omitempty"`
 }
 
 type ListRequest struct {

@@ -56,10 +56,10 @@ func (t *FileService) Save(request *SaveRequest) (*SaveResponse, error) {
 }
 
 type DeleteRequest struct {
-	// The project name
-	Project string `json:"project,omitempty"`
 	// Path to the file
 	Path string `json:"path,omitempty"`
+	// The project name
+	Project string `json:"project,omitempty"`
 }
 
 type DeleteResponse struct {
@@ -92,11 +92,6 @@ type ReadResponse struct {
 }
 
 type Record struct {
-	// Path to file or folder eg. '/documents/text-files/file.txt'.
-	Path string `json:"path,omitempty"`
-	// A custom project to group files
-	// eg. file-of-mywebsite.com
-	Project string `json:"project,omitempty"`
 	// Time the file was updated e.g 2021-05-20T13:37:21Z
 	Updated string `json:"updated,omitempty"`
 	// File contents
@@ -105,6 +100,11 @@ type Record struct {
 	Created string `json:"created,omitempty"`
 	// Any other associated metadata as a map of key-value pairs
 	Metadata map[string]string `json:"metadata,omitempty"`
+	// Path to file or folder eg. '/documents/text-files/file.txt'.
+	Path string `json:"path,omitempty"`
+	// A custom project to group files
+	// eg. file-of-mywebsite.com
+	Project string `json:"project,omitempty"`
 }
 
 type SaveRequest struct {

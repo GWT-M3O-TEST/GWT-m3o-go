@@ -29,12 +29,6 @@ func (t *TunnelService) Send(request *SendRequest) (*SendResponse, error) {
 }
 
 type SendRequest struct {
-	// request params to include
-	Params map[string]string `json:"params,omitempty"`
-	// path to request e.g /news
-	Path string `json:"path,omitempty"`
-	// alternatively specify a full url e.g https://www.google.com/news
-	Url string `json:"url,omitempty"`
 	// body of the request
 	Body string `json:"body,omitempty"`
 	// headers to include e.g Content-Type: application/json
@@ -43,15 +37,21 @@ type SendRequest struct {
 	Host string `json:"host,omitempty"`
 	// method of the request e.g GET, POST, DELETE
 	Method string `json:"method,omitempty"`
+	// request params to include
+	Params map[string]string `json:"params,omitempty"`
+	// path to request e.g /news
+	Path string `json:"path,omitempty"`
+	// alternatively specify a full url e.g https://www.google.com/news
+	Url string `json:"url,omitempty"`
 }
 
 type SendResponse struct {
+	// headers included
+	Headers map[string]string `json:"headers,omitempty"`
 	// the status
 	Status string `json:"status,omitempty"`
 	// the status code
 	StatusCode int32 `json:"status_code,omitempty"`
 	// body of the response
 	Body string `json:"body,omitempty"`
-	// headers included
-	Headers map[string]string `json:"headers,omitempty"`
 }

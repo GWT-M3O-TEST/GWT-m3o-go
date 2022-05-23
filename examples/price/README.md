@@ -4,62 +4,6 @@ An [m3o.com](https://m3o.com) API. For example usage see [m3o.com/price/api](htt
 
 Endpoints:
 
-## Index
-
-Get the index for available prices
-
-
-[https://m3o.com/price/api#Index](https://m3o.com/price/api#Index)
-
-```go
-package example
-
-import(
-	"fmt"
-	"os"
-
-	"go.m3o.com/price"
-)
-
-// Get the index for available prices
-func GetTheIndex() {
-	priceService := price.NewPriceService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := priceService.Index(&price.IndexRequest{
-		
-	})
-	fmt.Println(rsp, err)
-	
-}
-```
-## Report
-
-Report an invalid price
-
-
-[https://m3o.com/price/api#Report](https://m3o.com/price/api#Report)
-
-```go
-package example
-
-import(
-	"fmt"
-	"os"
-
-	"go.m3o.com/price"
-)
-
-// Report an invalid price
-func ReportAprice() {
-	priceService := price.NewPriceService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := priceService.Report(&price.ReportRequest{
-		Symbol: "BTC",
-Comment: "Price is not up to date",
-Name: "bitcoin",
-	})
-	fmt.Println(rsp, err)
-	
-}
-```
 ## Add
 
 Add a price
@@ -81,9 +25,9 @@ import(
 func AddAprice() {
 	priceService := price.NewPriceService(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := priceService.Add(&price.AddRequest{
-		Name: "bitcoin",
+		Currency: "USD",
+Name: "bitcoin",
 Price: 39037.97,
-Currency: "USD",
 	})
 	fmt.Println(rsp, err)
 	
@@ -139,6 +83,62 @@ func ListPrices() {
 	priceService := price.NewPriceService(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := priceService.List(&price.ListRequest{
 		Currency: "GBP",
+	})
+	fmt.Println(rsp, err)
+	
+}
+```
+## Index
+
+Get the index for available prices
+
+
+[https://m3o.com/price/api#Index](https://m3o.com/price/api#Index)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"go.m3o.com/price"
+)
+
+// Get the index for available prices
+func GetTheIndex() {
+	priceService := price.NewPriceService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := priceService.Index(&price.IndexRequest{
+		
+	})
+	fmt.Println(rsp, err)
+	
+}
+```
+## Report
+
+Report an invalid price
+
+
+[https://m3o.com/price/api#Report](https://m3o.com/price/api#Report)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"go.m3o.com/price"
+)
+
+// Report an invalid price
+func ReportAprice() {
+	priceService := price.NewPriceService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := priceService.Report(&price.ReportRequest{
+		Name: "bitcoin",
+Symbol: "BTC",
+Comment: "Price is not up to date",
 	})
 	fmt.Println(rsp, err)
 	

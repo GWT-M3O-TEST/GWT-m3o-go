@@ -17,7 +17,7 @@ func main() {
 		},
 		Links: []contact.Link{
 			contact.Link: {
-				Url: "https://blog.joe.me", Label: "blog"},
+				Label: "blog", Url: "https://blog.joe.me"},
 		},
 		Birthday: "1995-01-01",
 		Addresses: []contact.Address{

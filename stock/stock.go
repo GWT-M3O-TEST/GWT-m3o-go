@@ -88,6 +88,10 @@ type QuoteRequest struct {
 }
 
 type QuoteResponse struct {
+	// the asking price
+	AskPrice float64 `json:"ask_price,omitempty"`
+	// the ask size
+	AskSize int32 `json:"ask_size,omitempty"`
 	// the bidding price
 	BidPrice float64 `json:"bid_price,omitempty"`
 	// the bid size
@@ -96,8 +100,4 @@ type QuoteResponse struct {
 	Symbol string `json:"symbol,omitempty"`
 	// the UTC timestamp of the quote
 	Timestamp string `json:"timestamp,omitempty"`
-	// the asking price
-	AskPrice float64 `json:"ask_price,omitempty"`
-	// the ask size
-	AskSize int32 `json:"ask_size,omitempty"`
 }

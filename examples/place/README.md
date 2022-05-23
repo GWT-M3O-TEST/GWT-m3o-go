@@ -25,9 +25,9 @@ import(
 func FindPlacesNearby() {
 	placeService := place.NewPlaceService(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := placeService.Nearby(&place.NearbyRequest{
-		Location: "51.5074577,-0.1297515",
+		Type: "store",
+Location: "51.5074577,-0.1297515",
 Keyword: "tesco",
-Type: "store",
 	})
 	fmt.Println(rsp, err)
 	

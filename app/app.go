@@ -135,8 +135,6 @@ type RegionsResponse struct {
 }
 
 type Reservation struct {
-	// owner id
-	Owner string `json:"owner,omitempty"`
 	// associated token
 	Token string `json:"token,omitempty"`
 	// time of reservation
@@ -145,6 +143,8 @@ type Reservation struct {
 	Expires string `json:"expires,omitempty"`
 	// name of the app
 	Name string `json:"name,omitempty"`
+	// owner id
+	Owner string `json:"owner,omitempty"`
 }
 
 type ReserveRequest struct {
@@ -168,6 +168,10 @@ type ResolveResponse struct {
 }
 
 type RunRequest struct {
+	// associated env vars to pass in
+	EnvVars map[string]string `json:"env_vars,omitempty"`
+	// name of the app
+	Name string `json:"name,omitempty"`
 	// port to run on
 	Port int32 `json:"port,omitempty"`
 	// region to run in
@@ -176,10 +180,6 @@ type RunRequest struct {
 	Repo string `json:"repo,omitempty"`
 	// branch. defaults to master
 	Branch string `json:"branch,omitempty"`
-	// associated env vars to pass in
-	EnvVars map[string]string `json:"env_vars,omitempty"`
-	// name of the app
-	Name string `json:"name,omitempty"`
 }
 
 type RunResponse struct {
@@ -188,30 +188,30 @@ type RunResponse struct {
 }
 
 type Service struct {
+	// source repository
+	Repo string `json:"repo,omitempty"`
+	// last updated
+	Updated string `json:"updated,omitempty"`
+	// branch of code
+	Branch string `json:"branch,omitempty"`
+	// name of the app
+	Name string `json:"name,omitempty"`
+	// associated env vars
+	EnvVars map[string]string `json:"env_vars,omitempty"`
 	// unique id
 	Id string `json:"id,omitempty"`
 	// port running on
 	Port int32 `json:"port,omitempty"`
 	// region running in
 	Region string `json:"region,omitempty"`
-	// last updated
-	Updated string `json:"updated,omitempty"`
-	// time of creation
-	Created string `json:"created,omitempty"`
-	// custom domains
-	CustomDomains []string `json:"custom_domains,omitempty"`
-	// associated env vars
-	EnvVars map[string]string `json:"env_vars,omitempty"`
-	// name of the app
-	Name string `json:"name,omitempty"`
-	// source repository
-	Repo string `json:"repo,omitempty"`
 	// status of the app
 	Status string `json:"status,omitempty"`
 	// app url
 	Url string `json:"url,omitempty"`
-	// branch of code
-	Branch string `json:"branch,omitempty"`
+	// time of creation
+	Created string `json:"created,omitempty"`
+	// custom domains
+	CustomDomains []string `json:"custom_domains,omitempty"`
 }
 
 type StatusRequest struct {
@@ -225,10 +225,10 @@ type StatusResponse struct {
 }
 
 type UpdateRequest struct {
-	// name of the app
-	Name string `json:"name,omitempty"`
 	// Additional env vars to update
 	EnvVars map[string]string `json:"env_vars,omitempty"`
+	// name of the app
+	Name string `json:"name,omitempty"`
 }
 
 type UpdateResponse struct {

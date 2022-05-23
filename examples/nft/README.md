@@ -25,8 +25,8 @@ import(
 func CreateAnNft() {
 	nftService := nft.NewNftService(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := nftService.Create(&nft.CreateRequest{
-		Description: "The epic monkey island character",
-Name: "Guybrush Threepwood",
+		Name: "Guybrush Threepwood",
+Description: "The epic monkey island character",
 	})
 	fmt.Println(rsp, err)
 	

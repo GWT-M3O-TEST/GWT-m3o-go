@@ -150,8 +150,8 @@ import(
 func CreateAcomment() {
 	commentsService := comments.NewCommentsService(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := commentsService.Create(&comments.CreateRequest{
-		Text: "This is my comment",
-Subject: "New Comment",
+		Subject: "New Comment",
+Text: "This is my comment",
 	})
 	fmt.Println(rsp, err)
 	

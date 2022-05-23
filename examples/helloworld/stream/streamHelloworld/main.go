@@ -11,8 +11,8 @@ import (
 func main() {
 	client := m3o.New(os.Getenv("M3O_API_TOKEN"))
 	stream, err := client.Helloworld.Stream(&helloworld.StreamRequest{
-		Name:     "John",
 		Messages: 10,
+		Name:     "John",
 	})
 	if err != nil {
 		fmt.Println(err)

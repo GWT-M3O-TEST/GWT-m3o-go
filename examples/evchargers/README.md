@@ -25,12 +25,12 @@ import(
 func SearchByLocation() {
 	evchargersService := evchargers.NewEvchargersService(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := evchargersService.Search(&evchargers.SearchRequest{
-		MaxResults: 2,
+		Distance: 2000,
+MaxResults: 2,
 Location: &evchargers.Coordinates{
 Latitude: 51.53336351319885,
 Longitude: -0.0252,
 },
-Distance: 2000,
 	})
 	fmt.Println(rsp, err)
 	
@@ -57,8 +57,7 @@ import(
 func SearchByBoundingBox() {
 	evchargersService := evchargers.NewEvchargersService(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := evchargersService.Search(&evchargers.SearchRequest{
-		MaxResults: 2,
-Box: &evchargers.BoundingBox{
+		Box: &evchargers.BoundingBox{
 BottomLeft: &evchargers.Coordinates{
 Latitude: 51.52627543859447,
 Longitude: -0.03635349400295168,
@@ -68,6 +67,7 @@ Latitude: 51.56717121807993,
 Longitude: -0.002293530559768285,
 },
 },
+MaxResults: 2,
 	})
 	fmt.Println(rsp, err)
 	
@@ -94,14 +94,14 @@ import(
 func SearchWithFiltersFastChargersOnly() {
 	evchargersService := evchargers.NewEvchargersService(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := evchargersService.Search(&evchargers.SearchRequest{
-		Location: &evchargers.Coordinates{
-Latitude: 51.53336351319885,
-Longitude: -0.0252,
-},
-Distance: 2000,
+		Distance: 2000,
 MaxResults: 2,
 Levels: []string{
 "3",
+},
+Location: &evchargers.Coordinates{
+Longitude: -0.0252,
+Latitude: 51.53336351319885,
 },
 	})
 	fmt.Println(rsp, err)

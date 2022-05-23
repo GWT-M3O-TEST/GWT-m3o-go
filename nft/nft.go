@@ -65,36 +65,36 @@ func (t *NftService) Create(request *CreateRequest) (*CreateResponse, error) {
 }
 
 type Asset struct {
-	// asset contract
-	Contract *Contract `json:"contract,omitempty"`
 	// the image url
 	ImageUrl string `json:"image_url,omitempty"`
-	// listing date
-	ListingDate string `json:"listing_date,omitempty"`
-	// Owner of the NFT
-	Owner *User `json:"owner,omitempty"`
-	// traits associated with the item
-	Traits []map[string]interface{} `json:"traits,omitempty"`
-	// is it a presale
-	Presale bool `json:"presale,omitempty"`
-	// number of sales
-	Sales int32 `json:"sales,omitempty"`
-	// related description
-	Description string `json:"description,omitempty"`
-	// last time sold
-	LastSale *Sale `json:"last_sale,omitempty"`
-	// associated collection
-	Collection *Collection `json:"collection,omitempty"`
-	// Creator of the NFT
-	Creator *User `json:"creator,omitempty"`
-	// id of the asset
-	Id int32 `json:"id,omitempty"`
-	// name of the asset
-	Name string `json:"name,omitempty"`
 	// the permalink
 	Permalink string `json:"permalink,omitempty"`
+	// associated collection
+	Collection *Collection `json:"collection,omitempty"`
+	// asset contract
+	Contract *Contract `json:"contract,omitempty"`
+	// Creator of the NFT
+	Creator *User `json:"creator,omitempty"`
+	// Owner of the NFT
+	Owner *User `json:"owner,omitempty"`
+	// number of sales
+	Sales int32 `json:"sales,omitempty"`
+	// id of the asset
+	Id int32 `json:"id,omitempty"`
+	// last time sold
+	LastSale *Sale `json:"last_sale,omitempty"`
+	// listing date
+	ListingDate string `json:"listing_date,omitempty"`
+	// name of the asset
+	Name string `json:"name,omitempty"`
 	// the token id
 	TokenId string `json:"token_id,omitempty"`
+	// traits associated with the item
+	Traits []map[string]interface{} `json:"traits,omitempty"`
+	// related description
+	Description string `json:"description,omitempty"`
+	// is it a presale
+	Presale bool `json:"presale,omitempty"`
 }
 
 type AssetRequest struct {
@@ -107,58 +107,58 @@ type AssetResponse struct {
 }
 
 type AssetsRequest struct {
-	// order "asc" or "desc"
-	Order string `json:"order,omitempty"`
-	// order by "sale_date", "sale_count", "sale_price", "total_price"
-	OrderBy string `json:"order_by,omitempty"`
-	// limit to members of a collection by slug name (case sensitive)
-	Collection string `json:"collection,omitempty"`
 	// A cursor pointing to the page to retrieve
 	Cursor string `json:"cursor,omitempty"`
 	// limit returned assets
 	Limit int32 `json:"limit,omitempty"`
 	// DEPRECATED offset for pagination, please use cursor instead
 	Offset int32 `json:"offset,omitempty"`
+	// order "asc" or "desc"
+	Order string `json:"order,omitempty"`
+	// order by "sale_date", "sale_count", "sale_price", "total_price"
+	OrderBy string `json:"order_by,omitempty"`
+	// limit to members of a collection by slug name (case sensitive)
+	Collection string `json:"collection,omitempty"`
 }
 
 type AssetsResponse struct {
-	// list of assets
-	Assets []Asset `json:"assets,omitempty"`
 	// A cursor to be supplied to retrieve the next page of results
 	Next string `json:"next,omitempty"`
 	// A cursor to be supplied to retrieve the previous page of results
 	Previous string `json:"previous,omitempty"`
+	// list of assets
+	Assets []Asset `json:"assets,omitempty"`
 }
 
 type Collection struct {
-	// description of the collection
-	Description string `json:"description,omitempty"`
-	// an image for the collection
-	ImageUrl string `json:"image_url,omitempty"`
-	// the payment tokens accepted for this collection
-	PaymentTokens []Token `json:"payment_tokens,omitempty"`
-	// sales statistics associated with the collection
-	Stats map[string]interface{} `json:"stats,omitempty"`
-	// creation time
-	CreatedAt string `json:"created_at,omitempty"`
-	// listing of all the trait types available within this collection
-	Traits map[string]interface{} `json:"traits,omitempty"`
 	// image used in the banner for the collection
 	BannerImageUrl string `json:"banner_image_url,omitempty"`
+	// creation time
+	CreatedAt string `json:"created_at,omitempty"`
 	// approved editors for this collection
 	Editors []string `json:"editors,omitempty"`
 	// the fees that get paid out when a sale is made
 	SellerFees string `json:"seller_fees,omitempty"`
-	// external link to the original website for the collection
-	ExternalLink string `json:"external_link,omitempty"`
+	// sales statistics associated with the collection
+	Stats map[string]interface{} `json:"stats,omitempty"`
+	// listing of all the trait types available within this collection
+	Traits map[string]interface{} `json:"traits,omitempty"`
+	// an image for the collection
+	ImageUrl string `json:"image_url,omitempty"`
 	// name of the collection
 	Name string `json:"name,omitempty"`
-	// payout address for the collection's royalties
-	PayoutAddress string `json:"payout_address,omitempty"`
 	// a list of the contracts associated with this collection
 	PrimaryAssetContracts []Contract `json:"primary_asset_contracts,omitempty"`
 	// the collection's approval status on OpenSea
 	SafelistRequestStatus string `json:"safelist_request_status,omitempty"`
+	// description of the collection
+	Description string `json:"description,omitempty"`
+	// external link to the original website for the collection
+	ExternalLink string `json:"external_link,omitempty"`
+	// the payment tokens accepted for this collection
+	PaymentTokens []Token `json:"payment_tokens,omitempty"`
+	// payout address for the collection's royalties
+	PayoutAddress string `json:"payout_address,omitempty"`
 	// collection slug
 	Slug string `json:"slug,omitempty"`
 }
@@ -183,24 +183,24 @@ type CollectionsResponse struct {
 type Contract struct {
 	// ethereum address
 	Address string `json:"address,omitempty"`
+	// related symbol
+	Symbol string `json:"symbol,omitempty"`
+	// type of contract e.g "semi-fungible"
+	Type string `json:"type,omitempty"`
 	// timestamp of creation
 	CreatedAt string `json:"created_at,omitempty"`
 	// description of contract
 	Description string `json:"description,omitempty"`
-	// aka "ERC1155"
-	Schema string `json:"schema,omitempty"`
-	// type of contract e.g "semi-fungible"
-	Type string `json:"type,omitempty"`
 	// name of contract
 	Name string `json:"name,omitempty"`
 	// owner id
 	Owner int32 `json:"owner,omitempty"`
 	// payout address
 	PayoutAddress string `json:"payout_address,omitempty"`
+	// aka "ERC1155"
+	Schema string `json:"schema,omitempty"`
 	// seller fees
 	SellerFees string `json:"seller_fees,omitempty"`
-	// related symbol
-	Symbol string `json:"symbol,omitempty"`
 }
 
 type CreateRequest struct {
@@ -219,19 +219,18 @@ type CreateResponse struct {
 }
 
 type Sale struct {
+	Transaction    *Transaction `json:"transaction,omitempty"`
 	AssetDecimals  int32        `json:"asset_decimals,omitempty"`
-	AssetTokenId   string       `json:"asset_token_id,omitempty"`
+	Quantity       string       `json:"quantity,omitempty"`
+	TotalPrice     string       `json:"total_price,omitempty"`
 	EventType      string       `json:"event_type,omitempty"`
 	PaymentToken   *Token       `json:"payment_token,omitempty"`
-	Quantity       string       `json:"quantity,omitempty"`
-	Transaction    *Transaction `json:"transaction,omitempty"`
+	AssetTokenId   string       `json:"asset_token_id,omitempty"`
 	CreatedAt      string       `json:"created_at,omitempty"`
 	EventTimestamp string       `json:"event_timestamp,omitempty"`
-	TotalPrice     string       `json:"total_price,omitempty"`
 }
 
 type Token struct {
-	Decimals int32  `json:"decimals,omitempty"`
 	EthPrice string `json:"eth_price,omitempty"`
 	Id       int32  `json:"id,omitempty"`
 	ImageUrl string `json:"image_url,omitempty"`
@@ -239,21 +238,22 @@ type Token struct {
 	Symbol   string `json:"symbol,omitempty"`
 	UsdPrice string `json:"usd_price,omitempty"`
 	Address  string `json:"address,omitempty"`
+	Decimals int32  `json:"decimals,omitempty"`
 }
 
 type Transaction struct {
+	BlockNumber      string `json:"block_number,omitempty"`
+	FromAccount      *User  `json:"from_account,omitempty"`
+	Id               int32  `json:"id,omitempty"`
 	Timestamp        string `json:"timestamp,omitempty"`
 	ToAccount        *User  `json:"to_account,omitempty"`
 	TransactionHash  string `json:"transaction_hash,omitempty"`
 	TransactionIndex string `json:"transaction_index,omitempty"`
 	BlockHash        string `json:"block_hash,omitempty"`
-	BlockNumber      string `json:"block_number,omitempty"`
-	FromAccount      *User  `json:"from_account,omitempty"`
-	Id               int32  `json:"id,omitempty"`
 }
 
 type User struct {
+	Address    string `json:"address,omitempty"`
 	ProfileUrl string `json:"profile_url,omitempty"`
 	Username   string `json:"username,omitempty"`
-	Address    string `json:"address,omitempty"`
 }

@@ -63,26 +63,26 @@ type NearbyResponse struct {
 }
 
 type Result struct {
-	// url of an icon
-	IconUrl string `json:"icon_url,omitempty"`
-	// lat/lng of place
-	Location string `json:"location,omitempty"`
 	// name of the place
 	Name string `json:"name,omitempty"`
-	// type of location
-	Type string `json:"type,omitempty"`
-	// feature types
-	Types []string `json:"types,omitempty"`
-	// address of place
-	Address string `json:"address,omitempty"`
-	// open now
-	OpenNow bool `json:"open_now,omitempty"`
 	// opening hours
 	OpeningHours []string `json:"opening_hours,omitempty"`
 	// rating from 1.0 to 5.0
 	Rating float64 `json:"rating,omitempty"`
+	// type of location
+	Type string `json:"type,omitempty"`
 	// simplified address
 	Vicinity string `json:"vicinity,omitempty"`
+	// url of an icon
+	IconUrl string `json:"icon_url,omitempty"`
+	// lat/lng of place
+	Location string `json:"location,omitempty"`
+	// open now
+	OpenNow bool `json:"open_now,omitempty"`
+	// feature types
+	Types []string `json:"types,omitempty"`
+	// address of place
+	Address string `json:"address,omitempty"`
 }
 
 type SearchRequest struct {

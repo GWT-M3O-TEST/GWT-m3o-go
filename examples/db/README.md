@@ -53,20 +53,20 @@ import(
 func CreateArecord() {
 	dbService := db.NewDbService(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := dbService.Create(&db.CreateRequest{
-		Table: "example",
-Record: &db.Json{
+		Record: &db.Json{
 },
+Table: "example",
 	})
 	fmt.Println(rsp, err)
 	
 }
 ```
-## DropTable
+## Read
 
-Drop a table in the DB
+Read data from a table. Lookup can be by ID or via querying any field in the record.
 
 
-[https://m3o.com/db/api#DropTable](https://m3o.com/db/api#DropTable)
+[https://m3o.com/db/api#Read](https://m3o.com/db/api#Read)
 
 ```go
 package example
@@ -78,10 +78,66 @@ import(
 	"go.m3o.com/db"
 )
 
-// Drop a table in the DB
-func DropTable() {
+// Read data from a table. Lookup can be by ID or via querying any field in the record.
+func ReadRecords() {
 	dbService := db.NewDbService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := dbService.DropTable(&db.DropTableRequest{
+	rsp, err := dbService.Read(&db.ReadRequest{
+		Table: "example",
+Query: "age == 43",
+	})
+	fmt.Println(rsp, err)
+	
+}
+```
+## Delete
+
+Delete a record in the database by id.
+
+
+[https://m3o.com/db/api#Delete](https://m3o.com/db/api#Delete)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"go.m3o.com/db"
+)
+
+// Delete a record in the database by id.
+func DeleteArecord() {
+	dbService := db.NewDbService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := dbService.Delete(&db.DeleteRequest{
+		Table: "example",
+Id: "1",
+	})
+	fmt.Println(rsp, err)
+	
+}
+```
+## Truncate
+
+Truncate the records in a table
+
+
+[https://m3o.com/db/api#Truncate](https://m3o.com/db/api#Truncate)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"go.m3o.com/db"
+)
+
+// Truncate the records in a table
+func TruncateTable() {
+	dbService := db.NewDbService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := dbService.Truncate(&db.TruncateRequest{
 		Table: "example",
 	})
 	fmt.Println(rsp, err)
@@ -109,33 +165,6 @@ import(
 func CountEntriesInAtable() {
 	dbService := db.NewDbService(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := dbService.Count(&db.CountRequest{
-		Table: "example",
-	})
-	fmt.Println(rsp, err)
-	
-}
-```
-## Truncate
-
-Truncate the records in a table
-
-
-[https://m3o.com/db/api#Truncate](https://m3o.com/db/api#Truncate)
-
-```go
-package example
-
-import(
-	"fmt"
-	"os"
-
-	"go.m3o.com/db"
-)
-
-// Truncate the records in a table
-func TruncateTable() {
-	dbService := db.NewDbService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := dbService.Truncate(&db.TruncateRequest{
 		Table: "example",
 	})
 	fmt.Println(rsp, err)
@@ -198,12 +227,12 @@ Record: &db.Json{
 	
 }
 ```
-## Read
+## DropTable
 
-Read data from a table. Lookup can be by ID or via querying any field in the record.
+Drop a table in the DB
 
 
-[https://m3o.com/db/api#Read](https://m3o.com/db/api#Read)
+[https://m3o.com/db/api#DropTable](https://m3o.com/db/api#DropTable)
 
 ```go
 package example
@@ -215,40 +244,11 @@ import(
 	"go.m3o.com/db"
 )
 
-// Read data from a table. Lookup can be by ID or via querying any field in the record.
-func ReadRecords() {
+// Drop a table in the DB
+func DropTable() {
 	dbService := db.NewDbService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := dbService.Read(&db.ReadRequest{
+	rsp, err := dbService.DropTable(&db.DropTableRequest{
 		Table: "example",
-Query: "age == 43",
-	})
-	fmt.Println(rsp, err)
-	
-}
-```
-## Delete
-
-Delete a record in the database by id.
-
-
-[https://m3o.com/db/api#Delete](https://m3o.com/db/api#Delete)
-
-```go
-package example
-
-import(
-	"fmt"
-	"os"
-
-	"go.m3o.com/db"
-)
-
-// Delete a record in the database by id.
-func DeleteArecord() {
-	dbService := db.NewDbService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := dbService.Delete(&db.DeleteRequest{
-		Id: "1",
-Table: "example",
 	})
 	fmt.Println(rsp, err)
 	

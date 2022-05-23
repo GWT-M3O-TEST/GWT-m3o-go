@@ -66,10 +66,10 @@ type Channel struct {
 }
 
 type CreateChannelRequest struct {
-	// description for the channel
-	Description string `json:"description,omitempty"`
 	// name of the channel
 	Name string `json:"name,omitempty"`
+	// description for the channel
+	Description string `json:"description,omitempty"`
 }
 
 type CreateChannelResponse struct {

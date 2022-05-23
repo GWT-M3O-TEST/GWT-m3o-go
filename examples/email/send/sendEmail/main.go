@@ -11,8 +11,8 @@ import (
 func main() {
 	client := m3o.New(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := client.Email.Send(&email.SendRequest{
-		From:    "Awesome Dot Com",
 		Subject: "Email verification",
+		From:    "Awesome Dot Com",
 	})
 	fmt.Println(rsp, err)
 }

@@ -65,16 +65,16 @@ func (t *CryptoService) Symbols(request *SymbolsRequest) (*SymbolsResponse, erro
 }
 
 type Article struct {
+	// title of the article
+	Title string `json:"title,omitempty"`
+	// the source url
+	Url string `json:"url,omitempty"`
 	// the date published
 	Date string `json:"date,omitempty"`
 	// its description
 	Description string `json:"description,omitempty"`
 	// the source
 	Source string `json:"source,omitempty"`
-	// title of the article
-	Title string `json:"title,omitempty"`
-	// the source url
-	Url string `json:"url,omitempty"`
 }
 
 type HistoryRequest struct {
@@ -83,6 +83,8 @@ type HistoryRequest struct {
 }
 
 type HistoryResponse struct {
+	// the volume
+	Volume float64 `json:"volume,omitempty"`
 	// the close price
 	Close float64 `json:"close,omitempty"`
 	// the date
@@ -95,8 +97,6 @@ type HistoryResponse struct {
 	Open float64 `json:"open,omitempty"`
 	// the crypto symbol
 	Symbol string `json:"symbol,omitempty"`
-	// the volume
-	Volume float64 `json:"volume,omitempty"`
 }
 
 type NewsRequest struct {
@@ -117,10 +117,10 @@ type PriceRequest struct {
 }
 
 type PriceResponse struct {
-	// the last price
-	Price float64 `json:"price,omitempty"`
 	// the crypto symbol e.g BTCUSD
 	Symbol string `json:"symbol,omitempty"`
+	// the last price
+	Price float64 `json:"price,omitempty"`
 }
 
 type QuoteRequest struct {
@@ -129,6 +129,8 @@ type QuoteRequest struct {
 }
 
 type QuoteResponse struct {
+	// the asking price
+	AskPrice float64 `json:"ask_price,omitempty"`
 	// the ask size
 	AskSize float64 `json:"ask_size,omitempty"`
 	// the bidding price
@@ -139,13 +141,11 @@ type QuoteResponse struct {
 	Symbol string `json:"symbol,omitempty"`
 	// the UTC timestamp of the quote
 	Timestamp string `json:"timestamp,omitempty"`
-	// the asking price
-	AskPrice float64 `json:"ask_price,omitempty"`
 }
 
 type Symbol struct {
-	Symbol string `json:"symbol,omitempty"`
 	Name   string `json:"name,omitempty"`
+	Symbol string `json:"symbol,omitempty"`
 }
 
 type SymbolsRequest struct {
