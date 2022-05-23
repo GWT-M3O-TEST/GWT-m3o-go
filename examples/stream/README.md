@@ -27,8 +27,8 @@ import(
 func CreateChannel() {
 	streamService := stream.NewStreamService(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := streamService.CreateChannel(&stream.CreateChannelRequest{
-		Name: "general",
-Description: "The channel for all things",
+		Description: "The channel for all things",
+Name: "general",
 	})
 	fmt.Println(rsp, err)
 	

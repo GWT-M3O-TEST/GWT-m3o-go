@@ -103,18 +103,18 @@ type Intersection struct {
 }
 
 type Maneuver struct {
-	Location      *Point  `json:"location,omitempty"`
 	Action        string  `json:"action,omitempty"`
 	BearingAfter  float64 `json:"bearing_after,omitempty"`
 	BearingBefore float64 `json:"bearing_before,omitempty"`
 	Direction     string  `json:"direction,omitempty"`
+	Location      *Point  `json:"location,omitempty"`
 }
 
 type Point struct {
-	// Long e.g 13.428555
-	Longitude float64 `json:"longitude,omitempty"`
 	// Lat e.g 52.523219
 	Latitude float64 `json:"latitude,omitempty"`
+	// Long e.g 13.428555
+	Longitude float64 `json:"longitude,omitempty"`
 }
 
 type RouteRequest struct {

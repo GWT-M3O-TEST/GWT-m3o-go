@@ -38,24 +38,24 @@ func (t *WordleService) Next(request *NextRequest) (*NextResponse, error) {
 }
 
 type Char struct {
-	// the character itself
-	Letter string `json:"letter,omitempty"`
 	// position in the string
 	Position int32 `json:"position,omitempty"`
 	// whether it was correct
 	Correct bool `json:"correct,omitempty"`
 	// whether it's in the word
 	InWord bool `json:"in_word,omitempty"`
+	// the character itself
+	Letter string `json:"letter,omitempty"`
 }
 
 type Guess struct {
+	// the full guess word
+	Word string `json:"word,omitempty"`
 	// individual characters
 	Chars []Char `json:"chars,omitempty"`
 	// the highlighted word e.g n[o]is{e}
 	// where [ ] is correct, { } is in word
 	Highlight string `json:"highlight,omitempty"`
-	// the full guess word
-	Word string `json:"word,omitempty"`
 }
 
 type GuessRequest struct {
@@ -66,16 +66,16 @@ type GuessRequest struct {
 }
 
 type GuessResponse struct {
-	// informational message
-	Status string `json:"status,omitempty"`
-	// number of tries left
-	TriesLeft int32 `json:"tries_left,omitempty"`
 	// the actual word if failed
 	Answer string `json:"answer,omitempty"`
 	// whether it was correct
 	Correct bool `json:"correct,omitempty"`
 	// the guess words tried
 	Guesses []Guess `json:"guesses,omitempty"`
+	// informational message
+	Status string `json:"status,omitempty"`
+	// number of tries left
+	TriesLeft int32 `json:"tries_left,omitempty"`
 }
 
 type NextRequest struct {

@@ -64,10 +64,10 @@ type CallResponse struct {
 }
 
 type StreamRequest struct {
-	// name to append to the message e.g Alice
-	Name string `json:"name,omitempty"`
 	// the number of messages to send back
 	Messages int64 `json:"messages,string,omitempty"`
+	// name to append to the message e.g Alice
+	Name string `json:"name,omitempty"`
 }
 
 type StreamResponse struct {

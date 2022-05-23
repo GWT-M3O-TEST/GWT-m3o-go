@@ -11,8 +11,8 @@ import (
 func main() {
 	client := m3o.New(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := client.Chat.Create(&chat.CreateRequest{
-		Name:        "general",
 		Description: "The general chat room",
+		Name:        "general",
 	})
 	fmt.Println(rsp, err)
 }

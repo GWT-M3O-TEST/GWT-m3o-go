@@ -111,12 +111,12 @@ type CountResponse struct {
 }
 
 type CreateRequest struct {
+	// JSON encoded record or records (can be array or object)
+	Record map[string]interface{} `json:"record,omitempty"`
 	// Optional table name. Defaults to 'default'
 	Table string `json:"table,omitempty"`
 	// optional record id to use
 	Id string `json:"id,omitempty"`
-	// JSON encoded record or records (can be array or object)
-	Record map[string]interface{} `json:"record,omitempty"`
 }
 
 type CreateResponse struct {
@@ -150,8 +150,6 @@ type ListTablesResponse struct {
 }
 
 type ReadRequest struct {
-	// Optional table name. Defaults to 'default'
-	Table string `json:"table,omitempty"`
 	// Read by id. Equivalent to 'id == "your-id"'
 	Id string `json:"id,omitempty"`
 	// Maximum number of records to return. Default limit is 25.
@@ -168,6 +166,8 @@ type ReadRequest struct {
 	// Dot access is supported, eg: 'user.age == 11'
 	// Accessing list elements is not supported yet.
 	Query string `json:"query,omitempty"`
+	// Optional table name. Defaults to 'default'
+	Table string `json:"table,omitempty"`
 }
 
 type ReadResponse struct {
@@ -176,10 +176,10 @@ type ReadResponse struct {
 }
 
 type RenameTableRequest struct {
-	// new table name
-	To string `json:"to,omitempty"`
 	// current table name
 	From string `json:"from,omitempty"`
+	// new table name
+	To string `json:"to,omitempty"`
 }
 
 type RenameTableResponse struct {

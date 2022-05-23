@@ -53,8 +53,8 @@ func StreamHelloworld() {
 	helloworldService := helloworld.NewHelloworldService(os.Getenv("M3O_API_TOKEN"))
 	
 	stream, err := helloworldService.Stream(&helloworld.StreamRequest{
-		Messages: 10,
-Name: "John",
+		Name: "John",
+Messages: 10,
 	})
 	if err != nil {
 		fmt.Println(err)

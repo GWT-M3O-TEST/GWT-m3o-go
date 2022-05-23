@@ -59,8 +59,6 @@ type ParseResponse struct {
 }
 
 type SendRequest struct {
-	// the email address of the recipient
-	To string `json:"to,omitempty"`
 	// the display name of the sender
 	From string `json:"from,omitempty"`
 	// the html body
@@ -71,6 +69,8 @@ type SendRequest struct {
 	Subject string `json:"subject,omitempty"`
 	// the text body
 	TextBody string `json:"text_body,omitempty"`
+	// the email address of the recipient
+	To string `json:"to,omitempty"`
 }
 
 type SendResponse struct {

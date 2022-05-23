@@ -55,8 +55,6 @@ type Box struct {
 }
 
 type GenerateRequest struct {
-	// bottom text
-	BottomText string `json:"bottom_text,omitempty"`
 	// font: arial or impact
 	Font string `json:"font,omitempty"`
 	// the template id to use
@@ -65,6 +63,8 @@ type GenerateRequest struct {
 	MaxFontSize string `json:"max_font_size,omitempty"`
 	// top text
 	TopText string `json:"top_text,omitempty"`
+	// bottom text
+	BottomText string `json:"bottom_text,omitempty"`
 }
 
 type GenerateResponse struct {
@@ -73,6 +73,10 @@ type GenerateResponse struct {
 }
 
 type Template struct {
+	// name of the memegen
+	Name string `json:"name,omitempty"`
+	// url of the memegen
+	Url string `json:"url,omitempty"`
 	// width in pixels
 	Width int32 `json:"width,omitempty"`
 	// number of boxes used
@@ -81,10 +85,6 @@ type Template struct {
 	Height int32 `json:"height,omitempty"`
 	// id of the memegen
 	Id string `json:"id,omitempty"`
-	// name of the memegen
-	Name string `json:"name,omitempty"`
-	// url of the memegen
-	Url string `json:"url,omitempty"`
 }
 
 type TemplatesRequest struct {

@@ -38,34 +38,34 @@ func (t *WeatherService) Now(request *NowRequest) (*NowResponse, error) {
 }
 
 type Forecast struct {
-	// minimum temp in celsius
-	MinTempC float64 `json:"min_temp_c,omitempty"`
-	// the average temp in fahrenheit
-	AvgTempF float64 `json:"avg_temp_f,omitempty"`
 	// forecast condition
 	Condition string `json:"condition,omitempty"`
-	// max temp in celsius
-	MaxTempC float64 `json:"max_temp_c,omitempty"`
-	// time of sunset
-	Sunset string `json:"sunset,omitempty"`
 	// the URL of forecast condition icon. Simply prefix with either http or https to use it
 	IconUrl string `json:"icon_url,omitempty"`
-	// max temp in fahrenheit
-	MaxTempF float64 `json:"max_temp_f,omitempty"`
-	// max wind speed kph
-	MaxWindKph float64 `json:"max_wind_kph,omitempty"`
+	// time of sunset
+	Sunset string `json:"sunset,omitempty"`
 	// minimum temp in fahrenheit
 	MinTempF float64 `json:"min_temp_f,omitempty"`
 	// will it rain
 	WillItRain bool `json:"will_it_rain,omitempty"`
-	// the average temp in celsius
-	AvgTempC float64 `json:"avg_temp_c,omitempty"`
+	// the average temp in fahrenheit
+	AvgTempF float64 `json:"avg_temp_f,omitempty"`
 	// chance of rain (percentage)
 	ChanceOfRain int32 `json:"chance_of_rain,omitempty"`
-	// date of the forecast
-	Date string `json:"date,omitempty"`
+	// max temp in celsius
+	MaxTempC float64 `json:"max_temp_c,omitempty"`
+	// max wind speed kph
+	MaxWindKph float64 `json:"max_wind_kph,omitempty"`
 	// max wind speed mph
 	MaxWindMph float64 `json:"max_wind_mph,omitempty"`
+	// the average temp in celsius
+	AvgTempC float64 `json:"avg_temp_c,omitempty"`
+	// date of the forecast
+	Date string `json:"date,omitempty"`
+	// max temp in fahrenheit
+	MaxTempF float64 `json:"max_temp_f,omitempty"`
+	// minimum temp in celsius
+	MinTempC float64 `json:"min_temp_c,omitempty"`
 	// time of sunrise
 	Sunrise string `json:"sunrise,omitempty"`
 }
@@ -78,6 +78,8 @@ type ForecastRequest struct {
 }
 
 type ForecastResponse struct {
+	// e.g -77.46
+	Longitude float64 `json:"longitude,omitempty"`
 	// region related to the location
 	Region string `json:"region,omitempty"`
 	// timezone of the location
@@ -92,8 +94,6 @@ type ForecastResponse struct {
 	LocalTime string `json:"local_time,omitempty"`
 	// location of the request
 	Location string `json:"location,omitempty"`
-	// e.g -77.46
-	Longitude float64 `json:"longitude,omitempty"`
 }
 
 type NowRequest struct {
@@ -102,44 +102,44 @@ type NowRequest struct {
 }
 
 type NowResponse struct {
-	// cloud cover percentage
-	Cloud int32 `json:"cloud,omitempty"`
-	// feels like in celsius
-	FeelsLikeC float64 `json:"feels_like_c,omitempty"`
-	// region related to the location
-	Region string `json:"region,omitempty"`
-	// wind degree
-	WindDegree int32 `json:"wind_degree,omitempty"`
-	// the URL of the related icon. Simply prefix with either http or https to use it
-	IconUrl string `json:"icon_url,omitempty"`
 	// location of the request
 	Location string `json:"location,omitempty"`
-	// temperature in celsius
-	TempC float64 `json:"temp_c,omitempty"`
-	// wind in kph
-	WindKph float64 `json:"wind_kph,omitempty"`
-	// the weather condition
-	Condition string `json:"condition,omitempty"`
 	// timezone of the location
 	Timezone string `json:"timezone,omitempty"`
-	// wind in mph
-	WindMph float64 `json:"wind_mph,omitempty"`
-	// temperature in fahrenheit
-	TempF float64 `json:"temp_f,omitempty"`
-	// country of the request
-	Country string `json:"country,omitempty"`
-	// whether its daytime
-	Daytime bool `json:"daytime,omitempty"`
-	// feels like in fahrenheit
-	FeelsLikeF float64 `json:"feels_like_f,omitempty"`
-	// the humidity percentage
-	Humidity int32 `json:"humidity,omitempty"`
-	// e.g 37.55
-	Latitude float64 `json:"latitude,omitempty"`
+	// wind in kph
+	WindKph float64 `json:"wind_kph,omitempty"`
+	// the URL of the related icon. Simply prefix with either http or https to use it
+	IconUrl string `json:"icon_url,omitempty"`
 	// the local time
 	LocalTime string `json:"local_time,omitempty"`
+	// temperature in celsius
+	TempC float64 `json:"temp_c,omitempty"`
+	// wind degree
+	WindDegree int32 `json:"wind_degree,omitempty"`
+	// wind in mph
+	WindMph float64 `json:"wind_mph,omitempty"`
+	// the humidity percentage
+	Humidity int32 `json:"humidity,omitempty"`
+	// the weather condition
+	Condition string `json:"condition,omitempty"`
+	// feels like in celsius
+	FeelsLikeC float64 `json:"feels_like_c,omitempty"`
+	// feels like in fahrenheit
+	FeelsLikeF float64 `json:"feels_like_f,omitempty"`
+	// e.g 37.55
+	Latitude float64 `json:"latitude,omitempty"`
 	// e.g -77.46
 	Longitude float64 `json:"longitude,omitempty"`
+	// temperature in fahrenheit
+	TempF float64 `json:"temp_f,omitempty"`
 	// wind direction
 	WindDirection string `json:"wind_direction,omitempty"`
+	// cloud cover percentage
+	Cloud int32 `json:"cloud,omitempty"`
+	// whether its daytime
+	Daytime bool `json:"daytime,omitempty"`
+	// region related to the location
+	Region string `json:"region,omitempty"`
+	// country of the request
+	Country string `json:"country,omitempty"`
 }

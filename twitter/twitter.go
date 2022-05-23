@@ -56,24 +56,24 @@ func (t *TwitterService) User(request *UserRequest) (*UserResponse, error) {
 }
 
 type Profile struct {
-	// the user's location
-	Location string `json:"location,omitempty"`
 	// the account creation date
 	CreatedAt string `json:"created_at,omitempty"`
 	// the user description
 	Description string `json:"description,omitempty"`
-	// the follower count
-	Followers int64 `json:"followers,string,omitempty"`
 	// if the account is private
 	Private bool `json:"private,omitempty"`
 	// the username
 	Username string `json:"username,omitempty"`
 	// if the account is verified
 	Verified bool `json:"verified,omitempty"`
+	// the follower count
+	Followers int64 `json:"followers,string,omitempty"`
 	// the user id
 	Id int64 `json:"id,string,omitempty"`
 	// The user's profile picture
 	ImageUrl string `json:"image_url,omitempty"`
+	// the user's location
+	Location string `json:"location,omitempty"`
 	// display name of the user
 	Name string `json:"name,omitempty"`
 }
@@ -120,18 +120,18 @@ type TrendsResponse struct {
 }
 
 type Tweet struct {
-	// number of times retweeted
-	RetweetedCount int64 `json:"retweeted_count,string,omitempty"`
-	// text of the tweet
-	Text string `json:"text,omitempty"`
-	// username of the person who tweeted
-	Username string `json:"username,omitempty"`
 	// time of tweet
 	CreatedAt string `json:"created_at,omitempty"`
 	// number of times favourited
 	FavouritedCount int64 `json:"favourited_count,string,omitempty"`
 	// id of the tweet
 	Id int64 `json:"id,string,omitempty"`
+	// number of times retweeted
+	RetweetedCount int64 `json:"retweeted_count,string,omitempty"`
+	// text of the tweet
+	Text string `json:"text,omitempty"`
+	// username of the person who tweeted
+	Username string `json:"username,omitempty"`
 }
 
 type UserRequest struct {

@@ -47,9 +47,9 @@ func (t *LocationService) Search(request *SearchRequest) (*SearchResponse, error
 }
 
 type Entity struct {
-	Id       string `json:"id,omitempty"`
 	Location *Point `json:"location,omitempty"`
 	Type     string `json:"type,omitempty"`
+	Id       string `json:"id,omitempty"`
 }
 
 type Point struct {
@@ -75,14 +75,14 @@ type SaveResponse struct {
 }
 
 type SearchRequest struct {
-	// type of entities to filter
-	Type string `json:"type,omitempty"`
 	// Central position to search from
 	Center *Point `json:"center,omitempty"`
 	// Maximum number of entities to return
 	NumEntities int64 `json:"numEntities,string,omitempty"`
 	// radius in meters
 	Radius float64 `json:"radius,omitempty"`
+	// type of entities to filter
+	Type string `json:"type,omitempty"`
 }
 
 type SearchResponse struct {

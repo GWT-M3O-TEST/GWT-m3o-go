@@ -135,8 +135,8 @@ import(
 func DecrementAvalue() {
 	cacheService := cache.NewCacheService(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := cacheService.Decrement(&cache.DecrementRequest{
-		Value: 2,
-Key: "counter",
+		Key: "counter",
+Value: 2,
 	})
 	fmt.Println(rsp, err)
 	

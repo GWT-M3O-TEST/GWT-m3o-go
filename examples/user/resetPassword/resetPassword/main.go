@@ -11,8 +11,8 @@ import (
 func main() {
 	client := m3o.New(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := client.User.ResetPassword(&user.ResetPasswordRequest{
-		Email: "joe@example.com",
 		Code:  "012345",
+		Email: "joe@example.com",
 	})
 	fmt.Println(rsp, err)
 }

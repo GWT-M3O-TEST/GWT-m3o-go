@@ -142,25 +142,25 @@ type DeployRequest struct {
 	// entry point, ie. handler name in the source code
 	// if not provided, defaults to the name parameter
 	Entrypoint string `json:"entrypoint,omitempty"`
+	// environment variables to pass in at runtime
+	EnvVars map[string]string `json:"env_vars,omitempty"`
+	// function name
+	Name string `json:"name,omitempty"`
+	// github url for a repo
+	Repo string `json:"repo,omitempty"`
+	// branch to deploy. defaults to master
+	Branch string `json:"branch,omitempty"`
 	// runtime/lanaguage of the function e.g php74,
 	// nodejs6, nodejs8, nodejs10, nodejs12, nodejs14, nodejs16,
 	// dotnet3, java11, ruby26, ruby27, go111, go113, go116,
 	// python37, python38, python39
 	Runtime string `json:"runtime,omitempty"`
+	// inline source code
+	Source string `json:"source,omitempty"`
 	// optional subfolder path
 	Subfolder string `json:"subfolder,omitempty"`
 	// region to deploy in. defaults to europe-west1
 	Region string `json:"region,omitempty"`
-	// github url for a repo
-	Repo string `json:"repo,omitempty"`
-	// inline source code
-	Source string `json:"source,omitempty"`
-	// branch to deploy. defaults to master
-	Branch string `json:"branch,omitempty"`
-	// environment variables to pass in at runtime
-	EnvVars map[string]string `json:"env_vars,omitempty"`
-	// function name
-	Name string `json:"name,omitempty"`
 }
 
 type DeployResponse struct {
@@ -178,38 +178,38 @@ type DescribeResponse struct {
 }
 
 type Func struct {
-	// associated env vars
-	EnvVars map[string]string `json:"env_vars,omitempty"`
-	// subfolder path to entrypoint
-	Subfolder string `json:"subfolder,omitempty"`
-	// eg. ACTIVE, DEPLOY_IN_PROGRESS, OFFLINE etc
-	Status string `json:"status,omitempty"`
-	// time it was updated
-	Updated string `json:"updated,omitempty"`
-	// branch to deploy. defaults to master
-	Branch string `json:"branch,omitempty"`
-	// name of handler in source code
-	Entrypoint string `json:"entrypoint,omitempty"`
-	// git repo address
-	Repo string `json:"repo,omitempty"`
-	// the source code
-	Source string `json:"source,omitempty"`
 	// id of the function
 	Id string `json:"id,omitempty"`
-	// runtime/language of the function e.g php74,
-	// nodejs6, nodejs8, nodejs10, nodejs12, nodejs14, nodejs16,
-	// dotnet3, java11, ruby26, ruby27, go111, go113, go116,
-	// python37, python38, python39
-	Runtime string `json:"runtime,omitempty"`
+	// eg. ACTIVE, DEPLOY_IN_PROGRESS, OFFLINE etc
+	Status string `json:"status,omitempty"`
 	// unique url of the function
 	Url string `json:"url,omitempty"`
+	// time it was updated
+	Updated string `json:"updated,omitempty"`
+	// subfolder path to entrypoint
+	Subfolder string `json:"subfolder,omitempty"`
+	// branch to deploy. defaults to master
+	Branch string `json:"branch,omitempty"`
 	// time of creation
 	Created string `json:"created,omitempty"`
+	// name of handler in source code
+	Entrypoint string `json:"entrypoint,omitempty"`
+	// associated env vars
+	EnvVars map[string]string `json:"env_vars,omitempty"`
 	// function name
 	// limitation: must be unique across projects
 	Name string `json:"name,omitempty"`
 	// region to deploy in. defaults to europe-west1
 	Region string `json:"region,omitempty"`
+	// git repo address
+	Repo string `json:"repo,omitempty"`
+	// runtime/language of the function e.g php74,
+	// nodejs6, nodejs8, nodejs10, nodejs12, nodejs14, nodejs16,
+	// dotnet3, java11, ruby26, ruby27, go111, go113, go116,
+	// python37, python38, python39
+	Runtime string `json:"runtime,omitempty"`
+	// the source code
+	Source string `json:"source,omitempty"`
 }
 
 type ListRequest struct {
@@ -279,10 +279,10 @@ type RuntimesResponse struct {
 }
 
 type UpdateRequest struct {
-	// function name
-	Name string `json:"name,omitempty"`
 	// inline source code
 	Source string `json:"source,omitempty"`
+	// function name
+	Name string `json:"name,omitempty"`
 }
 
 type UpdateResponse struct {

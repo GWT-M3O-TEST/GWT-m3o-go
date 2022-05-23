@@ -55,10 +55,10 @@ import(
 func GenerateAnAvatarAndUploadTheAvatarToMicrosCdn() {
 	avatarService := avatar.NewAvatarService(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := avatarService.Generate(&avatar.GenerateRequest{
-		Upload: true,
+		Format: "png",
+Upload: true,
 Gender: "female",
 Username: "",
-Format: "png",
 	})
 	fmt.Println(rsp, err)
 	

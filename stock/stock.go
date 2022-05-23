@@ -54,6 +54,12 @@ type HistoryRequest struct {
 }
 
 type HistoryResponse struct {
+	// the open price
+	Open float64 `json:"open,omitempty"`
+	// the stock symbol
+	Symbol string `json:"symbol,omitempty"`
+	// the volume
+	Volume int32 `json:"volume,omitempty"`
 	// the close price
 	Close float64 `json:"close,omitempty"`
 	// the date
@@ -62,12 +68,6 @@ type HistoryResponse struct {
 	High float64 `json:"high,omitempty"`
 	// the low price
 	Low float64 `json:"low,omitempty"`
-	// the open price
-	Open float64 `json:"open,omitempty"`
-	// the stock symbol
-	Symbol string `json:"symbol,omitempty"`
-	// the volume
-	Volume int32 `json:"volume,omitempty"`
 }
 
 type PriceRequest struct {

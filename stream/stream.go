@@ -83,20 +83,22 @@ type ListChannelsResponse struct {
 }
 
 type ListMessagesRequest struct {
-	// number of message to return
-	Limit int32 `json:"limit,omitempty"`
 	// The channel to subscribe to
 	Channel string `json:"channel,omitempty"`
+	// number of message to return
+	Limit int32 `json:"limit,omitempty"`
 }
 
 type ListMessagesResponse struct {
-	// Messages are chronological order
-	Messages []Message `json:"messages,omitempty"`
 	// The channel subscribed to
 	Channel string `json:"channel,omitempty"`
+	// Messages are chronological order
+	Messages []Message `json:"messages,omitempty"`
 }
 
 type Message struct {
+	// the channel name
+	Channel string `json:"channel,omitempty"`
 	// id of the message
 	Id string `json:"id,omitempty"`
 	// the associated metadata
@@ -105,15 +107,13 @@ type Message struct {
 	Text string `json:"text,omitempty"`
 	// time of message creation
 	Timestamp string `json:"timestamp,omitempty"`
-	// the channel name
-	Channel string `json:"channel,omitempty"`
 }
 
 type SendMessageRequest struct {
-	// The channel to send to
-	Channel string `json:"channel,omitempty"`
 	// The message text to send
 	Text string `json:"text,omitempty"`
+	// The channel to send to
+	Channel string `json:"channel,omitempty"`
 }
 
 type SendMessageResponse struct {

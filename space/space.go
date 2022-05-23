@@ -145,12 +145,12 @@ type HeadResponse struct {
 }
 
 type ListObject struct {
-	Created string `json:"created,omitempty"`
-	// when was this last modified
-	Modified   string `json:"modified,omitempty"`
-	Name       string `json:"name,omitempty"`
 	Url        string `json:"url,omitempty"`
 	Visibility string `json:"visibility,omitempty"`
+	Created    string `json:"created,omitempty"`
+	// when was this last modified
+	Modified string `json:"modified,omitempty"`
+	Name     string `json:"name,omitempty"`
 }
 
 type ListRequest struct {
@@ -173,6 +173,8 @@ type ReadResponse struct {
 }
 
 type SpaceObject struct {
+	// is this public or private
+	Visibility string `json:"visibility,omitempty"`
 	// when was this created
 	Created string `json:"created,omitempty"`
 	// the data within the object
@@ -183,8 +185,6 @@ type SpaceObject struct {
 	Name string `json:"name,omitempty"`
 	// URL to access the object if it is public
 	Url string `json:"url,omitempty"`
-	// is this public or private
-	Visibility string `json:"visibility,omitempty"`
 }
 
 type UpdateRequest struct {

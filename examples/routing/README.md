@@ -4,6 +4,40 @@ An [m3o.com](https://m3o.com) API. For example usage see [m3o.com/routing/api](h
 
 Endpoints:
 
+## Route
+
+Retrieve a route as a simple list of gps points along with total distance and estimated duration
+
+
+[https://m3o.com/routing/api#Route](https://m3o.com/routing/api#Route)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"go.m3o.com/routing"
+)
+
+// Retrieve a route as a simple list of gps points along with total distance and estimated duration
+func GpsPointsForAroute() {
+	routingService := routing.NewRoutingService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := routingService.Route(&routing.RouteRequest{
+		Origin: &routing.Point{
+Latitude: 52.517037,
+Longitude: 13.38886,
+},
+Destination: &routing.Point{
+Latitude: 52.529407,
+Longitude: 13.397634,
+},
+	})
+	fmt.Println(rsp, err)
+	
+}
+```
 ## Eta
 
 Get the eta for a route from origin to destination. The eta is an estimated time based on car routes
@@ -25,13 +59,13 @@ import(
 func EtaFromPointAtoPointB() {
 	routingService := routing.NewRoutingService(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := routingService.Eta(&routing.EtaRequest{
-		Destination: &routing.Point{
-Latitude: 52.529407,
-Longitude: 13.397634,
-},
-Origin: &routing.Point{
+		Origin: &routing.Point{
 Latitude: 52.517037,
 Longitude: 13.38886,
+},
+Destination: &routing.Point{
+Latitude: 52.529407,
+Longitude: 13.397634,
 },
 	})
 	fmt.Println(rsp, err)
@@ -59,40 +93,6 @@ import(
 func TurnByTurnDirections() {
 	routingService := routing.NewRoutingService(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := routingService.Directions(&routing.DirectionsRequest{
-		Origin: &routing.Point{
-Latitude: 52.517037,
-Longitude: 13.38886,
-},
-Destination: &routing.Point{
-Latitude: 52.529407,
-Longitude: 13.397634,
-},
-	})
-	fmt.Println(rsp, err)
-	
-}
-```
-## Route
-
-Retrieve a route as a simple list of gps points along with total distance and estimated duration
-
-
-[https://m3o.com/routing/api#Route](https://m3o.com/routing/api#Route)
-
-```go
-package example
-
-import(
-	"fmt"
-	"os"
-
-	"go.m3o.com/routing"
-)
-
-// Retrieve a route as a simple list of gps points along with total distance and estimated duration
-func GpsPointsForAroute() {
-	routingService := routing.NewRoutingService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := routingService.Route(&routing.RouteRequest{
 		Origin: &routing.Point{
 Latitude: 52.517037,
 Longitude: 13.38886,
