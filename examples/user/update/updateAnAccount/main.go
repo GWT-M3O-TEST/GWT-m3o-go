@@ -11,9 +11,9 @@ import (
 func main() {
 	client := m3o.New(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := client.User.Update(&user.UpdateRequest{
+		Id:       "user-1",
 		Email:    "joe+2@example.com",
 		Username: "joe",
-		Id:       "user-1",
 	})
 	fmt.Println(rsp, err)
 }

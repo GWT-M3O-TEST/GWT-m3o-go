@@ -119,10 +119,10 @@ func (t *FunctionService) Update(request *UpdateRequest) (*UpdateResponse, error
 }
 
 type CallRequest struct {
-	// Request body that will be passed to the function
-	Request map[string]interface{} `json:"request,omitempty"`
 	// Name of the function
 	Name string `json:"name,omitempty"`
+	// Request body that will be passed to the function
+	Request map[string]interface{} `json:"request,omitempty"`
 }
 
 type CallResponse struct {
@@ -139,10 +139,6 @@ type DeleteResponse struct {
 }
 
 type DeployRequest struct {
-	// environment variables to pass in at runtime
-	EnvVars map[string]string `json:"env_vars,omitempty"`
-	// region to deploy in. defaults to europe-west1
-	Region string `json:"region,omitempty"`
 	// github url for a repo
 	Repo string `json:"repo,omitempty"`
 	// runtime/lanaguage of the function e.g php74,
@@ -157,10 +153,14 @@ type DeployRequest struct {
 	// entry point, ie. handler name in the source code
 	// if not provided, defaults to the name parameter
 	Entrypoint string `json:"entrypoint,omitempty"`
-	// function name
-	Name string `json:"name,omitempty"`
+	// region to deploy in. defaults to europe-west1
+	Region string `json:"region,omitempty"`
 	// optional subfolder path
 	Subfolder string `json:"subfolder,omitempty"`
+	// environment variables to pass in at runtime
+	EnvVars map[string]string `json:"env_vars,omitempty"`
+	// function name
+	Name string `json:"name,omitempty"`
 }
 
 type DeployResponse struct {
@@ -178,38 +178,38 @@ type DescribeResponse struct {
 }
 
 type Func struct {
-	// time it was updated
-	Updated string `json:"updated,omitempty"`
 	// time of creation
 	Created string `json:"created,omitempty"`
-	// name of handler in source code
-	Entrypoint string `json:"entrypoint,omitempty"`
-	// git repo address
-	Repo string `json:"repo,omitempty"`
-	// eg. ACTIVE, DEPLOY_IN_PROGRESS, OFFLINE etc
-	Status string `json:"status,omitempty"`
-	// function name
-	// limitation: must be unique across projects
-	Name string `json:"name,omitempty"`
-	// subfolder path to entrypoint
-	Subfolder string `json:"subfolder,omitempty"`
-	// the source code
-	Source string `json:"source,omitempty"`
-	// unique url of the function
-	Url string `json:"url,omitempty"`
-	// branch to deploy. defaults to master
-	Branch string `json:"branch,omitempty"`
 	// associated env vars
 	EnvVars map[string]string `json:"env_vars,omitempty"`
-	// id of the function
-	Id string `json:"id,omitempty"`
+	// region to deploy in. defaults to europe-west1
+	Region string `json:"region,omitempty"`
+	// git repo address
+	Repo string `json:"repo,omitempty"`
 	// runtime/language of the function e.g php74,
 	// nodejs6, nodejs8, nodejs10, nodejs12, nodejs14, nodejs16,
 	// dotnet3, java11, ruby26, ruby27, go111, go113, go116,
 	// python37, python38, python39
 	Runtime string `json:"runtime,omitempty"`
-	// region to deploy in. defaults to europe-west1
-	Region string `json:"region,omitempty"`
+	// subfolder path to entrypoint
+	Subfolder string `json:"subfolder,omitempty"`
+	// unique url of the function
+	Url string `json:"url,omitempty"`
+	// name of handler in source code
+	Entrypoint string `json:"entrypoint,omitempty"`
+	// id of the function
+	Id string `json:"id,omitempty"`
+	// branch to deploy. defaults to master
+	Branch string `json:"branch,omitempty"`
+	// the source code
+	Source string `json:"source,omitempty"`
+	// eg. ACTIVE, DEPLOY_IN_PROGRESS, OFFLINE etc
+	Status string `json:"status,omitempty"`
+	// time it was updated
+	Updated string `json:"updated,omitempty"`
+	// function name
+	// limitation: must be unique across projects
+	Name string `json:"name,omitempty"`
 }
 
 type ListRequest struct {
@@ -249,16 +249,16 @@ type RegionsResponse struct {
 }
 
 type Reservation struct {
-	// owner id
-	Owner string `json:"owner,omitempty"`
-	// associated token
-	Token string `json:"token,omitempty"`
 	// time of reservation
 	Created string `json:"created,omitempty"`
 	// time reservation expires
 	Expires string `json:"expires,omitempty"`
 	// name of the app
 	Name string `json:"name,omitempty"`
+	// owner id
+	Owner string `json:"owner,omitempty"`
+	// associated token
+	Token string `json:"token,omitempty"`
 }
 
 type ReserveRequest struct {

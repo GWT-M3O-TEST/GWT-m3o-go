@@ -52,8 +52,8 @@ import(
 func GetAlistOfAssets() {
 	nftService := nft.NewNftService(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := nftService.Assets(&nft.AssetsRequest{
-		Limit: 1,
-OrderBy: "sale_date",
+		OrderBy: "sale_date",
+Limit: 1,
 	})
 	fmt.Println(rsp, err)
 	

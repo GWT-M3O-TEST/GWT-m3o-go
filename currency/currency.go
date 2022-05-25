@@ -56,10 +56,10 @@ func (t *CurrencyService) Rates(request *RatesRequest) (*RatesResponse, error) {
 }
 
 type Code struct {
-	// e.g United States Dollar
-	Currency string `json:"currency,omitempty"`
 	// e.g USD
 	Name string `json:"name,omitempty"`
+	// e.g United States Dollar
+	Currency string `json:"currency,omitempty"`
 }
 
 type CodesRequest struct {
@@ -79,30 +79,30 @@ type ConvertRequest struct {
 }
 
 type ConvertResponse struct {
-	// converted amount e.g 7.10
-	Amount float64 `json:"amount,omitempty"`
 	// the base code e.g USD
 	From string `json:"from,omitempty"`
 	// conversion rate e.g 0.71
 	Rate float64 `json:"rate,omitempty"`
 	// the target code e.g GBP
 	To string `json:"to,omitempty"`
+	// converted amount e.g 7.10
+	Amount float64 `json:"amount,omitempty"`
 }
 
 type HistoryRequest struct {
-	// date formatted as YYYY-MM-DD
-	Date string `json:"date,omitempty"`
 	// currency code e.g USD
 	Code string `json:"code,omitempty"`
+	// date formatted as YYYY-MM-DD
+	Date string `json:"date,omitempty"`
 }
 
 type HistoryResponse struct {
-	// The code of the request
-	Code string `json:"code,omitempty"`
 	// The date requested
 	Date string `json:"date,omitempty"`
 	// The rate for the day as code:rate
 	Rates map[string]float64 `json:"rates,omitempty"`
+	// The code of the request
+	Code string `json:"code,omitempty"`
 }
 
 type RatesRequest struct {

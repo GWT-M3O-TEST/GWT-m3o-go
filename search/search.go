@@ -98,12 +98,12 @@ type Field struct {
 }
 
 type IndexRequest struct {
+	// The index this record belongs to
+	Index string `json:"index,omitempty"`
 	// The data to index
 	Data map[string]interface{} `json:"data,omitempty"`
 	// Optional ID for the record
 	Id string `json:"id,omitempty"`
-	// The index this record belongs to
-	Index string `json:"index,omitempty"`
 }
 
 type IndexResponse struct {

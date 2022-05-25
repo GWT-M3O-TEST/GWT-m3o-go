@@ -4,6 +4,46 @@ An [m3o.com](https://m3o.com) API. For example usage see [m3o.com/comments/api](
 
 Endpoints:
 
+## Events
+
+Subscribe to comments events
+
+
+[https://m3o.com/comments/api#Events](https://m3o.com/comments/api#Events)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"go.m3o.com/comments"
+)
+
+// Subscribe to comments events
+func SubscribeToEvents() {
+	commentsService := comments.NewCommentsService(os.Getenv("M3O_API_TOKEN"))
+	
+	stream, err := commentsService.Events(&comments.EventsRequest{
+		Id: "63c0cdf8-2121-11ec-a881-0242e36f037a",
+	})
+	if err != nil {
+		fmt.Println(err)
+		return
+	}
+
+	for {
+			rsp, err := stream.Recv()
+			if err != nil {
+					fmt.Println(err)
+					return
+			}
+
+			fmt.Println(rsp)
+	}
+}
+```
 ## Create
 
 Create a new comment
@@ -25,8 +65,8 @@ import(
 func CreateAcomment() {
 	commentsService := comments.NewCommentsService(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := commentsService.Create(&comments.CreateRequest{
-		Text: "This is my comment",
-Subject: "New Comment",
+		Subject: "New Comment",
+Text: "This is my comment",
 	})
 	fmt.Println(rsp, err)
 	
@@ -142,45 +182,5 @@ func DeleteAcomment() {
 	})
 	fmt.Println(rsp, err)
 	
-}
-```
-## Events
-
-Subscribe to comments events
-
-
-[https://m3o.com/comments/api#Events](https://m3o.com/comments/api#Events)
-
-```go
-package example
-
-import(
-	"fmt"
-	"os"
-
-	"go.m3o.com/comments"
-)
-
-// Subscribe to comments events
-func SubscribeToEvents() {
-	commentsService := comments.NewCommentsService(os.Getenv("M3O_API_TOKEN"))
-	
-	stream, err := commentsService.Events(&comments.EventsRequest{
-		Id: "63c0cdf8-2121-11ec-a881-0242e36f037a",
-	})
-	if err != nil {
-		fmt.Println(err)
-		return
-	}
-
-	for {
-			rsp, err := stream.Recv()
-			if err != nil {
-					fmt.Println(err)
-					return
-			}
-
-			fmt.Println(rsp)
-	}
 }
 ```

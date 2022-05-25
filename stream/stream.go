@@ -57,12 +57,12 @@ func (t *StreamService) SendMessage(request *SendMessageRequest) (*SendMessageRe
 }
 
 type Channel struct {
+	// name of the channel
+	Name string `json:"name,omitempty"`
 	// description for the channel
 	Description string `json:"description,omitempty"`
 	// last activity time
 	LastActive string `json:"last_active,omitempty"`
-	// name of the channel
-	Name string `json:"name,omitempty"`
 }
 
 type CreateChannelRequest struct {
@@ -97,16 +97,16 @@ type ListMessagesResponse struct {
 }
 
 type Message struct {
-	// the associated metadata
-	Metadata map[string]string `json:"metadata,omitempty"`
-	// text of the message
-	Text string `json:"text,omitempty"`
 	// time of message creation
 	Timestamp string `json:"timestamp,omitempty"`
 	// the channel name
 	Channel string `json:"channel,omitempty"`
 	// id of the message
 	Id string `json:"id,omitempty"`
+	// the associated metadata
+	Metadata map[string]string `json:"metadata,omitempty"`
+	// text of the message
+	Text string `json:"text,omitempty"`
 }
 
 type SendMessageRequest struct {

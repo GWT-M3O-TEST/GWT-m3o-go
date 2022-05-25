@@ -4,6 +4,91 @@ An [m3o.com](https://m3o.com) API. For example usage see [m3o.com/notes/api](htt
 
 Endpoints:
 
+## Read
+
+Read a note
+
+
+[https://m3o.com/notes/api#Read](https://m3o.com/notes/api#Read)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"go.m3o.com/notes"
+)
+
+// Read a note
+func ReadAnote() {
+	notesService := notes.NewNotesService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := notesService.Read(&notes.ReadRequest{
+		Id: "63c0cdf8-2121-11ec-a881-0242e36f037a",
+	})
+	fmt.Println(rsp, err)
+	
+}
+```
+## List
+
+List all the notes
+
+
+[https://m3o.com/notes/api#List](https://m3o.com/notes/api#List)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"go.m3o.com/notes"
+)
+
+// List all the notes
+func ListAllNotes() {
+	notesService := notes.NewNotesService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := notesService.List(&notes.ListRequest{
+		
+	})
+	fmt.Println(rsp, err)
+	
+}
+```
+## Update
+
+Update a note
+
+
+[https://m3o.com/notes/api#Update](https://m3o.com/notes/api#Update)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"go.m3o.com/notes"
+)
+
+// Update a note
+func UpdateAnote() {
+	notesService := notes.NewNotesService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := notesService.Update(&notes.UpdateRequest{
+		Note: &notes.Note{
+Id: "63c0cdf8-2121-11ec-a881-0242e36f037a",
+Title: "Update Note",
+Text: "Updated note text",
+},
+	})
+	fmt.Println(rsp, err)
+	
+}
+```
 ## Delete
 
 Delete a note
@@ -94,91 +179,6 @@ func CreateAnote() {
 	rsp, err := notesService.Create(&notes.CreateRequest{
 		Title: "New Note",
 Text: "This is my note",
-	})
-	fmt.Println(rsp, err)
-	
-}
-```
-## Read
-
-Read a note
-
-
-[https://m3o.com/notes/api#Read](https://m3o.com/notes/api#Read)
-
-```go
-package example
-
-import(
-	"fmt"
-	"os"
-
-	"go.m3o.com/notes"
-)
-
-// Read a note
-func ReadAnote() {
-	notesService := notes.NewNotesService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := notesService.Read(&notes.ReadRequest{
-		Id: "63c0cdf8-2121-11ec-a881-0242e36f037a",
-	})
-	fmt.Println(rsp, err)
-	
-}
-```
-## List
-
-List all the notes
-
-
-[https://m3o.com/notes/api#List](https://m3o.com/notes/api#List)
-
-```go
-package example
-
-import(
-	"fmt"
-	"os"
-
-	"go.m3o.com/notes"
-)
-
-// List all the notes
-func ListAllNotes() {
-	notesService := notes.NewNotesService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := notesService.List(&notes.ListRequest{
-		
-	})
-	fmt.Println(rsp, err)
-	
-}
-```
-## Update
-
-Update a note
-
-
-[https://m3o.com/notes/api#Update](https://m3o.com/notes/api#Update)
-
-```go
-package example
-
-import(
-	"fmt"
-	"os"
-
-	"go.m3o.com/notes"
-)
-
-// Update a note
-func UpdateAnote() {
-	notesService := notes.NewNotesService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := notesService.Update(&notes.UpdateRequest{
-		Note: &notes.Note{
-Id: "63c0cdf8-2121-11ec-a881-0242e36f037a",
-Title: "Update Note",
-Text: "Updated note text",
-},
 	})
 	fmt.Println(rsp, err)
 	

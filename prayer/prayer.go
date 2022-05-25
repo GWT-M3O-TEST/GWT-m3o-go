@@ -29,6 +29,10 @@ func (t *PrayerService) Times(request *TimesRequest) (*TimesResponse, error) {
 }
 
 type PrayerTime struct {
+	// isha time
+	Isha string `json:"isha,omitempty"`
+	// maghrib time
+	Maghrib string `json:"maghrib,omitempty"`
 	// time of sunrise
 	Sunrise string `json:"sunrise,omitempty"`
 	// zuhr time
@@ -39,10 +43,6 @@ type PrayerTime struct {
 	Date string `json:"date,omitempty"`
 	// fajr time
 	Fajr string `json:"fajr,omitempty"`
-	// isha time
-	Isha string `json:"isha,omitempty"`
-	// maghrib time
-	Maghrib string `json:"maghrib,omitempty"`
 }
 
 type TimesRequest struct {
@@ -60,6 +60,10 @@ type TimesRequest struct {
 }
 
 type TimesResponse struct {
+	// longitude of location
+	Longitude float64 `json:"longitude,omitempty"`
+	// prayer times for the given location
+	Times []PrayerTime `json:"times,omitempty"`
 	// date of request
 	Date string `json:"date,omitempty"`
 	// number of days
@@ -68,8 +72,4 @@ type TimesResponse struct {
 	Latitude float64 `json:"latitude,omitempty"`
 	// location for the request
 	Location string `json:"location,omitempty"`
-	// longitude of location
-	Longitude float64 `json:"longitude,omitempty"`
-	// prayer times for the given location
-	Times []PrayerTime `json:"times,omitempty"`
 }

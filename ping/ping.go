@@ -80,8 +80,8 @@ type UrlRequest struct {
 }
 
 type UrlResponse struct {
-	// the response status
-	Status string `json:"status,omitempty"`
 	// the response code
 	Code int32 `json:"code,omitempty"`
+	// the response status
+	Status string `json:"status,omitempty"`
 }

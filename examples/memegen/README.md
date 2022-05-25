@@ -52,9 +52,9 @@ import(
 func GenerateAmeme() {
 	memegenService := memegen.NewMemegenService(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := memegenService.Generate(&memegen.GenerateRequest{
-		BottomText: "Huh?",
-Id: "444501",
+		Id: "444501",
 TopText: "WTF",
+BottomText: "Huh?",
 	})
 	fmt.Println(rsp, err)
 	

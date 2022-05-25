@@ -52,11 +52,11 @@ import(
 func GeneratePasswordWithoutSpecialCharacters() {
 	passwordService := password.NewPasswordService(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := passwordService.Generate(&password.GenerateRequest{
-		Length: 16,
-Lowercase: true,
+		Lowercase: true,
 Numbers: true,
 Special: false,
 Uppercase: true,
+Length: 16,
 	})
 	fmt.Println(rsp, err)
 	

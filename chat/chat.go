@@ -118,14 +118,14 @@ func (t *ChatService) Send(request *SendRequest) (*SendResponse, error) {
 }
 
 type CreateRequest struct {
+	// whether its a private room
+	Private bool `json:"private,omitempty"`
 	// optional list of user ids
 	UserIds []string `json:"user_ids,omitempty"`
 	// chat description
 	Description string `json:"description,omitempty"`
 	// name of the room
 	Name string `json:"name,omitempty"`
-	// whether its a private room
-	Private bool `json:"private,omitempty"`
 }
 
 type CreateResponse struct {
@@ -206,8 +206,6 @@ type ListResponse struct {
 }
 
 type Message struct {
-	// text of the message
-	Text string `json:"text,omitempty"`
 	// id of the user who sent the message
 	UserId string `json:"user_id,omitempty"`
 	// a client side id, should be validated by the server to make the request retry safe
@@ -220,9 +218,13 @@ type Message struct {
 	SentAt string `json:"sent_at,omitempty"`
 	// subject of the message
 	Subject string `json:"subject,omitempty"`
+	// text of the message
+	Text string `json:"text,omitempty"`
 }
 
 type Room struct {
+	// name of the chat
+	Name string `json:"name,omitempty"`
 	// whether its a private room
 	Private bool `json:"private,omitempty"`
 	// list of users
@@ -233,8 +235,6 @@ type Room struct {
 	Description string `json:"description,omitempty"`
 	// unique room id
 	Id string `json:"id,omitempty"`
-	// name of the chat
-	Name string `json:"name,omitempty"`
 }
 
 type SendRequest struct {

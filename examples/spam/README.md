@@ -25,10 +25,10 @@ import(
 func ClassifyAnEmail() {
 	spamService := spam.NewSpamService(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := spamService.Classify(&spam.ClassifyRequest{
-		From: "noreply@m3o.com",
+		TextBody: "Hi there,\n\nWelcome to M3O.\n\nThanks\nM3O team",
+From: "noreply@m3o.com",
 To: "hello@example.com",
 Subject: "Welcome",
-TextBody: "Hi there,\n\nWelcome to M3O.\n\nThanks\nM3O team",
 	})
 	fmt.Println(rsp, err)
 	

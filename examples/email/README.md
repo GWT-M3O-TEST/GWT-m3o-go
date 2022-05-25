@@ -25,8 +25,8 @@ import(
 func SendEmail() {
 	emailService := email.NewEmailService(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := emailService.Send(&email.SendRequest{
-		From: "Awesome Dot Com",
-Subject: "Email verification",
+		Subject: "Email verification",
+From: "Awesome Dot Com",
 	})
 	fmt.Println(rsp, err)
 	

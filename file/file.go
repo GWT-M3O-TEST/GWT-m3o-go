@@ -92,6 +92,8 @@ type ReadResponse struct {
 }
 
 type Record struct {
+	// File contents
+	Content string `json:"content,omitempty"`
 	// Time the file was created e.g 2021-05-20T13:37:21Z
 	Created string `json:"created,omitempty"`
 	// Any other associated metadata as a map of key-value pairs
@@ -103,8 +105,6 @@ type Record struct {
 	Project string `json:"project,omitempty"`
 	// Time the file was updated e.g 2021-05-20T13:37:21Z
 	Updated string `json:"updated,omitempty"`
-	// File contents
-	Content string `json:"content,omitempty"`
 }
 
 type SaveRequest struct {

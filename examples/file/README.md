@@ -83,8 +83,8 @@ import(
 func ReadFile() {
 	fileService := file.NewFileService(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := fileService.Read(&file.ReadRequest{
-		Project: "examples",
-Path: "/document/text-files/file.txt",
+		Path: "/document/text-files/file.txt",
+Project: "examples",
 	})
 	fmt.Println(rsp, err)
 	
@@ -111,8 +111,8 @@ import(
 func DeleteFile() {
 	fileService := file.NewFileService(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := fileService.Delete(&file.DeleteRequest{
-		Project: "examples",
-Path: "/document/text-files/file.txt",
+		Path: "/document/text-files/file.txt",
+Project: "examples",
 	})
 	fmt.Println(rsp, err)
 	

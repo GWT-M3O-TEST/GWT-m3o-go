@@ -124,8 +124,6 @@ type DownloadResponse struct {
 }
 
 type HeadObject struct {
-	// is this public or private
-	Visibility string `json:"visibility,omitempty"`
 	// when was this created
 	Created string `json:"created,omitempty"`
 	// when was this last modified
@@ -133,6 +131,8 @@ type HeadObject struct {
 	Name     string `json:"name,omitempty"`
 	// URL to access the object if it is public
 	Url string `json:"url,omitempty"`
+	// is this public or private
+	Visibility string `json:"visibility,omitempty"`
 }
 
 type HeadRequest struct {
@@ -173,18 +173,18 @@ type ReadResponse struct {
 }
 
 type SpaceObject struct {
-	// URL to access the object if it is public
-	Url string `json:"url,omitempty"`
-	// is this public or private
-	Visibility string `json:"visibility,omitempty"`
-	// when was this created
-	Created string `json:"created,omitempty"`
 	// the data within the object
 	Data string `json:"data,omitempty"`
 	// when was this last modified
 	Modified string `json:"modified,omitempty"`
 	// name of object
 	Name string `json:"name,omitempty"`
+	// URL to access the object if it is public
+	Url string `json:"url,omitempty"`
+	// is this public or private
+	Visibility string `json:"visibility,omitempty"`
+	// when was this created
+	Created string `json:"created,omitempty"`
 }
 
 type UpdateRequest struct {
