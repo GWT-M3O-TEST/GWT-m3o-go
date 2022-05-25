@@ -56,10 +56,10 @@ func (t *FileService) Save(request *SaveRequest) (*SaveResponse, error) {
 }
 
 type DeleteRequest struct {
-	// The project name
-	Project string `json:"project,omitempty"`
 	// Path to the file
 	Path string `json:"path,omitempty"`
+	// The project name
+	Project string `json:"project,omitempty"`
 }
 
 type DeleteResponse struct {

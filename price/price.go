@@ -65,6 +65,8 @@ func (t *PriceService) Report(request *ReportRequest) (*ReportResponse, error) {
 }
 
 type AddRequest struct {
+	// author of the price
+	Author string `json:"author,omitempty"`
 	// currency e.g USD
 	Currency string `json:"currency,omitempty"`
 	// name of the thing e.g bitcoin
@@ -75,8 +77,6 @@ type AddRequest struct {
 	Source string `json:"source,omitempty"`
 	// symbol of value
 	Symbol string `json:"symbol,omitempty"`
-	// author of the price
-	Author string `json:"author,omitempty"`
 }
 
 type AddResponse struct {
@@ -97,12 +97,12 @@ type GetResponse struct {
 }
 
 type Index struct {
+	// symbol of item
+	Symbol string `json:"symbol,omitempty"`
 	// currency of value
 	Currency string `json:"currency,omitempty"`
 	// name of item
 	Name string `json:"name,omitempty"`
-	// symbol of item
-	Symbol string `json:"symbol,omitempty"`
 }
 
 type IndexRequest struct {
@@ -113,12 +113,12 @@ type IndexResponse struct {
 }
 
 type ListRequest struct {
+	// currency to get
+	Currency string `json:"currency,omitempty"`
 	// limit number of values
 	Limit int32 `json:"limit,omitempty"`
 	// offset to read from
 	Offset int32 `json:"offset,omitempty"`
-	// currency to get
-	Currency string `json:"currency,omitempty"`
 }
 
 type ListResponse struct {
@@ -145,6 +145,12 @@ type ReportResponse struct {
 }
 
 type Value struct {
+	// currency of thing
+	Currency string `json:"currency,omitempty"`
+	// name of thing
+	Name string `json:"name,omitempty"`
+	// price of thing
+	Price float64 `json:"price,omitempty"`
 	// where it came from
 	Source string `json:"source,omitempty"`
 	// symbol of value
@@ -153,10 +159,4 @@ type Value struct {
 	Timestamp string `json:"timestamp,omitempty"`
 	// who added it
 	Author string `json:"author,omitempty"`
-	// currency of thing
-	Currency string `json:"currency,omitempty"`
-	// name of thing
-	Name string `json:"name,omitempty"`
-	// price of thing
-	Price float64 `json:"price,omitempty"`
 }

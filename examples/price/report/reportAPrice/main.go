@@ -11,9 +11,9 @@ import (
 func main() {
 	client := m3o.New(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := client.Price.Report(&price.ReportRequest{
+		Comment: "Price is not up to date",
 		Name:    "bitcoin",
 		Symbol:  "BTC",
-		Comment: "Price is not up to date",
 	})
 	fmt.Println(rsp, err)
 }

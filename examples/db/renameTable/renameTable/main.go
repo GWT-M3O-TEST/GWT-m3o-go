@@ -11,8 +11,8 @@ import (
 func main() {
 	client := m3o.New(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := client.Db.RenameTable(&db.RenameTableRequest{
-		From: "examples2",
 		To:   "examples3",
+		From: "examples2",
 	})
 	fmt.Println(rsp, err)
 }

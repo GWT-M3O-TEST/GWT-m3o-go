@@ -4,33 +4,6 @@ An [m3o.com](https://m3o.com) API. For example usage see [m3o.com/image/api](htt
 
 Endpoints:
 
-## Delete
-
-Delete an image previously uploaded.
-
-
-[https://m3o.com/image/api#Delete](https://m3o.com/image/api#Delete)
-
-```go
-package example
-
-import(
-	"fmt"
-	"os"
-
-	"go.m3o.com/image"
-)
-
-// Delete an image previously uploaded.
-func DeleteAnUploadedImage() {
-	imageService := image.NewImageService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := imageService.Delete(&image.DeleteRequest{
-		Url: "https://cdn.m3ocontent.com/micro/images/micro/41e23b39-48dd-42b6-9738-79a313414bb8/cat.png",
-	})
-	fmt.Println(rsp, err)
-	
-}
-```
 ## Resize
 
 Resize an image on the fly without storing it (by sending and receiving a base64 encoded image), or resize and upload depending on parameters.
@@ -60,11 +33,11 @@ import(
 func Base64toHostedImage() {
 	imageService := image.NewImageService(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := imageService.Resize(&image.ResizeRequest{
-		Base64: "data:image/png;base64, iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO9TXL0Y4OHwAAAABJRU5ErkJggg==",
+		Height: 100,
+Base64: "data:image/png;base64, iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO9TXL0Y4OHwAAAABJRU5ErkJggg==",
 OutputUrl: true,
 Name: "cat.png",
 Width: 100,
-Height: 100,
 	})
 	fmt.Println(rsp, err)
 	
@@ -136,13 +109,13 @@ import(
 func Base64toBase64imageWithCropping() {
 	imageService := image.NewImageService(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := imageService.Resize(&image.ResizeRequest{
-		Base64: "data:image/png;base64, iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO9TXL0Y4OHwAAAABJRU5ErkJggg==",
-Width: 100,
-Height: 100,
+		Height: 100,
 CropOptions: &image.CropOptions{
 Width: 50,
 Height: 50,
 },
+Base64: "data:image/png;base64, iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO9TXL0Y4OHwAAAABJRU5ErkJggg==",
+Width: 100,
 	})
 	fmt.Println(rsp, err)
 	
@@ -175,9 +148,9 @@ import(
 func ConvertApngImageToAjpegTakenFromAurlAndSavedToAurlOnMicrosCdn() {
 	imageService := image.NewImageService(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := imageService.Convert(&image.ConvertRequest{
-		Name: "cat.jpeg",
+		Url: "somewebsite.com/cat.png",
+Name: "cat.jpeg",
 OutputUrl: true,
-Url: "somewebsite.com/cat.png",
 	})
 	fmt.Println(rsp, err)
 	
@@ -210,8 +183,8 @@ import(
 func UploadAbase64imageToMicrosCdn() {
 	imageService := image.NewImageService(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := imageService.Upload(&image.UploadRequest{
-		Name: "cat.jpeg",
-Base64: "data:image/png;base64, iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAAx0lEQVR4nOzaMaoDMQyE4ZHj+x82vVdhwQoTkzKQEcwP5r0ihT7sbjUTeAJ4HCegXQJYfOYefOyjDuBiz3yjwJBoCIl6QZOeUjTC1Ix1IxEJXF9+0KWsf2bD4bn37OO/c/wuQ9QyRC1D1DJELUPUMkQtQ9QyRC1D1DJELUPUMkQtQ9QyRC1D1DJELUPUMkQtQ9Sa/NG94Tf3j4WBdaxudMEkn4IM2rZBA0wBrvo7aOcpj2emXvLeVt0IGm0GVXUj91mvAAAA//+V2CZl+4AKXwAAAABJRU5ErkJggg==",
+		Base64: "data:image/png;base64, iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAAx0lEQVR4nOzaMaoDMQyE4ZHj+x82vVdhwQoTkzKQEcwP5r0ihT7sbjUTeAJ4HCegXQJYfOYefOyjDuBiz3yjwJBoCIl6QZOeUjTC1Ix1IxEJXF9+0KWsf2bD4bn37OO/c/wuQ9QyRC1D1DJELUPUMkQtQ9QyRC1D1DJELUPUMkQtQ9QyRC1D1DJELUPUMkQtQ9Sa/NG94Tf3j4WBdaxudMEkn4IM2rZBA0wBrvo7aOcpj2emXvLeVt0IGm0GVXUj91mvAAAA//+V2CZl+4AKXwAAAABJRU5ErkJggg==",
+Name: "cat.jpeg",
 	})
 	fmt.Println(rsp, err)
 	
@@ -246,6 +219,33 @@ func UploadAnImageFromAurlToMicrosCdn() {
 	rsp, err := imageService.Upload(&image.UploadRequest{
 		Url: "somewebsite.com/cat.png",
 Name: "cat.jpeg",
+	})
+	fmt.Println(rsp, err)
+	
+}
+```
+## Delete
+
+Delete an image previously uploaded.
+
+
+[https://m3o.com/image/api#Delete](https://m3o.com/image/api#Delete)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"go.m3o.com/image"
+)
+
+// Delete an image previously uploaded.
+func DeleteAnUploadedImage() {
+	imageService := image.NewImageService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := imageService.Delete(&image.DeleteRequest{
+		Url: "https://cdn.m3ocontent.com/micro/images/micro/41e23b39-48dd-42b6-9738-79a313414bb8/cat.png",
 	})
 	fmt.Println(rsp, err)
 	

@@ -111,12 +111,12 @@ type CountResponse struct {
 }
 
 type CreateRequest struct {
-	// Optional table name. Defaults to 'default'
-	Table string `json:"table,omitempty"`
 	// optional record id to use
 	Id string `json:"id,omitempty"`
 	// JSON encoded record or records (can be array or object)
 	Record map[string]interface{} `json:"record,omitempty"`
+	// Optional table name. Defaults to 'default'
+	Table string `json:"table,omitempty"`
 }
 
 type CreateResponse struct {
@@ -150,6 +150,14 @@ type ListTablesResponse struct {
 }
 
 type ReadRequest struct {
+	// Examples: 'age >= 18', 'age >= 18 and verified == true'
+	// Comparison operators: '==', '!=', '<', '>', '<=', '>='
+	// Logical operator: 'and'
+	// Dot access is supported, eg: 'user.age == 11'
+	// Accessing list elements is not supported yet.
+	Query string `json:"query,omitempty"`
+	// Optional table name. Defaults to 'default'
+	Table string `json:"table,omitempty"`
 	// Read by id. Equivalent to 'id == "your-id"'
 	Id string `json:"id,omitempty"`
 	// Maximum number of records to return. Default limit is 25.
@@ -160,14 +168,6 @@ type ReadRequest struct {
 	Order string `json:"order,omitempty"`
 	// field name to order by
 	OrderBy string `json:"orderBy,omitempty"`
-	// Examples: 'age >= 18', 'age >= 18 and verified == true'
-	// Comparison operators: '==', '!=', '<', '>', '<=', '>='
-	// Logical operator: 'and'
-	// Dot access is supported, eg: 'user.age == 11'
-	// Accessing list elements is not supported yet.
-	Query string `json:"query,omitempty"`
-	// Optional table name. Defaults to 'default'
-	Table string `json:"table,omitempty"`
 }
 
 type ReadResponse struct {

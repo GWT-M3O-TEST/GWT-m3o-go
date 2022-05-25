@@ -54,10 +54,10 @@ func (t *SubscribeResponseStream) Recv() (*SubscribeResponse, error) {
 }
 
 type PublishRequest struct {
-	// The topic to publish to
-	Topic string `json:"topic,omitempty"`
 	// The json message to publish
 	Message map[string]interface{} `json:"message,omitempty"`
+	// The topic to publish to
+	Topic string `json:"topic,omitempty"`
 }
 
 type PublishResponse struct {

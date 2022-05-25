@@ -12,9 +12,9 @@ func main() {
 	client := m3o.New(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := client.Notes.Update(&notes.UpdateRequest{
 		Note: &notes.Note{
+			Text:  "Updated note text",
 			Id:    "63c0cdf8-2121-11ec-a881-0242e36f037a",
 			Title: "Update Note",
-			Text:  "Updated note text",
 		},
 	})
 	fmt.Println(rsp, err)

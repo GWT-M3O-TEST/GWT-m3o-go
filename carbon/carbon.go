@@ -43,10 +43,10 @@ type OffsetResponse struct {
 }
 
 type Project struct {
+	// name of the project
+	Name string `json:"name,omitempty"`
 	// percentage that went to this
 	Percentage float64 `json:"percentage,omitempty"`
 	// amount in tonnes
 	Tonnes float64 `json:"tonnes,omitempty"`
-	// name of the project
-	Name string `json:"name,omitempty"`
 }

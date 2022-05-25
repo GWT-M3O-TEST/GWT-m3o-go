@@ -90,8 +90,6 @@ func (t *CommentsService) Update(request *UpdateRequest) (*UpdateResponse, error
 }
 
 type Comment struct {
-	// time at which the comment was updated
-	Updated string `json:"updated,omitempty"`
 	// time at which the comment was created
 	Created string `json:"created,omitempty"`
 	// unique id for the comment, generated if not specified
@@ -100,6 +98,8 @@ type Comment struct {
 	Subject string `json:"subject,omitempty"`
 	// text of the comment
 	Text string `json:"text,omitempty"`
+	// time at which the comment was updated
+	Updated string `json:"updated,omitempty"`
 }
 
 type CreateRequest struct {

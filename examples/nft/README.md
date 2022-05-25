@@ -4,6 +4,33 @@ An [m3o.com](https://m3o.com) API. For example usage see [m3o.com/nft/api](https
 
 Endpoints:
 
+## Collection
+
+Get a collection by its slug
+
+
+[https://m3o.com/nft/api#Collection](https://m3o.com/nft/api#Collection)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"go.m3o.com/nft"
+)
+
+// Get a collection by its slug
+func GetAsingleCollection() {
+	nftService := nft.NewNftService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := nftService.Collection(&nft.CollectionRequest{
+		Slug: "doodles-official",
+	})
+	fmt.Println(rsp, err)
+	
+}
+```
 ## Assets
 
 Return a list of assets
@@ -25,8 +52,8 @@ import(
 func GetAlistOfAssets() {
 	nftService := nft.NewNftService(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := nftService.Assets(&nft.AssetsRequest{
-		OrderBy: "sale_date",
-Limit: 1,
+		Limit: 1,
+OrderBy: "sale_date",
 	})
 	fmt.Println(rsp, err)
 	
@@ -110,33 +137,6 @@ func GetAsingleAsset() {
 	rsp, err := nftService.Asset(&nft.AssetRequest{
 		ContractAddress: "0xb47e3cd837ddf8e4c57f05d70ab865de6e193bbb",
 TokenId: "1",
-	})
-	fmt.Println(rsp, err)
-	
-}
-```
-## Collection
-
-Get a collection by its slug
-
-
-[https://m3o.com/nft/api#Collection](https://m3o.com/nft/api#Collection)
-
-```go
-package example
-
-import(
-	"fmt"
-	"os"
-
-	"go.m3o.com/nft"
-)
-
-// Get a collection by its slug
-func GetAsingleCollection() {
-	nftService := nft.NewNftService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := nftService.Collection(&nft.CollectionRequest{
-		Slug: "doodles-official",
 	})
 	fmt.Println(rsp, err)
 	

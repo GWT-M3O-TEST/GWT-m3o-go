@@ -61,24 +61,24 @@ type ZoneRequest struct {
 }
 
 type ZoneResponse struct {
+	// country of the timezone
+	Country string `json:"country,omitempty"`
 	// is daylight savings
 	Dst bool `json:"dst,omitempty"`
-	// e.g 51.42
-	Latitude float64 `json:"latitude,omitempty"`
 	// the local time
 	Localtime string `json:"localtime,omitempty"`
 	// location requested
 	Location string `json:"location,omitempty"`
-	// region of timezone
-	Region string `json:"region,omitempty"`
-	// the timezone e.g Europe/London
-	Timezone string `json:"timezone,omitempty"`
-	// the abbreviated code e.g BST
-	Abbreviation string `json:"abbreviation,omitempty"`
-	// country of the timezone
-	Country string `json:"country,omitempty"`
 	// e.g -0.37
 	Longitude float64 `json:"longitude,omitempty"`
+	// region of timezone
+	Region string `json:"region,omitempty"`
+	// the abbreviated code e.g BST
+	Abbreviation string `json:"abbreviation,omitempty"`
 	// UTC offset in hours
 	Offset int32 `json:"offset,omitempty"`
+	// the timezone e.g Europe/London
+	Timezone string `json:"timezone,omitempty"`
+	// e.g 51.42
+	Latitude float64 `json:"latitude,omitempty"`
 }

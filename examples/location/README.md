@@ -26,8 +26,8 @@ func SearchForLocations() {
 	locationService := location.NewLocationService(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := locationService.Search(&location.SearchRequest{
 		Center: &location.Point{
-Latitude: 51.511061,
 Longitude: -0.120022,
+Latitude: 51.511061,
 },
 NumEntities: 10,
 Radius: 100,
@@ -62,9 +62,9 @@ func SaveAnEntity() {
 Id: "1",
 Type: "bike",
 Location: &location.Point{
+Timestamp: 1622802761,
 Latitude: 51.511061,
 Longitude: -0.120022,
-Timestamp: 1622802761,
 },
 },
 	})

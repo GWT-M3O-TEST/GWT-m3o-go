@@ -25,9 +25,9 @@ import(
 func GetNewsHeadlines() {
 	newsService := news.NewNewsService(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := newsService.Headlines(&news.HeadlinesRequest{
-		Locale: "us",
+		Language: "en",
+Locale: "us",
 Date: "2021-11-24",
-Language: "en",
 	})
 	fmt.Println(rsp, err)
 	

@@ -64,23 +64,23 @@ type SearchResponse struct {
 }
 
 type SearchResult struct {
+	// id of the result
+	Id string `json:"id,omitempty"`
+	// kind of result: "video", "channel", "playlist"
+	Kind string `json:"kind,omitempty"`
+	// title of the result
+	Title string `json:"title,omitempty"`
+	// the associated url
+	Url string `json:"url,omitempty"`
 	// if live broadcast then indicates activity:
 	// none, upcoming, live, completed
 	Broadcasting string `json:"broadcasting,omitempty"`
 	// the channel id
 	ChannelId string `json:"channel_id,omitempty"`
-	// the result description
-	Description string `json:"description,omitempty"`
-	// the associated url
-	Url string `json:"url,omitempty"`
 	// the channel title
 	ChannelTitle string `json:"channel_title,omitempty"`
-	// id of the result
-	Id string `json:"id,omitempty"`
-	// kind of result: "video", "channel", "playlist"
-	Kind string `json:"kind,omitempty"`
+	// the result description
+	Description string `json:"description,omitempty"`
 	// published at time
 	PublishedAt string `json:"published_at,omitempty"`
-	// title of the result
-	Title string `json:"title,omitempty"`
 }

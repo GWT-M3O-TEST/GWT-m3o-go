@@ -11,8 +11,8 @@ import (
 func main() {
 	client := m3o.New(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := client.Image.Upload(&image.UploadRequest{
-		Name: "cat.jpeg",
 		Url:  "somewebsite.com/cat.png",
+		Name: "cat.jpeg",
 	})
 	fmt.Println(rsp, err)
 }

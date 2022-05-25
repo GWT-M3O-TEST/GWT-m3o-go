@@ -15,8 +15,8 @@ func main() {
 		Width:  100,
 		Height: 100,
 		CropOptions: &image.CropOptions{
-			Height: 50,
 			Width:  50,
+			Height: 50,
 		},
 	})
 	fmt.Println(rsp, err)

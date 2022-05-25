@@ -46,12 +46,12 @@ type SendRequest struct {
 }
 
 type SendResponse struct {
+	// the status code
+	StatusCode int32 `json:"status_code,omitempty"`
 	// body of the response
 	Body string `json:"body,omitempty"`
 	// headers included
 	Headers map[string]string `json:"headers,omitempty"`
 	// the status
 	Status string `json:"status,omitempty"`
-	// the status code
-	StatusCode int32 `json:"status_code,omitempty"`
 }

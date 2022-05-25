@@ -49,20 +49,20 @@ type Char struct {
 }
 
 type Guess struct {
+	// individual characters
+	Chars []Char `json:"chars,omitempty"`
 	// the highlighted word e.g n[o]is{e}
 	// where [ ] is correct, { } is in word
 	Highlight string `json:"highlight,omitempty"`
 	// the full guess word
 	Word string `json:"word,omitempty"`
-	// individual characters
-	Chars []Char `json:"chars,omitempty"`
 }
 
 type GuessRequest struct {
-	// player
-	Player string `json:"player,omitempty"`
 	// guess word
 	Word string `json:"word,omitempty"`
+	// player
+	Player string `json:"player,omitempty"`
 }
 
 type GuessResponse struct {
