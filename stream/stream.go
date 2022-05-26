@@ -97,16 +97,16 @@ type ListMessagesResponse struct {
 }
 
 type Message struct {
-	// id of the message
-	Id string `json:"id,omitempty"`
-	// the associated metadata
-	Metadata map[string]string `json:"metadata,omitempty"`
 	// text of the message
 	Text string `json:"text,omitempty"`
 	// time of message creation
 	Timestamp string `json:"timestamp,omitempty"`
 	// the channel name
 	Channel string `json:"channel,omitempty"`
+	// id of the message
+	Id string `json:"id,omitempty"`
+	// the associated metadata
+	Metadata map[string]string `json:"metadata,omitempty"`
 }
 
 type SendMessageRequest struct {

@@ -11,13 +11,13 @@ import (
 func main() {
 	client := m3o.New(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := client.Function.Deploy(&function.DeployRequest{
+		Branch:     "main",
+		Entrypoint: "Helloworld",
 		Subfolder:  "examples/go-function",
 		Runtime:    "go116",
 		Region:     "europe-west1",
 		Name:       "helloworld",
 		Repo:       "https://github.com/m3o/m3o",
-		Branch:     "main",
-		Entrypoint: "Helloworld",
 	})
 	fmt.Println(rsp, err)
 }

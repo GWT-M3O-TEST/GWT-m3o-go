@@ -59,10 +59,10 @@ type IpResponse struct {
 }
 
 type TcpRequest struct {
-	// optional data to send
-	Data string `json:"data,omitempty"`
 	// address to dial
 	Address string `json:"address,omitempty"`
+	// optional data to send
+	Data string `json:"data,omitempty"`
 }
 
 type TcpResponse struct {

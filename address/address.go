@@ -38,26 +38,26 @@ type LookupPostcodeResponse struct {
 }
 
 type Record struct {
-	// line one of address
-	LineOne string `json:"line_one,omitempty"`
 	// dependent locality
 	Locality string `json:"locality,omitempty"`
 	// the postcode
 	Postcode string `json:"postcode,omitempty"`
-	// the complete address
-	Summary string `json:"summary,omitempty"`
+	// street name
+	Street string `json:"street,omitempty"`
 	// building name
 	BuildingName string `json:"building_name,omitempty"`
-	// the county
-	County string `json:"county,omitempty"`
 	// line two of address
 	LineTwo string `json:"line_two,omitempty"`
 	// organisation if present
 	Organisation string `json:"organisation,omitempty"`
 	// the premise
 	Premise string `json:"premise,omitempty"`
-	// street name
-	Street string `json:"street,omitempty"`
+	// the complete address
+	Summary string `json:"summary,omitempty"`
 	// post town
 	Town string `json:"town,omitempty"`
+	// the county
+	County string `json:"county,omitempty"`
+	// line one of address
+	LineOne string `json:"line_one,omitempty"`
 }

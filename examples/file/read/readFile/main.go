@@ -11,8 +11,8 @@ import (
 func main() {
 	client := m3o.New(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := client.File.Read(&file.ReadRequest{
-		Path:    "/document/text-files/file.txt",
 		Project: "examples",
+		Path:    "/document/text-files/file.txt",
 	})
 	fmt.Println(rsp, err)
 }

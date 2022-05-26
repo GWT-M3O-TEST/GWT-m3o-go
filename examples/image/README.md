@@ -33,11 +33,11 @@ import(
 func Base64toHostedImage() {
 	imageService := image.NewImageService(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := imageService.Resize(&image.ResizeRequest{
-		Base64: "data:image/png;base64, iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO9TXL0Y4OHwAAAABJRU5ErkJggg==",
-OutputUrl: true,
-Name: "cat.png",
+		Name: "cat.png",
 Width: 100,
 Height: 100,
+Base64: "data:image/png;base64, iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO9TXL0Y4OHwAAAABJRU5ErkJggg==",
+OutputUrl: true,
 	})
 	fmt.Println(rsp, err)
 	
@@ -72,9 +72,9 @@ import(
 func Base64toBase64image() {
 	imageService := image.NewImageService(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := imageService.Resize(&image.ResizeRequest{
-		Width: 100,
-Height: 100,
+		Height: 100,
 Base64: "data:image/png;base64, iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO9TXL0Y4OHwAAAABJRU5ErkJggg==",
+Width: 100,
 	})
 	fmt.Println(rsp, err)
 	
@@ -109,13 +109,13 @@ import(
 func Base64toBase64imageWithCropping() {
 	imageService := image.NewImageService(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := imageService.Resize(&image.ResizeRequest{
-		Base64: "data:image/png;base64, iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO9TXL0Y4OHwAAAABJRU5ErkJggg==",
-Width: 100,
-Height: 100,
+		Height: 100,
 CropOptions: &image.CropOptions{
 Width: 50,
 Height: 50,
 },
+Base64: "data:image/png;base64, iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO9TXL0Y4OHwAAAABJRU5ErkJggg==",
+Width: 100,
 	})
 	fmt.Println(rsp, err)
 	
@@ -148,9 +148,9 @@ import(
 func ConvertApngImageToAjpegTakenFromAurlAndSavedToAurlOnMicrosCdn() {
 	imageService := image.NewImageService(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := imageService.Convert(&image.ConvertRequest{
-		Url: "somewebsite.com/cat.png",
+		OutputUrl: true,
+Url: "somewebsite.com/cat.png",
 Name: "cat.jpeg",
-OutputUrl: true,
 	})
 	fmt.Println(rsp, err)
 	

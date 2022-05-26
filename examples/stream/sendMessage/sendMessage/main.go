@@ -11,8 +11,8 @@ import (
 func main() {
 	client := m3o.New(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := client.Stream.SendMessage(&stream.SendMessageRequest{
-		Channel: "general",
 		Text:    "Hey checkout this tweet https://twitter.com/m3oservices/status/1455291054295498752",
+		Channel: "general",
 	})
 	fmt.Println(rsp, err)
 }

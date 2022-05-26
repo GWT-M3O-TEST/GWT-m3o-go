@@ -111,12 +111,12 @@ type CountResponse struct {
 }
 
 type CreateRequest struct {
+	// optional record id to use
+	Id string `json:"id,omitempty"`
 	// JSON encoded record or records (can be array or object)
 	Record map[string]interface{} `json:"record,omitempty"`
 	// Optional table name. Defaults to 'default'
 	Table string `json:"table,omitempty"`
-	// optional record id to use
-	Id string `json:"id,omitempty"`
 }
 
 type CreateResponse struct {
@@ -150,6 +150,11 @@ type ListTablesResponse struct {
 }
 
 type ReadRequest struct {
+	Offset int32 `json:"offset,omitempty"`
+	// 'asc' (default), 'desc'
+	Order string `json:"order,omitempty"`
+	// field name to order by
+	OrderBy string `json:"orderBy,omitempty"`
 	// Examples: 'age >= 18', 'age >= 18 and verified == true'
 	// Comparison operators: '==', '!=', '<', '>', '<=', '>='
 	// Logical operator: 'and'
@@ -162,12 +167,7 @@ type ReadRequest struct {
 	Id string `json:"id,omitempty"`
 	// Maximum number of records to return. Default limit is 25.
 	// Maximum limit is 1000. Anything higher will return an error.
-	Limit  int32 `json:"limit,omitempty"`
-	Offset int32 `json:"offset,omitempty"`
-	// 'asc' (default), 'desc'
-	Order string `json:"order,omitempty"`
-	// field name to order by
-	OrderBy string `json:"orderBy,omitempty"`
+	Limit int32 `json:"limit,omitempty"`
 }
 
 type ReadResponse struct {
@@ -176,10 +176,10 @@ type ReadResponse struct {
 }
 
 type RenameTableRequest struct {
-	// new table name
-	To string `json:"to,omitempty"`
 	// current table name
 	From string `json:"from,omitempty"`
+	// new table name
+	To string `json:"to,omitempty"`
 }
 
 type RenameTableResponse struct {

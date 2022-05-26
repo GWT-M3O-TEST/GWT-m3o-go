@@ -29,14 +29,14 @@ func (t *DnsService) Query(request *QueryRequest) (*QueryResponse, error) {
 }
 
 type Answer struct {
-	// time to live
-	Ttl int32 `json:"TTL,omitempty"`
 	// the answer
 	Data string `json:"data,omitempty"`
 	// name resolved
 	Name string `json:"name,omitempty"`
 	// type of record
 	Type int32 `json:"type,omitempty"`
+	// time to live
+	Ttl int32 `json:"TTL,omitempty"`
 }
 
 type QueryRequest struct {
@@ -47,15 +47,15 @@ type QueryRequest struct {
 }
 
 type QueryResponse struct {
-	Answer   []Answer   `json:"answer,omitempty"`
-	Provider string     `json:"provider,omitempty"`
-	Question []Question `json:"question,omitempty"`
-	Status   int32      `json:"status,omitempty"`
 	Ad       bool       `json:"AD,omitempty"`
-	Tc       bool       `json:"TC,omitempty"`
-	Rd       bool       `json:"RD,omitempty"`
 	Cd       bool       `json:"CD,omitempty"`
 	Ra       bool       `json:"RA,omitempty"`
+	Tc       bool       `json:"TC,omitempty"`
+	Provider string     `json:"provider,omitempty"`
+	Status   int32      `json:"status,omitempty"`
+	Rd       bool       `json:"RD,omitempty"`
+	Answer   []Answer   `json:"answer,omitempty"`
+	Question []Question `json:"question,omitempty"`
 }
 
 type Question struct {

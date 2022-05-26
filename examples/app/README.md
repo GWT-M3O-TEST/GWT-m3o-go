@@ -25,11 +25,11 @@ import(
 func RunAnApp() {
 	appService := app.NewAppService(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := appService.Run(&app.RunRequest{
-		Name: "helloworld",
-Repo: "github.com/asim/helloworld",
-Branch: "master",
+		Branch: "master",
 Port: 8080,
 Region: "europe-west1",
+Name: "helloworld",
+Repo: "github.com/asim/helloworld",
 	})
 	fmt.Println(rsp, err)
 	
@@ -56,6 +56,88 @@ import(
 func UpdateAnApp() {
 	appService := app.NewAppService(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := appService.Update(&app.UpdateRequest{
+		Name: "helloworld",
+	})
+	fmt.Println(rsp, err)
+	
+}
+```
+## Logs
+
+Get the logs for an app
+
+
+[https://m3o.com/app/api#Logs](https://m3o.com/app/api#Logs)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"go.m3o.com/app"
+)
+
+// Get the logs for an app
+func RetrieveBuildLogsForAnApp() {
+	appService := app.NewAppService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := appService.Logs(&app.LogsRequest{
+		Name: "helloworld",
+LogsType: "build",
+	})
+	fmt.Println(rsp, err)
+	
+}
+```
+## Delete
+
+Delete an app
+
+
+[https://m3o.com/app/api#Delete](https://m3o.com/app/api#Delete)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"go.m3o.com/app"
+)
+
+// Delete an app
+func DeleteAnApp() {
+	appService := app.NewAppService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := appService.Delete(&app.DeleteRequest{
+		Name: "helloworld",
+	})
+	fmt.Println(rsp, err)
+	
+}
+```
+## Reserve
+
+Reserve apps beyond the free quota. Call Run after.
+
+
+[https://m3o.com/app/api#Reserve](https://m3o.com/app/api#Reserve)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"go.m3o.com/app"
+)
+
+// Reserve apps beyond the free quota. Call Run after.
+func ReserveAppName() {
+	appService := app.NewAppService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := appService.Reserve(&app.ReserveRequest{
 		Name: "helloworld",
 	})
 	fmt.Println(rsp, err)
@@ -165,88 +247,6 @@ func ResolveAppById() {
 	appService := app.NewAppService(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := appService.Resolve(&app.ResolveRequest{
 		Id: "helloworld",
-	})
-	fmt.Println(rsp, err)
-	
-}
-```
-## Delete
-
-Delete an app
-
-
-[https://m3o.com/app/api#Delete](https://m3o.com/app/api#Delete)
-
-```go
-package example
-
-import(
-	"fmt"
-	"os"
-
-	"go.m3o.com/app"
-)
-
-// Delete an app
-func DeleteAnApp() {
-	appService := app.NewAppService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := appService.Delete(&app.DeleteRequest{
-		Name: "helloworld",
-	})
-	fmt.Println(rsp, err)
-	
-}
-```
-## Logs
-
-Get the logs for an app
-
-
-[https://m3o.com/app/api#Logs](https://m3o.com/app/api#Logs)
-
-```go
-package example
-
-import(
-	"fmt"
-	"os"
-
-	"go.m3o.com/app"
-)
-
-// Get the logs for an app
-func RetrieveBuildLogsForAnApp() {
-	appService := app.NewAppService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := appService.Logs(&app.LogsRequest{
-		Name: "helloworld",
-LogsType: "build",
-	})
-	fmt.Println(rsp, err)
-	
-}
-```
-## Reserve
-
-Reserve apps beyond the free quota. Call Run after.
-
-
-[https://m3o.com/app/api#Reserve](https://m3o.com/app/api#Reserve)
-
-```go
-package example
-
-import(
-	"fmt"
-	"os"
-
-	"go.m3o.com/app"
-)
-
-// Reserve apps beyond the free quota. Call Run after.
-func ReserveAppName() {
-	appService := app.NewAppService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := appService.Reserve(&app.ReserveRequest{
-		Name: "helloworld",
 	})
 	fmt.Println(rsp, err)
 	

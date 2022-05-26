@@ -65,10 +65,6 @@ func (t *PriceService) Report(request *ReportRequest) (*ReportResponse, error) {
 }
 
 type AddRequest struct {
-	// name of the thing e.g bitcoin
-	Name string `json:"name,omitempty"`
-	// price of the thing e.g 10001.00
-	Price float64 `json:"price,omitempty"`
 	// source of the price
 	Source string `json:"source,omitempty"`
 	// symbol of value
@@ -77,6 +73,10 @@ type AddRequest struct {
 	Author string `json:"author,omitempty"`
 	// currency e.g USD
 	Currency string `json:"currency,omitempty"`
+	// name of the thing e.g bitcoin
+	Name string `json:"name,omitempty"`
+	// price of the thing e.g 10001.00
+	Price float64 `json:"price,omitempty"`
 }
 
 type AddResponse struct {
@@ -126,10 +126,10 @@ type ListResponse struct {
 }
 
 type Report struct {
+	Author  string `json:"author,omitempty"`
 	Comment string `json:"comment,omitempty"`
 	Name    string `json:"name,omitempty"`
 	Symbol  string `json:"symbol,omitempty"`
-	Author  string `json:"author,omitempty"`
 }
 
 type ReportRequest struct {
@@ -145,6 +145,10 @@ type ReportResponse struct {
 }
 
 type Value struct {
+	// symbol of value
+	Symbol string `json:"symbol,omitempty"`
+	// time it was added
+	Timestamp string `json:"timestamp,omitempty"`
 	// who added it
 	Author string `json:"author,omitempty"`
 	// currency of thing
@@ -155,8 +159,4 @@ type Value struct {
 	Price float64 `json:"price,omitempty"`
 	// where it came from
 	Source string `json:"source,omitempty"`
-	// symbol of value
-	Symbol string `json:"symbol,omitempty"`
-	// time it was added
-	Timestamp string `json:"timestamp,omitempty"`
 }

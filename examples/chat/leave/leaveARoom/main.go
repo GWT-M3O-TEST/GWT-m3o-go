@@ -11,8 +11,8 @@ import (
 func main() {
 	client := m3o.New(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := client.Chat.Leave(&chat.LeaveRequest{
-		RoomId: "d8057208-f81a-4e14-ad7f-c29daa2bb910",
 		UserId: "user-1",
+		RoomId: "d8057208-f81a-4e14-ad7f-c29daa2bb910",
 	})
 	fmt.Println(rsp, err)
 }

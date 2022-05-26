@@ -169,6 +169,12 @@ func (t *UserService) VerifyToken(request *VerifyTokenRequest) (*VerifyTokenResp
 }
 
 type Account struct {
+	// unix timestamp
+	Created int64 `json:"created,string,omitempty"`
+	// an email address
+	Email string `json:"email,omitempty"`
+	// unique account id
+	Id string `json:"id,omitempty"`
 	// Store any custom data you want about your users in this fields.
 	Profile map[string]string `json:"profile,omitempty"`
 	// unix timestamp
@@ -179,12 +185,6 @@ type Account struct {
 	VerificationDate int64 `json:"verification_date,string,omitempty"`
 	// if the account is verified
 	Verified bool `json:"verified,omitempty"`
-	// unix timestamp
-	Created int64 `json:"created,string,omitempty"`
-	// an email address
-	Email string `json:"email,omitempty"`
-	// unique account id
-	Id string `json:"id,omitempty"`
 }
 
 type CreateRequest struct {
@@ -213,10 +213,10 @@ type DeleteResponse struct {
 }
 
 type ListRequest struct {
+	Offset int32 `json:"offset,omitempty"`
 	// Maximum number of records to return. Default limit is 25.
 	// Maximum limit is 1000. Anything higher will return an error.
-	Limit  int32 `json:"limit,omitempty"`
-	Offset int32 `json:"offset,omitempty"`
+	Limit int32 `json:"limit,omitempty"`
 }
 
 type ListResponse struct {
@@ -254,12 +254,12 @@ type LogoutResponse struct {
 }
 
 type ReadRequest struct {
-	// the account email
-	Email string `json:"email,omitempty"`
 	// the account id
 	Id string `json:"id,omitempty"`
 	// the account username
 	Username string `json:"username,omitempty"`
+	// the account email
+	Email string `json:"email,omitempty"`
 }
 
 type ReadResponse struct {
@@ -277,20 +277,23 @@ type ReadSessionResponse struct {
 }
 
 type ResetPasswordRequest struct {
+	// confirm new password
+	ConfirmPassword string `json:"confirm_password,omitempty"`
 	// the email to reset the password for
 	Email string `json:"email,omitempty"`
 	// the new password
 	NewPassword string `json:"new_password,omitempty"`
 	// The code from the verification email
 	Code string `json:"code,omitempty"`
-	// confirm new password
-	ConfirmPassword string `json:"confirm_password,omitempty"`
 }
 
 type ResetPasswordResponse struct {
 }
 
 type SendMagicLinkRequest struct {
+	// Text content of the email. Don't forget to include the string '$micro_verification_link' which will be replaced by the real verification link
+	// HTML emails are not available currently.
+	TextContent string `json:"text_content,omitempty"`
 	// Your web site address, example www.example.com or user.example.com
 	Address string `json:"address,omitempty"`
 	// the email address of the user
@@ -302,15 +305,14 @@ type SendMagicLinkRequest struct {
 	// Display name of the sender for the email. Note: the email address will still be 'support@m3o.com'
 	FromName string `json:"from_name,omitempty"`
 	Subject  string `json:"subject,omitempty"`
-	// Text content of the email. Don't forget to include the string '$micro_verification_link' which will be replaced by the real verification link
-	// HTML emails are not available currently.
-	TextContent string `json:"text_content,omitempty"`
 }
 
 type SendMagicLinkResponse struct {
 }
 
 type SendPasswordResetEmailRequest struct {
+	// email address to send reset for
+	Email string `json:"email,omitempty"`
 	// Number of secs that the password reset email is valid for, defaults to 1800 secs (30 mins)
 	Expiration int64 `json:"expiration,string,omitempty"`
 	// Display name of the sender for the email. Note: the email address will still be 'noreply@email.m3ocontent.com'
@@ -320,8 +322,6 @@ type SendPasswordResetEmailRequest struct {
 	// Text content of the email. Don't forget to include the string '$code' which will be replaced by the real verification link
 	// HTML emails are not available currently.
 	TextContent string `json:"text_content,omitempty"`
-	// email address to send reset for
-	Email string `json:"email,omitempty"`
 }
 
 type SendPasswordResetEmailResponse struct {
@@ -357,14 +357,14 @@ type Session struct {
 }
 
 type UpdatePasswordRequest struct {
-	// the old password
-	OldPassword string `json:"old_password,omitempty"`
-	// the account id
-	UserId string `json:"userId,omitempty"`
 	// confirm new password
 	ConfirmPassword string `json:"confirm_password,omitempty"`
 	// the new password
 	NewPassword string `json:"new_password,omitempty"`
+	// the old password
+	OldPassword string `json:"old_password,omitempty"`
+	// the account id
+	UserId string `json:"userId,omitempty"`
 }
 
 type UpdatePasswordResponse struct {

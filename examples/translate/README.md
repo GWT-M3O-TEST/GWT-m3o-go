@@ -25,11 +25,11 @@ import(
 func TranslateText() {
 	translateService := translate.NewTranslateService(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := translateService.Text(&translate.TextRequest{
-		Content: "hello",
+		Source: "en",
+Target: "fr",
+Content: "hello",
 Model: "nmt",
 Format: "text",
-Source: "en",
-Target: "fr",
 	})
 	fmt.Println(rsp, err)
 	

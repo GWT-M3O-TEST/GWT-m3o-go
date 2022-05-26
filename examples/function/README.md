@@ -4,34 +4,6 @@ An [m3o.com](https://m3o.com) API. For example usage see [m3o.com/function/api](
 
 Endpoints:
 
-## Logs
-
-Get the logs for a function
-
-
-[https://m3o.com/function/api#Logs](https://m3o.com/function/api#Logs)
-
-```go
-package example
-
-import(
-	"fmt"
-	"os"
-
-	"go.m3o.com/function"
-)
-
-// Get the logs for a function
-func RetrieveBuildLogsForAfunction() {
-	functionService := function.NewFunctionService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := functionService.Logs(&function.LogsRequest{
-		Name: "helloworld",
-LogsType: "build",
-	})
-	fmt.Println(rsp, err)
-	
-}
-```
 ## Deploy
 
 Deploy a group of functions
@@ -53,13 +25,13 @@ import(
 func DeployAfunction() {
 	functionService := function.NewFunctionService(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := functionService.Deploy(&function.DeployRequest{
-		Name: "helloworld",
-Repo: "https://github.com/m3o/m3o",
-Branch: "main",
-Entrypoint: "Helloworld",
+		Entrypoint: "Helloworld",
 Subfolder: "examples/go-function",
 Runtime: "go116",
 Region: "europe-west1",
+Name: "helloworld",
+Repo: "https://github.com/m3o/m3o",
+Branch: "main",
 	})
 	fmt.Println(rsp, err)
 	
@@ -92,60 +64,6 @@ func UpdateAfunction() {
 	
 }
 ```
-## List
-
-List all the deployed functions
-
-
-[https://m3o.com/function/api#List](https://m3o.com/function/api#List)
-
-```go
-package example
-
-import(
-	"fmt"
-	"os"
-
-	"go.m3o.com/function"
-)
-
-// List all the deployed functions
-func ListFunctions() {
-	functionService := function.NewFunctionService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := functionService.List(&function.ListRequest{
-		
-	})
-	fmt.Println(rsp, err)
-	
-}
-```
-## Describe
-
-Get the info for a deployed function
-
-
-[https://m3o.com/function/api#Describe](https://m3o.com/function/api#Describe)
-
-```go
-package example
-
-import(
-	"fmt"
-	"os"
-
-	"go.m3o.com/function"
-)
-
-// Get the info for a deployed function
-func DescribeFunctionStatus() {
-	functionService := function.NewFunctionService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := functionService.Describe(&function.DescribeRequest{
-		Name: "helloworld",
-	})
-	fmt.Println(rsp, err)
-	
-}
-```
 ## Regions
 
 Return a list of supported regions
@@ -168,62 +86,6 @@ func ListRegions() {
 	functionService := function.NewFunctionService(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := functionService.Regions(&function.RegionsRequest{
 		
-	})
-	fmt.Println(rsp, err)
-	
-}
-```
-## Call
-
-Call a function by name
-
-
-[https://m3o.com/function/api#Call](https://m3o.com/function/api#Call)
-
-```go
-package example
-
-import(
-	"fmt"
-	"os"
-
-	"go.m3o.com/function"
-)
-
-// Call a function by name
-func CallAfunction() {
-	functionService := function.NewFunctionService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := functionService.Call(&function.CallRequest{
-		Request: &function.Json{
-},
-Name: "helloworld",
-	})
-	fmt.Println(rsp, err)
-	
-}
-```
-## Delete
-
-Delete a function by name
-
-
-[https://m3o.com/function/api#Delete](https://m3o.com/function/api#Delete)
-
-```go
-package example
-
-import(
-	"fmt"
-	"os"
-
-	"go.m3o.com/function"
-)
-
-// Delete a function by name
-func DeleteAfunction() {
-	functionService := function.NewFunctionService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := functionService.Delete(&function.DeleteRequest{
-		Name: "helloworld",
 	})
 	fmt.Println(rsp, err)
 	
@@ -305,6 +167,144 @@ func ProxyUrl() {
 	functionService := function.NewFunctionService(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := functionService.Proxy(&function.ProxyRequest{
 		Id: "helloworld",
+	})
+	fmt.Println(rsp, err)
+	
+}
+```
+## Call
+
+Call a function by name
+
+
+[https://m3o.com/function/api#Call](https://m3o.com/function/api#Call)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"go.m3o.com/function"
+)
+
+// Call a function by name
+func CallAfunction() {
+	functionService := function.NewFunctionService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := functionService.Call(&function.CallRequest{
+		Name: "helloworld",
+Request: &function.Json{
+},
+	})
+	fmt.Println(rsp, err)
+	
+}
+```
+## List
+
+List all the deployed functions
+
+
+[https://m3o.com/function/api#List](https://m3o.com/function/api#List)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"go.m3o.com/function"
+)
+
+// List all the deployed functions
+func ListFunctions() {
+	functionService := function.NewFunctionService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := functionService.List(&function.ListRequest{
+		
+	})
+	fmt.Println(rsp, err)
+	
+}
+```
+## Delete
+
+Delete a function by name
+
+
+[https://m3o.com/function/api#Delete](https://m3o.com/function/api#Delete)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"go.m3o.com/function"
+)
+
+// Delete a function by name
+func DeleteAfunction() {
+	functionService := function.NewFunctionService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := functionService.Delete(&function.DeleteRequest{
+		Name: "helloworld",
+	})
+	fmt.Println(rsp, err)
+	
+}
+```
+## Describe
+
+Get the info for a deployed function
+
+
+[https://m3o.com/function/api#Describe](https://m3o.com/function/api#Describe)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"go.m3o.com/function"
+)
+
+// Get the info for a deployed function
+func DescribeFunctionStatus() {
+	functionService := function.NewFunctionService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := functionService.Describe(&function.DescribeRequest{
+		Name: "helloworld",
+	})
+	fmt.Println(rsp, err)
+	
+}
+```
+## Logs
+
+Get the logs for a function
+
+
+[https://m3o.com/function/api#Logs](https://m3o.com/function/api#Logs)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"go.m3o.com/function"
+)
+
+// Get the logs for a function
+func RetrieveBuildLogsForAfunction() {
+	functionService := function.NewFunctionService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := functionService.Logs(&function.LogsRequest{
+		Name: "helloworld",
+LogsType: "build",
 	})
 	fmt.Println(rsp, err)
 	

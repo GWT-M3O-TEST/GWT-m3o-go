@@ -59,26 +59,28 @@ func (t *SunnahService) Hadiths(request *HadithsRequest) (*HadithsResponse, erro
 }
 
 type Book struct {
-	// arabic name of the book
-	ArabicName string `json:"arabic_name,omitempty"`
-	// number of hadiths in the book
-	Hadiths int32 `json:"hadiths,omitempty"`
 	// number of the book e.g 1
 	Id int32 `json:"id,omitempty"`
 	// name of the book
 	Name string `json:"name,omitempty"`
+	// arabic name of the book
+	ArabicName string `json:"arabic_name,omitempty"`
+	// number of hadiths in the book
+	Hadiths int32 `json:"hadiths,omitempty"`
 }
 
 type BooksRequest struct {
-	// Name of the collection
-	Collection string `json:"collection,omitempty"`
 	// Limit the number of books returned
 	Limit int32 `json:"limit,omitempty"`
 	// The page in the pagination
 	Page int32 `json:"page,omitempty"`
+	// Name of the collection
+	Collection string `json:"collection,omitempty"`
 }
 
 type BooksResponse struct {
+	// The total overall books
+	Total int32 `json:"total,omitempty"`
 	// A list of books
 	Books []Book `json:"books,omitempty"`
 	// Name of the collection
@@ -87,39 +89,33 @@ type BooksResponse struct {
 	Limit int32 `json:"limit,omitempty"`
 	// The page requested
 	Page int32 `json:"page,omitempty"`
-	// The total overall books
-	Total int32 `json:"total,omitempty"`
 }
 
 type Chapter struct {
-	// arabic title
-	ArabicTitle string `json:"arabic_title,omitempty"`
-	// the book number
-	Book int32 `json:"book,omitempty"`
 	// the chapter id e.g 1
 	Id int32 `json:"id,omitempty"`
 	// the chapter key e.g 1.00
 	Key string `json:"key,omitempty"`
 	// title of the chapter
 	Title string `json:"title,omitempty"`
+	// arabic title
+	ArabicTitle string `json:"arabic_title,omitempty"`
+	// the book number
+	Book int32 `json:"book,omitempty"`
 }
 
 type ChaptersRequest struct {
-	// number of the book
-	Book int32 `json:"book,omitempty"`
-	// name of the collection
-	Collection string `json:"collection,omitempty"`
 	// Limit the number of chapters returned
 	Limit int32 `json:"limit,omitempty"`
 	// The page in the pagination
 	Page int32 `json:"page,omitempty"`
+	// number of the book
+	Book int32 `json:"book,omitempty"`
+	// name of the collection
+	Collection string `json:"collection,omitempty"`
 }
 
 type ChaptersResponse struct {
-	// The chapters of the book
-	Chapters []Chapter `json:"chapters,omitempty"`
-	// name of the collection
-	Collection string `json:"collection,omitempty"`
 	// Limit the number of chapters returned
 	Limit int32 `json:"limit,omitempty"`
 	// The page in the pagination
@@ -128,6 +124,10 @@ type ChaptersResponse struct {
 	Total int32 `json:"total,omitempty"`
 	// number of the book
 	Book int32 `json:"book,omitempty"`
+	// The chapters of the book
+	Chapters []Chapter `json:"chapters,omitempty"`
+	// name of the collection
+	Collection string `json:"collection,omitempty"`
 }
 
 type Collection struct {
@@ -144,10 +144,10 @@ type Collection struct {
 }
 
 type CollectionsRequest struct {
-	// Number of collections to limit to
-	Limit int32 `json:"limit,omitempty"`
 	// The page in the pagination
 	Page int32 `json:"page,omitempty"`
+	// Number of collections to limit to
+	Limit int32 `json:"limit,omitempty"`
 }
 
 type CollectionsResponse struct {
@@ -172,21 +172,17 @@ type Hadith struct {
 }
 
 type HadithsRequest struct {
-	// The page in the pagination
-	Page int32 `json:"page,omitempty"`
 	// number of the book
 	Book int32 `json:"book,omitempty"`
 	// name of the collection
 	Collection string `json:"collection,omitempty"`
 	// Limit the number of hadiths
 	Limit int32 `json:"limit,omitempty"`
+	// The page in the pagination
+	Page int32 `json:"page,omitempty"`
 }
 
 type HadithsResponse struct {
-	// The page in the pagination
-	Page int32 `json:"page,omitempty"`
-	// Total hadiths in the  book
-	Total int32 `json:"total,omitempty"`
 	// number of the book
 	Book int32 `json:"book,omitempty"`
 	// name of the collection
@@ -195,4 +191,8 @@ type HadithsResponse struct {
 	Hadiths []Hadith `json:"hadiths,omitempty"`
 	// Limit the number of hadiths returned
 	Limit int32 `json:"limit,omitempty"`
+	// The page in the pagination
+	Page int32 `json:"page,omitempty"`
+	// Total hadiths in the  book
+	Total int32 `json:"total,omitempty"`
 }

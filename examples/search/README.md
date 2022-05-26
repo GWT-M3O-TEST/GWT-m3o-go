@@ -25,9 +25,9 @@ import(
 func IndexArecord() {
 	searchService := search.NewSearchService(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := searchService.Index(&search.IndexRequest{
-		Data: &search.Json{
+		Index: "customers",
+Data: &search.Json{
 },
-Index: "customers",
 	})
 	fmt.Println(rsp, err)
 	

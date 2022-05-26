@@ -70,12 +70,12 @@ type CodesResponse struct {
 }
 
 type ConvertRequest struct {
-	// optional amount to convert e.g 10.0
-	Amount float64 `json:"amount,omitempty"`
 	// base code to convert from e.g USD
 	From string `json:"from,omitempty"`
 	// target code to convert to e.g GBP
 	To string `json:"to,omitempty"`
+	// optional amount to convert e.g 10.0
+	Amount float64 `json:"amount,omitempty"`
 }
 
 type ConvertResponse struct {
@@ -90,10 +90,10 @@ type ConvertResponse struct {
 }
 
 type HistoryRequest struct {
-	// currency code e.g USD
-	Code string `json:"code,omitempty"`
 	// date formatted as YYYY-MM-DD
 	Date string `json:"date,omitempty"`
+	// currency code e.g USD
+	Code string `json:"code,omitempty"`
 }
 
 type HistoryResponse struct {
