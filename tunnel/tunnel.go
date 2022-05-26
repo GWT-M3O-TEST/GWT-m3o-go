@@ -29,10 +29,6 @@ func (t *TunnelService) Send(request *SendRequest) (*SendResponse, error) {
 }
 
 type SendRequest struct {
-	// alternatively specify a full url e.g https://www.google.com/news
-	Url string `json:"url,omitempty"`
-	// body of the request
-	Body string `json:"body,omitempty"`
 	// headers to include e.g Content-Type: application/json
 	Headers map[string]string `json:"headers,omitempty"`
 	// host to send to e.g www.google.com
@@ -43,6 +39,10 @@ type SendRequest struct {
 	Params map[string]string `json:"params,omitempty"`
 	// path to request e.g /news
 	Path string `json:"path,omitempty"`
+	// alternatively specify a full url e.g https://www.google.com/news
+	Url string `json:"url,omitempty"`
+	// body of the request
+	Body string `json:"body,omitempty"`
 }
 
 type SendResponse struct {

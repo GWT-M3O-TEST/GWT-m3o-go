@@ -11,8 +11,8 @@ import (
 func main() {
 	client := m3o.New(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := client.Search.Search(&search.SearchRequest{
-		Index: "customers",
 		Query: "name == 'John'",
+		Index: "customers",
 	})
 	fmt.Println(rsp, err)
 }

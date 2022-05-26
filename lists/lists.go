@@ -123,16 +123,16 @@ type EventsResponse struct {
 }
 
 type List struct {
+	// name of the list
+	Name string `json:"name,omitempty"`
+	// time at which the list was updated
+	Updated string `json:"updated,omitempty"`
 	// time at which the list was created
 	Created string `json:"created,omitempty"`
 	// unique id for the list, generated if not specified
 	Id string `json:"id,omitempty"`
 	// items within the list
 	Items []string `json:"items,omitempty"`
-	// name of the list
-	Name string `json:"name,omitempty"`
-	// time at which the list was updated
-	Updated string `json:"updated,omitempty"`
 }
 
 type ListRequest struct {

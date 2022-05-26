@@ -11,8 +11,8 @@ import (
 func main() {
 	client := m3o.New(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := client.App.Logs(&app.LogsRequest{
-		Name:     "helloworld",
 		LogsType: "build",
+		Name:     "helloworld",
 	})
 	fmt.Println(rsp, err)
 }

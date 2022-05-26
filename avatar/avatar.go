@@ -29,8 +29,6 @@ func (t *AvatarService) Generate(request *GenerateRequest) (*GenerateResponse, e
 }
 
 type GenerateRequest struct {
-	// encode format of avatar image: `png` or `jpeg`; default is `jpeg`
-	Format string `json:"format,omitempty"`
 	// avatar's gender: `male` or `female`; default is `male`
 	Gender string `json:"gender,omitempty"`
 	// set to true to upload to the M3O CDN and receive the url
@@ -39,6 +37,8 @@ type GenerateRequest struct {
 	// if empty, every request generates a random avatar;
 	// if upload == true, username will be the CDN filename rather than a random uuid string
 	Username string `json:"username,omitempty"`
+	// encode format of avatar image: `png` or `jpeg`; default is `jpeg`
+	Format string `json:"format,omitempty"`
 }
 
 type GenerateResponse struct {

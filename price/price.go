@@ -126,10 +126,10 @@ type ListResponse struct {
 }
 
 type Report struct {
-	Author  string `json:"author,omitempty"`
 	Comment string `json:"comment,omitempty"`
 	Name    string `json:"name,omitempty"`
 	Symbol  string `json:"symbol,omitempty"`
+	Author  string `json:"author,omitempty"`
 }
 
 type ReportRequest struct {
@@ -145,6 +145,8 @@ type ReportResponse struct {
 }
 
 type Value struct {
+	// who added it
+	Author string `json:"author,omitempty"`
 	// currency of thing
 	Currency string `json:"currency,omitempty"`
 	// name of thing
@@ -157,6 +159,4 @@ type Value struct {
 	Symbol string `json:"symbol,omitempty"`
 	// time it was added
 	Timestamp string `json:"timestamp,omitempty"`
-	// who added it
-	Author string `json:"author,omitempty"`
 }

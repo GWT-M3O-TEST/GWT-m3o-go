@@ -11,8 +11,8 @@ import (
 func main() {
 	client := m3o.New(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := client.Cache.Set(&cache.SetRequest{
-		Value: "bar",
 		Key:   "foo",
+		Value: "bar",
 	})
 	fmt.Println(rsp, err)
 }

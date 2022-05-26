@@ -47,9 +47,9 @@ func (t *LocationService) Search(request *SearchRequest) (*SearchResponse, error
 }
 
 type Entity struct {
+	Id       string `json:"id,omitempty"`
 	Location *Point `json:"location,omitempty"`
 	Type     string `json:"type,omitempty"`
-	Id       string `json:"id,omitempty"`
 }
 
 type Point struct {

@@ -118,14 +118,14 @@ func (t *ChatService) Send(request *SendRequest) (*SendResponse, error) {
 }
 
 type CreateRequest struct {
-	// whether its a private room
-	Private bool `json:"private,omitempty"`
-	// optional list of user ids
-	UserIds []string `json:"user_ids,omitempty"`
 	// chat description
 	Description string `json:"description,omitempty"`
 	// name of the room
 	Name string `json:"name,omitempty"`
+	// whether its a private room
+	Private bool `json:"private,omitempty"`
+	// optional list of user ids
+	UserIds []string `json:"user_ids,omitempty"`
 }
 
 type CreateResponse struct {
@@ -186,10 +186,10 @@ type KickResponse struct {
 }
 
 type LeaveRequest struct {
-	// the user id
-	UserId string `json:"user_id,omitempty"`
 	// the chat room id
 	RoomId string `json:"room_id,omitempty"`
+	// the user id
+	UserId string `json:"user_id,omitempty"`
 }
 
 type LeaveResponse struct {

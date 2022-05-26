@@ -56,23 +56,23 @@ func (t *FileService) Save(request *SaveRequest) (*SaveResponse, error) {
 }
 
 type DeleteRequest struct {
-	// The project name
-	Project string `json:"project,omitempty"`
 	// Path to the file
 	Path string `json:"path,omitempty"`
+	// The project name
+	Project string `json:"project,omitempty"`
 }
 
 type DeleteResponse struct {
 }
 
 type ListRequest struct {
-	// Project, required for listing.
-	Project string `json:"project,omitempty"`
 	// Defaults to '/', ie. lists all files in a project.
 	// Supply path to a folder if you want to list
 	// files inside that folder
 	// eg. '/docs'
 	Path string `json:"path,omitempty"`
+	// Project, required for listing.
+	Project string `json:"project,omitempty"`
 }
 
 type ListResponse struct {
@@ -92,12 +92,6 @@ type ReadResponse struct {
 }
 
 type Record struct {
-	// File contents
-	Content string `json:"content,omitempty"`
-	// Time the file was created e.g 2021-05-20T13:37:21Z
-	Created string `json:"created,omitempty"`
-	// Any other associated metadata as a map of key-value pairs
-	Metadata map[string]string `json:"metadata,omitempty"`
 	// Path to file or folder eg. '/documents/text-files/file.txt'.
 	Path string `json:"path,omitempty"`
 	// A custom project to group files
@@ -105,6 +99,12 @@ type Record struct {
 	Project string `json:"project,omitempty"`
 	// Time the file was updated e.g 2021-05-20T13:37:21Z
 	Updated string `json:"updated,omitempty"`
+	// File contents
+	Content string `json:"content,omitempty"`
+	// Time the file was created e.g 2021-05-20T13:37:21Z
+	Created string `json:"created,omitempty"`
+	// Any other associated metadata as a map of key-value pairs
+	Metadata map[string]string `json:"metadata,omitempty"`
 }
 
 type SaveRequest struct {

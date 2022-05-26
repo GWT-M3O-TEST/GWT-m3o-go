@@ -58,26 +58,26 @@ func (t *QuranService) Verses(request *VersesRequest) (*VersesResponse, error) {
 }
 
 type Chapter struct {
+	// The number of verses in the chapter
+	Verses int32 `json:"verses,omitempty"`
 	// The arabic name of the chapter
 	ArabicName string `json:"arabic_name,omitempty"`
 	// The complex name of the chapter
 	ComplexName string `json:"complex_name,omitempty"`
+	// The id of the chapter as a number e.g 1
+	Id int32 `json:"id,omitempty"`
 	// The simple name of the chapter
 	Name string `json:"name,omitempty"`
+	// The pages from and to e.g 1, 1
+	Pages []int32 `json:"pages,omitempty"`
+	// The place of revelation
+	RevelationPlace string `json:"revelation_place,omitempty"`
+	// The translated name
+	TranslatedName string `json:"translated_name,omitempty"`
 	// Should the chapter start with bismillah
 	PrefixBismillah bool `json:"prefix_bismillah,omitempty"`
 	// The order in which it was revealed
 	RevelationOrder int32 `json:"revelation_order,omitempty"`
-	// The place of revelation
-	RevelationPlace string `json:"revelation_place,omitempty"`
-	// The number of verses in the chapter
-	Verses int32 `json:"verses,omitempty"`
-	// The id of the chapter as a number e.g 1
-	Id int32 `json:"id,omitempty"`
-	// The pages from and to e.g 1, 1
-	Pages []int32 `json:"pages,omitempty"`
-	// The translated name
-	TranslatedName string `json:"translated_name,omitempty"`
 }
 
 type ChaptersRequest struct {
@@ -99,38 +99,38 @@ type Interpretation struct {
 }
 
 type Result struct {
-	// The unique verse id across the Quran
-	VerseId int32 `json:"verse_id,omitempty"`
-	// The verse key e.g 1:1
-	VerseKey string `json:"verse_key,omitempty"`
 	// The associated arabic text
 	Text string `json:"text,omitempty"`
 	// The related translations to the text
 	Translations []Translation `json:"translations,omitempty"`
+	// The unique verse id across the Quran
+	VerseId int32 `json:"verse_id,omitempty"`
+	// The verse key e.g 1:1
+	VerseKey string `json:"verse_key,omitempty"`
 }
 
 type SearchRequest struct {
+	// The language for translation
+	Language string `json:"language,omitempty"`
 	// The number of results to return
 	Limit int32 `json:"limit,omitempty"`
 	// The pagination number
 	Page int32 `json:"page,omitempty"`
 	// The query to ask
 	Query string `json:"query,omitempty"`
-	// The language for translation
-	Language string `json:"language,omitempty"`
 }
 
 type SearchResponse struct {
-	// The total results returned
-	TotalResults int32 `json:"total_results,omitempty"`
-	// The current page
-	Page int32 `json:"page,omitempty"`
 	// The question asked
 	Query string `json:"query,omitempty"`
 	// The results for the query
 	Results []Result `json:"results,omitempty"`
 	// The total pages
 	TotalPages int32 `json:"total_pages,omitempty"`
+	// The total results returned
+	TotalResults int32 `json:"total_results,omitempty"`
+	// The current page
+	Page int32 `json:"page,omitempty"`
 }
 
 type SummaryRequest struct {
@@ -161,29 +161,35 @@ type Translation struct {
 }
 
 type Verse struct {
-	// The phonetic transliteration from arabic
-	Transliteration string `json:"transliteration,omitempty"`
-	// The interpretations of the verse
-	Interpretations []Interpretation `json:"interpretations,omitempty"`
-	// The arabic text for this verse
-	Text string `json:"text,omitempty"`
-	// The basic translation of the verse
-	TranslatedText string `json:"translated_text,omitempty"`
+	// The unique id of the verse in the whole book
+	Id int32 `json:"id,omitempty"`
+	// The verse number in this chapter
+	Number int32 `json:"number,omitempty"`
 	// The alternative translations for the verse
 	Translations []Translation `json:"translations,omitempty"`
 	// The individual words within the verse (Ayah)
 	Words []Word `json:"words,omitempty"`
-	// The unique id of the verse in the whole book
-	Id int32 `json:"id,omitempty"`
+	// The basic translation of the verse
+	TranslatedText string `json:"translated_text,omitempty"`
+	// The phonetic transliteration from arabic
+	Transliteration string `json:"transliteration,omitempty"`
+	// The interpretations of the verse
+	Interpretations []Interpretation `json:"interpretations,omitempty"`
 	// The key of this verse (chapter:verse) e.g 1:1
 	Key string `json:"key,omitempty"`
-	// The verse number in this chapter
-	Number int32 `json:"number,omitempty"`
 	// The page of the Quran this verse is on
 	Page int32 `json:"page,omitempty"`
+	// The arabic text for this verse
+	Text string `json:"text,omitempty"`
 }
 
 type VersesRequest struct {
+	// The verses per page
+	Limit int32 `json:"limit,omitempty"`
+	// The page number to request
+	Page int32 `json:"page,omitempty"`
+	// Return alternate translations
+	Translate bool `json:"translate,omitempty"`
 	// Return the individual words with the verses
 	Words bool `json:"words,omitempty"`
 	// The chapter id to retrieve
@@ -192,12 +198,6 @@ type VersesRequest struct {
 	Interpret bool `json:"interpret,omitempty"`
 	// The language of translation
 	Language string `json:"language,omitempty"`
-	// The verses per page
-	Limit int32 `json:"limit,omitempty"`
-	// The page number to request
-	Page int32 `json:"page,omitempty"`
-	// Return alternate translations
-	Translate bool `json:"translate,omitempty"`
 }
 
 type VersesResponse struct {
@@ -216,12 +216,10 @@ type Word struct {
 	CharType string `json:"char_type,omitempty"`
 	// The line number
 	Line int32 `json:"line,omitempty"`
-	// The arabic text for this word
-	Text string `json:"text,omitempty"`
-	// The translated text
-	Translation string `json:"translation,omitempty"`
 	// The transliteration text
 	Transliteration string `json:"transliteration,omitempty"`
+	// The translated text
+	Translation string `json:"translation,omitempty"`
 	// The QCF v2 font code
 	Code string `json:"code,omitempty"`
 	// The id of the word within the verse
@@ -230,4 +228,6 @@ type Word struct {
 	Page int32 `json:"page,omitempty"`
 	// The position of the word
 	Position int32 `json:"position,omitempty"`
+	// The arabic text for this word
+	Text string `json:"text,omitempty"`
 }

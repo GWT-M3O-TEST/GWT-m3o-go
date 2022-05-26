@@ -34,10 +34,6 @@ type LookupRequest struct {
 }
 
 type LookupResponse struct {
-	// Name of the continent
-	Continent string `json:"continent,omitempty"`
-	// Name of the country
-	Country string `json:"country,omitempty"`
 	// IP of the query
 	Ip string `json:"ip,omitempty"`
 	// Latitude e.g 52.523219
@@ -50,4 +46,8 @@ type LookupResponse struct {
 	Asn int32 `json:"asn,omitempty"`
 	// Name of the city
 	City string `json:"city,omitempty"`
+	// Name of the continent
+	Continent string `json:"continent,omitempty"`
+	// Name of the country
+	Country string `json:"country,omitempty"`
 }

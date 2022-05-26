@@ -25,10 +25,10 @@ import(
 func GenerateAvatarAndReturnBase64stringOfTheAvatar() {
 	avatarService := avatar.NewAvatarService(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := avatarService.Generate(&avatar.GenerateRequest{
-		Format: "jpeg",
-Upload: false,
-Gender: "female",
+		Gender: "female",
 Username: "",
+Format: "jpeg",
+Upload: false,
 	})
 	fmt.Println(rsp, err)
 	
@@ -55,10 +55,10 @@ import(
 func GenerateAnAvatarAndUploadTheAvatarToMicrosCdn() {
 	avatarService := avatar.NewAvatarService(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := avatarService.Generate(&avatar.GenerateRequest{
-		Upload: true,
-Gender: "female",
+		Gender: "female",
 Username: "",
 Format: "png",
+Upload: true,
 	})
 	fmt.Println(rsp, err)
 	

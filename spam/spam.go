@@ -29,8 +29,6 @@ func (t *SpamService) Classify(request *ClassifyRequest) (*ClassifyResponse, err
 }
 
 type ClassifyRequest struct {
-	// The subject of the email
-	Subject string `json:"subject,omitempty"`
 	// the plain text version of the email body
 	TextBody string `json:"text_body,omitempty"`
 	// The email address it is being sent to
@@ -41,13 +39,15 @@ type ClassifyRequest struct {
 	From string `json:"from,omitempty"`
 	// the HTML version of the email body
 	HtmlBody string `json:"html_body,omitempty"`
+	// The subject of the email
+	Subject string `json:"subject,omitempty"`
 }
 
 type ClassifyResponse struct {
+	// The rules that have contributed to this score
+	Details []string `json:"details,omitempty"`
 	// Is it spam? Returns true if its score is > 5
 	IsSpam bool `json:"is_spam,omitempty"`
 	// The score evaluated for this email. A higher number means it is more likely to be spam
 	Score float64 `json:"score,omitempty"`
-	// The rules that have contributed to this score
-	Details []string `json:"details,omitempty"`
 }

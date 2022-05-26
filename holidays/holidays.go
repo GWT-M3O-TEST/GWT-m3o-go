@@ -52,6 +52,8 @@ type Country struct {
 }
 
 type Holiday struct {
+	// the country this holiday occurs in
+	CountryCode string `json:"country_code,omitempty"`
 	// date of the holiday in yyyy-mm-dd format
 	Date string `json:"date,omitempty"`
 	// the local name of the holiday
@@ -62,8 +64,6 @@ type Holiday struct {
 	Regions []string `json:"regions,omitempty"`
 	// the type of holiday Public, Bank, School, Authorities, Optional, Observance
 	Types []string `json:"types,omitempty"`
-	// the country this holiday occurs in
-	CountryCode string `json:"country_code,omitempty"`
 }
 
 type ListRequest struct {

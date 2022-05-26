@@ -11,9 +11,9 @@ import (
 func main() {
 	client := m3o.New(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := client.Space.Create(&space.CreateRequest{
+		Visibility: "public",
 		Object:     "<file bytes>",
 		Name:       "images/file.jpg",
-		Visibility: "public",
 	})
 	fmt.Println(rsp, err)
 }

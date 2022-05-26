@@ -11,16 +11,6 @@ import (
 func main() {
 	client := m3o.New(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := client.Contact.Create(&contact.CreateRequest{
-		Note: "this person is very important",
-		Name: "joe",
-		Phones: []contact.Phone{
-			contact.Phone: {
-				Label: "work", Number: "010-87654321"},
-		},
-		Emails: []contact.Email{
-			contact.Email: {
-				Label: "work", Address: "work@example.com"},
-		},
 		Links: []contact.Link{
 			contact.Link: {
 				Label: "blog", Url: "https://blog.joe.me"},
@@ -33,6 +23,16 @@ func main() {
 		SocialMedias: []contact.SocialMedia{
 			contact.SocialMedia: {
 				Label: "facebook", Username: "joe-facebook"},
+		},
+		Note: "this person is very important",
+		Name: "joe",
+		Phones: []contact.Phone{
+			contact.Phone: {
+				Label: "work", Number: "010-87654321"},
+		},
+		Emails: []contact.Email{
+			contact.Email: {
+				Label: "work", Address: "work@example.com"},
 		},
 	})
 	fmt.Println(rsp, err)

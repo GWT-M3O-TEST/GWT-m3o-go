@@ -25,7 +25,16 @@ import(
 func CreateAcontact() {
 	contactService := contact.NewContactService(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := contactService.Create(&contact.CreateRequest{
-		Name: "joe",
+		Addresses: []contact.Address{
+contact.Address: {
+Label: "company address", Location: "123 street address", },
+},
+SocialMedias: []contact.SocialMedia{
+contact.SocialMedia: {
+Username: "joe-facebook", Label: "facebook", },
+},
+Note: "this person is very important",
+Name: "joe",
 Phones: []contact.Phone{
 contact.Phone: {
 Label: "work", Number: "010-87654321", },
@@ -39,15 +48,6 @@ contact.Link: {
 Label: "blog", Url: "https://blog.joe.me", },
 },
 Birthday: "1995-01-01",
-Addresses: []contact.Address{
-contact.Address: {
-Label: "company address", Location: "123 street address", },
-},
-SocialMedias: []contact.SocialMedia{
-contact.SocialMedia: {
-Username: "joe-facebook", Label: "facebook", },
-},
-Note: "this person is very important",
 	})
 	fmt.Println(rsp, err)
 	
@@ -74,14 +74,20 @@ import(
 func UpdateAcontact() {
 	contactService := contact.NewContactService(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := contactService.Update(&contact.UpdateRequest{
-		Phones: []contact.Phone{
+		Name: "joe",
+Phones: []contact.Phone{
 contact.Phone: {
-Number: "010-87654321", Label: "work", },
+Label: "work", Number: "010-87654321", },
+},
+Emails: []contact.Email{
+contact.Email: {
+Address: "work@example.com", Label: "work", },
 },
 Links: []contact.Link{
 contact.Link: {
 Label: "blog", Url: "https://blog.joe.me", },
 },
+Id: "42e48a3c-6221-11ec-96d2-acde48001122",
 Birthday: "1995-01-01",
 Addresses: []contact.Address{
 contact.Address: {
@@ -90,12 +96,6 @@ Label: "company address", Location: "123 street address", },
 SocialMedias: []contact.SocialMedia{
 contact.SocialMedia: {
 Label: "facebook", Username: "joe-facebook", },
-},
-Id: "42e48a3c-6221-11ec-96d2-acde48001122",
-Name: "joe",
-Emails: []contact.Email{
-contact.Email: {
-Label: "work", Address: "work@example.com", },
 },
 Note: "this person is very important",
 	})

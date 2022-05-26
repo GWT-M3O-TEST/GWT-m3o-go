@@ -34,6 +34,8 @@ type PingRequest struct {
 }
 
 type PingResponse struct {
+	// Max players ever
+	MaxPlayers int32 `json:"max_players,omitempty"`
 	// Message of the day
 	Motd string `json:"motd,omitempty"`
 	// Number of players online
@@ -48,8 +50,6 @@ type PingResponse struct {
 	Favicon string `json:"favicon,omitempty"`
 	// Latency (ms) between us and the server (EU)
 	Latency int32 `json:"latency,omitempty"`
-	// Max players ever
-	MaxPlayers int32 `json:"max_players,omitempty"`
 }
 
 type PlayerSample struct {

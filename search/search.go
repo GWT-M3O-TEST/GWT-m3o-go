@@ -81,10 +81,10 @@ type DeleteIndexResponse struct {
 }
 
 type DeleteRequest struct {
-	// The index the record belongs to
-	Index string `json:"index,omitempty"`
 	// The ID of the record to delete
 	Id string `json:"id,omitempty"`
+	// The index the record belongs to
+	Index string `json:"index,omitempty"`
 }
 
 type DeleteResponse struct {
@@ -98,12 +98,12 @@ type Field struct {
 }
 
 type IndexRequest struct {
+	// The data to index
+	Data map[string]interface{} `json:"data,omitempty"`
 	// Optional ID for the record
 	Id string `json:"id,omitempty"`
 	// The index this record belongs to
 	Index string `json:"index,omitempty"`
-	// The data to index
-	Data map[string]interface{} `json:"data,omitempty"`
 }
 
 type IndexResponse struct {
@@ -119,10 +119,10 @@ type Record struct {
 }
 
 type SearchRequest struct {
-	// The query. See docs for query language examples
-	Query string `json:"query,omitempty"`
 	// The index the record belongs to
 	Index string `json:"index,omitempty"`
+	// The query. See docs for query language examples
+	Query string `json:"query,omitempty"`
 }
 
 type SearchResponse struct {

@@ -56,20 +56,22 @@ func (t *RssService) Remove(request *RemoveRequest) (*RemoveResponse, error) {
 }
 
 type AddRequest struct {
+	// category to add e.g news
+	Category string `json:"category,omitempty"`
 	// rss feed name
 	// eg. a16z
 	Name string `json:"name,omitempty"`
 	// rss feed url
 	// eg. http://a16z.com/feed/
 	Url string `json:"url,omitempty"`
-	// category to add e.g news
-	Category string `json:"category,omitempty"`
 }
 
 type AddResponse struct {
 }
 
 type Entry struct {
+	// title of the entry
+	Title string `json:"title,omitempty"`
 	// article content
 	Content string `json:"content,omitempty"`
 	// data of the entry
@@ -82,11 +84,11 @@ type Entry struct {
 	Link string `json:"link,omitempty"`
 	// article summary
 	Summary string `json:"summary,omitempty"`
-	// title of the entry
-	Title string `json:"title,omitempty"`
 }
 
 type Feed struct {
+	// category of the feed e.g news
+	Category string `json:"category,omitempty"`
 	// unique id
 	Id string `json:"id,omitempty"`
 	// rss feed name
@@ -95,8 +97,6 @@ type Feed struct {
 	// rss feed url
 	// eg. http://a16z.com/feed/
 	Url string `json:"url,omitempty"`
-	// category of the feed e.g news
-	Category string `json:"category,omitempty"`
 }
 
 type FeedRequest struct {

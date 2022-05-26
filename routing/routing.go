@@ -47,6 +47,8 @@ func (t *RoutingService) Route(request *RouteRequest) (*RouteResponse, error) {
 }
 
 type Direction struct {
+	// duration to travel in seconds
+	Duration float64 `json:"duration,omitempty"`
 	// human readable instruction
 	Instruction string `json:"instruction,omitempty"`
 	// intersections on route
@@ -59,15 +61,13 @@ type Direction struct {
 	Reference string `json:"reference,omitempty"`
 	// distance to travel in meters
 	Distance float64 `json:"distance,omitempty"`
-	// duration to travel in seconds
-	Duration float64 `json:"duration,omitempty"`
 }
 
 type DirectionsRequest struct {
-	// The staring point for the journey
-	Origin *Point `json:"origin,omitempty"`
 	// The destination of the journey
 	Destination *Point `json:"destination,omitempty"`
+	// The staring point for the journey
+	Origin *Point `json:"origin,omitempty"`
 }
 
 type DirectionsResponse struct {
@@ -82,14 +82,14 @@ type DirectionsResponse struct {
 }
 
 type EtaRequest struct {
+	// type of transport. Only "car" is supported currently.
+	Type string `json:"type,omitempty"`
 	// The end point for the eta calculation
 	Destination *Point `json:"destination,omitempty"`
 	// The starting point for the eta calculation
 	Origin *Point `json:"origin,omitempty"`
 	// speed in kilometers
 	Speed float64 `json:"speed,omitempty"`
-	// type of transport. Only "car" is supported currently.
-	Type string `json:"type,omitempty"`
 }
 
 type EtaResponse struct {
@@ -125,12 +125,12 @@ type RouteRequest struct {
 }
 
 type RouteResponse struct {
-	// waypoints on the route
-	Waypoints []Waypoint `json:"waypoints,omitempty"`
 	// estimated distance in meters
 	Distance float64 `json:"distance,omitempty"`
 	// estimated duration in seconds
 	Duration float64 `json:"duration,omitempty"`
+	// waypoints on the route
+	Waypoints []Waypoint `json:"waypoints,omitempty"`
 }
 
 type Waypoint struct {
