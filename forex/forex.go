@@ -52,6 +52,8 @@ type HistoryRequest struct {
 }
 
 type HistoryResponse struct {
+	// the peak price
+	High float64 `json:"high,omitempty"`
 	// the low price
 	Low float64 `json:"low,omitempty"`
 	// the open price
@@ -64,8 +66,6 @@ type HistoryResponse struct {
 	Close float64 `json:"close,omitempty"`
 	// the date
 	Date string `json:"date,omitempty"`
-	// the peak price
-	High float64 `json:"high,omitempty"`
 }
 
 type PriceRequest struct {
@@ -86,12 +86,12 @@ type QuoteRequest struct {
 }
 
 type QuoteResponse struct {
+	// the asking price
+	AskPrice float64 `json:"ask_price,omitempty"`
 	// the bidding price
 	BidPrice float64 `json:"bid_price,omitempty"`
 	// the forex symbol
 	Symbol string `json:"symbol,omitempty"`
 	// the UTC timestamp of the quote
 	Timestamp string `json:"timestamp,omitempty"`
-	// the asking price
-	AskPrice float64 `json:"ask_price,omitempty"`
 }

@@ -47,10 +47,6 @@ func (t *RoutingService) Route(request *RouteRequest) (*RouteResponse, error) {
 }
 
 type Direction struct {
-	// distance to travel in meters
-	Distance float64 `json:"distance,omitempty"`
-	// duration to travel in seconds
-	Duration float64 `json:"duration,omitempty"`
 	// human readable instruction
 	Instruction string `json:"instruction,omitempty"`
 	// intersections on route
@@ -61,35 +57,39 @@ type Direction struct {
 	Name string `json:"name,omitempty"`
 	// alternative reference
 	Reference string `json:"reference,omitempty"`
+	// distance to travel in meters
+	Distance float64 `json:"distance,omitempty"`
+	// duration to travel in seconds
+	Duration float64 `json:"duration,omitempty"`
 }
 
 type DirectionsRequest struct {
-	// The destination of the journey
-	Destination *Point `json:"destination,omitempty"`
 	// The staring point for the journey
 	Origin *Point `json:"origin,omitempty"`
+	// The destination of the journey
+	Destination *Point `json:"destination,omitempty"`
 }
 
 type DirectionsResponse struct {
-	// The waypoints on the route
-	Waypoints []Waypoint `json:"waypoints,omitempty"`
-	// Turn by turn directions
-	Directions []Direction `json:"directions,omitempty"`
 	// Estimated distance of the route in meters
 	Distance float64 `json:"distance,omitempty"`
 	// Estimated duration of the route in seconds
 	Duration float64 `json:"duration,omitempty"`
+	// The waypoints on the route
+	Waypoints []Waypoint `json:"waypoints,omitempty"`
+	// Turn by turn directions
+	Directions []Direction `json:"directions,omitempty"`
 }
 
 type EtaRequest struct {
-	// speed in kilometers
-	Speed float64 `json:"speed,omitempty"`
-	// type of transport. Only "car" is supported currently.
-	Type string `json:"type,omitempty"`
 	// The end point for the eta calculation
 	Destination *Point `json:"destination,omitempty"`
 	// The starting point for the eta calculation
 	Origin *Point `json:"origin,omitempty"`
+	// speed in kilometers
+	Speed float64 `json:"speed,omitempty"`
+	// type of transport. Only "car" is supported currently.
+	Type string `json:"type,omitempty"`
 }
 
 type EtaResponse struct {
@@ -125,17 +125,17 @@ type RouteRequest struct {
 }
 
 type RouteResponse struct {
-	// estimated duration in seconds
-	Duration float64 `json:"duration,omitempty"`
 	// waypoints on the route
 	Waypoints []Waypoint `json:"waypoints,omitempty"`
 	// estimated distance in meters
 	Distance float64 `json:"distance,omitempty"`
+	// estimated duration in seconds
+	Duration float64 `json:"duration,omitempty"`
 }
 
 type Waypoint struct {
-	// gps point coordinates
-	Location *Point `json:"location,omitempty"`
 	// street name or related reference
 	Name string `json:"name,omitempty"`
+	// gps point coordinates
+	Location *Point `json:"location,omitempty"`
 }

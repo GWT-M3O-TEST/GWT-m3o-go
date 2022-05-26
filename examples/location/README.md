@@ -4,41 +4,6 @@ An [m3o.com](https://m3o.com) API. For example usage see [m3o.com/location/api](
 
 Endpoints:
 
-## Save
-
-Save an entity's current position
-
-
-[https://m3o.com/location/api#Save](https://m3o.com/location/api#Save)
-
-```go
-package example
-
-import(
-	"fmt"
-	"os"
-
-	"go.m3o.com/location"
-)
-
-// Save an entity's current position
-func SaveAnEntity() {
-	locationService := location.NewLocationService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := locationService.Save(&location.SaveRequest{
-		Entity: &location.Entity{
-Id: "1",
-Type: "bike",
-Location: &location.Point{
-Latitude: 51.511061,
-Longitude: -0.120022,
-Timestamp: 1622802761,
-},
-},
-	})
-	fmt.Println(rsp, err)
-	
-}
-```
 ## Read
 
 Read an entity by its ID
@@ -94,6 +59,41 @@ Longitude: -0.120022,
 NumEntities: 10,
 Radius: 100,
 Type: "bike",
+	})
+	fmt.Println(rsp, err)
+	
+}
+```
+## Save
+
+Save an entity's current position
+
+
+[https://m3o.com/location/api#Save](https://m3o.com/location/api#Save)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"go.m3o.com/location"
+)
+
+// Save an entity's current position
+func SaveAnEntity() {
+	locationService := location.NewLocationService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := locationService.Save(&location.SaveRequest{
+		Entity: &location.Entity{
+Id: "1",
+Type: "bike",
+Location: &location.Point{
+Latitude: 51.511061,
+Longitude: -0.120022,
+Timestamp: 1622802761,
+},
+},
 	})
 	fmt.Println(rsp, err)
 	

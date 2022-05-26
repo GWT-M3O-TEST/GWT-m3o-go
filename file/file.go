@@ -56,23 +56,23 @@ func (t *FileService) Save(request *SaveRequest) (*SaveResponse, error) {
 }
 
 type DeleteRequest struct {
-	// Path to the file
-	Path string `json:"path,omitempty"`
 	// The project name
 	Project string `json:"project,omitempty"`
+	// Path to the file
+	Path string `json:"path,omitempty"`
 }
 
 type DeleteResponse struct {
 }
 
 type ListRequest struct {
+	// Project, required for listing.
+	Project string `json:"project,omitempty"`
 	// Defaults to '/', ie. lists all files in a project.
 	// Supply path to a folder if you want to list
 	// files inside that folder
 	// eg. '/docs'
 	Path string `json:"path,omitempty"`
-	// Project, required for listing.
-	Project string `json:"project,omitempty"`
 }
 
 type ListResponse struct {

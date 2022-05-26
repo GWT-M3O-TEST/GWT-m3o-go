@@ -56,14 +56,16 @@ func (t *TwitterService) User(request *UserRequest) (*UserResponse, error) {
 }
 
 type Profile struct {
-	// display name of the user
-	Name string `json:"name,omitempty"`
-	// if the account is private
-	Private bool `json:"private,omitempty"`
-	// if the account is verified
-	Verified bool `json:"verified,omitempty"`
+	// the account creation date
+	CreatedAt string `json:"created_at,omitempty"`
 	// the follower count
 	Followers int64 `json:"followers,string,omitempty"`
+	// if the account is private
+	Private bool `json:"private,omitempty"`
+	// the username
+	Username string `json:"username,omitempty"`
+	// if the account is verified
+	Verified bool `json:"verified,omitempty"`
 	// the user description
 	Description string `json:"description,omitempty"`
 	// the user id
@@ -72,17 +74,15 @@ type Profile struct {
 	ImageUrl string `json:"image_url,omitempty"`
 	// the user's location
 	Location string `json:"location,omitempty"`
-	// the username
-	Username string `json:"username,omitempty"`
-	// the account creation date
-	CreatedAt string `json:"created_at,omitempty"`
+	// display name of the user
+	Name string `json:"name,omitempty"`
 }
 
 type SearchRequest struct {
-	// the query to search for
-	Query string `json:"query,omitempty"`
 	// number of tweets to return. default: 20
 	Limit int32 `json:"limit,omitempty"`
+	// the query to search for
+	Query string `json:"query,omitempty"`
 }
 
 type SearchResponse struct {
@@ -103,12 +103,12 @@ type TimelineResponse struct {
 }
 
 type Trend struct {
+	// the twitter url
+	Url string `json:"url,omitempty"`
 	// name of the trend
 	Name string `json:"name,omitempty"`
 	// the volume of tweets in last 24 hours
 	TweetVolume int64 `json:"tweet_volume,string,omitempty"`
-	// the twitter url
-	Url string `json:"url,omitempty"`
 }
 
 type TrendsRequest struct {
@@ -120,18 +120,18 @@ type TrendsResponse struct {
 }
 
 type Tweet struct {
-	// time of tweet
-	CreatedAt string `json:"created_at,omitempty"`
-	// number of times favourited
-	FavouritedCount int64 `json:"favourited_count,string,omitempty"`
-	// id of the tweet
-	Id int64 `json:"id,string,omitempty"`
 	// number of times retweeted
 	RetweetedCount int64 `json:"retweeted_count,string,omitempty"`
 	// text of the tweet
 	Text string `json:"text,omitempty"`
 	// username of the person who tweeted
 	Username string `json:"username,omitempty"`
+	// time of tweet
+	CreatedAt string `json:"created_at,omitempty"`
+	// number of times favourited
+	FavouritedCount int64 `json:"favourited_count,string,omitempty"`
+	// id of the tweet
+	Id int64 `json:"id,string,omitempty"`
 }
 
 type UserRequest struct {

@@ -52,8 +52,8 @@ import(
 func GetHolidays() {
 	holidaysService := holidays.NewHolidaysService(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := holidaysService.List(&holidays.ListRequest{
-		Year: 2022,
-CountryCode: "GB",
+		CountryCode: "GB",
+Year: 2022,
 	})
 	fmt.Println(rsp, err)
 	

@@ -25,12 +25,12 @@ import(
 func SearchForMovies() {
 	movieService := movie.NewMovieService(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := movieService.Search(&movie.SearchRequest{
-		Language: "en-US",
-Query: "inception",
-Page: 1,
-Region: "US",
+		Region: "US",
 Year: 2010,
 PrimaryReleaseYear: 2010,
+Language: "en-US",
+Query: "inception",
+Page: 1,
 	})
 	fmt.Println(rsp, err)
 	

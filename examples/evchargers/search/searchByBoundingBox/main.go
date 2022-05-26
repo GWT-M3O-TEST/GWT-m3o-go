@@ -11,6 +11,7 @@ import (
 func main() {
 	client := m3o.New(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := client.Evchargers.Search(&evchargers.SearchRequest{
+		MaxResults: 2,
 		Box: &evchargers.BoundingBox{
 			BottomLeft: &evchargers.Coordinates{
 				Latitude:  51.52627543859447,
@@ -21,7 +22,6 @@ func main() {
 				Longitude: -0.002293530559768285,
 			},
 		},
-		MaxResults: 2,
 	})
 	fmt.Println(rsp, err)
 }

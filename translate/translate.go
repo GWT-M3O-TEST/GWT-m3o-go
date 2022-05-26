@@ -29,10 +29,6 @@ func (t *TranslateService) Text(request *TextRequest) (*TextResponse, error) {
 }
 
 type TextRequest struct {
-	// The contents to be translated
-	Content string `json:"content,omitempty"`
-	// The string format, `text` or `html`
-	Format string `json:"format,omitempty"`
 	// The model to use for translation, `nmt` or `base`,
 	// See https://cloud.google.com/translate/docs/advanced/translating-text-v3#comparing-models for more information
 	Model string `json:"model,omitempty"`
@@ -42,6 +38,10 @@ type TextRequest struct {
 	// Target language, format in ISO-639-1 codes
 	// See https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes for more information
 	Target string `json:"target,omitempty"`
+	// The contents to be translated
+	Content string `json:"content,omitempty"`
+	// The string format, `text` or `html`
+	Format string `json:"format,omitempty"`
 }
 
 type TextResponse struct {

@@ -34,6 +34,12 @@ type PingRequest struct {
 }
 
 type PingResponse struct {
+	// Message of the day
+	Motd string `json:"motd,omitempty"`
+	// Number of players online
+	Players int32 `json:"players,omitempty"`
+	// Protocol number of the server
+	Protocol int32 `json:"protocol,omitempty"`
 	// List of connected players
 	Sample []PlayerSample `json:"sample,omitempty"`
 	// Version of the server
@@ -44,12 +50,6 @@ type PingResponse struct {
 	Latency int32 `json:"latency,omitempty"`
 	// Max players ever
 	MaxPlayers int32 `json:"max_players,omitempty"`
-	// Message of the day
-	Motd string `json:"motd,omitempty"`
-	// Number of players online
-	Players int32 `json:"players,omitempty"`
-	// Protocol number of the server
-	Protocol int32 `json:"protocol,omitempty"`
 }
 
 type PlayerSample struct {

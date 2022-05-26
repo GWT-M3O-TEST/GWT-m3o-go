@@ -11,9 +11,9 @@ import (
 func main() {
 	client := m3o.New(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := client.Image.Convert(&image.ConvertRequest{
-		OutputUrl: true,
 		Url:       "somewebsite.com/cat.png",
 		Name:      "cat.jpeg",
+		OutputUrl: true,
 	})
 	fmt.Println(rsp, err)
 }

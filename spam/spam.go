@@ -44,10 +44,10 @@ type ClassifyRequest struct {
 }
 
 type ClassifyResponse struct {
-	// The rules that have contributed to this score
-	Details []string `json:"details,omitempty"`
 	// Is it spam? Returns true if its score is > 5
 	IsSpam bool `json:"is_spam,omitempty"`
 	// The score evaluated for this email. A higher number means it is more likely to be spam
 	Score float64 `json:"score,omitempty"`
+	// The rules that have contributed to this score
+	Details []string `json:"details,omitempty"`
 }

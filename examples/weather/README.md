@@ -52,8 +52,8 @@ import(
 func ForecastWeather() {
 	weatherService := weather.NewWeatherService(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := weatherService.Forecast(&weather.ForecastRequest{
-		Location: "London",
-Days: 2,
+		Days: 2,
+Location: "London",
 	})
 	fmt.Println(rsp, err)
 	

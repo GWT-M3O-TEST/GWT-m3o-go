@@ -63,12 +63,12 @@ func (t *EventService) Read(request *ReadRequest) (*ReadResponse, error) {
 }
 
 type ConsumeRequest struct {
+	// Optional group for the subscription
+	Group string `json:"group,omitempty"`
 	// Optional offset to read from e.g "2006-01-02T15:04:05.999Z07:00"
 	Offset string `json:"offset,omitempty"`
 	// The topic to subscribe to
 	Topic string `json:"topic,omitempty"`
-	// Optional group for the subscription
-	Group string `json:"group,omitempty"`
 }
 
 type ConsumeResponse struct {
@@ -83,31 +83,31 @@ type ConsumeResponse struct {
 }
 
 type Ev struct {
-	// event message
-	Message map[string]interface{} `json:"message,omitempty"`
 	// event timestamp
 	Timestamp string `json:"timestamp,omitempty"`
 	// event id
 	Id string `json:"id,omitempty"`
+	// event message
+	Message map[string]interface{} `json:"message,omitempty"`
 }
 
 type PublishRequest struct {
-	// The json message to publish
-	Message map[string]interface{} `json:"message,omitempty"`
 	// The topic to publish to
 	Topic string `json:"topic,omitempty"`
+	// The json message to publish
+	Message map[string]interface{} `json:"message,omitempty"`
 }
 
 type PublishResponse struct {
 }
 
 type ReadRequest struct {
-	// topic to read from
-	Topic string `json:"topic,omitempty"`
 	// number of events to read; default 25
 	Limit int32 `json:"limit,omitempty"`
 	// offset for the events; default 0
 	Offset int32 `json:"offset,omitempty"`
+	// topic to read from
+	Topic string `json:"topic,omitempty"`
 }
 
 type ReadResponse struct {

@@ -29,25 +29,23 @@ func (t *MovieService) Search(request *SearchRequest) (*SearchResponse, error) {
 }
 
 type MovieInfo struct {
-	Title            string  `json:"title,omitempty"`
-	VoteCount        int32   `json:"vote_count,omitempty"`
-	GenreIds         []int32 `json:"genre_ids,omitempty"`
-	Overview         string  `json:"overview,omitempty"`
-	Popularity       float64 `json:"popularity,omitempty"`
-	VoteAverage      float64 `json:"vote_average,omitempty"`
 	Id               int32   `json:"id,omitempty"`
 	OriginalLanguage string  `json:"original_language,omitempty"`
-	PosterPath       string  `json:"poster_path,omitempty"`
-	ReleaseDate      string  `json:"release_date,omitempty"`
-	Video            bool    `json:"video,omitempty"`
-	Adult            bool    `json:"adult,omitempty"`
-	BackdropPath     string  `json:"backdrop_path,omitempty"`
 	OriginalTitle    string  `json:"original_title,omitempty"`
+	Popularity       float64 `json:"popularity,omitempty"`
+	Title            string  `json:"title,omitempty"`
+	Adult            bool    `json:"adult,omitempty"`
+	GenreIds         []int32 `json:"genre_ids,omitempty"`
+	VoteAverage      float64 `json:"vote_average,omitempty"`
+	VoteCount        int32   `json:"vote_count,omitempty"`
+	Overview         string  `json:"overview,omitempty"`
+	PosterPath       string  `json:"poster_path,omitempty"`
+	Video            bool    `json:"video,omitempty"`
+	BackdropPath     string  `json:"backdrop_path,omitempty"`
+	ReleaseDate      string  `json:"release_date,omitempty"`
 }
 
 type SearchRequest struct {
-	// a ISO 3166-1 code to filter release dates.
-	Region string `json:"region,omitempty"`
 	// year of making
 	Year int32 `json:"year,omitempty"`
 	// a ISO 639-1 value to display translated data
@@ -58,11 +56,13 @@ type SearchRequest struct {
 	PrimaryReleaseYear int32 `json:"primary_release_year,omitempty"`
 	// a text query to search
 	Query string `json:"query,omitempty"`
+	// a ISO 3166-1 code to filter release dates.
+	Region string `json:"region,omitempty"`
 }
 
 type SearchResponse struct {
-	TotalResults int32       `json:"total_results,omitempty"`
 	Page         int32       `json:"page,omitempty"`
 	Results      []MovieInfo `json:"results,omitempty"`
 	TotalPages   int32       `json:"total_pages,omitempty"`
+	TotalResults int32       `json:"total_results,omitempty"`
 }

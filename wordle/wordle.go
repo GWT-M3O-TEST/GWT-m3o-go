@@ -66,8 +66,6 @@ type GuessRequest struct {
 }
 
 type GuessResponse struct {
-	// number of tries left
-	TriesLeft int32 `json:"tries_left,omitempty"`
 	// the actual word if failed
 	Answer string `json:"answer,omitempty"`
 	// whether it was correct
@@ -76,6 +74,8 @@ type GuessResponse struct {
 	Guesses []Guess `json:"guesses,omitempty"`
 	// informational message
 	Status string `json:"status,omitempty"`
+	// number of tries left
+	TriesLeft int32 `json:"tries_left,omitempty"`
 }
 
 type NextRequest struct {

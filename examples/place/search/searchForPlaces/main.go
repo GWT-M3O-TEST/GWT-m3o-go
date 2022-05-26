@@ -11,8 +11,8 @@ import (
 func main() {
 	client := m3o.New(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := client.Place.Search(&place.SearchRequest{
-		Location: "51.5074577,-0.1297515",
 		Query:    "food",
+		Location: "51.5074577,-0.1297515",
 	})
 	fmt.Println(rsp, err)
 }

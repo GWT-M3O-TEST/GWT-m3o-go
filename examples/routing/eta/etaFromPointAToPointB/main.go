@@ -16,8 +16,8 @@ func main() {
 			Longitude: 13.38886,
 		},
 		Destination: &routing.Point{
-			Longitude: 13.397634,
 			Latitude:  52.529407,
+			Longitude: 13.397634,
 		},
 	})
 	fmt.Println(rsp, err)

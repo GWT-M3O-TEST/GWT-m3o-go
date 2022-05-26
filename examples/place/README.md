@@ -54,8 +54,8 @@ import(
 func SearchForPlaces() {
 	placeService := place.NewPlaceService(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := placeService.Search(&place.SearchRequest{
-		Query: "food",
-Location: "51.5074577,-0.1297515",
+		Location: "51.5074577,-0.1297515",
+Query: "food",
 	})
 	fmt.Println(rsp, err)
 	

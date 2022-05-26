@@ -112,17 +112,17 @@ type GetResponse struct {
 }
 
 type IncrementRequest struct {
-	// The amount to increment the value by
-	Value int64 `json:"value,string,omitempty"`
 	// The key to increment
 	Key string `json:"key,omitempty"`
+	// The amount to increment the value by
+	Value int64 `json:"value,string,omitempty"`
 }
 
 type IncrementResponse struct {
-	// The key incremented
-	Key string `json:"key,omitempty"`
 	// The new value
 	Value int64 `json:"value,string,omitempty"`
+	// The key incremented
+	Key string `json:"key,omitempty"`
 }
 
 type ListKeysRequest struct {
@@ -133,12 +133,12 @@ type ListKeysResponse struct {
 }
 
 type SetRequest struct {
-	// Time to live in seconds
-	Ttl int64 `json:"ttl,string,omitempty"`
 	// The value to set
 	Value string `json:"value,omitempty"`
 	// The key to update
 	Key string `json:"key,omitempty"`
+	// Time to live in seconds
+	Ttl int64 `json:"ttl,string,omitempty"`
 }
 
 type SetResponse struct {

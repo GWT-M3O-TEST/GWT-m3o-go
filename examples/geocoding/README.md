@@ -53,10 +53,10 @@ import(
 func GeocodeAnAddress() {
 	geocodingService := geocoding.NewGeocodingService(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := geocodingService.Lookup(&geocoding.LookupRequest{
-		Country: "uk",
-Address: "10 russell st",
-Postcode: "wc2b",
+		Postcode: "wc2b",
 City: "london",
+Country: "uk",
+Address: "10 russell st",
 	})
 	fmt.Println(rsp, err)
 	

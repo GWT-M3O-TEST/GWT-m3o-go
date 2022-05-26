@@ -34,36 +34,36 @@ type LookupRequest struct {
 }
 
 type LookupResponse struct {
-	// date of last v5 issue
-	LastV5Issued string `json:"last_v5_issued,omitempty"`
-	// make of vehicle
-	Make string `json:"make,omitempty"`
-	// mot expiry
-	MotExpiry string `json:"mot_expiry,omitempty"`
-	// mot status
-	MotStatus string `json:"mot_status,omitempty"`
-	// co2 emmissions
-	Co2Emissions float64 `json:"co2_emissions,omitempty"`
-	// month of first registration
-	MonthOfFirstRegistration string `json:"month_of_first_registration,omitempty"`
-	// wheel plan
-	Wheelplan string `json:"wheelplan,omitempty"`
 	// tax status
 	TaxStatus string `json:"tax_status,omitempty"`
-	// year of manufacture
-	YearOfManufacture int32 `json:"year_of_manufacture,omitempty"`
-	// colour of vehicle
-	Colour string `json:"colour,omitempty"`
-	// engine capacity
-	EngineCapacity int32 `json:"engine_capacity,omitempty"`
-	// registration number
-	Registration string `json:"registration,omitempty"`
-	// tax due data
-	TaxDueDate string `json:"tax_due_date,omitempty"`
-	// fuel type e.g petrol, diesel
-	FuelType string `json:"fuel_type,omitempty"`
-	// url of logo for the make
-	LogoUrl string `json:"logo_url,omitempty"`
 	// type approvale
 	TypeApproval string `json:"type_approval,omitempty"`
+	// make of vehicle
+	Make string `json:"make,omitempty"`
+	// wheel plan
+	Wheelplan string `json:"wheelplan,omitempty"`
+	// url of logo for the make
+	LogoUrl string `json:"logo_url,omitempty"`
+	// colour of vehicle
+	Colour string `json:"colour,omitempty"`
+	// date of last v5 issue
+	LastV5Issued string `json:"last_v5_issued,omitempty"`
+	// month of first registration
+	MonthOfFirstRegistration string `json:"month_of_first_registration,omitempty"`
+	// mot expiry
+	MotExpiry string `json:"mot_expiry,omitempty"`
+	// registration number
+	Registration string `json:"registration,omitempty"`
+	// co2 emmissions
+	Co2Emissions float64 `json:"co2_emissions,omitempty"`
+	// fuel type e.g petrol, diesel
+	FuelType string `json:"fuel_type,omitempty"`
+	// mot status
+	MotStatus string `json:"mot_status,omitempty"`
+	// tax due data
+	TaxDueDate string `json:"tax_due_date,omitempty"`
+	// year of manufacture
+	YearOfManufacture int32 `json:"year_of_manufacture,omitempty"`
+	// engine capacity
+	EngineCapacity int32 `json:"engine_capacity,omitempty"`
 }

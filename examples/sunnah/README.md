@@ -4,36 +4,6 @@ An [m3o.com](https://m3o.com) API. For example usage see [m3o.com/sunnah/api](ht
 
 Endpoints:
 
-## Hadiths
-
-Hadiths returns a list of hadiths and their corresponding text for a
-given book within a collection.
-
-
-[https://m3o.com/sunnah/api#Hadiths](https://m3o.com/sunnah/api#Hadiths)
-
-```go
-package example
-
-import(
-	"fmt"
-	"os"
-
-	"go.m3o.com/sunnah"
-)
-
-// Hadiths returns a list of hadiths and their corresponding text for a
-// given book within a collection.
-func ListTheHadithsInAbook() {
-	sunnahService := sunnah.NewSunnahService(os.Getenv("M3O_API_TOKEN"))
-	rsp, err := sunnahService.Hadiths(&sunnah.HadithsRequest{
-		Book: 1,
-Collection: "bukhari",
-	})
-	fmt.Println(rsp, err)
-	
-}
-```
 ## Collections
 
 Get a list of available collections. A collection is
@@ -113,8 +83,38 @@ import(
 func ListTheChaptersInAbook() {
 	sunnahService := sunnah.NewSunnahService(os.Getenv("M3O_API_TOKEN"))
 	rsp, err := sunnahService.Chapters(&sunnah.ChaptersRequest{
-		Book: 1,
-Collection: "bukhari",
+		Collection: "bukhari",
+Book: 1,
+	})
+	fmt.Println(rsp, err)
+	
+}
+```
+## Hadiths
+
+Hadiths returns a list of hadiths and their corresponding text for a
+given book within a collection.
+
+
+[https://m3o.com/sunnah/api#Hadiths](https://m3o.com/sunnah/api#Hadiths)
+
+```go
+package example
+
+import(
+	"fmt"
+	"os"
+
+	"go.m3o.com/sunnah"
+)
+
+// Hadiths returns a list of hadiths and their corresponding text for a
+// given book within a collection.
+func ListTheHadithsInAbook() {
+	sunnahService := sunnah.NewSunnahService(os.Getenv("M3O_API_TOKEN"))
+	rsp, err := sunnahService.Hadiths(&sunnah.HadithsRequest{
+		Collection: "bukhari",
+Book: 1,
 	})
 	fmt.Println(rsp, err)
 	

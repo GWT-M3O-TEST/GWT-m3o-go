@@ -81,29 +81,29 @@ type DeleteIndexResponse struct {
 }
 
 type DeleteRequest struct {
-	// The ID of the record to delete
-	Id string `json:"id,omitempty"`
 	// The index the record belongs to
 	Index string `json:"index,omitempty"`
+	// The ID of the record to delete
+	Id string `json:"id,omitempty"`
 }
 
 type DeleteResponse struct {
 }
 
 type Field struct {
-	// The name of the field. Use a `.` separator to define nested fields e.g. foo.bar
-	Name string `json:"name,omitempty"`
 	// The type of the field - string, number
 	Type string `json:"type,omitempty"`
+	// The name of the field. Use a `.` separator to define nested fields e.g. foo.bar
+	Name string `json:"name,omitempty"`
 }
 
 type IndexRequest struct {
+	// Optional ID for the record
+	Id string `json:"id,omitempty"`
 	// The index this record belongs to
 	Index string `json:"index,omitempty"`
 	// The data to index
 	Data map[string]interface{} `json:"data,omitempty"`
-	// Optional ID for the record
-	Id string `json:"id,omitempty"`
 }
 
 type IndexResponse struct {

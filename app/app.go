@@ -135,8 +135,6 @@ type RegionsResponse struct {
 }
 
 type Reservation struct {
-	// name of the app
-	Name string `json:"name,omitempty"`
 	// owner id
 	Owner string `json:"owner,omitempty"`
 	// associated token
@@ -145,6 +143,8 @@ type Reservation struct {
 	Created string `json:"created,omitempty"`
 	// time reservation expires
 	Expires string `json:"expires,omitempty"`
+	// name of the app
+	Name string `json:"name,omitempty"`
 }
 
 type ReserveRequest struct {
@@ -168,8 +168,6 @@ type ResolveResponse struct {
 }
 
 type RunRequest struct {
-	// associated env vars to pass in
-	EnvVars map[string]string `json:"env_vars,omitempty"`
 	// name of the app
 	Name string `json:"name,omitempty"`
 	// port to run on
@@ -180,6 +178,8 @@ type RunRequest struct {
 	Repo string `json:"repo,omitempty"`
 	// branch. defaults to master
 	Branch string `json:"branch,omitempty"`
+	// associated env vars to pass in
+	EnvVars map[string]string `json:"env_vars,omitempty"`
 }
 
 type RunResponse struct {
@@ -188,30 +188,30 @@ type RunResponse struct {
 }
 
 type Service struct {
-	// branch of code
-	Branch string `json:"branch,omitempty"`
-	// custom domains
-	CustomDomains []string `json:"custom_domains,omitempty"`
-	// associated env vars
-	EnvVars map[string]string `json:"env_vars,omitempty"`
-	// unique id
-	Id string `json:"id,omitempty"`
-	// name of the app
-	Name string `json:"name,omitempty"`
-	// last updated
-	Updated string `json:"updated,omitempty"`
-	// app url
-	Url string `json:"url,omitempty"`
+	// status of the app
+	Status string `json:"status,omitempty"`
 	// time of creation
 	Created string `json:"created,omitempty"`
+	// associated env vars
+	EnvVars map[string]string `json:"env_vars,omitempty"`
 	// port running on
 	Port int32 `json:"port,omitempty"`
+	// name of the app
+	Name string `json:"name,omitempty"`
 	// region running in
 	Region string `json:"region,omitempty"`
 	// source repository
 	Repo string `json:"repo,omitempty"`
-	// status of the app
-	Status string `json:"status,omitempty"`
+	// last updated
+	Updated string `json:"updated,omitempty"`
+	// app url
+	Url string `json:"url,omitempty"`
+	// branch of code
+	Branch string `json:"branch,omitempty"`
+	// custom domains
+	CustomDomains []string `json:"custom_domains,omitempty"`
+	// unique id
+	Id string `json:"id,omitempty"`
 }
 
 type StatusRequest struct {
